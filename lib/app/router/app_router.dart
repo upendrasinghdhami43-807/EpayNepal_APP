@@ -7,6 +7,12 @@ import '../features/home/presentation/screens/home_screen.dart';
 import '../features/onboarding/presentation/screens/splash_screen.dart';
 import '../features/onboarding/presentation/screens/welcome_screen.dart';
 
+import '../features/auth/presentation/screens/auth_hub_screen.dart';
+import '../features/auth/presentation/screens/login_screen.dart';
+import '../features/auth/presentation/screens/register_screen.dart';
+import '../features/auth/presentation/screens/otp_screen.dart';
+import '../features/auth/presentation/screens/create_mpin_screen.dart';
+
 // Temporary placeholder screens for unresolved routes
 class PlaceholderScreen extends StatelessWidget {
   final String title;
@@ -41,7 +47,27 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/auth',
       name: RouteNames.authHub,
-      builder: (context, state) => const PlaceholderScreen(title: 'Auth Hub'),
+      builder: (context, state) => const AuthHubScreen(),
+    ),
+    GoRoute(
+      path: '/login',
+      name: 'login',
+      builder: (context, state) => const LoginScreen(),
+    ),
+    GoRoute(
+      path: '/register',
+      name: 'register',
+      builder: (context, state) => const RegisterScreen(),
+    ),
+    GoRoute(
+      path: '/otp',
+      name: 'otp',
+      builder: (context, state) => const OtpScreen(),
+    ),
+    GoRoute(
+      path: '/create_mpin',
+      name: 'create_mpin',
+      builder: (context, state) => const CreateMpinScreen(),
     ),
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
