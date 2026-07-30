@@ -2,9 +2,9 @@
 
 namespace App\Jobs;
 
+use App\Integrations\Push\PushGatewayInterface;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
-use Illuminate\Support\Facades\Log;
 
 class SendPushNotificationJob implements ShouldQueue
 {
@@ -18,13 +18,8 @@ class SendPushNotificationJob implements ShouldQueue
     ) {
     }
 
-    public function handle(): void
+    public function handle(PushGatewayInterface $pushGateway): void
     {
-        Log::info('push_notification_job', [
-            'user_id' => $this->userId,
-            'title' => $this->title,
-            'body' => $this->body,
-            'data' => $this->data,
-        ]);
+        $pushGateway->sendToUser($this->userId, $this->title, $this->body, $this->data);
     }
 }

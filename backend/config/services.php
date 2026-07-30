@@ -35,4 +35,19 @@ return [
         ],
     ],
 
+    'fcm' => [
+        'endpoint' => env('FCM_ENDPOINT', 'https://fcm.googleapis.com/fcm/send'),
+        'server_key' => env('FCM_SERVER_KEY'),
+    ],
+
+    'sms' => [
+        'base_url' => env('SMS_BASE_URL'),
+        'api_key' => env('SMS_API_KEY'),
+        'sender' => env('SMS_SENDER', 'EpayNepal'),
+    ],
+
+    'storage' => [
+        'provider' => env('STORAGE_PROVIDER', 'local'),
+    ],
+
 ];

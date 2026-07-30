@@ -2,9 +2,9 @@
 
 namespace App\Jobs;
 
+use App\Integrations\Sms\SmsGatewayInterface;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
-use Illuminate\Support\Facades\Log;
 
 class SendOtpSmsJob implements ShouldQueue
 {
@@ -14,11 +14,8 @@ class SendOtpSmsJob implements ShouldQueue
     {
     }
 
-    public function handle(): void
+    public function handle(SmsGatewayInterface $smsGateway): void
     {
-        Log::info('otp_sms_job', [
-            'phone' => $this->phone,
-            'otp' => $this->otp,
-        ]);
+        $smsGateway->sendOtp($this->phone, $this->otp);
     }
 }

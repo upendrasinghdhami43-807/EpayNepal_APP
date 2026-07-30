@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Merchant;
+use App\Models\MerchantQr;
 
 class MerchantService
 {
@@ -20,6 +21,16 @@ class MerchantService
 
     public function qrPayload(Merchant $merchant): string
     {
-        return sprintf('epaynepal://merchant/%d?name=%s', $merchant->id, urlencode($merchant->business_name));
+        $payload = sprintf('epaynepal://merchant/%d?name=%s', $merchant->id, urlencode($merchant->business_name));
+
+        MerchantQr::create([
+            'merchant_id' => $merchant->id,
+            'qr_code' => strtoupper((string) str()->uuid()),
+            'qr_payload' => $payload,
+            'is_active' => true,
+            'created_at' => now(),
+        ]);
+
+        return $payload;
     }
 }
