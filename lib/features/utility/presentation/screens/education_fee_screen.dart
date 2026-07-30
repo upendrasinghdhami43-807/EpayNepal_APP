@@ -11,10 +11,10 @@ class EducationFeeScreen extends StatelessWidget {
     final colorScheme = theme.colorScheme;
 
     return Scaffold(
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
         title: const Text('Education Fee'),
-        backgroundColor: colorScheme.background,
+        backgroundColor: colorScheme.surface,
         foregroundColor: colorScheme.onSurface,
         elevation: 0,
       ),
@@ -78,11 +78,11 @@ class EducationFeeScreen extends StatelessWidget {
                     : colorScheme.surfaceContainerLowest,
                 borderRadius: BorderRadius.circular(24),
                 border: Border.all(
-                  color: colorScheme.surfaceVariant.withOpacity(0.5),
+                  color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.02),
+                    color: Colors.black.withValues(alpha: 0.02),
                     blurRadius: 4,
                   ),
                 ],
@@ -297,7 +297,7 @@ class EducationFeeScreen extends StatelessWidget {
             : colorScheme.surfaceContainerLowest,
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
-          BoxShadow(color: Colors.black.withOpacity(0.02), blurRadius: 8),
+          BoxShadow(color: Colors.black.withValues(alpha: 0.02), blurRadius: 8),
         ],
       ),
       child: Row(
@@ -306,7 +306,7 @@ class EducationFeeScreen extends StatelessWidget {
             width: 40,
             height: 40,
             decoration: BoxDecoration(
-              color: iconBgColor.withOpacity(0.5),
+              color: iconBgColor.withValues(alpha: 0.5),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(icon, color: colorScheme.onSurface),

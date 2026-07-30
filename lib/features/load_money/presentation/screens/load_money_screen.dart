@@ -11,7 +11,7 @@ class LoadMoneyScreen extends StatelessWidget {
     final colorScheme = theme.colorScheme;
 
     return Scaffold(
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
         title: const Text('Load Money'),
         backgroundColor: colorScheme.primary,
@@ -68,7 +68,7 @@ class LoadMoneyScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(24),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
+                    color: Colors.black.withValues(alpha: 0.05),
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   ),
@@ -83,7 +83,7 @@ class LoadMoneyScreen extends StatelessWidget {
                     subtitle: 'Load instantly from your linked banks',
                     onTap: () => context.push('/bank_accounts'),
                   ),
-                  Divider(height: 1, color: colorScheme.surfaceVariant),
+                  Divider(height: 1, color: colorScheme.surfaceContainerHighest),
                   _buildMethodListItem(
                     context,
                     icon: Icons.smartphone,
@@ -92,7 +92,7 @@ class LoadMoneyScreen extends StatelessWidget {
                     onTap: () =>
                         UiFeedback.comingSoon(context, 'Mobile banking load'),
                   ),
-                  Divider(height: 1, color: colorScheme.surfaceVariant),
+                  Divider(height: 1, color: colorScheme.surfaceContainerHighest),
                   _buildMethodListItem(
                     context,
                     icon: Icons.sync_alt,
@@ -101,7 +101,7 @@ class LoadMoneyScreen extends StatelessWidget {
                     onTap: () =>
                         UiFeedback.comingSoon(context, 'ConnectIPS load'),
                   ),
-                  Divider(height: 1, color: colorScheme.surfaceVariant),
+                  Divider(height: 1, color: colorScheme.surfaceContainerHighest),
                   _buildMethodListItem(
                     context,
                     icon: Icons.credit_card,
@@ -181,10 +181,10 @@ class LoadMoneyScreen extends StatelessWidget {
               ? colorScheme.surfaceContainerHighest
               : colorScheme.surfaceContainerLowest,
           borderRadius: BorderRadius.circular(24),
-          border: Border.all(color: colorScheme.surfaceVariant),
+          border: Border.all(color: colorScheme.surfaceContainerHighest),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black.withValues(alpha: 0.05),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
@@ -196,7 +196,7 @@ class LoadMoneyScreen extends StatelessWidget {
               width: 48,
               height: 48,
               decoration: BoxDecoration(
-                color: colorScheme.primaryContainer.withOpacity(0.2),
+                color: colorScheme.primaryContainer.withValues(alpha: 0.2),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Icon(icon, color: colorScheme.primary),

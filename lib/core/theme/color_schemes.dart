@@ -42,7 +42,7 @@ class AppColors {
   static const Color onBackground = Color(0xFF1a1c18);
   static const Color surface = Color(0xFFfafaf2);
   static const Color onSurface = Color(0xFF1a1c18);
-  static const Color surfaceVariant = Color(0xFFe3e3db);
+  static const Color surfaceContainerHighest = Color(0xFFe3e3db);
   static const Color onSurfaceVariant = Color(0xFF3d4a39);
   static const Color outline = Color(0xFF6d7b68);
   static const Color outlineVariant = Color(0xFFbccbb4);
@@ -59,7 +59,6 @@ class AppColors {
   static const Color surfaceContainerLow = Color(0xFFf4f4ec);
   static const Color surfaceContainer = Color(0xFFeeeee6);
   static const Color surfaceContainerHigh = Color(0xFFe8e9e1);
-  static const Color surfaceContainerHighest = Color(0xFFe3e3db);
 }
 
 const ColorScheme lightColorScheme = ColorScheme(
@@ -84,7 +83,7 @@ const ColorScheme lightColorScheme = ColorScheme(
   onBackground: AppColors.onBackground,
   surface: AppColors.surface,
   onSurface: AppColors.onSurface,
-  surfaceVariant: AppColors.surfaceVariant,
+  surfaceContainerHighest: AppColors.surfaceContainerHighest,
   onSurfaceVariant: AppColors.onSurfaceVariant,
   outline: AppColors.outline,
   outlineVariant: AppColors.outlineVariant,
@@ -120,7 +119,7 @@ const ColorScheme darkColorScheme = ColorScheme(
   onBackground: Color(0xFFe3e3db),
   surface: Color(0xFF121411), // Dark surface
   onSurface: Color(0xFFe3e3db),
-  surfaceVariant: Color(0xFF3d4a39),
+  surfaceContainerHighest: Color(0xFF3d4a39),
   onSurfaceVariant: Color(0xFFbccbb4),
   outline: Color(0xFF879581),
   outlineVariant: Color(0xFF3d4a39),

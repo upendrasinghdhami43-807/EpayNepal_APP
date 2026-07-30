@@ -43,7 +43,7 @@ class _RemittanceScreenState extends State<RemittanceScreen> {
     final colorScheme = theme.colorScheme;
 
     return Scaffold(
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
         title: const Text('Remittance'),
         backgroundColor: colorScheme.primary,
@@ -102,10 +102,10 @@ class _RemittanceScreenState extends State<RemittanceScreen> {
                     ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainerLowest,
                 borderRadius: BorderRadius.circular(24),
-                border: Border.all(color: colorScheme.surfaceVariant),
+                border: Border.all(color: colorScheme.surfaceContainerHighest),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
+                    color: Colors.black.withValues(alpha: 0.05),
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   ),
@@ -214,7 +214,7 @@ class _RemittanceScreenState extends State<RemittanceScreen> {
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
           color: theme.brightness == Brightness.dark
-              ? colorScheme.background
+              ? colorScheme.surface
               : colorScheme.surface,
         ),
         child: SafeArea(
@@ -299,7 +299,7 @@ class _RemittanceScreenState extends State<RemittanceScreen> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
               decoration: BoxDecoration(
-                color: colorScheme.surfaceVariant,
+                color: colorScheme.surfaceContainerHighest,
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Row(
@@ -339,7 +339,7 @@ class _RemittanceScreenState extends State<RemittanceScreen> {
                       Text(
                         value ?? '0.00',
                         style: theme.textTheme.headlineMedium?.copyWith(
-                          color: colorScheme.onSurface.withOpacity(0.6),
+                          color: colorScheme.onSurface.withValues(alpha: 0.6),
                         ),
                       ),
                     ],
@@ -402,7 +402,7 @@ class _RemittanceScreenState extends State<RemittanceScreen> {
           border: Border.all(
             color: isSelected
                 ? colorScheme.primary
-                : colorScheme.surfaceVariant,
+                : colorScheme.surfaceContainerHighest,
             width: isSelected ? 2 : 1,
           ),
         ),

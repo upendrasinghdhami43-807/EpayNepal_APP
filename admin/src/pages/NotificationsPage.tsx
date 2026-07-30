@@ -48,7 +48,7 @@ const NotificationsPage: React.FC = () => {
             >
               <option value="all">All Users</option>
               <option value="unverified">Unverified Users</option>
-              <option value="inactive">Inactive Users (>30 days)</option>
+              <option value="inactive">Inactive Users (&gt;30 days)</option>
               <option value="premium">KYC Verified</option>
             </select>
           </div>

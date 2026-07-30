@@ -17,6 +17,8 @@ class _CreateMpinScreenState extends ConsumerState<CreateMpinScreen> {
   final _mpinController = TextEditingController();
   final _confirmMpinController = TextEditingController();
   bool _isLoading = false;
+  bool _obscureMpin = true;
+  bool _obscureConfirmMpin = true;
 
   @override
   void dispose() {
@@ -49,42 +51,78 @@ class _CreateMpinScreenState extends ConsumerState<CreateMpinScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
-      appBar: AppBar(title: const Text('Create MPIN')),
+      appBar: AppBar(
+        title: const Text(''),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        iconTheme: IconThemeData(color: colorScheme.onSurface),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Text(
-                'Set a 4-digit MPIN to secure your wallet.',
-                style: TextStyle(fontSize: 16),
+              Text(
+                'Set MPIN',
+                style: textTheme.headlineLarge,
               ),
-              const SizedBox(height: 32),
-              CustomTextField(
-                label: 'New MPIN',
-                hint: '****',
-                controller: _mpinController,
-                keyboardType: TextInputType.number,
-                obscureText: true,
-                prefixIcon: const Icon(Icons.lock),
-              ),
-              const SizedBox(height: 24),
-              CustomTextField(
-                label: 'Confirm MPIN',
-                hint: '****',
-                controller: _confirmMpinController,
-                keyboardType: TextInputType.number,
-                obscureText: true,
-                prefixIcon: const Icon(Icons.lock),
+              const SizedBox(height: 8),
+              Text(
+                'Set a 4-digit MPIN to secure your wallet transactions.',
+                style: textTheme.bodyMedium?.copyWith(
+                  color: colorScheme.onSurfaceVariant,
+                ),
               ),
               const SizedBox(height: 48),
+              CustomTextField(
+                label: 'New MPIN',
+                hint: '••••',
+                controller: _mpinController,
+                keyboardType: TextInputType.number,
+                obscureText: _obscureMpin,
+                prefixIcon: Icon(Icons.lock_outline, color: colorScheme.primary),
+                maxLength: 4,
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _obscureMpin ? Icons.visibility_off : Icons.visibility,
+                    color: colorScheme.onSurfaceVariant,
+                  ),
+                  onPressed: () {
+                    setState(() => _obscureMpin = !_obscureMpin);
+                  },
+                ),
+              ),
+              const SizedBox(height: 20),
+              CustomTextField(
+                label: 'Confirm MPIN',
+                hint: '••••',
+                controller: _confirmMpinController,
+                keyboardType: TextInputType.number,
+                obscureText: _obscureConfirmMpin,
+                prefixIcon: Icon(Icons.lock_outline, color: colorScheme.primary),
+                maxLength: 4,
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _obscureConfirmMpin ? Icons.visibility_off : Icons.visibility,
+                    color: colorScheme.onSurfaceVariant,
+                  ),
+                  onPressed: () {
+                    setState(() => _obscureConfirmMpin = !_obscureConfirmMpin);
+                  },
+                ),
+              ),
+              const Spacer(),
               PrimaryButton(
                 text: 'Complete Setup',
                 isLoading: _isLoading,
                 onPressed: _handleCreate,
               ),
+              const SizedBox(height: 24),
             ],
           ),
         ),

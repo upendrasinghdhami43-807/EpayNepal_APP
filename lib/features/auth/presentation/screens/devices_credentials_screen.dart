@@ -19,7 +19,7 @@ class _DevicesCredentialsScreenState extends State<DevicesCredentialsScreen> {
     final colorScheme = theme.colorScheme;
 
     return Scaffold(
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
         title: const Text('Devices & Credentials'),
         backgroundColor: colorScheme.primary,
@@ -57,7 +57,7 @@ class _DevicesCredentialsScreenState extends State<DevicesCredentialsScreen> {
                         Text(
                           'Your account is currently secure.',
                           style: theme.textTheme.bodyMedium?.copyWith(
-                            color: colorScheme.onPrimaryContainer.withOpacity(
+                            color: colorScheme.onPrimaryContainer.withValues(alpha: 
                               0.9,
                             ),
                           ),
@@ -68,7 +68,7 @@ class _DevicesCredentialsScreenState extends State<DevicesCredentialsScreen> {
                   Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.2),
+                      color: Colors.white.withValues(alpha: 0.2),
                       shape: BoxShape.circle,
                     ),
                     child: Icon(
@@ -99,7 +99,7 @@ class _DevicesCredentialsScreenState extends State<DevicesCredentialsScreen> {
                 borderRadius: BorderRadius.circular(24),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
+                    color: Colors.black.withValues(alpha: 0.05),
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   ),
@@ -114,7 +114,7 @@ class _DevicesCredentialsScreenState extends State<DevicesCredentialsScreen> {
                     subtitle: 'Update your mobile banking PIN',
                     onTap: () => UiFeedback.comingSoon(context, 'Change MPIN'),
                   ),
-                  Divider(height: 1, color: colorScheme.surfaceVariant),
+                  Divider(height: 1, color: colorScheme.surfaceContainerHighest),
                   _buildListTile(
                     context,
                     icon: Icons.password,
@@ -123,7 +123,7 @@ class _DevicesCredentialsScreenState extends State<DevicesCredentialsScreen> {
                     onTap: () =>
                         UiFeedback.comingSoon(context, 'Change password'),
                   ),
-                  Divider(height: 1, color: colorScheme.surfaceVariant),
+                  Divider(height: 1, color: colorScheme.surfaceContainerHighest),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Row(
@@ -165,7 +165,7 @@ class _DevicesCredentialsScreenState extends State<DevicesCredentialsScreen> {
                               _biometricEnabled = val;
                             });
                           },
-                          activeColor: colorScheme.primary,
+                          activeThumbColor: colorScheme.primary,
                         ),
                       ],
                     ),
@@ -307,11 +307,11 @@ class _DevicesCredentialsScreenState extends State<DevicesCredentialsScreen> {
               : colorScheme.surfaceContainerLowest,
           borderRadius: BorderRadius.circular(24),
           border: isCurrentDevice
-              ? Border.all(color: colorScheme.primary.withOpacity(0.2))
+              ? Border.all(color: colorScheme.primary.withValues(alpha: 0.2))
               : null,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black.withValues(alpha: 0.05),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
@@ -430,7 +430,7 @@ class _DevicesCredentialsScreenState extends State<DevicesCredentialsScreen> {
                         style: TextButton.styleFrom(
                           foregroundColor: colorScheme.error,
                           backgroundColor: colorScheme.errorContainer
-                              .withOpacity(0.3),
+                              .withValues(alpha: 0.3),
                           padding: const EdgeInsets.symmetric(
                             horizontal: 12,
                             vertical: 8,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/utils/currency_formatter.dart';
-import '../../../../core/utils/ui_feedback.dart';
+import '../../../../core/widgets/cards/transaction_tile.dart';
 import '../../../../models/transaction_model.dart';
 
 class WalletOverviewScreen extends StatefulWidget {
@@ -23,7 +23,7 @@ class _WalletOverviewScreenState extends State<WalletOverviewScreen> {
     final transactions = TransactionModel.demoList;
 
     return Scaffold(
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
         title: const Text('My Wallet'),
         backgroundColor: colorScheme.primary,
@@ -177,7 +177,14 @@ class _WalletOverviewScreenState extends State<WalletOverviewScreen> {
               ],
             ),
             const SizedBox(height: 8),
-            ...transactions.take(4).map((t) => _TransactionItem(txn: t)),
+            ...transactions.take(4).map((t) => TransactionTile(
+                  title: t.description,
+                  subtitle: t.type.name.toUpperCase(),
+                  date: t.createdAt,
+                  amount: t.amount,
+                  isCredit: !t.isDebit,
+                  icon: t.isDebit ? Icons.arrow_upward : Icons.arrow_downward,
+                )),
           ],
         ),
       ),
@@ -195,8 +202,8 @@ class _WalletOverviewScreenState extends State<WalletOverviewScreen> {
             width: 48,
             height: 48,
             decoration: BoxDecoration(
-              color: Colors.white.withValues(alpha: 0.2),
-              borderRadius: BorderRadius.circular(14),
+              color: Colors.white.withValues(alpha: 0.15),
+              borderRadius: BorderRadius.circular(16),
             ),
             child: Icon(icon, color: colorScheme.onPrimary, size: 22),
           ),
@@ -248,73 +255,6 @@ class _WalletOverviewScreenState extends State<WalletOverviewScreen> {
                     style: theme.textTheme.titleSmall
                         ?.copyWith(fontWeight: FontWeight.bold)),
               ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _TransactionItem extends StatelessWidget {
-  final TransactionModel txn;
-  const _TransactionItem({required this.txn});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-    final isDebit = txn.isDebit;
-
-    return Container(
-      margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: theme.brightness == Brightness.dark
-            ? colorScheme.surfaceContainerHighest
-            : colorScheme.surfaceContainerLowest,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-            color: colorScheme.outlineVariant.withValues(alpha: 0.2)),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: (isDebit ? colorScheme.error : colorScheme.primary)
-                  .withValues(alpha: 0.1),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Icon(
-              isDebit ? Icons.arrow_upward : Icons.arrow_downward,
-              color: isDebit ? colorScheme.error : colorScheme.primary,
-              size: 18,
-            ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(txn.description,
-                    style: theme.textTheme.titleSmall,
-                    overflow: TextOverflow.ellipsis),
-                Text(
-                  '${txn.createdAt.day}/${txn.createdAt.month}/${txn.createdAt.year}',
-                  style: theme.textTheme.labelSmall
-                      ?.copyWith(color: colorScheme.onSurfaceVariant),
-                ),
-              ],
-            ),
-          ),
-          Text(
-            '${isDebit ? '-' : '+'}NPR ${txn.amount.toStringAsFixed(2)}',
-            style: TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.bold,
-              color: isDebit ? colorScheme.error : colorScheme.primary,
             ),
           ),
         ],

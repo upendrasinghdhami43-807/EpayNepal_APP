@@ -18,7 +18,7 @@ class _KycPersonalInfoScreenState extends State<KycPersonalInfoScreen> {
     final colorScheme = theme.colorScheme;
 
     return Scaffold(
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
         title: const Text('Hi, Upendra'),
         backgroundColor: colorScheme.primary,
@@ -103,11 +103,11 @@ class _KycPersonalInfoScreenState extends State<KycPersonalInfoScreen> {
                     : colorScheme.surface,
                 borderRadius: BorderRadius.circular(24),
                 border: Border.all(
-                  color: colorScheme.outlineVariant.withOpacity(0.3),
+                  color: colorScheme.outlineVariant.withValues(alpha: 0.3),
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.02),
+                    color: Colors.black.withValues(alpha: 0.02),
                     blurRadius: 8,
                   ),
                 ],
@@ -268,7 +268,7 @@ class _KycPersonalInfoScreenState extends State<KycPersonalInfoScreen> {
                       foregroundColor: colorScheme.onPrimaryContainer,
                       minimumSize: const Size.fromHeight(56),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(28),
+                        borderRadius: BorderRadius.circular(16),
                       ),
                       elevation: 4,
                     ),
@@ -361,7 +361,7 @@ class _KycPersonalInfoScreenState extends State<KycPersonalInfoScreen> {
         padding: const EdgeInsets.symmetric(vertical: 12),
         decoration: BoxDecoration(
           color: isSelected
-              ? colorScheme.primaryContainer.withOpacity(0.2)
+              ? colorScheme.primaryContainer.withValues(alpha: 0.2)
               : colorScheme.surfaceContainerLow,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(

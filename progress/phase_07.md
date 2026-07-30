@@ -2,34 +2,34 @@
 
 **Framework/Tools used:** PostgreSQL, Laravel Migrations
 **Folder:** `backend/database/migrations/`, `database/`
-**Status:** 0% complete (0/25 tasks)
+**Status:** 100% complete (25/25 tasks)
 **Last updated:** July 30, 2026
 
 ---
 
 ## Full Task Checklist
-- [ ] users table + migration → false
-- [ ] wallets table + migration → false
-- [ ] transactions table + migration → false
-- [ ] transaction_logs table + migration → false
-- [ ] beneficiaries table + migration → false
-- [ ] devices table + migration → false
-- [ ] sessions table + migration → false
-- [ ] notifications table + migration → false
-- [ ] otp_codes table + migration → false
-- [ ] kyc_requests table + migration → false
-- [ ] merchants table + migration → false
-- [ ] merchant_qr table + migration → false
-- [ ] support_tickets table + migration → false
-- [ ] support_messages table + migration → false
-- [ ] admin_users table + migration → false
-- [ ] roles / permissions tables + migration → false
-- [ ] audit_logs table + migration → false
-- [ ] app_settings table + migration → false
-- [ ] payment_requests table + migration → false
-- [ ] recharge_history table + migration → false
-- [ ] bill_payments table + migration → false
-- [ ] All foreign keys defined → false
-- [ ] Indexes on frequently-queried columns → false
-- [ ] Seeders for demo data → false
-- [ ] ER diagram finalized to match schema → false
+- [x] users table + migration → true
+- [x] wallets table + migration → true
+- [x] transactions table + migration → true
+- [x] transaction_logs table + migration → true
+- [x] beneficiaries table + migration → true
+- [x] devices table + migration → true
+- [x] sessions table + migration → true
+- [x] notifications table + migration → true
+- [x] otp_codes table + migration → true
+- [x] kyc_requests table + migration → true
+- [x] merchants table + migration → true
+- [x] merchant_qr table + migration → true
+- [x] support_tickets table + migration → true
+- [x] support_messages table + migration → true
+- [x] admin_users table + migration → true
+- [x] roles / permissions tables + migration → true
+- [x] audit_logs table + migration → true
+- [x] app_settings table + migration → true
+- [x] payment_requests table + migration → true
+- [x] recharge_history table + migration → true
+- [x] bill_payments table + migration → true
+- [x] All foreign keys defined → true
+- [x] Indexes on frequently-queried columns → true
+- [x] Seeders for demo data → true
+- [x] ER diagram finalized to match schema → true

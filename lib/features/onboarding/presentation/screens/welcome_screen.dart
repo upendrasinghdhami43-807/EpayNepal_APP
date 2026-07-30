@@ -26,13 +26,13 @@ class WelcomeScreen extends StatelessWidget {
               ),
               const SizedBox(height: 32),
               Text(
-                'Welcome to Emerald Wallet',
+                'Welcome to EpayNepal',
                 style: theme.textTheme.headlineMedium,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
               Text(
-                'Your secure, offline demo digital wallet.',
+                'Your secure, fast, and reliable digital wallet.',
                 style: theme.textTheme.bodyLarge?.copyWith(
                   color: theme.colorScheme.onSurfaceVariant,
                 ),
@@ -42,7 +42,7 @@ class WelcomeScreen extends StatelessWidget {
               PrimaryButton(
                 text: 'Get Started',
                 onPressed: () {
-                  context.pushNamed(RouteNames.authHub);
+                  context.pushNamed(RouteNames.login);
                 },
               ),
             ],

@@ -10,7 +10,7 @@ class SupportScreen extends StatelessWidget {
     final colorScheme = theme.colorScheme;
 
     return Scaffold(
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
         title: const Text('Support'),
         backgroundColor: colorScheme.primary,
@@ -105,9 +105,9 @@ class SupportScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: colorScheme.primary.withOpacity(0.05),
+                color: colorScheme.primary.withValues(alpha: 0.05),
                 borderRadius: BorderRadius.circular(32),
-                border: Border.all(color: colorScheme.primary.withOpacity(0.1)),
+                border: Border.all(color: colorScheme.primary.withValues(alpha: 0.1)),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -253,7 +253,7 @@ class SupportScreen extends StatelessWidget {
                   Text(
                     'Get tips from millions of users worldwide.',
                     style: theme.textTheme.bodyMedium?.copyWith(
-                      color: colorScheme.onInverseSurface.withOpacity(0.8),
+                      color: colorScheme.onInverseSurface.withValues(alpha: 0.8),
                     ),
                   ),
                   const Spacer(),
@@ -306,7 +306,7 @@ class SupportScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: color.withOpacity(0.2),
+                color: color.withValues(alpha: 0.2),
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Icon(icon, color: color),
@@ -346,10 +346,10 @@ class SupportScreen extends StatelessWidget {
               : colorScheme.surfaceContainerLowest,
           borderRadius: BorderRadius.circular(24),
           border: Border.all(
-            color: colorScheme.outlineVariant.withOpacity(0.5),
+            color: colorScheme.outlineVariant.withValues(alpha: 0.5),
           ),
           boxShadow: [
-            BoxShadow(color: Colors.black.withOpacity(0.02), blurRadius: 4),
+            BoxShadow(color: Colors.black.withValues(alpha: 0.02), blurRadius: 4),
           ],
         ),
         child: Row(
@@ -390,7 +390,7 @@ class SupportScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: isResolved
                               ? colorScheme.surfaceContainerHighest
-                              : colorScheme.primaryContainer.withOpacity(0.2),
+                              : colorScheme.primaryContainer.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Text(

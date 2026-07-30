@@ -11,7 +11,7 @@ class PaymentSuccessScreen extends StatelessWidget {
     final colorScheme = theme.colorScheme;
 
     return Scaffold(
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
         title: const Text('Transaction'),
         backgroundColor: colorScheme.primary,
@@ -45,7 +45,7 @@ class PaymentSuccessScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(24),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
+                    color: Colors.black.withValues(alpha: 0.05),
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   ),
@@ -65,7 +65,7 @@ class PaymentSuccessScreen extends StatelessWidget {
                     width: 64,
                     height: 64,
                     decoration: BoxDecoration(
-                      color: colorScheme.primaryContainer.withOpacity(0.2),
+                      color: colorScheme.primaryContainer.withValues(alpha: 0.2),
                       shape: BoxShape.circle,
                     ),
                     child: Icon(
@@ -120,7 +120,7 @@ class PaymentSuccessScreen extends StatelessWidget {
                     label: Container(
                       padding: const EdgeInsets.all(4),
                       decoration: BoxDecoration(
-                        color: colorScheme.primaryContainer.withOpacity(0.2),
+                        color: colorScheme.primaryContainer.withValues(alpha: 0.2),
                         shape: BoxShape.circle,
                       ),
                       child: const Icon(Icons.chevron_right, size: 16),
@@ -237,7 +237,7 @@ class PaymentSuccessScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
           color: theme.brightness == Brightness.dark
-              ? colorScheme.background
+              ? colorScheme.surface
               : colorScheme.surface,
         ),
         child: SafeArea(

@@ -3,7 +3,14 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/utils/ui_feedback.dart';
 
 class PaymentDetailsScreen extends StatefulWidget {
-  const PaymentDetailsScreen({super.key});
+  final String receiverName;
+  final String receiverNumber;
+
+  const PaymentDetailsScreen({
+    super.key,
+    this.receiverName = 'Upe*** ***rma',
+    this.receiverNumber = '98XXXXXXXX',
+  });
 
   @override
   State<PaymentDetailsScreen> createState() => _PaymentDetailsScreenState();
@@ -11,12 +18,9 @@ class PaymentDetailsScreen extends StatefulWidget {
 
 class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
   final TextEditingController _amountController = TextEditingController();
-  final TextEditingController _remarksController = TextEditingController();
-
   @override
   void dispose() {
     _amountController.dispose();
-    _remarksController.dispose();
     super.dispose();
   }
 
@@ -30,7 +34,14 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
       );
       return;
     }
-    context.push('/confirm_payment');
+    context.push(
+      '/confirm_payment',
+      extra: {
+        'name': widget.receiverName,
+        'number': widget.receiverNumber,
+        'amount': _amountController.text.trim(),
+      },
+    );
   }
 
   void _setAmount(String amount) {
@@ -39,13 +50,26 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
     });
   }
 
+  String _maskName(String name) {
+    if (name.length < 4) return name;
+    final parts = name.trim().split(' ');
+    if (parts.length > 1) {
+      final first = parts[0];
+      final last = parts.last;
+      final mFirst = first.length > 3 ? '${first.substring(0, 3)}***' : '$first***';
+      final mLast = last.length > 3 ? '***${last.substring(last.length - 3)}' : '***$last';
+      return '$mFirst $mLast';
+    }
+    return '${name.substring(0, 3)}***';
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
     return Scaffold(
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
         title: const Text('Enter Amount'),
         backgroundColor: colorScheme.primary,
@@ -66,10 +90,10 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
                     ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainerLowest,
                 borderRadius: BorderRadius.circular(24),
-                border: Border.all(color: colorScheme.surfaceVariant),
+                border: Border.all(color: colorScheme.surfaceContainerHighest),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
+                    color: Colors.black.withValues(alpha: 0.05),
                     blurRadius: 12,
                     offset: const Offset(0, 4),
                   ),
@@ -101,11 +125,11 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
                         ),
                       ),
                       Text(
-                        'Upendra Sharma',
+                        _maskName(widget.receiverName),
                         style: theme.textTheme.titleMedium,
                       ),
                       Text(
-                        '98XXXXXXXX',
+                        widget.receiverNumber,
                         style: theme.textTheme.bodyMedium?.copyWith(
                           color: colorScheme.onSurfaceVariant,
                         ),
@@ -125,10 +149,10 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
                     ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainerLowest,
                 borderRadius: BorderRadius.circular(24),
-                border: Border.all(color: colorScheme.surfaceVariant),
+                border: Border.all(color: colorScheme.surfaceContainerHighest),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
+                    color: Colors.black.withValues(alpha: 0.05),
                     blurRadius: 12,
                     offset: const Offset(0, 4),
                   ),
@@ -164,7 +188,7 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
                             hintText: '0',
                             border: InputBorder.none,
                             hintStyle: theme.textTheme.displayMedium?.copyWith(
-                              color: colorScheme.onSurfaceVariant.withOpacity(
+                              color: colorScheme.onSurfaceVariant.withValues(alpha: 
                                 0.5,
                               ),
                             ),
@@ -189,27 +213,7 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
                 ],
               ),
             ),
-            const SizedBox(height: 16),
-
-            // Remarks Section
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-              decoration: BoxDecoration(
-                color: colorScheme.surfaceContainerLow,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: colorScheme.outlineVariant.withOpacity(0.5),
-                ),
-              ),
-              child: TextField(
-                controller: _remarksController,
-                decoration: InputDecoration(
-                  hintText: 'Add a remark (Optional)',
-                  border: InputBorder.none,
-                  icon: Icon(Icons.edit, color: colorScheme.primary),
-                ),
-              ),
-            ),
+            // Removed Remarks Section
           ],
         ),
       ),
@@ -217,7 +221,7 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
           color: theme.brightness == Brightness.dark
-              ? colorScheme.background
+              ? colorScheme.surface
               : colorScheme.surface,
         ),
         child: SafeArea(
@@ -262,7 +266,7 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
           color: colorScheme.surfaceContainerLow,
           borderRadius: BorderRadius.circular(24),
           border: Border.all(
-            color: colorScheme.outlineVariant.withOpacity(0.5),
+            color: colorScheme.outlineVariant.withValues(alpha: 0.5),
           ),
         ),
         child: Text(

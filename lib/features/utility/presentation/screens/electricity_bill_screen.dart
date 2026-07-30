@@ -11,7 +11,7 @@ class ElectricityBillScreen extends StatelessWidget {
     final colorScheme = theme.colorScheme;
 
     return Scaffold(
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
         title: const Text('Pay Electricity Bill'),
         backgroundColor: colorScheme.primary,
@@ -38,7 +38,7 @@ class ElectricityBillScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 color: colorScheme.surfaceContainer,
                 borderRadius: BorderRadius.circular(24),
-                border: Border.all(color: colorScheme.surfaceVariant),
+                border: Border.all(color: colorScheme.surfaceContainerHighest),
               ),
               child: Row(
                 children: [
@@ -88,7 +88,7 @@ class ElectricityBillScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(24),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.08),
+                    color: Colors.black.withValues(alpha: 0.08),
                     blurRadius: 12,
                     offset: const Offset(0, 4),
                   ),
@@ -267,7 +267,7 @@ class ElectricityBillScreen extends StatelessWidget {
       decoration: BoxDecoration(
         color: colorScheme.surfaceContainerLow,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: colorScheme.surfaceVariant.withOpacity(0.5)),
+        border: Border.all(color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.5)),
       ),
       child: Row(
         children: [

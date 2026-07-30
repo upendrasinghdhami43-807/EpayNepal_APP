@@ -11,7 +11,7 @@ class BankTransferScreen extends StatelessWidget {
     final colorScheme = theme.colorScheme;
 
     return Scaffold(
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
         title: const Text('Bank Transfer'),
         backgroundColor: colorScheme.primary,
@@ -95,10 +95,10 @@ class BankTransferScreen extends StatelessWidget {
                     ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainerLowest,
                 borderRadius: BorderRadius.circular(24),
-                border: Border.all(color: colorScheme.surfaceVariant),
+                border: Border.all(color: colorScheme.surfaceContainerHighest),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
+                    color: Colors.black.withValues(alpha: 0.05),
                     blurRadius: 12,
                     offset: const Offset(0, 4),
                   ),
@@ -216,7 +216,7 @@ class BankTransferScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
           color: theme.brightness == Brightness.dark
-              ? colorScheme.background
+              ? colorScheme.surface
               : colorScheme.surface,
         ),
         child: SafeArea(
@@ -274,13 +274,13 @@ class BankTransferScreen extends StatelessWidget {
               border: Border.all(
                 color: isOutlined
                     ? colorScheme.outline
-                    : colorScheme.surfaceVariant,
+                    : colorScheme.surfaceContainerHighest,
               ),
               boxShadow: isOutlined
                   ? null
                   : [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.05),
+                        color: Colors.black.withValues(alpha: 0.05),
                         blurRadius: 4,
                         offset: const Offset(0, 2),
                       ),
@@ -321,10 +321,10 @@ class BankTransferScreen extends StatelessWidget {
             ? colorScheme.surfaceContainerHighest
             : colorScheme.surfaceContainerLowest,
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: colorScheme.surfaceVariant.withOpacity(0.5)),
+        border: Border.all(color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.5)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.02),
+            color: Colors.black.withValues(alpha: 0.02),
             blurRadius: 4,
             offset: const Offset(0, 2),
           ),

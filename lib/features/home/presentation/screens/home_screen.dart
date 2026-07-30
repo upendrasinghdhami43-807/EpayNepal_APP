@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/utils/ui_feedback.dart';
+import '../../../../core/widgets/cards/transaction_tile.dart';
 import '../../../demo_settings/data/demo_settings_store.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -38,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: CustomScrollView(
         slivers: [
           _buildAppBar(context),
@@ -492,7 +493,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ? null
                 : [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
+                      color: Colors.black.withValues(alpha: 0.05),
                       blurRadius: 5,
                       offset: const Offset(0, 2),
                     ),
@@ -541,146 +542,36 @@ class _HomeScreenState extends State<HomeScreen> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
+            Text(
               'Recent Transactions',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.titleMedium,
             ),
             TextButton(
               onPressed: () => context.go('/statement'),
-              child: const Text(
+              child: Text(
                 'History',
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: TextStyle(fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.primary),
               ),
             ),
           ],
         ),
-        _buildTransactionItem(
-          context,
-          icon: Icons.smartphone,
+        TransactionTile(
           title: 'Mobile Topup - 9801XXXXXX',
-          date: 'July 27, 2023 • 10:24 AM',
-          amount: '- NPR 100.00',
-          isNegative: true,
-          onTap: () => context.push('/transaction_details'),
+          subtitle: 'Ncell Topup',
+          date: DateTime.now().subtract(const Duration(hours: 2)),
+          amount: 100.00,
+          isCredit: false,
+          icon: Icons.smartphone,
         ),
-        const SizedBox(height: 12),
-        _buildTransactionItem(
-          context,
-          icon: Icons.download_done,
+        TransactionTile(
           title: 'Load from NIC Asia Bank',
-          date: 'July 26, 2023 • 03:15 PM',
-          amount: '+ NPR 5,000.00',
-          isNegative: false,
-          onTap: () => context.push('/transaction_details'),
+          subtitle: 'Bank Transfer',
+          date: DateTime.now().subtract(const Duration(days: 1)),
+          amount: 5000.00,
+          isCredit: true,
+          icon: Icons.download_done,
         ),
       ],
-    );
-  }
-
-  Widget _buildTransactionItem(
-    BuildContext context, {
-    required IconData icon,
-    required String title,
-    required String date,
-    required String amount,
-    required bool isNegative,
-    VoidCallback? onTap,
-  }) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(24),
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(24),
-          border: Border.all(
-            color: Theme.of(
-              context,
-            ).colorScheme.outlineVariant.withValues(alpha: 0.3),
-          ),
-        ),
-        child: Row(
-          children: [
-            Container(
-              width: 44,
-              height: 44,
-              decoration: BoxDecoration(
-                color: isNegative
-                    ? Theme.of(
-                        context,
-                      ).colorScheme.primaryContainer.withValues(alpha: 0.1)
-                    : const Color(0xFF396668).withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Icon(
-                icon,
-                color: isNegative
-                    ? Theme.of(context).colorScheme.primary
-                    : const Color(0xFF396668),
-              ),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    date,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Theme.of(context).colorScheme.onSurfaceVariant,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  amount,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: isNegative
-                        ? Theme.of(context).colorScheme.error
-                        : Theme.of(context).colorScheme.primary,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 2,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Theme.of(
-                      context,
-                    ).colorScheme.primaryContainer.withValues(alpha: 0.2),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Text(
-                    'Success',
-                    style: TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.onPrimaryContainer,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

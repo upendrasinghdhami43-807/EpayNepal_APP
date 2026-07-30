@@ -96,7 +96,7 @@ class _KycAddressScreenState extends State<KycAddressScreen> {
                   child: SwitchListTile(
                     title: const Text('Temporary address same as permanent'),
                     value: _sameAsPermanent,
-                    activeColor: colorScheme.primary,
+                    activeThumbColor: colorScheme.primary,
                     onChanged: (val) => setState(() => _sameAsPermanent = val),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12)),

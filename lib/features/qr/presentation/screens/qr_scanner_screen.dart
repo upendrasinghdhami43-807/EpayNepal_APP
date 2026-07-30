@@ -94,99 +94,11 @@ class _QrScannerScreenState extends State<QrScannerScreen>
     await _scannerController.pause();
     if (!mounted) return;
 
-    final action = await showModalBottomSheet<_ScanResultAction>(
-      context: context,
-      backgroundColor: Theme.of(context).colorScheme.surface,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-      ),
-      builder: (bottomSheetContext) {
-        final theme = Theme.of(bottomSheetContext);
-        final colorScheme = theme.colorScheme;
-        return SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 16, 20, 20),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Row(
-                  children: [
-                    Icon(Icons.qr_code_2, color: colorScheme.primary),
-                    const SizedBox(width: 8),
-                    Text(
-                      'QR Detected',
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 12),
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: colorScheme.surfaceContainerLow,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: colorScheme.outlineVariant),
-                  ),
-                  child: Text(
-                    scannedValue!,
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                    style: theme.textTheme.bodyMedium,
-                  ),
-                ),
-                const SizedBox(height: 16),
-                FilledButton.icon(
-                  onPressed: () => Navigator.of(
-                    bottomSheetContext,
-                  ).pop(_ScanResultAction.payNow),
-                  icon: const Icon(Icons.payments),
-                  label: const Text('Pay Now'),
-                ),
-                const SizedBox(height: 10),
-                OutlinedButton.icon(
-                  onPressed: () => Navigator.of(
-                    bottomSheetContext,
-                  ).pop(_ScanResultAction.copy),
-                  icon: const Icon(Icons.copy),
-                  label: const Text('Copy Code'),
-                ),
-                const SizedBox(height: 10),
-                TextButton(
-                  onPressed: () => Navigator.of(
-                    bottomSheetContext,
-                  ).pop(_ScanResultAction.scanAgain),
-                  child: const Text('Scan Again'),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-
-    if (!mounted) return;
-
-    switch (action) {
-      case _ScanResultAction.payNow:
-        context.push('/payment_details');
-        break;
-      case _ScanResultAction.copy:
-        await UiFeedback.copyText(
-          context,
-          scannedValue,
-          successMessage: 'QR value copied',
-        );
-        break;
-      case _ScanResultAction.scanAgain:
-      case null:
-        break;
-    }
-
-    _isHandlingScan = false;
-    await _scannerController.start();
+    // Directly show the payment details interface
+    context.push('/payment_details');
+    
+    // We don't resume scanner immediately so it doesn't double-fire
+    // if they come back, we could resume in a then() or onResume
   }
 
   Future<void> _importFromGallery() async {
@@ -531,7 +443,7 @@ class _QrScannerScreenState extends State<QrScannerScreen>
                     color: colorScheme.surfaceContainerLow,
                     borderRadius: BorderRadius.circular(24),
                     border: Border.all(
-                      color: colorScheme.outlineVariant.withOpacity(0.5),
+                      color: colorScheme.outlineVariant.withValues(alpha: 0.5),
                     ),
                   ),
                   child: InkWell(
@@ -543,7 +455,7 @@ class _QrScannerScreenState extends State<QrScannerScreen>
                         Container(
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            color: colorScheme.primary.withOpacity(0.1),
+                            color: colorScheme.primary.withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(16),
                           ),
                           child: Icon(
@@ -656,5 +568,3 @@ class _QrScannerScreenState extends State<QrScannerScreen>
     );
   }
 }
-
-enum _ScanResultAction { payNow, copy, scanAgain }

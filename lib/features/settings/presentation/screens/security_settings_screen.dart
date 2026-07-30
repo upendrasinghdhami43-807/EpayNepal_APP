@@ -81,7 +81,7 @@ class _SecuritySettingsScreenState extends State<SecuritySettingsScreen> {
                       color: colorScheme.primary, size: 20),
                 ),
                 value: _biometricEnabled,
-                activeColor: colorScheme.primary,
+                activeThumbColor: colorScheme.primary,
                 onChanged: (val) => setState(() => _biometricEnabled = val),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16)),
@@ -117,7 +117,7 @@ class _SecuritySettingsScreenState extends State<SecuritySettingsScreen> {
                       color: colorScheme.primary, size: 20),
                 ),
                 value: _loginNotificationEnabled,
-                activeColor: colorScheme.primary,
+                activeThumbColor: colorScheme.primary,
                 onChanged: (val) =>
                     setState(() => _loginNotificationEnabled = val),
                 shape: RoundedRectangleBorder(

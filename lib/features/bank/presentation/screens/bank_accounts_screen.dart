@@ -10,7 +10,7 @@ class BankAccountsScreen extends StatelessWidget {
     final colorScheme = theme.colorScheme;
 
     return Scaffold(
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
         title: const Text('Bank Accounts'),
         backgroundColor: colorScheme.primary,
@@ -62,11 +62,11 @@ class BankAccountsScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
           color: theme.brightness == Brightness.dark
-              ? colorScheme.background
+              ? colorScheme.surface
               : colorScheme.surface,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black.withValues(alpha: 0.05),
               blurRadius: 10,
               offset: const Offset(0, -4),
             ),
@@ -112,10 +112,10 @@ class BankAccountsScreen extends StatelessWidget {
             ? colorScheme.surfaceContainerHighest
             : colorScheme.surfaceContainerLow,
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: colorScheme.surfaceVariant.withOpacity(0.5)),
+        border: Border.all(color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.5)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.02),
+            color: Colors.black.withValues(alpha: 0.02),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -129,7 +129,7 @@ class BankAccountsScreen extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: colorScheme.surfaceVariant),
+              border: Border.all(color: colorScheme.surfaceContainerHighest),
             ),
             child: Icon(Icons.account_balance, color: colorScheme.primary),
           ),

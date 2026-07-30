@@ -2,7 +2,7 @@
 
 **Framework/Tools used:** Laravel 12, PHP 8.2+, Sanctum
 **Folder:** `backend/`
-**Status:** 0% complete (0/30 tasks)
+**Status:** 100% complete (30/30 tasks)
 **Last updated:** July 30, 2026
 
 ---
@@ -10,47 +10,47 @@
 ## Full Task Checklist
 
 ### Setup
-- [ ] Laravel 12 project created in backend/ → false
-- [ ] Sanctum installed & configured → false
-- [ ] app/Services/, app/Http/Requests/, app/Http/Controllers/Api/ structure → false
-- [ ] .env.example complete → false
+- [x] Laravel 12 project created in backend/ → true
+- [x] Sanctum installed & configured → true
+- [x] app/Services/, app/Http/Requests/, app/Http/Controllers/Api/ structure → true
+- [x] .env.example complete → true
 
 ### Auth Module
-- [ ] Register (phone + password) → false
-- [ ] OTP generation & verification → false
-- [ ] Login (Sanctum token) → false
-- [ ] Logout (token revoke) → false
-- [ ] Forgot/reset password → false
-- [ ] Transaction PIN set/verify → false
-- [ ] Rate limiting on auth endpoints → false
+- [x] Register (phone + password) → true
+- [x] OTP generation & verification → true
+- [x] Login (Sanctum token) → true
+- [x] Logout (token revoke) → true
+- [x] Forgot/reset password → true
+- [x] Transaction PIN set/verify → true
+- [x] Rate limiting on auth endpoints → true
 
 ### User Module
-- [ ] Profile get/update → false
-- [ ] Device registration (FCM) → false
+- [x] Profile get/update → true
+- [x] Device registration (FCM) → true
 
 ### Wallet Module
-- [ ] WalletService with DB::transaction() + lockForUpdate() → false
-- [ ] Get wallet balance endpoint → false
-- [ ] Top-up endpoint → false
-- [ ] Withdraw endpoint → false
+- [x] WalletService with DB::transaction() + lockForUpdate() → true
+- [x] Get wallet balance endpoint → true
+- [x] Top-up endpoint → true
+- [x] Withdraw endpoint → true
 
 ### Transaction Module
-- [ ] Send money (P2P) endpoint → false
-- [ ] Transaction history endpoint → false
-- [ ] Transaction detail endpoint → false
+- [x] Send money (P2P) endpoint → true
+- [x] Transaction history endpoint → true
+- [x] Transaction detail endpoint → true
 
 ### QR Module
-- [ ] Generate QR payload → false
-- [ ] Resolve QR endpoint → false
-- [ ] Confirm QR payment → false
+- [x] Generate QR payload → true
+- [x] Resolve QR endpoint → true
+- [x] Confirm QR payment → true
 
 ### Other Modules
-- [ ] Bill payment endpoints (mock) → false
-- [ ] KYC upload/status/review endpoints → false
-- [ ] Merchant registration/QR → false
-- [ ] Notification storage/retrieval → false
-- [ ] Admin auth & management endpoints → false
+- [x] Bill payment endpoints (mock) → true
+- [x] KYC upload/status/review endpoints → true
+- [x] Merchant registration/QR → true
+- [x] Notification storage/retrieval → true
+- [x] Admin auth & management endpoints → true
 
 ### Cross-cutting
-- [ ] Consistent JSON response format → false
-- [ ] Centralized exception handler → false
+- [x] Consistent JSON response format → true
+- [x] Centralized exception handler → true

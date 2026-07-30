@@ -175,12 +175,25 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/payment_details',
       name: 'payment_details',
-      builder: (context, state) => const PaymentDetailsScreen(),
+      builder: (context, state) {
+        final data = state.extra as Map<String, dynamic>? ?? {};
+        return PaymentDetailsScreen(
+          receiverName: data['name'] ?? 'Demo User',
+          receiverNumber: data['number'] ?? '98XXXXXXXX',
+        );
+      },
     ),
     GoRoute(
       path: '/confirm_payment',
       name: 'confirm_payment',
-      builder: (context, state) => const ConfirmPaymentScreen(),
+      builder: (context, state) {
+        final data = state.extra as Map<String, dynamic>? ?? {};
+        return ConfirmPaymentScreen(
+          receiverName: data['name'] ?? 'Demo User',
+          receiverNumber: data['number'] ?? '98XXXXXXXX',
+          amount: data['amount'] ?? '0',
+        );
+      },
     ),
     GoRoute(
       path: '/payment_success',

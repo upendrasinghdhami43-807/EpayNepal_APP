@@ -30,7 +30,7 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
   }
 
   Future<void> _findUser() async {
-    if (AppValidators.phone(_phoneController.text) != null) return;
+    if (_phoneController.text.trim().isEmpty) return;
     setState(() => _isSearching = true);
     await Future.delayed(const Duration(milliseconds: 900));
     if (!mounted) return;
@@ -47,7 +47,13 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
           icon: Icons.warning_amber_rounded);
       return;
     }
-    context.push('/payment_details');
+    context.push(
+      '/payment_details',
+      extra: {
+        'name': _foundName,
+        'number': _phoneController.text,
+      },
+    );
   }
 
   @override
@@ -72,6 +78,81 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                // Balance Display
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: colorScheme.primaryContainer.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: colorScheme.primaryContainer),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Current Balance',
+                            style: theme.textTheme.labelMedium?.copyWith(
+                              color: colorScheme.onSurfaceVariant,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.baseline,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              Text(
+                                'NPR ',
+                                style: theme.textTheme.titleSmall?.copyWith(
+                                  color: colorScheme.primary,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                'XXXX.XX', // Masked balance for demo
+                                style: theme.textTheme.headlineSmall?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: colorScheme.primary,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(Icons.account_balance_wallet, color: colorScheme.onPrimary),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 24),
+
+                // Recent Transactions
+                Text(
+                  'Recent',
+                  style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 12),
+                SizedBox(
+                  height: 90,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      _buildRecentUser('Sita Sharma', '98XXXXXX01', context),
+                      _buildRecentUser('Ram Bahadur', '98XXXXXX02', context),
+                      _buildRecentUser('Hari Thapa', '98XXXXXX03', context),
+                      _buildRecentUser('Gita Rana', '98XXXXXX04', context),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 24),
+
                 // Recipient search
                 Container(
                   padding: const EdgeInsets.all(20),
@@ -81,8 +162,7 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                         : colorScheme.surfaceContainerLowest,
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
-                        color: colorScheme.outlineVariant
-                            .withValues(alpha: 0.3)),
+                        color: colorScheme.outlineVariant.withValues(alpha: 0.3)),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,13 +175,18 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                         children: [
                           Expanded(
                             child: CustomTextField(
-                              label: 'Mobile Number',
-                              hint: '98XXXXXXXX',
+                              label: 'Enter EpayID',
+                              hint: 'Mobile Number or Email',
                               controller: _phoneController,
-                              keyboardType: TextInputType.phone,
+                              keyboardType: TextInputType.text,
                               prefixIcon:
-                                  const Icon(Icons.phone_outlined),
-                              validator: AppValidators.phone,
+                                  const Icon(Icons.account_circle_outlined),
+                              validator: (val) {
+                                if (val == null || val.trim().isEmpty) {
+                                  return 'Please enter receiver details';
+                                }
+                                return null;
+                              },
                               onChanged: (_) =>
                                   setState(() => _foundName = null),
                             ),
@@ -176,92 +261,7 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 16),
 
-                // Amount entry
-                Container(
-                  padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: theme.brightness == Brightness.dark
-                        ? colorScheme.surfaceContainerHighest
-                        : colorScheme.surfaceContainerLowest,
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(
-                        color: colorScheme.outlineVariant
-                            .withValues(alpha: 0.3)),
-                  ),
-                  child: Column(
-                    children: [
-                      Text('Amount (NPR)',
-                          style: theme.textTheme.titleSmall?.copyWith(
-                              color: colorScheme.onSurfaceVariant)),
-                      const SizedBox(height: 12),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('रु.',
-                              style: theme.textTheme.headlineLarge?.copyWith(
-                                  color: colorScheme.primary,
-                                  fontWeight: FontWeight.bold)),
-                          const SizedBox(width: 8),
-                          Flexible(
-                            child: TextField(
-                              controller: _amountController,
-                              keyboardType: TextInputType.number,
-                              textAlign: TextAlign.center,
-                              style: theme.textTheme.headlineMedium,
-                              decoration: InputDecoration(
-                                hintText: '0',
-                                border: InputBorder.none,
-                                hintStyle: theme.textTheme.headlineMedium
-                                    ?.copyWith(
-                                        color: colorScheme.onSurfaceVariant
-                                            .withValues(alpha: 0.4)),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 16),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          for (final amt in ['500', '1000', '2000', '5000'])
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 6),
-                              child: InkWell(
-                                onTap: () => setState(() =>
-                                    _amountController.text = amt),
-                                borderRadius: BorderRadius.circular(20),
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 14, vertical: 8),
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: colorScheme.outlineVariant),
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Text(amt,
-                                      style:
-                                          theme.textTheme.labelMedium),
-                                ),
-                              ),
-                            ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 16),
-
-                // Remarks
-                CustomTextField(
-                  label: 'Remarks (Optional)',
-                  hint: 'Add a note for recipient',
-                  controller: _remarksController,
-                  prefixIcon: const Icon(Icons.edit_note_outlined),
-                ),
                 const SizedBox(height: 24),
                 PrimaryButton(
                   text: 'Proceed',
@@ -271,6 +271,45 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildRecentUser(String name, String number, BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    
+    return GestureDetector(
+      onTap: () {
+        _phoneController.text = number;
+        _findUser();
+      },
+      child: Container(
+        width: 72,
+        margin: const EdgeInsets.only(right: 16),
+        child: Column(
+          children: [
+            CircleAvatar(
+              radius: 28,
+              backgroundColor: colorScheme.surfaceContainerHigh,
+              child: Text(
+                name[0],
+                style: theme.textTheme.titleLarge?.copyWith(
+                  color: colorScheme.primary,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              name.split(' ')[0],
+              style: theme.textTheme.labelSmall,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
+            ),
+          ],
         ),
       ),
     );

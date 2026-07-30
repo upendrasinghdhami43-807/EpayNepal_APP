@@ -103,7 +103,7 @@ class _OnboardingFlowScreenState extends State<OnboardingFlowScreen> {
                         borderRadius: BorderRadius.circular(24.0),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
+                            color: Colors.black.withValues(alpha: 0.1),
                             blurRadius: 20,
                             offset: const Offset(0, 10),
                           ),
@@ -129,7 +129,7 @@ class _OnboardingFlowScreenState extends State<OnboardingFlowScreen> {
                   borderRadius: const BorderRadius.vertical(top: Radius.circular(32)),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: Colors.black.withValues(alpha: 0.1),
                       blurRadius: 40,
                       offset: const Offset(0, -10),
                     ),
@@ -176,7 +176,7 @@ class _OnboardingFlowScreenState extends State<OnboardingFlowScreen> {
                               decoration: BoxDecoration(
                                 color: _currentPage == index
                                     ? colorScheme.primary
-                                    : colorScheme.surfaceVariant,
+                                    : colorScheme.surfaceContainerHighest,
                                 borderRadius: BorderRadius.circular(4),
                               ),
                             ),

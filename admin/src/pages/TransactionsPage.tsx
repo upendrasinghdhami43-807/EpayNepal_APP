@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { mockTransactions, Transaction } from '../data/mockData';
+import { mockTransactions, type Transaction } from '../data/mockData';
 import { Search, Download } from 'lucide-react';
 
 const typeBadge = (type: Transaction['type']) => {

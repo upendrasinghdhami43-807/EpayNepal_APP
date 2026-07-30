@@ -11,7 +11,7 @@ class MoreScreen extends StatelessWidget {
     final colorScheme = theme.colorScheme;
 
     return Scaffold(
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
         title: const Text('More'),
         backgroundColor: colorScheme.primary,

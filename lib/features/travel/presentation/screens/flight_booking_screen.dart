@@ -18,7 +18,7 @@ class _FlightBookingScreenState extends State<FlightBookingScreen> {
     final colorScheme = theme.colorScheme;
 
     return Scaffold(
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
         title: const Text('Book a Flight'),
         backgroundColor: colorScheme.primary,
@@ -71,11 +71,11 @@ class _FlightBookingScreenState extends State<FlightBookingScreen> {
                     : colorScheme.surfaceContainerLowest,
                 borderRadius: BorderRadius.circular(24),
                 border: Border.all(
-                  color: colorScheme.outlineVariant.withOpacity(0.3),
+                  color: colorScheme.outlineVariant.withValues(alpha: 0.3),
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
+                    color: Colors.black.withValues(alpha: 0.05),
                     blurRadius: 8,
                     offset: const Offset(0, 4),
                   ),

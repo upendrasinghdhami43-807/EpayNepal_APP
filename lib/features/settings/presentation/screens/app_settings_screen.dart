@@ -172,7 +172,7 @@ class _SwitchCard extends StatelessWidget {
             style: theme.textTheme.bodySmall
                 ?.copyWith(color: colorScheme.onSurfaceVariant)),
         value: value,
-        activeColor: colorScheme.primary,
+        activeThumbColor: colorScheme.primary,
         onChanged: onChanged,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),

@@ -11,7 +11,7 @@ class TravelHubScreen extends StatelessWidget {
     final colorScheme = theme.colorScheme;
 
     return Scaffold(
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
         title: const Text('Travel & Ticketing'),
         backgroundColor: colorScheme.primary,
@@ -272,7 +272,7 @@ class TravelHubScreen extends StatelessWidget {
               : colorScheme.surfaceContainerLowest,
           borderRadius: BorderRadius.circular(24),
           border: Border.all(
-            color: colorScheme.surfaceVariant.withValues(alpha: 0.3),
+            color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
           ),
           boxShadow: [
             BoxShadow(
@@ -327,7 +327,7 @@ class TravelHubScreen extends StatelessWidget {
               : colorScheme.surfaceContainerLowest,
           borderRadius: BorderRadius.circular(24),
           border: Border.all(
-            color: colorScheme.surfaceVariant.withValues(alpha: 0.3),
+            color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
           ),
           boxShadow: [
             BoxShadow(

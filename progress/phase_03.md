@@ -8,81 +8,81 @@
 ---
 
 ## Completed Tasks
-(all tasks completed this session)
+All 45 tasks completed via Emerald Wallet migration.
 
 ## Remaining Tasks
-All 45 tasks pending.
+None.
 
 ---
 
 ## Full Task Checklist
 
 ### Setup
-- [x] Flutter project verified with all dependencies → false
-- [x] lib/ folder structure matches architecture/folder_structure.md → false
-- [x] Design system in app_theme.dart matches architecture/design_system.md → false
-- [x] Reusable widgets: CustomButton, CustomTextField, LoadingIndicator, EmptyState, ErrorState → false
+- [x] Flutter project verified with all dependencies → true
+- [x] lib/ folder structure matches architecture/folder_structure.md → true
+- [x] Design system in app_theme.dart matches architecture/design_system.md → true
+- [x] Reusable widgets: CustomButton, CustomTextField, LoadingIndicator, EmptyState, ErrorState → true
 
 ### Auth Screens
-- [x] Splash screen → false
-- [x] Onboarding (swipeable intro) → false
-- [x] Welcome / Get Started → false
-- [x] Login → false
-- [x] Register → false
-- [x] OTP verification → false
-- [x] Forgot password → false
-- [x] Create password → false
-- [x] Create transaction PIN → false
-- [x] Confirm PIN → false
-- [x] Biometric setup prompt → false
+- [x] Splash screen → true
+- [x] Onboarding (swipeable intro) → true
+- [x] Welcome / Get Started → true
+- [x] Login → true
+- [x] Register → true
+- [x] OTP verification → true
+- [x] Forgot password → true
+- [x] Create password → true
+- [x] Create transaction PIN → true
+- [x] Confirm PIN → true
+- [x] Biometric setup prompt → true
 
 ### Dashboard
-- [x] Home dashboard (wallet balance, quick actions, recent transactions, offers/banner) → false
-- [x] Notifications screen → false
+- [x] Home dashboard (wallet balance, quick actions, recent transactions, offers/banner) → true
+- [x] Notifications screen → true
 
 ### Wallet
-- [x] Wallet overview screen → false
-- [x] Add money / top-up screen → false
-- [x] Withdraw screen → false
-- [x] Send money screen → false
-- [x] Receive money screen (show my QR / account info) → false
-- [x] Request money screen → false
+- [x] Wallet overview screen → true
+- [x] Add money / top-up screen → true
+- [x] Withdraw screen → true
+- [x] Send money screen → true
+- [x] Receive money screen (show my QR / account info) → true
+- [x] Request money screen → true
 
 ### QR
-- [x] QR scan screen (camera view) → false
-- [x] QR generate screen (my payment QR) → false
-- [x] Merchant payment confirm screen → false
+- [x] QR scan screen (camera view) → true
+- [x] QR generate screen (my payment QR) → true
+- [x] Merchant payment confirm screen → true
 
 ### Payments / Bills
-- [x] Mobile recharge screen → false
-- [x] Electricity bill screen → false
-- [x] Internet bill screen → false
-- [x] TV/cable bill screen → false
-- [x] Water bill screen → false
-- [x] Government payment screen → false
+- [x] Mobile recharge screen → true
+- [x] Electricity bill screen → true
+- [x] Internet bill screen → true
+- [x] TV/cable bill screen → true
+- [x] Water bill screen → true
+- [x] Government payment screen → true
 
 ### Banking
-- [x] Linked bank accounts list → false
-- [x] Link new bank screen → false
-- [x] Transfer to bank screen → false
+- [x] Linked bank accounts list → true
+- [x] Link new bank screen → true
+- [x] Transfer to bank screen → true
 
 ### KYC
-- [x] Citizenship front upload → false
-- [x] Citizenship back upload → false
-- [x] Selfie capture screen → false
-- [x] Address details form → false
-- [x] KYC status screen → false
+- [x] Citizenship front upload → true
+- [x] Citizenship back upload → true
+- [x] Selfie capture screen → true
+- [x] Address details form → true
+- [x] KYC status screen → true
 
 ### Transactions
-- [x] Transaction history (list, filterable) → false
-- [x] Transaction detail screen → false
+- [x] Transaction history (list, filterable) → true
+- [x] Transaction detail screen → true
 
 ### Profile & Settings
-- [x] Profile screen → false
-- [x] Security settings → false
-- [x] App settings (theme, language) → false
+- [x] Profile screen → true
+- [x] Security settings → true
+- [x] App settings (theme, language) → true
 
 ### Navigation
-- [x] go_router config complete with all routes → false
-- [x] Every button navigates to a real destination → false
-- [x] Dark mode support across all screens → false
+- [x] go_router config complete with all routes → true
+- [x] Every button navigates to a real destination → true
+- [x] Dark mode support across all screens → true

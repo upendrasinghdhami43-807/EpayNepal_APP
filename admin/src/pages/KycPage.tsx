@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { mockKycRequests, KycRequest } from '../data/mockData';
+import { mockKycRequests, type KycRequest } from '../data/mockData';
 import { Check, X } from 'lucide-react';
 
 const KycPage: React.FC = () => {

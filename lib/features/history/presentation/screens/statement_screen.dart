@@ -11,7 +11,7 @@ class StatementScreen extends StatelessWidget {
     final colorScheme = theme.colorScheme;
 
     return Scaffold(
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
         title: const Text('Statement'),
         backgroundColor: colorScheme.primary,
@@ -48,11 +48,11 @@ class StatementScreen extends StatelessWidget {
                           : colorScheme.surfaceContainerLowest,
                       borderRadius: BorderRadius.circular(24),
                       border: Border.all(
-                        color: colorScheme.outlineVariant.withOpacity(0.3),
+                        color: colorScheme.outlineVariant.withValues(alpha: 0.3),
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.05),
+                          color: Colors.black.withValues(alpha: 0.05),
                           blurRadius: 4,
                         ),
                       ],
@@ -62,7 +62,7 @@ class StatementScreen extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            color: colorScheme.primaryContainer.withOpacity(
+                            color: colorScheme.primaryContainer.withValues(alpha: 
                               0.2,
                             ),
                             borderRadius: BorderRadius.circular(16),
@@ -104,7 +104,7 @@ class StatementScreen extends StatelessWidget {
                           ),
                           style: IconButton.styleFrom(
                             backgroundColor: colorScheme.primaryContainer
-                                .withOpacity(0.2),
+                                .withValues(alpha: 0.2),
                           ),
                         ),
                       ],
@@ -213,7 +213,7 @@ class StatementScreen extends StatelessWidget {
                 _buildTransactionCard(
                   context,
                   icon: Icons.local_pharmacy,
-                  iconBgColor: Colors.blue.withOpacity(0.1),
+                  iconBgColor: Colors.blue.withValues(alpha: 0.1),
                   iconColor: Colors.blue,
                   title: 'Paid for Bhadra Pharmacy',
                   time: '04:39 PM',
@@ -226,7 +226,7 @@ class StatementScreen extends StatelessWidget {
                 _buildTransactionCard(
                   context,
                   icon: Icons.storefront,
-                  iconBgColor: Colors.orange.withOpacity(0.1),
+                  iconBgColor: Colors.orange.withValues(alpha: 0.1),
                   iconColor: Colors.orange,
                   title: 'Paid for Prabhat Dairy',
                   time: '03:08 PM',
@@ -282,7 +282,7 @@ class StatementScreen extends StatelessWidget {
               : colorScheme.surfaceContainerLowest,
           borderRadius: BorderRadius.circular(24),
           border: Border.all(
-            color: colorScheme.outlineVariant.withOpacity(0.2),
+            color: colorScheme.outlineVariant.withValues(alpha: 0.2),
           ),
         ),
         child: Column(
@@ -377,7 +377,7 @@ class StatementScreen extends StatelessWidget {
                       onPressed: () => context.push('/payment_details'),
                       style: TextButton.styleFrom(
                         backgroundColor: colorScheme.primaryContainer
-                            .withOpacity(0.2),
+                            .withValues(alpha: 0.2),
                         foregroundColor: colorScheme.primary,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
