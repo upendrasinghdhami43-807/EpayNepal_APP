@@ -8,6 +8,8 @@ class MainShell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final location = GoRouterState.of(context).uri.path;
+    
     return Scaffold(
       body: child,
       bottomNavigationBar: Stack(
@@ -29,11 +31,11 @@ class MainShell extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _buildNavItem(context, 'Home', Icons.home_filled, true),
-                _buildNavItem(context, 'Statement', Icons.receipt_long, false),
+                _buildNavItem(context, 'Home', Icons.home_filled, location == '/home', () => context.go('/home')),
+                _buildNavItem(context, 'Statement', Icons.receipt_long, location == '/statement', () {}),
                 const SizedBox(width: 64), // Space for floating action button
-                _buildNavItem(context, 'Support', Icons.help_outline, false),
-                _buildNavItem(context, 'More', Icons.more_horiz, false),
+                _buildNavItem(context, 'Support', Icons.help_outline, location == '/support', () {}),
+                _buildNavItem(context, 'More', Icons.more_horiz, location == '/more', () => context.go('/more')),
               ],
             ),
           ),
@@ -57,10 +59,10 @@ class MainShell extends StatelessWidget {
     );
   }
 
-  Widget _buildNavItem(BuildContext context, String label, IconData icon, bool isSelected) {
+  Widget _buildNavItem(BuildContext context, String label, IconData icon, bool isSelected, VoidCallback onTap) {
     final colorScheme = Theme.of(context).colorScheme;
     return InkWell(
-      onTap: () {},
+      onTap: onTap,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

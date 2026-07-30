@@ -40,16 +40,18 @@ class HomeScreen extends StatelessWidget {
     return SliverAppBar(
       pinned: true,
       expandedHeight: 80,
-      backgroundColor: Theme.of(context).colorScheme.primary,
+      backgroundColor: colorScheme.primary,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
       ),
       title: Row(
         children: [
-          CircleAvatar(
-            radius: 20,
-            backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-            child: Icon(Icons.person, color: Theme.of(context).colorScheme.onPrimaryContainer),
+          GestureDetector(
+            onTap: () => context.push('/kyc_dashboard'),
+            child: const CircleAvatar(
+              radius: 20,
+              backgroundImage: NetworkImage('https://lh3.googleusercontent.com/aida-public/AB6AXuA32sXnGRUu_8OjzgGk600wwkCvbAxk4FucpjfLdVnYmm0LmCrhtlO2tze9eT54awOs5yKnAM77mXYZo-iQXlpo4N3ir8VzcVI_1r_C-Vg3U0l_bYpeiNudP0yHnDPtqSn3yDbcNTAdkDJ2cslsaM8AplIHgmBUmvym-amIFn3IPRzU5sxKaKlFCqbBayJlYizz10cXlAgdhOjQZL_Hoz7BmW__0xP7rvvXUTo62pzucrYJ6PcQPuoPft16MGybUHNs4v6qLB1gbatn'),
+            ),
           ),
           const SizedBox(width: 12),
           Column(
@@ -216,9 +218,9 @@ class HomeScreen extends StatelessWidget {
         _buildUtilityItem(context, Icons.bolt, 'Electricity', '/electricity'),
         _buildUtilityItem(context, Icons.water_drop, 'Khanepani', null),
         _buildUtilityItem(context, Icons.router, 'Internet', '/internet'),
-        _buildUtilityItem(context, Icons.flight, 'Airlines', null),
-        _buildUtilityItem(context, Icons.account_balance, 'Govt. Payment', null),
-        _buildUtilityItem(context, Icons.school, 'Education Fee', null),
+        _buildUtilityItem(context, Icons.flight, 'Airlines', '/flight_booking'),
+        _buildUtilityItem(context, Icons.account_balance, 'Govt. Payment', '/govt_payment'),
+        _buildUtilityItem(context, Icons.school, 'Education Fee', '/education_fee'),
         _buildUtilityItem(context, Icons.confirmation_number, 'Events', null),
       ],
       onViewAll: () => context.push('/utility'),
@@ -230,11 +232,12 @@ class HomeScreen extends StatelessWidget {
       context,
       title: 'Travels & Ticketing',
       items: [
-        _buildGridItem(context, Icons.flight_takeoff, 'Airlines', color: const Color(0xFF396668)),
-        _buildGridItem(context, Icons.hotel, 'Hotels', color: const Color(0xFF396668)),
-        _buildGridItem(context, Icons.directions_bus, 'Bus Ticket', color: const Color(0xFF396668)),
-        _buildGridItem(context, Icons.movie, 'Movies', color: const Color(0xFF396668)),
+        _buildUtilityItem(context, Icons.flight_takeoff, 'Airlines', '/flight_booking', color: const Color(0xFF396668)),
+        _buildUtilityItem(context, Icons.hotel, 'Hotels', '/travel_hub', color: const Color(0xFF396668)),
+        _buildUtilityItem(context, Icons.directions_bus, 'Bus Ticket', '/travel_hub', color: const Color(0xFF396668)),
+        _buildUtilityItem(context, Icons.movie, 'Movies', '/travel_hub', color: const Color(0xFF396668)),
       ],
+      onViewAll: () => context.push('/travel_hub'),
     );
   }
 

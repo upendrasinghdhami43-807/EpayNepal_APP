@@ -45,16 +45,16 @@ This checklist maps every design asset folder in `/stitch_esewa_jetpack_wallet_a
 - [ ] `internet_bill_payment_dark` -> Internet Payment (Dark)
 - [x] `electricity_bill_payment` -> NEA Electricity
 - [ ] `electricity_bill_payment_dark` -> Electricity Bill Payment (Dark)
-- [ ] `government_payments` -> Government Payments
+- [x] `government_payments` -> Government Payments
 - [ ] `government_payments_dark` -> Government Payment (Dark)
 - [ ] `traffic_fine_payment` -> Traffic Fine
 - [ ] `traffic_fine_payment_dark` -> Traffic Fine (Dark)
-- [ ] `education_fee_payment` -> Education Fees
+- [x] `education_fee_payment` -> Education Fees
 - [ ] `education_fee_payment_dark` -> Education Fee Payment (Dark)
-- [ ] `airline_ticketing` -> Flight Booking
+- [x] `airline_ticketing` -> Flight Booking
 - [ ] `airline_ticketing_dark` -> Airline Ticketing (Dark)
 - [ ] `events_shows` -> Events & Shows
-- [ ] `travel_ticketing` -> Travel Hub
+- [x] `travel_ticketing` -> Travel Hub
 - [x] `utility_payments` -> Utility Overview
 
 ## QR

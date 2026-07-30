@@ -27,6 +27,15 @@ import '../features/utility/presentation/screens/utility_payments_screen.dart';
 import '../features/utility/presentation/screens/mobile_topup_screen.dart';
 import '../features/utility/presentation/screens/internet_bill_screen.dart';
 import '../features/utility/presentation/screens/electricity_bill_screen.dart';
+import '../features/utility/presentation/screens/government_payment_screen.dart';
+import '../features/utility/presentation/screens/education_fee_screen.dart';
+
+import '../features/travel/presentation/screens/flight_booking_screen.dart';
+import '../features/travel/presentation/screens/travel_hub_screen.dart';
+
+import '../features/more/presentation/screens/more_screen.dart';
+import '../features/kyc/presentation/screens/kyc_dashboard_screen.dart';
+import '../features/kyc/presentation/screens/kyc_personal_info_screen.dart';
 
 // Temporary placeholder screens for unresolved routes
 class PlaceholderScreen extends StatelessWidget {
@@ -144,6 +153,36 @@ final GoRouter appRouter = GoRouter(
       name: 'electricity',
       builder: (context, state) => const ElectricityBillScreen(),
     ),
+    GoRoute(
+      path: '/govt_payment',
+      name: 'govt_payment',
+      builder: (context, state) => const GovernmentPaymentScreen(),
+    ),
+    GoRoute(
+      path: '/education_fee',
+      name: 'education_fee',
+      builder: (context, state) => const EducationFeeScreen(),
+    ),
+    GoRoute(
+      path: '/flight_booking',
+      name: 'flight_booking',
+      builder: (context, state) => const FlightBookingScreen(),
+    ),
+    GoRoute(
+      path: '/travel_hub',
+      name: 'travel_hub',
+      builder: (context, state) => const TravelHubScreen(),
+    ),
+    GoRoute(
+      path: '/kyc_dashboard',
+      name: 'kyc_dashboard',
+      builder: (context, state) => const KycDashboardScreen(),
+    ),
+    GoRoute(
+      path: '/kyc_personal_info',
+      name: 'kyc_personal_info',
+      builder: (context, state) => const KycPersonalInfoScreen(),
+    ),
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
       builder: (context, state, child) {
@@ -154,6 +193,11 @@ final GoRouter appRouter = GoRouter(
           path: '/home',
           name: RouteNames.home,
           builder: (context, state) => const HomeScreen(),
+        ),
+        GoRoute(
+          path: '/more',
+          name: 'more',
+          builder: (context, state) => const MoreScreen(),
         ),
       ],
     ),
