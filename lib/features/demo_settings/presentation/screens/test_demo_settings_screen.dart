@@ -117,7 +117,10 @@ class _TestDemoSettingsScreenState extends State<TestDemoSettingsScreen> {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(Icons.warning_amber_rounded, color: colorScheme.onErrorContainer),
+                Icon(
+                  Icons.warning_amber_rounded,
+                  color: colorScheme.onErrorContainer,
+                ),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
@@ -132,7 +135,9 @@ class _TestDemoSettingsScreenState extends State<TestDemoSettingsScreen> {
           Card(
             child: SwitchListTile(
               title: const Text('Enable Demo Mode'),
-              subtitle: const Text('Turns on local test controls and simulated states.'),
+              subtitle: const Text(
+                'Turns on local test controls and simulated states.',
+              ),
               value: _demoModeEnabled,
               onChanged: _setDemoMode,
             ),
@@ -156,7 +161,9 @@ class _TestDemoSettingsScreenState extends State<TestDemoSettingsScreen> {
                       TextField(
                         controller: _balanceController,
                         enabled: _demoModeEnabled && _mockBalanceEnabled,
-                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                        keyboardType: const TextInputType.numberWithOptions(
+                          decimal: true,
+                        ),
                         decoration: const InputDecoration(
                           labelText: 'Mock Balance (NPR)',
                           prefixText: 'NPR ',
@@ -213,14 +220,18 @@ class _TestDemoSettingsScreenState extends State<TestDemoSettingsScreen> {
               children: [
                 SwitchListTile(
                   title: const Text('Force Network Error'),
-                  subtitle: const Text('Simulate failed API behavior in demo flows.'),
+                  subtitle: const Text(
+                    'Simulate failed API behavior in demo flows.',
+                  ),
                   value: _forceNetworkError,
                   onChanged: _demoModeEnabled ? _setForceNetworkError : null,
                 ),
                 const Divider(height: 1),
                 SwitchListTile(
                   title: const Text('Mock KYC Pending'),
-                  subtitle: const Text('Simulate user as unverified for testing.'),
+                  subtitle: const Text(
+                    'Simulate user as unverified for testing.',
+                  ),
                   value: _mockKycPending,
                   onChanged: _demoModeEnabled ? _setMockKycPending : null,
                 ),

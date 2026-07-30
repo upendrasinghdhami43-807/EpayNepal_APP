@@ -139,19 +139,25 @@ class _QrScannerScreenState extends State<QrScannerScreen>
                 ),
                 const SizedBox(height: 16),
                 FilledButton.icon(
-                  onPressed: () => Navigator.of(bottomSheetContext).pop(_ScanResultAction.payNow),
+                  onPressed: () => Navigator.of(
+                    bottomSheetContext,
+                  ).pop(_ScanResultAction.payNow),
                   icon: const Icon(Icons.payments),
                   label: const Text('Pay Now'),
                 ),
                 const SizedBox(height: 10),
                 OutlinedButton.icon(
-                  onPressed: () => Navigator.of(bottomSheetContext).pop(_ScanResultAction.copy),
+                  onPressed: () => Navigator.of(
+                    bottomSheetContext,
+                  ).pop(_ScanResultAction.copy),
                   icon: const Icon(Icons.copy),
                   label: const Text('Copy Code'),
                 ),
                 const SizedBox(height: 10),
                 TextButton(
-                  onPressed: () => Navigator.of(bottomSheetContext).pop(_ScanResultAction.scanAgain),
+                  onPressed: () => Navigator.of(
+                    bottomSheetContext,
+                  ).pop(_ScanResultAction.scanAgain),
                   child: const Text('Scan Again'),
                 ),
               ],
@@ -168,7 +174,11 @@ class _QrScannerScreenState extends State<QrScannerScreen>
         context.push('/payment_details');
         break;
       case _ScanResultAction.copy:
-        await UiFeedback.copyText(context, scannedValue, successMessage: 'QR value copied');
+        await UiFeedback.copyText(
+          context,
+          scannedValue,
+          successMessage: 'QR value copied',
+        );
         break;
       case _ScanResultAction.scanAgain:
       case null:
@@ -319,7 +329,9 @@ class _QrScannerScreenState extends State<QrScannerScreen>
                     onPressed: _importFromGallery,
                     style: OutlinedButton.styleFrom(
                       foregroundColor: Colors.white,
-                      side: BorderSide(color: Colors.white.withValues(alpha: 0.3)),
+                      side: BorderSide(
+                        color: Colors.white.withValues(alpha: 0.3),
+                      ),
                       backgroundColor: Colors.white.withValues(alpha: 0.1),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(24),
@@ -351,7 +363,7 @@ class _QrScannerScreenState extends State<QrScannerScreen>
                           decoration: BoxDecoration(
                             border: Border.all(
                               color: colorScheme.primaryContainer.withValues(
-                                0.8,
+                                alpha: 0.8,
                               ),
                               width: 2,
                             ),
@@ -645,8 +657,4 @@ class _QrScannerScreenState extends State<QrScannerScreen>
   }
 }
 
-enum _ScanResultAction {
-  payNow,
-  copy,
-  scanAgain,
-}
+enum _ScanResultAction { payNow, copy, scanAgain }
