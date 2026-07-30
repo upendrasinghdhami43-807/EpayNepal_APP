@@ -43,6 +43,30 @@ import '../../features/support/presentation/screens/support_screen.dart';
 import '../../features/qr/presentation/screens/qr_scanner_screen.dart';
 import '../../features/demo_settings/presentation/screens/test_demo_settings_screen.dart';
 
+// New screens added in Phase 3
+import '../../features/auth/presentation/screens/forgot_password_screen.dart';
+import '../../features/auth/presentation/screens/create_password_screen.dart';
+import '../../features/auth/presentation/screens/confirm_pin_screen.dart';
+import '../../features/auth/presentation/screens/biometric_setup_screen.dart';
+import '../../features/notifications/presentation/screens/notifications_screen.dart';
+import '../../features/wallet/presentation/screens/wallet_overview_screen.dart';
+import '../../features/wallet/presentation/screens/withdraw_screen.dart';
+import '../../features/wallet/presentation/screens/receive_money_screen.dart';
+import '../../features/wallet/presentation/screens/request_money_screen.dart';
+import '../../features/send_money/presentation/screens/send_money_screen.dart';
+import '../../features/qr/presentation/screens/qr_generate_screen.dart';
+import '../../features/utility/presentation/screens/tv_bill_screen.dart';
+import '../../features/utility/presentation/screens/water_bill_screen.dart';
+import '../../features/bank/presentation/screens/link_bank_screen.dart';
+import '../../features/kyc/presentation/screens/kyc_document_upload_screen.dart';
+import '../../features/kyc/presentation/screens/kyc_selfie_screen.dart';
+import '../../features/kyc/presentation/screens/kyc_address_screen.dart';
+import '../../features/kyc/presentation/screens/kyc_status_screen.dart';
+import '../../features/profile/presentation/screens/profile_screen.dart';
+import '../../features/settings/presentation/screens/security_settings_screen.dart';
+import '../../features/settings/presentation/screens/app_settings_screen.dart';
+import '../../features/settings/presentation/screens/language_selection_screen.dart';
+
 // Temporary placeholder screens for unresolved routes
 class PlaceholderScreen extends StatelessWidget {
   final String title;
@@ -227,6 +251,128 @@ final GoRouter appRouter = GoRouter(
       path: '/test_demo_settings',
       name: 'test_demo_settings',
       builder: (context, state) => const TestDemoSettingsScreen(),
+    ),
+    // Phase 3 new routes
+    GoRoute(
+      path: '/forgot_password',
+      name: 'forgot_password',
+      builder: (context, state) => const ForgotPasswordScreen(),
+    ),
+    GoRoute(
+      path: '/create_password',
+      name: 'create_password',
+      builder: (context, state) => const CreatePasswordScreen(),
+    ),
+    GoRoute(
+      path: '/confirm_pin',
+      name: 'confirm_pin',
+      builder: (context, state) {
+        final pin =
+            (state.extra as Map<String, dynamic>?)?['pin'] as String? ?? '';
+        return ConfirmPinScreen(originalPin: pin);
+      },
+    ),
+    GoRoute(
+      path: '/biometric_setup',
+      name: 'biometric_setup',
+      builder: (context, state) => const BiometricSetupScreen(),
+    ),
+    GoRoute(
+      path: '/notifications',
+      name: 'notifications',
+      builder: (context, state) => const NotificationsScreen(),
+    ),
+    GoRoute(
+      path: '/wallet',
+      name: 'wallet',
+      builder: (context, state) => const WalletOverviewScreen(),
+    ),
+    GoRoute(
+      path: '/withdraw',
+      name: 'withdraw',
+      builder: (context, state) => const WithdrawScreen(),
+    ),
+    GoRoute(
+      path: '/receive_money',
+      name: 'receive_money',
+      builder: (context, state) => const ReceiveMoneyScreen(),
+    ),
+    GoRoute(
+      path: '/request_money',
+      name: 'request_money',
+      builder: (context, state) => const RequestMoneyScreen(),
+    ),
+    GoRoute(
+      path: '/send_money',
+      name: 'send_money',
+      builder: (context, state) => const SendMoneyScreen(),
+    ),
+    GoRoute(
+      path: '/qr_generate',
+      name: 'qr_generate',
+      builder: (context, state) => const QrGenerateScreen(),
+    ),
+    GoRoute(
+      path: '/tv_bill',
+      name: 'tv_bill',
+      builder: (context, state) => const TvBillScreen(),
+    ),
+    GoRoute(
+      path: '/water_bill',
+      name: 'water_bill',
+      builder: (context, state) => const WaterBillScreen(),
+    ),
+    GoRoute(
+      path: '/link_bank',
+      name: 'link_bank',
+      builder: (context, state) => const LinkBankScreen(),
+    ),
+    GoRoute(
+      path: '/kyc_citizenship_front',
+      name: 'kyc_citizenship_front',
+      builder: (context, state) =>
+          const KycDocumentUploadScreen(side: 'front'),
+    ),
+    GoRoute(
+      path: '/kyc_citizenship_back',
+      name: 'kyc_citizenship_back',
+      builder: (context, state) =>
+          const KycDocumentUploadScreen(side: 'back'),
+    ),
+    GoRoute(
+      path: '/kyc_selfie',
+      name: 'kyc_selfie',
+      builder: (context, state) => const KycSelfieScreen(),
+    ),
+    GoRoute(
+      path: '/kyc_address',
+      name: 'kyc_address',
+      builder: (context, state) => const KycAddressScreen(),
+    ),
+    GoRoute(
+      path: '/kyc_status',
+      name: 'kyc_status',
+      builder: (context, state) => const KycStatusScreen(),
+    ),
+    GoRoute(
+      path: '/profile',
+      name: 'profile',
+      builder: (context, state) => const ProfileScreen(),
+    ),
+    GoRoute(
+      path: '/security_settings',
+      name: 'security_settings',
+      builder: (context, state) => const SecuritySettingsScreen(),
+    ),
+    GoRoute(
+      path: '/app_settings',
+      name: 'app_settings',
+      builder: (context, state) => const AppSettingsScreen(),
+    ),
+    GoRoute(
+      path: '/language',
+      name: 'language',
+      builder: (context, state) => const LanguageSelectionScreen(),
     ),
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
