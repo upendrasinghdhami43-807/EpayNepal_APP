@@ -23,6 +23,11 @@ import '../features/payment/presentation/screens/payment_details_screen.dart';
 import '../features/payment/presentation/screens/confirm_payment_screen.dart';
 import '../features/payment/presentation/screens/payment_success_screen.dart';
 
+import '../features/utility/presentation/screens/utility_payments_screen.dart';
+import '../features/utility/presentation/screens/mobile_topup_screen.dart';
+import '../features/utility/presentation/screens/internet_bill_screen.dart';
+import '../features/utility/presentation/screens/electricity_bill_screen.dart';
+
 // Temporary placeholder screens for unresolved routes
 class PlaceholderScreen extends StatelessWidget {
   final String title;
@@ -118,6 +123,26 @@ final GoRouter appRouter = GoRouter(
       path: '/payment_success',
       name: 'payment_success',
       builder: (context, state) => const PaymentSuccessScreen(),
+    ),
+    GoRoute(
+      path: '/utility',
+      name: 'utility',
+      builder: (context, state) => const UtilityPaymentsScreen(),
+    ),
+    GoRoute(
+      path: '/topup',
+      name: 'topup',
+      builder: (context, state) => const MobileTopupScreen(),
+    ),
+    GoRoute(
+      path: '/internet',
+      name: 'internet',
+      builder: (context, state) => const InternetBillScreen(),
+    ),
+    GoRoute(
+      path: '/electricity',
+      name: 'electricity',
+      builder: (context, state) => const ElectricityBillScreen(),
     ),
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
