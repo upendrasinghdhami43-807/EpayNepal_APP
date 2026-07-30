@@ -135,7 +135,9 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(width: 8),
                       IconButton(
                         icon: Icon(Icons.visibility, color: colorScheme.onPrimary.withOpacity(0.7), size: 20),
-                        onPressed: () {},
+                        onPressed: () {
+                      context.push('/utility');
+                    },
                         padding: EdgeInsets.zero,
                         constraints: const BoxConstraints(),
                       ),
@@ -210,15 +212,16 @@ class HomeScreen extends StatelessWidget {
       context,
       title: 'Utility & Bill Payments',
       items: [
-        _buildGridItem(context, Icons.smartphone, 'Topup & Data'),
-        _buildGridItem(context, Icons.bolt, 'Electricity'),
-        _buildGridItem(context, Icons.water_drop, 'Khanepani'),
-        _buildGridItem(context, Icons.wifi, 'Internet'),
-        _buildGridItem(context, Icons.account_balance, 'Govt. Payment'),
-        _buildGridItem(context, Icons.traffic, 'Traffic Fine'),
-        _buildGridItem(context, Icons.school, 'Education'),
-        _buildGridItem(context, Icons.arrow_forward, 'More', isMore: true),
+        _buildUtilityItem(context, Icons.smartphone, 'Topup & Data', '/topup'),
+        _buildUtilityItem(context, Icons.bolt, 'Electricity', '/electricity'),
+        _buildUtilityItem(context, Icons.water_drop, 'Khanepani', null),
+        _buildUtilityItem(context, Icons.router, 'Internet', '/internet'),
+        _buildUtilityItem(context, Icons.flight, 'Airlines', null),
+        _buildUtilityItem(context, Icons.account_balance, 'Govt. Payment', null),
+        _buildUtilityItem(context, Icons.school, 'Education Fee', null),
+        _buildUtilityItem(context, Icons.confirmation_number, 'Events', null),
       ],
+      onViewAll: () => context.push('/utility'),
     );
   }
 
@@ -235,7 +238,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildGridSection(BuildContext context, {required String title, required List<Widget> items}) {
+  Widget _buildGridSection(BuildContext context, {required String title, required List<Widget> items, VoidCallback? onViewAll}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -243,7 +246,10 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(title, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-            TextButton(onPressed: () {}, child: const Text('View All', style: TextStyle(fontWeight: FontWeight.bold))),
+            TextButton(
+              onPressed: onViewAll ?? () {}, 
+              child: const Text('View All', style: TextStyle(fontWeight: FontWeight.bold))
+            ),
           ],
         ),
         Container(
@@ -287,6 +293,17 @@ class HomeScreen extends StatelessWidget {
         const SizedBox(height: 8),
         Text(label, textAlign: TextAlign.center, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w500)),
       ],
+    );
+  }
+  
+  Widget _buildUtilityItem(BuildContext context, IconData icon, String label, String? route, {Color? color}) {
+    return GestureDetector(
+      onTap: () {
+        if (route != null) {
+          context.push(route);
+        }
+      },
+      child: _buildGridItem(context, icon, label, color: color),
     );
   }
   

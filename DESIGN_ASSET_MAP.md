@@ -39,22 +39,23 @@ This checklist maps every design asset folder in `/stitch_esewa_jetpack_wallet_a
 
 ## Bill & Service Payments
 - [ ] `topup_data_packs` -> Mobile Topup
+- [x] `topup_data_packs` -> Mobile Topup & Data Packs
 - [ ] `topup_data_packs_dark` -> Mobile Topup (Dark)
-- [ ] `internet_bill_payment` -> Internet Payment
+- [x] `internet_bill_payment` -> Internet Bill
 - [ ] `internet_bill_payment_dark` -> Internet Payment (Dark)
-- [ ] `electricity_bill_payment` -> Electricity Bill Payment
+- [x] `electricity_bill_payment` -> NEA Electricity
 - [ ] `electricity_bill_payment_dark` -> Electricity Bill Payment (Dark)
-- [ ] `government_payments` -> Government Payment
+- [ ] `government_payments` -> Government Payments
 - [ ] `government_payments_dark` -> Government Payment (Dark)
 - [ ] `traffic_fine_payment` -> Traffic Fine
 - [ ] `traffic_fine_payment_dark` -> Traffic Fine (Dark)
-- [ ] `education_fee_payment` -> Education Fee Payment
+- [ ] `education_fee_payment` -> Education Fees
 - [ ] `education_fee_payment_dark` -> Education Fee Payment (Dark)
-- [ ] `airline_ticketing` -> Airline Ticketing
+- [ ] `airline_ticketing` -> Flight Booking
 - [ ] `airline_ticketing_dark` -> Airline Ticketing (Dark)
 - [ ] `events_shows` -> Events & Shows
-- [ ] `travel_ticketing` -> Travel
-- [ ] `utility_payments` -> Utility Payments Overview
+- [ ] `travel_ticketing` -> Travel Hub
+- [x] `utility_payments` -> Utility Overview
 
 ## QR
 - [ ] `scan_qr` -> QR Scanner
