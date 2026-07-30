@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Emerald Wallet - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-container": "#05e777",
+                      "surface-container-high": "#2a2a2a",
+                      "secondary-fixed": "#62ff96",
+                      "inverse-primary": "#006e0d",
+                      "primary-fixed": "#75ff69",
+                      "on-primary-fixed-variant": "#005307",
+                      "primary-container": "#37c837",
+                      "outline": "#879580",
+                      "background": "#131313",
+                      "on-surface": "#e5e2e1",
+                      "on-error": "#690005",
+                      "primary-fixed-dim": "#54e24e",
+                      "tertiary-container": "#3fc580",
+                      "surface-container": "#201f1f",
+                      "inverse-on-surface": "#313030",
+                      "on-primary": "#003a03",
+                      "surface-container-highest": "#353534",
+                      "surface-bright": "#393939",
+                      "primary": "#58e551",
+                      "secondary-fixed-dim": "#00e475",
+                      "outline-variant": "#3d4a39",
+                      "surface-dim": "#131313",
+                      "on-secondary": "#003918",
+                      "on-primary-fixed": "#002201",
+                      "on-tertiary-fixed": "#002110",
+                      "on-tertiary-fixed-variant": "#00522f",
+                      "surface-tint": "#54e24e",
+                      "surface-variant": "#353534",
+                      "error": "#ffb4ab",
+                      "on-secondary-container": "#00622e",
+                      "tertiary-fixed-dim": "#5cde97",
+                      "inverse-surface": "#e5e2e1",
+                      "on-background": "#e5e2e1",
+                      "surface-container-low": "#1c1b1b",
+                      "on-error-container": "#ffdad6",
+                      "on-secondary-fixed": "#00210b",
+                      "secondary": "#7dffa2",
+                      "error-container": "#93000a",
+                      "tertiary-fixed": "#7afbb1",
+                      "on-primary-container": "#004d06",
+                      "tertiary": "#60e19a",
+                      "on-secondary-fixed-variant": "#005226",
+                      "on-tertiary": "#00391f",
+                      "surface-container-lowest": "#0e0e0e",
+                      "on-tertiary-container": "#004d2c",
+                      "surface": "#131313",
+                      "on-surface-variant": "#bccbb4"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "md": "16px",
+                      "xl": "32px",
+                      "xs": "4px",
+                      "unit": "8px",
+                      "gutter": "16px",
+                      "sm": "8px",
+                      "lg": "24px",
+                      "margin-desktop": "32px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "label-lg": ["Inter"],
+                      "title-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "700"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                      "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pt-20 pb-24 font-body-md">
+<!-- TopAppBar -->
+<header class="bg-background dark:bg-background fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile py-sm">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden hover:bg-surface-container-highest dark:hover:bg-surface-container-highest transition-transform duration-200 cursor-pointer">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a corporate user, styled with modern dramatic lighting in a dark mode aesthetic. The subject is well-lit against a dark background, evoking trust and security." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3uIwwP8WFhELuWiz1CSKb45JM1uLYmEmWcmN0z-iqmSkrAaScmVz7Nm3r5yVvzdi2Zoue-UAmfNuqqCAdx5IV0okIikAhhxlfYYK6q1VGgpKqYPQNz1xI6n_h1JY-J9plm0R0n97WEP6L9qRQyotkAwwx3U8-jOHb9MFtdJv2p2tkZ712plWrEcd_GtgidDukooMoxbQsF1W9n4G3XxQSbLLtuD1taQdRhLbQboSusN_S66zvDHbvfA"/>
+</div>
+<h1 class="text-title-lg font-title-lg font-bold text-primary dark:text-primary">Emerald Wallet</h1>
+</div>
+<button class="p-sm text-primary dark:text-primary hover:bg-surface-container-highest dark:hover:bg-surface-container-highest rounded-full transition-transform duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto space-y-xl">
+<!-- Wallet Card (Glassmorphism / High Contrast) -->
+<section class="bg-surface-container rounded-[24px] p-lg shadow-lg relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
+<div class="flex justify-between items-start mb-md relative z-10">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">Total Balance</p>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface">NPR 1,24,500.00</h2>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">Fonepoints</p>
+<p class="font-title-lg text-title-lg text-primary">4,520</p>
+</div>
+</div>
+<!-- Quick Actions -->
+<div class="flex justify-between gap-sm relative z-10 mt-lg">
+<button class="flex-1 flex flex-col items-center justify-center bg-surface-container-high hover:bg-surface-container-highest rounded-xl p-md transition-colors group">
+<span class="material-symbols-outlined text-primary mb-sm group-hover:scale-110 transition-transform">add_card</span>
+<span class="font-label-md text-label-md text-on-surface">Load</span>
+</button>
+<button class="flex-1 flex flex-col items-center justify-center bg-surface-container-high hover:bg-surface-container-highest rounded-xl p-md transition-colors group">
+<span class="material-symbols-outlined text-primary mb-sm group-hover:scale-110 transition-transform">send</span>
+<span class="font-label-md text-label-md text-on-surface">Send</span>
+</button>
+<button class="flex-1 flex flex-col items-center justify-center bg-surface-container-high hover:bg-surface-container-highest rounded-xl p-md transition-colors group">
+<span class="material-symbols-outlined text-primary mb-sm group-hover:scale-110 transition-transform">account_balance</span>
+<span class="font-label-md text-label-md text-on-surface">Bank</span>
+</button>
+</div>
+</section>
+<!-- Promotional Banner -->
+<section class="rounded-[24px] overflow-hidden relative h-32 group cursor-pointer">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A sleek, futuristic promotional banner for a digital wallet. The banner features abstract geometric shapes glowing in bright neon green (Emerald) against a deep black background. High-tech corporate aesthetic, suggesting speed and rewards." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCk5WVAtSCPdny5OTMeXoh2XUC_6FrTxetBkPVCQUwixQ0N1tDljSAh4TomS7rQt_KkmYIfN-Bd1doZHaivceRrF-SnVaIwZlRC0apWAPesyzPTw4j6s5EogT6VW0x9-Yi4_XIu5Prc6dRdKfHp4HjeGDEEfJ_Ra1s2AzY3J0bZ9-LHj7GdfkCSiFusZojT7cnP56E78Wo0d_DFN-q5U-77q_lsBf7B7j_3BY1lxvU9_SA4Q01Dj6W7kg')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-background/80 to-transparent p-md flex flex-col justify-center">
+<h3 class="font-title-lg text-title-lg text-primary mb-xs">10% Cashback</h3>
+<p class="font-label-md text-label-md text-on-surface">On internet bill payments</p>
+</div>
+</section>
+<!-- Service Categories (Bento Grid) -->
+<section>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-md">Services</h3>
+<div class="grid grid-cols-4 md:grid-cols-8 gap-sm">
+<!-- Topup -->
+<div class="bg-surface-container rounded-xl p-sm flex flex-col items-center justify-center gap-xs hover:bg-surface-container-high transition-colors cursor-pointer aspect-square">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">phone_iphone</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-center">Topup</span>
+</div>
+<!-- Electricity -->
+<div class="bg-surface-container rounded-xl p-sm flex flex-col items-center justify-center gap-xs hover:bg-surface-container-high transition-colors cursor-pointer aspect-square">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">bolt</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-center">Electricity</span>
+</div>
+<!-- Water -->
+<div class="bg-surface-container rounded-xl p-sm flex flex-col items-center justify-center gap-xs hover:bg-surface-container-high transition-colors cursor-pointer aspect-square">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">water_drop</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-center">Khanepani</span>
+</div>
+<!-- Internet -->
+<div class="bg-surface-container rounded-xl p-sm flex flex-col items-center justify-center gap-xs hover:bg-surface-container-high transition-colors cursor-pointer aspect-square">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">router</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-center">Internet</span>
+</div>
+<!-- TV -->
+<div class="bg-surface-container rounded-xl p-sm flex flex-col items-center justify-center gap-xs hover:bg-surface-container-high transition-colors cursor-pointer aspect-square">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">tv</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-center">TV</span>
+</div>
+<!-- Flights -->
+<div class="bg-surface-container rounded-xl p-sm flex flex-col items-center justify-center gap-xs hover:bg-surface-container-high transition-colors cursor-pointer aspect-square">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">flight</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-center">Flights</span>
+</div>
+<!-- Movies -->
+<div class="bg-surface-container rounded-xl p-sm flex flex-col items-center justify-center gap-xs hover:bg-surface-container-high transition-colors cursor-pointer aspect-square">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">movie</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-center">Movies</span>
+</div>
+<!-- More -->
+<div class="bg-surface-container rounded-xl p-sm flex flex-col items-center justify-center gap-xs hover:bg-surface-container-high transition-colors cursor-pointer aspect-square">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">grid_view</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant text-center">View All</span>
+</div>
+</div>
+</section>
+<!-- Recent Activity -->
+<section>
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-title-lg text-title-lg text-on-surface">Recent Activity</h3>
+<button class="font-label-md text-label-md text-primary hover:text-primary-container transition-colors">See All</button>
+</div>
+<div class="bg-surface-container rounded-[24px] overflow-hidden">
+<!-- Transaction 1 -->
+<div class="flex items-center p-md hover:bg-surface-container-high transition-colors border-b border-white/5 cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center mr-md shrink-0">
+<span class="material-symbols-outlined text-on-surface">router</span>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-label-lg text-label-lg text-on-surface truncate">WorldLink Communications</h4>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">Oct 24, 2023 • Internet Bill</p>
+</div>
+<div class="text-right ml-sm">
+<p class="font-label-lg text-label-lg text-on-surface">-NPR 1,250</p>
+<span class="inline-flex items-center bg-primary/10 text-primary font-label-md text-[10px] px-2 py-0.5 rounded-full mt-1">Success</span>
+</div>
+</div>
+<!-- Transaction 2 -->
+<div class="flex items-center p-md hover:bg-surface-container-high transition-colors border-b border-white/5 cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center mr-md shrink-0 overflow-hidden">
+<img alt="Sender" class="w-full h-full object-cover" data-alt="A close-up portrait of a modern professional in dark cinematic lighting, representing a contact for a peer-to-peer transfer." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU0Sa4BhzWwStlyV4vGl5Jyy22LD9icE8P6P4odf-XzOyR3L_W65h5IlXYNc7kWDDF81YRg8ydvCbJ04RViL0FCI_kMdg5mmC3rKDA3oMm2yFpYfEC_WtEcYo2ulGzdkn2Rf0eem0VHMNYM1MuCPHCJ2RMdB_zMY00jbndcr_GFQg0QeVxvZ3Ycbxj8DMB-c0oIjtt-xu4Wc5tJVHY2MbysXFHLCitAYUmStD85Czjo1zK21pVwdcyVQ"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-label-lg text-label-lg text-on-surface truncate">Ramesh Sharma</h4>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">Oct 22, 2023 • Received</p>
+</div>
+<div class="text-right ml-sm">
+<p class="font-label-lg text-label-lg text-secondary">+NPR 5,000</p>
+<span class="inline-flex items-center bg-primary/10 text-primary font-label-md text-[10px] px-2 py-0.5 rounded-full mt-1">Success</span>
+</div>
+</div>
+<!-- Transaction 3 -->
+<div class="flex items-center p-md hover:bg-surface-container-high transition-colors cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center mr-md shrink-0">
+<span class="material-symbols-outlined text-on-surface">shopping_cart</span>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-label-lg text-label-lg text-on-surface truncate">Bhatbhateni Supermarket</h4>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">Oct 20, 2023 • Groceries</p>
+</div>
+<div class="text-right ml-sm">
+<p class="font-label-lg text-label-lg text-on-surface">-NPR 3,450</p>
+<span class="inline-flex items-center bg-error/10 text-error font-label-md text-[10px] px-2 py-0.5 rounded-full mt-1">Pending</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Spacer for FAB and Bottom Nav -->
+<div class="h-16"></div>
+</main>
+<!-- Persistent Floating QR Button (FAB) -->
+<div class="fixed bottom-24 right-margin-mobile md:right-margin-desktop z-40">
+<button class="bg-primary text-on-primary w-14 h-14 rounded-2xl shadow-lg flex items-center justify-center hover:bg-primary-container hover:-translate-y-1 transition-all duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">qr_code_scanner</span>
+</button>
+</div>
+<!-- BottomNavBar -->
+<nav class="bg-surface-container-low dark:bg-surface-container-low fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-2 pt-2 md:hidden shadow-lg dark:shadow-none rounded-t-xl">
+<div class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary-container text-on-secondary-container dark:text-on-secondary-container rounded-full px-4 py-1 scale-90 transition-all duration-150 cursor-pointer">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant p-2 hover:bg-surface-container-high dark:hover:bg-surface-container-high rounded-full cursor-pointer transition-colors">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-md text-label-md mt-1">Statement</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant p-2 hover:bg-surface-container-high dark:hover:bg-surface-container-high rounded-full cursor-pointer transition-colors">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="font-label-md text-label-md mt-1">Scan</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant p-2 hover:bg-surface-container-high dark:hover:bg-surface-container-high rounded-full cursor-pointer transition-colors">
+<span class="material-symbols-outlined">headset_mic</span>
+<span class="font-label-md text-label-md mt-1">Support</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant p-2 hover:bg-surface-container-high dark:hover:bg-surface-container-high rounded-full cursor-pointer transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="font-label-md text-label-md mt-1">More</span>
+</div>
+</nav>
+</body></html>

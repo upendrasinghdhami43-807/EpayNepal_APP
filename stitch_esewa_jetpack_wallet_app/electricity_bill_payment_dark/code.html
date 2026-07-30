@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Electricity Bill Payment - NEA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#e3e3e3",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#2a2a2a",
+                        "tertiary-fixed": "#bcebed",
+                        "primary": "#059669",
+                        "error-container": "#93000a",
+                        "surface-variant": "#333333",
+                        "surface-bright": "#2a2a2a",
+                        "inverse-on-surface": "#1a1c18",
+                        "on-surface": "#ffffff",
+                        "on-secondary-fixed-variant": "#474741",
+                        "inverse-surface": "#e3e3db",
+                        "on-primary-container": "#ffffff",
+                        "secondary-fixed-dim": "#c8c7bf",
+                        "outline-variant": "#444444",
+                        "surface-container-low": "#1a1a1a",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "secondary": "#a9a9a9",
+                        "on-surface-variant": "#b0b0b0",
+                        "on-secondary-fixed": "#1b1c17",
+                        "tertiary": "#a0cfd1",
+                        "surface-container-lowest": "#000000",
+                        "on-error": "#690005",
+                        "tertiary-container": "#1f4d50",
+                        "primary-fixed": "#75ff69",
+                        "on-primary-fixed": "#002201",
+                        "on-tertiary-fixed-variant": "#1f4d50",
+                        "surface-container-highest": "#333333",
+                        "primary-container": "#10b981",
+                        "outline": "#888888",
+                        "on-secondary-container": "#e3e3e3",
+                        "surface-container": "#1e1e1e",
+                        "inverse-primary": "#006e0d",
+                        "surface-dim": "#131313",
+                        "on-tertiary-container": "#bcebed",
+                        "tertiary-fixed-dim": "#a0cfd1",
+                        "secondary-fixed": "#e4e3da",
+                        "surface-tint": "#54e24e",
+                        "primary-fixed-dim": "#54e24e",
+                        "surface": "#1a1a1a",
+                        "on-tertiary-fixed": "#002021",
+                        "surface-container-high": "#2a2a2a",
+                        "on-secondary": "#1a1a1a",
+                        "on-tertiary": "#003738",
+                        "on-primary-fixed-variant": "#005307",
+                        "background": "#131313"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "12px",
+                        "stack-md": "16px",
+                        "stack-lg": "24px",
+                        "margin-desktop": "24px",
+                        "stack-sm": "8px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "title-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400" }],
+                        "label-lg": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1px", "fontWeight": "500" }],
+                        "headline-md": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col md:hidden">
+<!-- Top App Bar -->
+<header class="bg-primary dark:bg-primary text-on-primary dark:text-on-primary shadow-none w-full px-margin-mobile py-4 flex justify-between items-center rounded-b-3xl sticky top-0 z-40 h-[72px]">
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-black/20 transition-transform duration-150 active:scale-95 text-on-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="text-headline-md-mobile font-headline-md-mobile text-on-primary">Pay Electricity Bill</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-black/20 transition-transform duration-150 active:scale-95 text-on-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">help_outline</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow px-margin-mobile pt-stack-lg pb-[100px] flex flex-col gap-stack-lg">
+<!-- Header Banner / Logo -->
+<div class="bg-surface-container rounded-[24px] p-stack-md flex items-center gap-stack-md shadow-sm border border-surface-variant">
+<div class="w-12 h-12 rounded-[12px] bg-white flex items-center justify-center shrink-0">
+<img class="w-8 h-8 object-contain" data-alt="A clean, minimalist logo icon representing the Nepal Electricity Authority (NEA). The design features a stylized lightning bolt or lightbulb motif in a modern, corporate aesthetic. The colors are bright white and electric green, suggesting energy and reliability. The logo is centered within a square format with rounded corners, typical of a mobile app icon." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXydAzU7DKQHjF6bzIZnOW-LuboyLOv9WoF_4Ce8dwRzn80QijW5e1SWkIk7WBfXkr6-TnjVlm10y8-FuKT3cggqml7B3SSeOE0eZHzoHAdO_IcC55FJD8vHweQXWFUF6Y6Ag-NPnUpb4z93duzllyYoHw-IqASD937_QMVSHwdHG7aa3NgEnCiGTsd30VzOmjss424ShRFQnrdkkYyiGlDPWOPRkeRs_DGIpn_FROiFjuOjDzNG7Yeg"/>
+</div>
+<div>
+<h2 class="text-title-md font-title-md text-on-surface">Nepal Electricity Authority</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Pay your NEA bills instantly</p>
+</div>
+</div>
+<!-- Payment Form Container -->
+<div class="bg-surface rounded-[24px] shadow-[0_4px_12px_rgba(0,0,0,0.5)] p-stack-md flex flex-col gap-stack-md">
+<!-- NEA Branch Dropdown -->
+<div class="flex flex-col gap-1">
+<label class="text-label-lg font-label-lg text-on-surface-variant pl-2">NEA Branch</label>
+<div class="relative">
+<select class="w-full h-14 bg-surface-container border-0 text-on-surface text-body-lg font-body-lg rounded-full pl-4 pr-12 appearance-none focus:ring-2 focus:ring-primary focus:bg-surface-container-high transition-colors">
+<option disabled="" selected="" value="">Select Branch</option>
+<option value="kathmandu">Kathmandu Central</option>
+<option value="lalitpur">Lalitpur</option>
+<option value="bhaktapur">Bhaktapur</option>
+<option value="pokhara">Pokhara</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none" style="font-variation-settings: 'FILL' 0;">arrow_drop_down</span>
+</div>
+</div>
+<!-- Customer ID Input -->
+<div class="flex flex-col gap-1">
+<label class="text-label-lg font-label-lg text-on-surface-variant pl-2">Customer ID</label>
+<div class="relative">
+<input class="w-full h-14 bg-surface-container border-0 text-on-surface text-body-lg font-body-lg rounded-full px-4 focus:ring-2 focus:ring-primary focus:bg-surface-container-high transition-colors placeholder:text-on-surface-variant/50" placeholder="Enter Customer ID" type="number"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">person</span>
+</div>
+</div>
+<!-- SC No Input -->
+<div class="flex flex-col gap-1">
+<label class="text-label-lg font-label-lg text-on-surface-variant pl-2">SC. No.</label>
+<div class="relative">
+<input class="w-full h-14 bg-surface-container border-0 text-on-surface text-body-lg font-body-lg rounded-full px-4 focus:ring-2 focus:ring-primary focus:bg-surface-container-high transition-colors placeholder:text-on-surface-variant/50" placeholder="Enter SC. No. (e.g. 014.24.123)" type="text"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">pin</span>
+</div>
+</div>
+<!-- Proceed Action -->
+<button class="w-full h-14 bg-primary-container text-on-primary-container text-title-md font-title-md rounded-full mt-2 flex items-center justify-center gap-2 hover:bg-primary-container/90 active:scale-[0.98] transition-all shadow-[0_4px_12px_rgba(16,185,129,0.3)]">
+                Proceed
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</button>
+</div>
+<!-- Recent Customers Section -->
+<div class="flex flex-col gap-stack-sm mt-stack-md">
+<h3 class="text-label-lg font-label-lg text-on-surface-variant uppercase tracking-wider pl-2">Recent Customers</h3>
+<div class="flex flex-col gap-gutter">
+<!-- Recent Item 1 -->
+<div class="bg-surface-container-low rounded-[16px] p-4 flex items-center justify-between active:bg-surface-variant transition-colors cursor-pointer border border-surface-variant/50">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 0;">history</span>
+</div>
+<div class="flex flex-col">
+<span class="text-title-md font-title-md text-on-surface">Home - Kathmandu</span>
+<span class="text-body-md font-body-md text-on-surface-variant">ID: 12345678 • SC: 014.12.34</span>
+</div>
+</div>
+</div>
+<!-- Recent Item 2 -->
+<div class="bg-surface-container-low rounded-[16px] p-4 flex items-center justify-between active:bg-surface-variant transition-colors cursor-pointer border border-surface-variant/50">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 0;">history</span>
+</div>
+<div class="flex flex-col">
+<span class="text-title-md font-title-md text-on-surface">Office - Lalitpur</span>
+<span class="text-body-md font-body-md text-on-surface-variant">ID: 98765432 • SC: 021.05.99</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Nav Bar - Suppressed for transactional flow as per guidelines -->
+</body></html>

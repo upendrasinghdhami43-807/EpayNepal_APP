@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KYC Document Upload | Esewa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "surface-container": "#eeeee6",
+                    "primary-fixed-dim": "#54e24e",
+                    "secondary-container": "#e4e3da",
+                    "on-tertiary-container": "#18484a",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed": "#e4e3da",
+                    "primary": "#006e0d",
+                    "surface-container-highest": "#e3e3db",
+                    "on-secondary-container": "#64655e",
+                    "surface-variant": "#e3e3db",
+                    "tertiary-container": "#88b6b8",
+                    "tertiary": "#396668",
+                    "on-secondary-fixed": "#1b1c17",
+                    "surface-tint": "#006e0d",
+                    "on-surface-variant": "#3d4a39",
+                    "surface": "#fafaf2",
+                    "on-background": "#1a1c18",
+                    "surface-container-low": "#f4f4ec",
+                    "secondary-fixed-dim": "#c8c7bf",
+                    "on-tertiary-fixed": "#002021",
+                    "inverse-primary": "#54e24e",
+                    "background": "#fafaf2",
+                    "outline": "#6d7b68",
+                    "on-surface": "#1a1c18",
+                    "on-primary-fixed-variant": "#005307",
+                    "outline-variant": "#bccbb4",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#002201",
+                    "inverse-surface": "#2f312c",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f1f1e9",
+                    "tertiary-fixed": "#bcebed",
+                    "on-tertiary-fixed-variant": "#1f4d50",
+                    "tertiary-fixed-dim": "#a0cfd1",
+                    "primary-fixed": "#75ff69",
+                    "on-secondary-fixed-variant": "#474741",
+                    "primary-container": "#37c837",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#004d06",
+                    "surface-container-high": "#e8e9e1",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#dadad3",
+                    "surface-bright": "#fafaf2",
+                    "secondary": "#5e5f58"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "12px",
+                    "stack-lg": "24px",
+                    "stack-sm": "8px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "24px",
+                    "stack-md": "16px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "headline-md": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "400"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "600"}],
+                    "label-lg": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #fafaf2; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-card {
+            border: 2px solid #006e0d;
+            background-color: #e4f3e4;
+        }
+        .glass-header {
+            backdrop-filter: blur(12px);
+            background-color: rgba(0, 110, 13, 0.85);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar - Medium Variant (Mapped from JSON) -->
+<header class="sticky top-0 z-50 glass-header rounded-b-3xl text-on-primary">
+<div class="flex justify-between items-center w-full px-margin-mobile py-4 h-20">
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-on-primary hover:bg-primary-container/20 p-2 rounded-full transition-all active:scale-95" data-icon="arrow_back">arrow_back</button>
+<h1 class="text-title-lg font-title-lg font-bold">Hi, Upendra</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-primary hover:bg-primary-container/20 p-2 rounded-full" data-icon="notifications">notifications</span>
+<div class="w-10 h-10 rounded-full bg-primary-fixed-dim flex items-center justify-center overflow-hidden border-2 border-on-primary/20">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a young South Asian man with short dark hair, wearing a clean white shirt. He is smiling slightly against a soft, neutral professional background with warm, corporate lighting. The style is modern, sharp, and high-quality, fitting a premium fintech application interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANSXp3u2RHsmmEGoIqKFmzCQ7X7RzIP5IAbjwiTQXayNOfnpppkfWAgtUMUW6wEu6a_Qfy9i7-mOh5m4t9SOFmX7KvjuFGyLKIr7Kuf1jKB8Qwa9K-vqOKU09u-MfDnQTDwkJL_Qp4GWjqby6uDTOOQPwjyu8b8H-h1HV2-dQ5099bO3QrQaVtf13L2uc_WmN1xQgp70lB3aAeQu5xC1lDGzWIFBGW7lT6AKlClJb8wozyBqBNeHi1GyiTQJO2eD4vpjo4soyAM-E_"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow px-margin-mobile pt-stack-lg pb-32">
+<!-- Progress Indicator -->
+<div class="mb-stack-lg">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-lg font-label-lg text-primary uppercase tracking-wider">Step 2 of 3</span>
+<span class="text-label-lg font-label-lg text-on-surface-variant">Document Verification</span>
+</div>
+<div class="w-full bg-surface-container h-1 rounded-full overflow-hidden">
+<div class="bg-primary w-2/3 h-full"></div>
+</div>
+</div>
+<section class="mb-stack-lg">
+<h2 class="text-headline-md-mobile font-headline-md-mobile mb-2">Verify Identity</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Choose your document type and upload high-quality photos for faster verification.</p>
+</section>
+<!-- Document Type Selector -->
+<section class="mb-stack-lg">
+<h3 class="text-title-md font-title-md mb-stack-sm text-on-surface">Select Document Type</h3>
+<div class="grid grid-cols-1 gap-3">
+<!-- Citizenship -->
+<button class="flex items-center justify-between p-4 bg-surface-container-low rounded-[24px] border-2 border-transparent transition-all active:scale-[0.98] group" onclick="selectDoc(this)">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-primary-container/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+</div>
+<span class="text-title-md font-body-lg font-semibold">Citizenship</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-data-[active=true]:text-primary" data-icon="radio_button_checked">radio_button_checked</span>
+</button>
+<!-- Passport -->
+<button class="flex items-center justify-between p-4 bg-surface-container-low rounded-[24px] border-2 border-transparent transition-all active:scale-[0.98] group" onclick="selectDoc(this)">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-secondary-container flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+</div>
+<span class="text-title-md font-body-lg font-semibold">Passport</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+</button>
+<!-- Driving License -->
+<button class="flex items-center justify-between p-4 bg-surface-container-low rounded-[24px] border-2 border-transparent transition-all active:scale-[0.98] group" onclick="selectDoc(this)">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-secondary-container flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="directions_car">directions_car</span>
+</div>
+<span class="text-title-md font-body-lg font-semibold">Driving License</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+</button>
+</div>
+</section>
+<!-- Upload Section -->
+<section class="grid grid-cols-1 gap-gutter mb-stack-lg">
+<h3 class="text-title-md font-title-md mb-2 text-on-surface">Upload Documents</h3>
+<div class="grid grid-cols-2 gap-4">
+<!-- Front Side Card -->
+<div class="flex flex-col gap-3">
+<div class="relative aspect-[4/3] bg-surface-container-highest rounded-[24px] border-2 border-dashed border-outline-variant flex flex-col items-center justify-center group cursor-pointer overflow-hidden transition-all hover:bg-surface-variant" onclick="triggerUpload('front')">
+<div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-4xl text-on-surface-variant mb-2 group-hover:scale-110 transition-transform" data-icon="photo_camera" style="font-variation-settings: 'FILL' 0;">photo_camera</span>
+<span class="text-label-lg font-label-lg text-on-surface-variant">Front Side</span>
+</div>
+<p class="text-[10px] text-center text-outline font-label-lg">Ensure text is readable</p>
+</div>
+<!-- Back Side Card -->
+<div class="flex flex-col gap-3">
+<div class="relative aspect-[4/3] bg-surface-container-highest rounded-[24px] border-2 border-dashed border-outline-variant flex flex-col items-center justify-center group cursor-pointer overflow-hidden transition-all hover:bg-surface-variant" onclick="triggerUpload('back')">
+<div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-4xl text-on-surface-variant mb-2 group-hover:scale-110 transition-transform" data-icon="add_a_photo" style="font-variation-settings: 'FILL' 0;">add_a_photo</span>
+<span class="text-label-lg font-label-lg text-on-surface-variant">Back Side</span>
+</div>
+<p class="text-[10px] text-center text-outline font-label-lg">Avoid glare and shadows</p>
+</div>
+</div>
+</section>
+<!-- Instructions Bento -->
+<section class="bg-primary-container/10 p-stack-md rounded-[24px] border border-primary-container/20 mb-stack-lg">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary" data-icon="info">info</span>
+<h4 class="text-label-lg font-label-lg text-on-primary-container font-bold uppercase tracking-widest">Quality Guidelines</h4>
+</div>
+<ul class="space-y-3">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5" data-icon="check_circle">check_circle</span>
+<span class="text-body-md font-body-md text-on-surface-variant">Original documents only (no photocopies)</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5" data-icon="check_circle">check_circle</span>
+<span class="text-body-md font-body-md text-on-surface-variant">Bright lighting with no flash reflections</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5" data-icon="check_circle">check_circle</span>
+<span class="text-body-md font-body-md text-on-surface-variant">All four corners must be visible in the frame</span>
+</li>
+</ul>
+</section>
+</main>
+<!-- Bottom Actions & Navigation Shell -->
+<div class="fixed bottom-0 left-0 w-full z-50">
+<!-- Floating Continue Button -->
+<div class="px-margin-mobile mb-4">
+<button class="w-full bg-primary-container h-14 rounded-full text-on-primary-container font-title-md flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-transform">
+                Continue
+                <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- BottomNavBar (Suppressed for transactional focus as per logic but placeholder shown as shell context) -->
+<nav class="bg-surface border-t border-outline-variant flex justify-around items-center px-2 h-20 rounded-t-3xl shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
+<div class="flex flex-col items-center justify-center text-on-secondary-fixed-variant px-4 py-1 opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-lg font-label-lg">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-secondary-fixed-variant px-4 py-1 opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="text-label-lg font-label-lg">Statement</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-5 py-1">
+<span class="material-symbols-outlined" data-icon="qr_code_scanner" style="font-variation-settings: 'FILL' 1;">qr_code_scanner</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-secondary-fixed-variant px-4 py-1 opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="text-label-lg font-label-lg">Support</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-secondary-fixed-variant px-4 py-1 opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+<span class="text-label-lg font-label-lg">More</span>
+</div>
+</nav>
+</div>
+<script>
+        function selectDoc(element) {
+            // Reset all
+            const buttons = element.parentElement.querySelectorAll('button');
+            buttons.forEach(btn => {
+                btn.classList.remove('active-card');
+                const icon = btn.querySelector('.material-symbols-outlined:last-child');
+                icon.textContent = 'radio_button_unchecked';
+                icon.classList.remove('text-primary');
+                icon.classList.add('text-outline-variant');
+                
+                const iconBox = btn.querySelector('div > div');
+                iconBox.classList.remove('bg-primary-container/20', 'text-primary');
+                iconBox.classList.add('bg-secondary-container', 'text-secondary');
+            });
+
+            // Set active
+            element.classList.add('active-card');
+            const icon = element.querySelector('.material-symbols-outlined:last-child');
+            icon.textContent = 'radio_button_checked';
+            icon.classList.add('text-primary');
+            icon.classList.remove('text-outline-variant');
+
+            const iconBox = element.querySelector('div > div');
+            iconBox.classList.add('bg-primary-container/20', 'text-primary');
+            iconBox.classList.remove('bg-secondary-container', 'text-secondary');
+        }
+
+        // Initialize first as active
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstDoc = document.querySelector('button[onclick="selectDoc(this)"]');
+            if (firstDoc) selectDoc(firstDoc);
+        });
+
+        function triggerUpload(side) {
+            console.log('Triggering camera for ' + side + ' side');
+            // Mock interaction feedback
+            const feedback = document.createElement('div');
+            feedback.className = 'fixed inset-0 bg-black/20 flex items-center justify-center z-[100]';
+            feedback.innerHTML = '<div class="bg-surface p-6 rounded-3xl flex flex-col items-center gap-4 shadow-xl"><div class="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div><p class="font-bold">Opening Camera...</p></div>';
+            document.body.appendChild(feedback);
+            setTimeout(() => feedback.remove(), 1000);
+        }
+    </script>
+</body></html>

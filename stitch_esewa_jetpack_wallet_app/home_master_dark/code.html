@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html class="dark:bg-[#121212]" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>eSewa Modern UI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#396668",
+                    "on-secondary-fixed-variant": "#474741",
+                    "on-primary-fixed": "#002201",
+                    "surface-dim": "#dadad3",
+                    "primary-fixed": "#75ff69",
+                    "outline-variant": "#bccbb4",
+                    "surface-container-highest": "#e3e3db",
+                    "on-primary-fixed-variant": "#005307",
+                    "on-error": "#ffffff",
+                    "tertiary-container": "#88b6b8",
+                    "surface-container": "#eeeee6",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#f1f1e9",
+                    "secondary-container": "#e4e3da",
+                    "primary-fixed-dim": "#54e24e",
+                    "on-background": "#1a1c18",
+                    "tertiary-fixed-dim": "#a0cfd1",
+                    "surface-container-high": "#e8e9e1",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#bcebed",
+                    "surface-variant": "#e3e3db",
+                    "background": "#fafaf2",
+                    "surface-bright": "#fafaf2",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#006e0d",
+                    "inverse-primary": "#54e24e",
+                    "primary-container": "#37c837",
+                    "on-surface-variant": "#3d4a39",
+                    "outline": "#6d7b68",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#64655e",
+                    "inverse-surface": "#2f312c",
+                    "secondary": "#5e5f58",
+                    "on-tertiary-fixed-variant": "#1f4d50",
+                    "on-tertiary-container": "#18484a",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#e4e3da",
+                    "secondary-fixed-dim": "#c8c7bf",
+                    "on-tertiary-fixed": "#002021",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-container": "#004d06",
+                    "on-secondary-fixed": "#1b1c17",
+                    "surface": "#fafaf2",
+                    "surface-container-low": "#f4f4ec",
+                    "on-surface": "#1a1c18",
+                    "primary": "#006e0d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "12px",
+                    "margin-desktop": "24px",
+                    "margin-mobile": "16px",
+                    "stack-sm": "8px",
+                    "stack-lg": "24px",
+                    "stack-md": "16px"
+            },
+            "fontFamily": {
+                    "title-lg": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "title-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "label-lg": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                    "headline-md": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "600"}],
+                    "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            background-color: #fafaf2;
+            -webkit-tap-highlight-color: transparent;
+        }
+        html.dark body {
+            background-color: #121212;
+        }
+        .custom-scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .balance-card-gradient {
+            background: linear-gradient(135deg, #006e0d 0%, #37c837 100%);
+        }
+        .floating-qr-dock {
+            filter: drop-shadow(0 4px 12px rgba(0, 110, 13, 0.3));
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="font-body-md text-on-background dark:text-inverse-on-surface dark:bg-[#121212] selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="bg-primary dark:bg-[#1E1E1E] text-on-primary dark:text-on-primary docked full-width top-0 rounded-b-[24px] fixed top-0 left-0 right-0 z-50 shadow-none border-b border-transparent dark:border-outline-variant/20">
+<div class="flex justify-between items-center w-full px-margin-mobile py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border-2 border-primary-fixed overflow-hidden bg-surface-container-high dark:bg-[#2A2A2A]">
+<img class="w-full h-full object-cover" data-alt="A close-up professional headshot of a friendly smiling man with short hair, captured in natural daylight. The image has a clean, minimalist background with soft bokeh. The style is modern corporate, emphasizing trust and approachable personality, consistent with a high-end financial application interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPWdr_XEe4GgXTuTjUJnlE_L7yPOnTEGwJ2ei7UomirlufrXCv3SWU1akog7v2KIjmirt4hB2Unxm-PKIaJs8vBHbJh3Fi_alMZqvB5h4af6GYXlBhb_tF8b4wIZTfvr8mjeI2up2j0qV1yzpjvN5h4J2IRoJ_QHk0qx07pET8D1cMaerW24DaLRc4h_CykVyB1113hnH-ezFWp-HSiIp27jJoDoORb-PsYoqY1WCZB0SbDRMa8X2KbQjVuuTqGypdOhfwNK3e7x49"/>
+</div>
+<div>
+<h1 class="text-headline-md-mobile font-headline-md-mobile leading-none">Hi, Upendra</h1>
+<p class="text-label-lg font-label-lg opacity-80">Good Morning</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-primary-container/20 dark:hover:bg-white/10 rounded-full transition-transform active:scale-95 duration-150">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="p-2 hover:bg-primary-container/20 dark:hover:bg-white/10 rounded-full transition-transform active:scale-95 duration-150 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 hover:bg-primary-container/20 dark:hover:bg-white/10 rounded-full transition-transform active:scale-95 duration-150">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-margin-mobile space-y-stack-lg max-w-lg mx-auto">
+<!-- Balance Card -->
+<section class="balance-card-gradient text-on-primary rounded-[24px] p-6 shadow-xl relative overflow-hidden">
+<div class="relative z-10 flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-label-lg font-label-lg opacity-90 uppercase tracking-wider">Total Balance</p>
+<div class="flex items-center gap-2 mt-1">
+<h2 class="text-headline-lg font-headline-lg tracking-tight">NPR 45,280.50</h2>
+<button class="p-1 hover:bg-white/10 rounded-full" id="toggle-balance">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<div class="bg-white/20 backdrop-blur-md rounded-2xl px-3 py-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed" style="font-variation-settings: 'FILL' 1;">stars</span>
+<div class="text-right">
+<p class="text-[10px] font-label-lg font-bold uppercase opacity-80 leading-none">Fonepoints</p>
+<p class="font-title-md text-sm">1,240</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-2 pt-2">
+<button class="flex flex-col items-center gap-1 group">
+<div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center group-active:scale-90 transition-transform">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+<span class="text-[10px] font-label-lg font-medium">Load Money</span>
+</button>
+<button class="flex flex-col items-center gap-1 group">
+<div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center group-active:scale-90 transition-transform">
+<span class="material-symbols-outlined">send</span>
+</div>
+<span class="text-[10px] font-label-lg font-medium">Send Money</span>
+</button>
+<button class="flex flex-col items-center gap-1 group">
+<div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center group-active:scale-90 transition-transform">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<span class="text-[10px] font-label-lg font-medium">Bank Transfer</span>
+</button>
+<button class="flex flex-col items-center gap-1 group">
+<div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center group-active:scale-90 transition-transform">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<span class="text-[10px] font-label-lg font-medium">Remittance</span>
+</button>
+</div>
+</div>
+<!-- Decorative circle -->
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-white/5 rounded-full"></div>
+</section>
+<!-- Utility & Bill Payments -->
+<section class="space-y-4">
+<div class="flex justify-between items-end px-1">
+<h3 class="text-title-md font-title-md text-on-background dark:text-inverse-on-surface">Utility &amp; Bill Payments</h3>
+<button class="text-primary dark:text-primary-fixed-dim text-label-lg font-label-lg font-bold">View All</button>
+</div>
+<div class="bg-surface-container-low dark:bg-[#1E1E1E] rounded-[24px] p-5 grid grid-cols-4 gap-y-6">
+<!-- Row 1 -->
+<div class="flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-white dark:bg-[#2A2A2A] flex items-center justify-center shadow-sm text-primary dark:text-primary-fixed-dim group-hover:bg-primary-container/20 dark:group-hover:bg-[#333333]">
+<span class="material-symbols-outlined">smartphone</span>
+</div>
+<span class="text-[11px] font-label-lg text-center leading-tight font-medium dark:text-inverse-on-surface">Topup &amp; Data</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-white dark:bg-[#2A2A2A] flex items-center justify-center shadow-sm text-primary dark:text-primary-fixed-dim group-hover:bg-primary-container/20 dark:group-hover:bg-[#333333]">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<span class="text-[11px] font-label-lg text-center leading-tight font-medium dark:text-inverse-on-surface">Electricity</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-white dark:bg-[#2A2A2A] flex items-center justify-center shadow-sm text-primary dark:text-primary-fixed-dim group-hover:bg-primary-container/20 dark:group-hover:bg-[#333333]">
+<span class="material-symbols-outlined">water_drop</span>
+</div>
+<span class="text-[11px] font-label-lg text-center leading-tight font-medium dark:text-inverse-on-surface">Khanepani</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-white dark:bg-[#2A2A2A] flex items-center justify-center shadow-sm text-primary dark:text-primary-fixed-dim group-hover:bg-primary-container/20 dark:group-hover:bg-[#333333]">
+<span class="material-symbols-outlined">wifi</span>
+</div>
+<span class="text-[11px] font-label-lg text-center leading-tight font-medium dark:text-inverse-on-surface">Internet</span>
+</div>
+<!-- Row 2 -->
+<div class="flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-white dark:bg-[#2A2A2A] flex items-center justify-center shadow-sm text-primary dark:text-primary-fixed-dim group-hover:bg-primary-container/20 dark:group-hover:bg-[#333333]">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<span class="text-[11px] font-label-lg text-center leading-tight font-medium dark:text-inverse-on-surface">Govt. Payment</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-white dark:bg-[#2A2A2A] flex items-center justify-center shadow-sm text-primary dark:text-primary-fixed-dim group-hover:bg-primary-container/20 dark:group-hover:bg-[#333333]">
+<span class="material-symbols-outlined">traffic</span>
+</div>
+<span class="text-[11px] font-label-lg text-center leading-tight font-medium dark:text-inverse-on-surface">Traffic Fine</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-white dark:bg-[#2A2A2A] flex items-center justify-center shadow-sm text-primary dark:text-primary-fixed-dim group-hover:bg-primary-container/20 dark:group-hover:bg-[#333333]">
+<span class="material-symbols-outlined">school</span>
+</div>
+<span class="text-[11px] font-label-lg text-center leading-tight font-medium dark:text-inverse-on-surface">Education</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-surface-container-high dark:bg-[#333333] flex items-center justify-center text-on-surface-variant dark:text-inverse-on-surface">
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+<span class="text-[11px] font-label-lg text-center leading-tight font-medium dark:text-inverse-on-surface">More</span>
+</div>
+</div>
+</section>
+<!-- Travel & Tickets -->
+<section class="space-y-4">
+<h3 class="text-title-md font-title-md text-on-background dark:text-inverse-on-surface px-1">Travels &amp; Ticketing</h3>
+<div class="bg-surface-container-low dark:bg-[#1E1E1E] rounded-[24px] p-5 grid grid-cols-4 gap-y-6">
+<div class="flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-white dark:bg-[#2A2A2A] flex items-center justify-center shadow-sm text-tertiary dark:text-tertiary-fixed-dim group-hover:bg-tertiary-container/20 dark:group-hover:bg-[#333333]">
+<span class="material-symbols-outlined">flight_takeoff</span>
+</div>
+<span class="text-[11px] font-label-lg text-center leading-tight font-medium dark:text-inverse-on-surface">Airlines</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-white dark:bg-[#2A2A2A] flex items-center justify-center shadow-sm text-tertiary dark:text-tertiary-fixed-dim group-hover:bg-tertiary-container/20 dark:group-hover:bg-[#333333]">
+<span class="material-symbols-outlined">hotel</span>
+</div>
+<span class="text-[11px] font-label-lg text-center leading-tight font-medium dark:text-inverse-on-surface">Hotels</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-white dark:bg-[#2A2A2A] flex items-center justify-center shadow-sm text-tertiary dark:text-tertiary-fixed-dim group-hover:bg-tertiary-container/20 dark:group-hover:bg-[#333333]">
+<span class="material-symbols-outlined">directions_bus</span>
+</div>
+<span class="text-[11px] font-label-lg text-center leading-tight font-medium dark:text-inverse-on-surface">Bus Ticket</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-white dark:bg-[#2A2A2A] flex items-center justify-center shadow-sm text-tertiary dark:text-tertiary-fixed-dim group-hover:bg-tertiary-container/20 dark:group-hover:bg-[#333333]">
+<span class="material-symbols-outlined">movie</span>
+</div>
+<span class="text-[11px] font-label-lg text-center leading-tight font-medium dark:text-inverse-on-surface">Movies</span>
+</div>
+</div>
+</section>
+<!-- Promo Banner -->
+<section class="rounded-[24px] overflow-hidden shadow-md">
+<div class="w-full h-40 bg-cover bg-center flex items-center px-6" data-alt="A vibrant and modern promotional banner for a digital wallet application. It features a bright emerald green background with abstract geometric shapes in shades of lime and white. A 3D rendered gift box with gold ribbons floats in the center, surrounded by sparkling digital coins. The atmosphere is celebratory and rewarding, targeting a youthful, tech-savvy audience." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCxnHe_CQ3wX9jPLL1r1bfuzvBS719pDfk6WLqkyfLatuDNiODfpsrsifjisAhbZ_7TCt-Yz1UB7Y_fryytCR4pK8qbNG1jiOzIVqETzTtfGaU6JsdG1Wk7cny4GlMLoecvFeoDd0LEFD3lE7vNWTq1HMfcuwIIlWj-W98OEUEVMhN2DJOOnQE-31JXJ9c6gpYmanIWIocBd4FnTLxsJ-ye4_glWM4Q1-sSHFhiO-GkWe4i5MaH_-4TgBt_0HXgV27v1zholv3okBSb')">
+<div class="max-w-[180px]">
+<h4 class="text-white font-bold text-lg leading-tight">Cashback up to NPR 500!</h4>
+<p class="text-white/80 text-xs mt-1 font-label-lg">On your first flight booking via eSewa</p>
+<button class="mt-3 bg-white text-primary px-4 py-1.5 rounded-full text-[10px] font-label-lg font-extrabold uppercase shadow-sm">Book Now</button>
+</div>
+</div>
+</section>
+<!-- Recent Transactions -->
+<section class="space-y-4 pb-8">
+<div class="flex justify-between items-end px-1">
+<h3 class="text-title-md font-title-md text-on-background dark:text-inverse-on-surface">Recent Transactions</h3>
+<button class="text-primary dark:text-primary-fixed-dim text-label-lg font-label-lg font-bold">History</button>
+</div>
+<div class="space-y-3">
+<!-- Transaction Item 1 -->
+<div class="bg-white dark:bg-[#1E1E1E] p-4 rounded-[24px] flex items-center justify-between shadow-sm border border-outline-variant/30 dark:border-outline-variant/10">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-2xl bg-primary-container/10 dark:bg-primary-container/20 flex items-center justify-center text-primary dark:text-primary-fixed">
+<span class="material-symbols-outlined">smartphone</span>
+</div>
+<div>
+<p class="font-bold text-sm font-title-md dark:text-inverse-on-surface">Mobile Topup - 9801XXXXXX</p>
+<p class="text-xs text-on-surface-variant dark:text-surface-dim font-label-lg">July 27, 2023 • 10:24 AM</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-sm text-error dark:text-[#ffb4ab] font-title-md">- NPR 100.00</p>
+<span class="text-[10px] text-on-primary-container dark:text-primary-container bg-primary-container/20 dark:bg-primary-container/10 px-2 py-0.5 rounded-full font-label-lg font-bold">Success</span>
+</div>
+</div>
+<!-- Transaction Item 2 -->
+<div class="bg-white dark:bg-[#1E1E1E] p-4 rounded-[24px] flex items-center justify-between shadow-sm border border-outline-variant/30 dark:border-outline-variant/10">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-2xl bg-tertiary-container/10 dark:bg-tertiary-container/20 flex items-center justify-center text-tertiary dark:text-tertiary-fixed">
+<span class="material-symbols-outlined">download_done</span>
+</div>
+<div>
+<p class="font-bold text-sm font-title-md dark:text-inverse-on-surface">Load from NIC Asia Bank</p>
+<p class="text-xs text-on-surface-variant dark:text-surface-dim font-label-lg">July 26, 2023 • 03:15 PM</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-sm text-primary dark:text-primary-fixed-dim font-title-md">+ NPR 5,000.00</p>
+<span class="text-[10px] text-on-primary-container dark:text-primary-container bg-primary-container/20 dark:bg-primary-container/10 px-2 py-0.5 rounded-full font-label-lg font-bold">Success</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-end px-2 pb-2 h-20 bg-surface dark:bg-[#1E1E1E] border-t border-outline-variant dark:border-outline-variant/20 shadow-lg rounded-t-[24px]">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-label-lg font-label-lg">Home</span>
+</a>
+<!-- Statement -->
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant dark:text-secondary-fixed-dim px-4 py-1 hover:bg-secondary-container/50 dark:hover:bg-white/10 rounded-full active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-label-lg font-label-lg">Statement</span>
+</a>
+<!-- QR Spacer (for floating FAB) -->
+<div class="w-16 h-16"></div>
+<!-- Support -->
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant dark:text-secondary-fixed-dim px-4 py-1 hover:bg-secondary-container/50 dark:hover:bg-white/10 rounded-full active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="text-label-lg font-label-lg">Support</span>
+</a>
+<!-- More -->
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant dark:text-secondary-fixed-dim px-4 py-1 hover:bg-secondary-container/50 dark:hover:bg-white/10 rounded-full active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="text-label-lg font-label-lg">More</span>
+</a>
+</nav>
+<!-- Floating QR Button -->
+<div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] floating-qr-dock">
+<button class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white border-4 border-surface dark:border-[#1E1E1E] shadow-2xl active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[32px] text-white">qr_code_scanner</span>
+</button>
+</div>
+<script>
+        // Micro-interaction for balance toggle
+        const toggleBtn = document.getElementById('toggle-balance');
+        const balanceText = document.querySelector('h2');
+        let isHidden = false;
+
+        toggleBtn.addEventListener('click', () => {
+            isHidden = !isHidden;
+            balanceText.innerText = isHidden ? 'NPR ••••••••' : 'NPR 45,280.50';
+            toggleBtn.querySelector('span').innerText = isHidden ? 'visibility_off' : 'visibility';
+        });
+
+        // Add subtle scroll reveal effect
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-700', 'ease-out', 'opacity-0', 'translate-y-4');
+            observer.observe(section);
+        });
+    </script>
+</body></html>

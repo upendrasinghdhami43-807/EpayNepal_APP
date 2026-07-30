@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Set Secure MPIN | eSewa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "surface-container": "#eeeee6",
+                    "primary-fixed-dim": "#54e24e",
+                    "secondary-container": "#e4e3da",
+                    "on-tertiary-container": "#18484a",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed": "#e4e3da",
+                    "primary": "#006e0d",
+                    "surface-container-highest": "#e3e3db",
+                    "on-secondary-container": "#64655e",
+                    "surface-variant": "#e3e3db",
+                    "tertiary-container": "#88b6b8",
+                    "tertiary": "#396668",
+                    "on-secondary-fixed": "#1b1c17",
+                    "surface-tint": "#006e0d",
+                    "on-surface-variant": "#3d4a39",
+                    "surface": "#fafaf2",
+                    "on-background": "#1a1c18",
+                    "surface-container-low": "#f4f4ec",
+                    "secondary-fixed-dim": "#c8c7bf",
+                    "on-tertiary-fixed": "#002021",
+                    "inverse-primary": "#54e24e",
+                    "background": "#fafaf2",
+                    "outline": "#6d7b68",
+                    "on-surface": "#1a1c18",
+                    "on-primary-fixed-variant": "#005307",
+                    "outline-variant": "#bccbb4",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#002201",
+                    "inverse-surface": "#2f312c",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f1f1e9",
+                    "tertiary-fixed": "#bcebed",
+                    "on-tertiary-fixed-variant": "#1f4d50",
+                    "tertiary-fixed-dim": "#a0cfd1",
+                    "primary-fixed": "#75ff69",
+                    "on-secondary-fixed-variant": "#474741",
+                    "primary-container": "#37c837",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#004d06",
+                    "surface-container-high": "#e8e9e1",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#dadad3",
+                    "surface-bright": "#fafaf2",
+                    "secondary": "#5e5f58"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "12px",
+                    "stack-lg": "24px",
+                    "stack-sm": "8px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "24px",
+                    "stack-md": "16px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "headline-md": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "400"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "600"}],
+                    "label-lg": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .pin-dot {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .pin-dot.active {
+            background-color: #006e0d;
+            transform: scale(1.2);
+        }
+        .numpad-btn:active {
+            background-color: rgba(0, 110, 13, 0.1);
+            transform: scale(0.95);
+        }
+        .ripple-btn {
+            position: relative;
+            overflow: hidden;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-hidden">
+<!-- Header (No Navigation for Focused Task) -->
+<header class="flex items-center px-margin-mobile py-6">
+<button aria-label="Go back" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center px-margin-mobile pt-4 pb-12 w-full max-w-md mx-auto">
+<!-- Instructional Header -->
+<div class="text-center mb-stack-lg animate-in fade-in slide-in-from-bottom-4 duration-700">
+<h1 class="font-headline-md-mobile text-headline-md-mobile text-on-background mb-2">Set a Secure 4-Digit PIN</h1>
+<p class="font-body-md text-body-md text-on-surface-variant px-8">This PIN will be used for all transactions and secure logins.</p>
+</div>
+<!-- PIN Indicator Section -->
+<div class="flex gap-6 mb-12" id="pin-container">
+<div class="pin-dot w-4 h-4 rounded-full border-2 border-outline-variant bg-transparent"></div>
+<div class="pin-dot w-4 h-4 rounded-full border-2 border-outline-variant bg-transparent"></div>
+<div class="pin-dot w-4 h-4 rounded-full border-2 border-outline-variant bg-transparent"></div>
+<div class="pin-dot w-4 h-4 rounded-full border-2 border-outline-variant bg-transparent"></div>
+</div>
+<!-- Biometric Toggle -->
+<div class="w-full bg-surface-container-low rounded-[24px] p-4 flex items-center justify-between mb-10 transition-all hover:bg-surface-container">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">fingerprint</span>
+<span class="font-body-md text-body-md text-on-surface">Enable Fingerprint Login</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Numeric Keypad Grid -->
+<div class="grid grid-cols-3 gap-y-4 gap-x-8 w-full max-w-[320px] mb-12">
+<!-- Row 1 -->
+<button class="numpad-btn h-16 w-16 mx-auto flex items-center justify-center rounded-full text-title-lg font-title-lg text-on-surface transition-all" onclick="addDigit('1')">1</button>
+<button class="numpad-btn h-16 w-16 mx-auto flex items-center justify-center rounded-full text-title-lg font-title-lg text-on-surface transition-all" onclick="addDigit('2')">2</button>
+<button class="numpad-btn h-16 w-16 mx-auto flex items-center justify-center rounded-full text-title-lg font-title-lg text-on-surface transition-all" onclick="addDigit('3')">3</button>
+<!-- Row 2 -->
+<button class="numpad-btn h-16 w-16 mx-auto flex items-center justify-center rounded-full text-title-lg font-title-lg text-on-surface transition-all" onclick="addDigit('4')">4</button>
+<button class="numpad-btn h-16 w-16 mx-auto flex items-center justify-center rounded-full text-title-lg font-title-lg text-on-surface transition-all" onclick="addDigit('5')">5</button>
+<button class="numpad-btn h-16 w-16 mx-auto flex items-center justify-center rounded-full text-title-lg font-title-lg text-on-surface transition-all" onclick="addDigit('6')">6</button>
+<!-- Row 3 -->
+<button class="numpad-btn h-16 w-16 mx-auto flex items-center justify-center rounded-full text-title-lg font-title-lg text-on-surface transition-all" onclick="addDigit('7')">7</button>
+<button class="numpad-btn h-16 w-16 mx-auto flex items-center justify-center rounded-full text-title-lg font-title-lg text-on-surface transition-all" onclick="addDigit('8')">8</button>
+<button class="numpad-btn h-16 w-16 mx-auto flex items-center justify-center rounded-full text-title-lg font-title-lg text-on-surface transition-all" onclick="addDigit('9')">9</button>
+<!-- Row 4 -->
+<div class="h-16 w-16"></div>
+<button class="numpad-btn h-16 w-16 mx-auto flex items-center justify-center rounded-full text-title-lg font-title-lg text-on-surface transition-all" onclick="addDigit('0')">0</button>
+<button class="numpad-btn h-16 w-16 mx-auto flex items-center justify-center rounded-full text-on-surface transition-all" onclick="removeDigit()">
+<span class="material-symbols-outlined">backspace</span>
+</button>
+</div>
+<!-- Action Button -->
+<button class="w-full h-14 bg-primary text-on-primary font-title-md text-title-md rounded-[24px] shadow-lg disabled:bg-outline-variant disabled:shadow-none transition-all active:scale-95 flex items-center justify-center gap-2" disabled="" id="confirm-btn">
+<span>Confirm PIN</span>
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+</button>
+</main>
+<script>
+        let currentPin = "";
+        const dots = document.querySelectorAll('.pin-dot');
+        const confirmBtn = document.getElementById('confirm-btn');
+
+        function updateUI() {
+            dots.forEach((dot, index) => {
+                if (index < currentPin.length) {
+                    dot.classList.add('active', 'border-primary');
+                    dot.classList.remove('border-outline-variant');
+                } else {
+                    dot.classList.remove('active', 'border-primary');
+                    dot.classList.add('border-outline-variant');
+                }
+            });
+
+            confirmBtn.disabled = currentPin.length !== 4;
+            
+            if (currentPin.length === 4) {
+                confirmBtn.classList.add('bg-primary-container', 'text-on-primary-container');
+                confirmBtn.classList.remove('bg-primary', 'text-on-primary');
+            } else {
+                confirmBtn.classList.add('bg-primary', 'text-on-primary');
+                confirmBtn.classList.remove('bg-primary-container', 'text-on-primary-container');
+            }
+        }
+
+        function addDigit(digit) {
+            if (currentPin.length < 4) {
+                currentPin += digit;
+                updateUI();
+                
+                // Haptic feedback simulation
+                if (window.navigator.vibrate) {
+                    window.navigator.vibrate(10);
+                }
+            }
+        }
+
+        function removeDigit() {
+            if (currentPin.length > 0) {
+                currentPin = currentPin.slice(0, -1);
+                updateUI();
+            }
+        }
+
+        confirmBtn.addEventListener('click', () => {
+            if (currentPin.length === 4) {
+                confirmBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Processing...';
+                setTimeout(() => {
+                    confirmBtn.innerHTML = 'PIN Set Successfully!';
+                    confirmBtn.classList.replace('bg-primary-container', 'bg-primary');
+                    confirmBtn.classList.replace('text-on-primary-container', 'text-on-primary');
+                    alert("MPIN successfully updated. Redirecting to dashboard...");
+                }, 1500);
+            }
+        });
+
+        // Physical Keyboard Support
+        document.addEventListener('keydown', (e) => {
+            if (e.key >= '0' && e.key <= '9') addDigit(e.key);
+            if (e.key === 'Backspace') removeDigit();
+            if (e.key === 'Enter' && currentPin.length === 4) confirmBtn.click();
+        });
+    </script>
+</body></html>

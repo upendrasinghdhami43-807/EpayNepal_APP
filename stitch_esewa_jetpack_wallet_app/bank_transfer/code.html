@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bank Transfer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#37c837",
+                        "tertiary-fixed-dim": "#a0cfd1",
+                        "outline": "#6d7b68",
+                        "inverse-on-surface": "#f1f1e9",
+                        "surface-dim": "#dadad3",
+                        "on-secondary-fixed": "#1b1c17",
+                        "on-primary-container": "#004d06",
+                        "background": "#fafaf2",
+                        "tertiary-container": "#88b6b8",
+                        "tertiary-fixed": "#bcebed",
+                        "surface-variant": "#e3e3db",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e3e3db",
+                        "secondary-fixed-dim": "#c8c7bf",
+                        "tertiary": "#396668",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed": "#002201",
+                        "on-tertiary-fixed-variant": "#1f4d50",
+                        "surface-container-low": "#f4f4ec",
+                        "inverse-surface": "#2f312c",
+                        "primary-fixed": "#75ff69",
+                        "on-tertiary-container": "#18484a",
+                        "surface-bright": "#fafaf2",
+                        "primary-fixed-dim": "#54e24e",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e8e9e1",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#1a1c18",
+                        "surface": "#fafaf2",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#006e0d",
+                        "on-surface-variant": "#3d4a39",
+                        "secondary-fixed": "#e4e3da",
+                        "secondary": "#5e5f58",
+                        "outline-variant": "#bccbb4",
+                        "secondary-container": "#e4e3da",
+                        "on-secondary-fixed-variant": "#474741",
+                        "on-tertiary-fixed": "#002021",
+                        "surface-container": "#eeeee6",
+                        "on-primary-fixed-variant": "#005307",
+                        "on-secondary-container": "#64655e",
+                        "on-surface": "#1a1c18",
+                        "inverse-primary": "#54e24e",
+                        "primary": "#006e0d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "margin-desktop": "24px",
+                        "stack-sm": "8px",
+                        "stack-lg": "24px",
+                        "margin-mobile": "16px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "400" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "600" }],
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "headline-md": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "label-lg": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1px", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen pb-24 font-body-md">
+<div class="fixed top-0 left-0 w-full z-50 bg-primary dark:bg-primary text-on-primary dark:text-on-primary rounded-b-3xl flex justify-between items-center px-margin-mobile py-4 shadow-none">
+<div class="flex items-center gap-3">
+<button aria-label="Go back" class="text-on-primary p-2 -ml-2 rounded-full hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="text-title-lg font-title-lg font-bold">Bank Transfer</h1>
+</div>
+<div class="flex items-center">
+<button aria-label="Notifications" class="text-on-primary p-2 -mr-2 rounded-full hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</div>
+<main class="pt-[90px] px-margin-mobile max-w-md mx-auto space-y-stack-lg">
+<section class="space-y-stack-md">
+<h2 class="text-title-md font-title-md text-on-surface">Select Bank</h2>
+<div class="relative w-full">
+<div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</div>
+<input class="w-full bg-surface-container text-on-surface placeholder:text-on-surface-variant pl-12 pr-4 py-3 rounded-full border-none focus:ring-2 focus:ring-primary-container outline-none transition-shadow text-body-lg font-body-lg" placeholder="Search banks..." type="text"/>
+</div>
+<div class="grid grid-cols-4 gap-gutter mt-stack-md overflow-x-auto pb-2 snap-x">
+<button class="flex flex-col items-center gap-2 snap-start flex-shrink-0 group">
+<div class="w-[60px] h-[60px] bg-surface-container-lowest rounded-2xl shadow-sm border border-surface-variant flex items-center justify-center group-hover:border-primary-container transition-colors relative overflow-hidden">
+<img class="w-10 h-10 object-contain" data-alt="A highly detailed, professional logo for a fictional bank called 'Global Trust'. The logo features a minimalist, geometric globe icon in a modern corporate style, primarily utilizing a deep, trustworthy blue palette. The design is sleek, vector-like, set against a pure white background to mimic a high-end fintech app asset." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcuGVc1Zck9S09QnE1FT-eSv5j9ZHvB9-nWtiW0sfhzm4rED46ImeskPXG2-bCYemlW6zfs43J6raOwzEb3FAdbix3NPSeKIZ20AwVMMUCfykHuDBfgVGpU-Eix0HbEHWl6pR63uNHCJa65bBBs5ckHqXdZsozfUWSgVhDCeYuGaEmCgj9ptRtVTIWwyIUA6izz2Vs3s1AvRY2oJ5qQwDhUxL5N5o0Mf0wd0P15flJu7S9sGlAzlhc_g"/>
+</div>
+<span class="text-label-lg font-label-lg text-on-surface-variant text-center w-full truncate">Global Trust</span>
+</button>
+<button class="flex flex-col items-center gap-2 snap-start flex-shrink-0 group">
+<div class="w-[60px] h-[60px] bg-surface-container-lowest rounded-2xl shadow-sm border border-surface-variant flex items-center justify-center group-hover:border-primary-container transition-colors relative overflow-hidden">
+<img class="w-10 h-10 object-contain" data-alt="A highly detailed, professional logo for a fictional bank called 'First Standard'. The logo features a stylized, abstract 'S' shaped shield icon. The design is sleek, vector-like, set against a pure white background. The color palette incorporates professional financial greens and dark greys." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAHmNrc0u1sB9kkUb4vISP2wqGUfFOIGPA1_mSaTtHb-GnCGWOw36E1pm-nKDfX-KnAgVJEsb5eBY5-pjofNUDKvm1j0ftsu4psblNJz7kbSbmPZjGhsJeRgwO9zNS3BGB6IetIGjLhIJN3o4na_DvrOdSNp77R4itAp66fRXpKPLh6m-VRnBe_s36JMYKrprWNshzh6XVUN1639Az7_61mLklCOE8wQsgnCNwaHk4_QyUDzb-Yi5mdQ"/>
+</div>
+<span class="text-label-lg font-label-lg text-on-surface-variant text-center w-full truncate">First Std</span>
+</button>
+<button class="flex flex-col items-center gap-2 snap-start flex-shrink-0 group">
+<div class="w-[60px] h-[60px] bg-surface-container-lowest rounded-2xl shadow-sm border border-surface-variant flex items-center justify-center group-hover:border-primary-container transition-colors relative overflow-hidden">
+<img class="w-10 h-10 object-contain" data-alt="A highly detailed, professional logo for a fictional bank called 'Metro Finance'. The logo features an abstract cityscape skyline integrated with an upward trending arrow. The design is clean, minimalist, set against a white background, using a modern tech-forward palette of cyan and deep navy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFFv1oZPoOt_x8xSGVHg7ZUGc_JJP8LKCE8BJh7yWuXT58llQkiRc7sKfwT7pIxZgNryH1qQ_pa3p_TkZ91_839pfzqbY73ae3Jb1KqtI1L0DpJXpDes6l6NCepMURqv-xqy1WbWTOCA10UxiMv0LE30xe8EXGaJXV49Nplsek2pWfVvpG-NgDh-VSDwwIhzpJHs5pc_VCs4tOWpPSJ7vi9OSs2jrwuql2tMZgF_Ruwrtrmxv3RfyXcg"/>
+</div>
+<span class="text-label-lg font-label-lg text-on-surface-variant text-center w-full truncate">Metro Fin</span>
+</button>
+<button class="flex flex-col items-center gap-2 snap-start flex-shrink-0 group">
+<div class="w-[60px] h-[60px] bg-surface-container-lowest rounded-2xl shadow-sm border border-surface-variant flex items-center justify-center group-hover:border-primary-container transition-colors">
+<span class="material-symbols-outlined text-outline text-[32px]" data-icon="account_balance">account_balance</span>
+</div>
+<span class="text-label-lg font-label-lg text-on-surface-variant text-center w-full truncate">All Banks</span>
+</button>
+</div>
+</section>
+<section class="bg-surface-container-lowest p-5 rounded-[24px] shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-surface-variant space-y-stack-md">
+<h2 class="text-title-md font-title-md text-on-surface">Transfer Details</h2>
+<div class="space-y-4">
+<div>
+<label class="block text-label-lg font-label-lg text-on-surface-variant mb-1 ml-2">Account Number</label>
+<input class="w-full bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/50 px-4 py-3 rounded-xl border border-transparent focus:border-primary-container focus:bg-surface-container-lowest focus:ring-0 transition-colors text-body-lg font-body-lg" placeholder="Enter 10-12 digit account number" type="number"/>
+</div>
+<div>
+<label class="block text-label-lg font-label-lg text-on-surface-variant mb-1 ml-2">Account Holder Name</label>
+<input class="w-full bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/50 px-4 py-3 rounded-xl border border-transparent focus:border-primary-container focus:bg-surface-container-lowest focus:ring-0 transition-colors text-body-lg font-body-lg" placeholder="e.g. John Doe" type="text"/>
+</div>
+<div>
+<label class="block text-label-lg font-label-lg text-on-surface-variant mb-1 ml-2">Amount</label>
+<div class="relative w-full">
+<div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-on-surface font-title-md">
+                            $
+                        </div>
+<input class="w-full bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/50 pl-8 pr-4 py-3 rounded-xl border border-transparent focus:border-primary-container focus:bg-surface-container-lowest focus:ring-0 transition-colors text-title-lg font-title-lg font-semibold tracking-tight" placeholder="0.00" type="number"/>
+</div>
+</div>
+</div>
+</section>
+<section class="space-y-stack-sm pb-8">
+<h2 class="text-title-md font-title-md text-on-surface">Saved Accounts</h2>
+<div class="flex flex-col gap-3">
+<button class="bg-surface-container-lowest p-4 rounded-[24px] shadow-sm flex items-center gap-4 hover:bg-surface-container-low transition-colors border border-surface-variant/50 active:scale-[0.98]">
+<div class="w-12 h-12 bg-tertiary-container text-on-tertiary-container rounded-xl flex items-center justify-center shrink-0 font-title-lg">
+                        SJ
+                    </div>
+<div class="flex-1 text-left">
+<p class="text-body-lg font-body-lg font-medium text-on-surface">Sarah Jenkins</p>
+<p class="text-body-md font-body-md text-on-surface-variant">Global Trust •••• 4589</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="bg-surface-container-lowest p-4 rounded-[24px] shadow-sm flex items-center gap-4 hover:bg-surface-container-low transition-colors border border-surface-variant/50 active:scale-[0.98]">
+<div class="w-12 h-12 bg-primary-container text-on-primary-container rounded-xl flex items-center justify-center shrink-0 font-title-lg">
+                        M
+                    </div>
+<div class="flex-1 text-left">
+<p class="text-body-lg font-body-lg font-medium text-on-surface">Mom</p>
+<p class="text-body-md font-body-md text-on-surface-variant">First Standard •••• 1204</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</section>
+</main>
+<div class="fixed bottom-0 left-0 w-full p-4 bg-gradient-to-t from-background via-background/95 to-transparent z-40">
+<div class="max-w-md mx-auto">
+<button class="w-full bg-[#37C837] text-white h-[56px] rounded-full text-title-md font-title-md shadow-[0_4px_12px_rgba(55,200,55,0.3)] hover:bg-[#32b532] active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                Proceed
+                <span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</body></html>

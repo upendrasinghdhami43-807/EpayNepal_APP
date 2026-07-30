@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Travel &amp; Ticketing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#37c837",
+                        "tertiary-fixed-dim": "#a0cfd1",
+                        "outline": "#6d7b68",
+                        "inverse-on-surface": "#f1f1e9",
+                        "surface-dim": "#dadad3",
+                        "on-secondary-fixed": "#1b1c17",
+                        "on-primary-container": "#004d06",
+                        "background": "#fafaf2",
+                        "tertiary-container": "#88b6b8",
+                        "tertiary-fixed": "#bcebed",
+                        "surface-variant": "#e3e3db",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e3e3db",
+                        "secondary-fixed-dim": "#c8c7bf",
+                        "tertiary": "#396668",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed": "#002201",
+                        "on-tertiary-fixed-variant": "#1f4d50",
+                        "surface-container-low": "#f4f4ec",
+                        "inverse-surface": "#2f312c",
+                        "primary-fixed": "#75ff69",
+                        "on-tertiary-container": "#18484a",
+                        "surface-bright": "#fafaf2",
+                        "primary-fixed-dim": "#54e24e",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e8e9e1",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#1a1c18",
+                        "surface": "#fafaf2",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#006e0d",
+                        "on-surface-variant": "#3d4a39",
+                        "secondary-fixed": "#e4e3da",
+                        "secondary": "#5e5f58",
+                        "outline-variant": "#bccbb4",
+                        "secondary-container": "#e4e3da",
+                        "on-secondary-fixed-variant": "#474741",
+                        "on-tertiary-fixed": "#002021",
+                        "surface-container": "#eeeee6",
+                        "on-primary-fixed-variant": "#005307",
+                        "on-secondary-container": "#64655e",
+                        "on-surface": "#1a1c18",
+                        "inverse-primary": "#54e24e",
+                        "primary": "#006e0d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "margin-desktop": "24px",
+                        "stack-sm": "8px",
+                        "stack-lg": "24px",
+                        "margin-mobile": "16px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "400" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "600" }],
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "headline-md": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "label-lg": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1px", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .ripple-effect {
+            position: relative;
+            overflow: hidden;
+            transform: translate3d(0, 0, 0);
+        }
+        .ripple-effect::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            background-image: radial-gradient(circle, #000 10%, transparent 10.01%);
+            background-repeat: no-repeat;
+            background-position: 50%;
+            transform: scale(10, 10);
+            opacity: 0;
+            transition: transform .5s, opacity 1s;
+        }
+        .ripple-effect:active::after {
+            transform: scale(0, 0);
+            opacity: .2;
+            transition: 0s;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="bg-primary text-on-primary docked full-width top-0 rounded-b-[24px] shadow-none flex justify-between items-center w-full px-margin-mobile py-4 z-40 sticky">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden border-2 border-white/20">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="A small, professional portrait photograph of an individual, suitable for a user avatar in a modern light-mode fintech or travel application. Neutral lighting, clean white background, high resolution." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl8JGu_S799JPnQcKcQJRCHoFQjZjTvU2HJKS7dkr1fZQFroSyjk4PspOdr7fhMAEKoy84-JaC6l-HTpXkq1bPoJrxWCQFiivxOJVmrpr-P6P7j20lQswv6UCuhVXUPcgJ4_g48RqF1SKjIQzkP0I87lbmIaHfZIfO9M6dCFy7ZyCMQAP-lLmtFRMJ1IplBHjMKsn0HAZgjqT0jCYEi1AGeanf7gMl70gsHQaZTMtqusOn9tnN_TdpiA"/>
+</div>
+<h1 class="text-headline-md-mobile md:text-headline-md font-headline-md-mobile md:font-headline-md font-bold text-on-primary">Hi, Upendra</h1>
+</div>
+<button class="w-10 h-10 rounded-full hover:bg-primary-container/20 flex items-center justify-center transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="notifications" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+</header>
+<main class="flex-grow flex flex-col w-full max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg gap-stack-lg">
+<!-- Featured Banner -->
+<section class="w-full relative rounded-[24px] overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.08)] bg-surface-container-lowest h-48 md:h-64 flex-shrink-0 cursor-pointer ripple-effect">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-transparent z-10 p-6 flex flex-col justify-center">
+<span class="bg-white/20 text-white text-label-lg font-label-lg px-2 py-1 rounded w-max mb-2 backdrop-blur-sm border border-white/30">Special Offer</span>
+<h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-white mb-2 leading-tight">Fly to Pokhara<br/>Get 20% Cashback</h2>
+<p class="text-body-md font-body-md text-white/90">Book domestic flights via primary wallet.</p>
+</div>
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A breathtaking, cinematic wide shot of a commercial airplane soaring above the snow-capped Himalayan mountains. Crisp morning light, deep blue sky, bright white snow. The scene conveys travel, freedom, and premium experience, fitting for a modern light-mode travel app hero banner." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBIhCSmVfaCssh0Aqm6LU9wbp73DK5CacYI5XO7SVcRUrOvXrnoNIj2hFGpfemkAwh3UUguZYXgr9I5ts7ICyRB2N_BQINN44i01VqMw82fRKiRq5M8BdqTuOxhmpY_6fFl62q_2m6nCmKOTTCrht1zYbFHoZYI0DSYhj6ql5S9LvcrjK5foESm1nCPWwNroeXFAlrllvIssPUHXOu_rzzjnFUCCNk2AUnJKTjX5KYBr8j12yJdfrMIpQ')"></div>
+</section>
+<!-- Main Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+<!-- Travel Category -->
+<section class="flex flex-col gap-stack-sm">
+<h3 class="text-label-lg font-label-lg text-on-surface-variant uppercase tracking-wider pl-2">Travel</h3>
+<div class="grid grid-cols-2 gap-gutter">
+<!-- Domestic Flights -->
+<button class="bg-surface-container-lowest rounded-[24px] p-4 flex flex-col items-center justify-center gap-3 shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_16px_rgba(0,0,0,0.08)] transition-all active:scale-[0.98] ripple-effect h-28 border border-outline-variant/30">
+<div class="w-12 h-12 rounded-[12px] bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]" data-icon="flight" style="font-variation-settings: 'FILL' 1;">flight</span>
+</div>
+<span class="text-title-md font-title-md text-on-surface text-center">Domestic</span>
+</button>
+<!-- Intl Flights -->
+<button class="bg-surface-container-lowest rounded-[24px] p-4 flex flex-col items-center justify-center gap-3 shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_16px_rgba(0,0,0,0.08)] transition-all active:scale-[0.98] ripple-effect h-28 border border-outline-variant/30">
+<div class="w-12 h-12 rounded-[12px] bg-tertiary-container/30 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[28px]" data-icon="flight_takeoff" style="font-variation-settings: 'FILL' 1;">flight_takeoff</span>
+</div>
+<span class="text-title-md font-title-md text-on-surface text-center">International</span>
+</button>
+<!-- Bus Tickets -->
+<button class="bg-surface-container-lowest rounded-[24px] p-4 flex flex-col items-center justify-center gap-3 shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_16px_rgba(0,0,0,0.08)] transition-all active:scale-[0.98] ripple-effect h-28 border border-outline-variant/30">
+<div class="w-12 h-12 rounded-[12px] bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]" data-icon="directions_bus" style="font-variation-settings: 'FILL' 1;">directions_bus</span>
+</div>
+<span class="text-title-md font-title-md text-on-surface text-center">Bus Tickets</span>
+</button>
+<!-- Hotels -->
+<button class="bg-surface-container-lowest rounded-[24px] p-4 flex flex-col items-center justify-center gap-3 shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_16px_rgba(0,0,0,0.08)] transition-all active:scale-[0.98] ripple-effect h-28 border border-outline-variant/30">
+<div class="w-12 h-12 rounded-[12px] bg-tertiary-container/30 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[28px]" data-icon="hotel" style="font-variation-settings: 'FILL' 1;">hotel</span>
+</div>
+<span class="text-title-md font-title-md text-on-surface text-center">Hotels</span>
+</button>
+</div>
+</section>
+<!-- Entertainment Category -->
+<section class="flex flex-col gap-stack-sm">
+<h3 class="text-label-lg font-label-lg text-on-surface-variant uppercase tracking-wider pl-2">Entertainment</h3>
+<div class="grid grid-cols-2 gap-gutter">
+<!-- Movies -->
+<button class="bg-surface-container-lowest rounded-[24px] p-4 flex flex-col items-center justify-center gap-3 shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_16px_rgba(0,0,0,0.08)] transition-all active:scale-[0.98] ripple-effect h-28 border border-outline-variant/30 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="w-12 h-12 rounded-[12px] bg-surface-variant flex items-center justify-center text-on-surface-variant z-10">
+<span class="material-symbols-outlined text-[28px]" data-icon="movie" style="font-variation-settings: 'FILL' 1;">movie</span>
+</div>
+<div class="flex flex-col items-center z-10">
+<span class="text-title-md font-title-md text-on-surface text-center">Movies</span>
+<span class="text-[10px] text-on-surface-variant">QFX, Big Movies</span>
+</div>
+</button>
+<!-- Events -->
+<button class="bg-surface-container-lowest rounded-[24px] p-4 flex flex-col items-center justify-center gap-3 shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_16px_rgba(0,0,0,0.08)] transition-all active:scale-[0.98] ripple-effect h-28 border border-outline-variant/30">
+<div class="w-12 h-12 rounded-[12px] bg-surface-variant flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[28px]" data-icon="local_activity" style="font-variation-settings: 'FILL' 1;">local_activity</span>
+</div>
+<span class="text-title-md font-title-md text-on-surface text-center">Events</span>
+</button>
+<!-- Cable Car -->
+<button class="bg-surface-container-lowest rounded-[24px] p-4 flex flex-col items-center justify-center gap-3 shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_16px_rgba(0,0,0,0.08)] transition-all active:scale-[0.98] ripple-effect h-28 border border-outline-variant/30 col-span-2">
+<div class="flex items-center gap-4 w-full">
+<div class="w-12 h-12 rounded-[12px] bg-primary-container/20 flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[28px]" data-icon="tram" style="font-variation-settings: 'FILL' 1;">tram</span>
+</div>
+<div class="flex flex-col flex-grow text-left">
+<span class="text-title-md font-title-md text-on-surface">Cable Car</span>
+<span class="text-label-lg font-label-lg text-on-surface-variant">Chandragiri, Manakamana</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+</button>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface text-primary fixed bottom-0 left-0 w-full z-50 flex justify-around items-end px-2 pb-2 h-20 rounded-t-xl border-t-0 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] md:hidden">
+<!-- Home (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant px-4 py-1 hover:bg-secondary-container/50 rounded-lg transition-colors ripple-effect" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home" style="font-variation-settings: 'FILL' 0;">home</span>
+<span class="text-label-lg font-label-lg">Home</span>
+</a>
+<!-- Statement (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant px-4 py-1 hover:bg-secondary-container/50 rounded-lg transition-colors ripple-effect" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="receipt_long" style="font-variation-settings: 'FILL' 0;">receipt_long</span>
+<span class="text-label-lg font-label-lg">Statement</span>
+</a>
+<!-- QR (Inactive - FAB style for prominence) -->
+<a class="flex flex-col items-center justify-center px-4 py-1 -mt-6" href="#">
+<div class="bg-primary text-on-primary w-14 h-14 rounded-[16px] flex items-center justify-center shadow-[0_8px_16px_rgba(0,110,13,0.3)] ripple-effect active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="qr_code_scanner" style="font-variation-settings: 'FILL' 0;">qr_code_scanner</span>
+</div>
+<span class="text-[10px] font-medium text-on-surface mt-1">QR</span>
+</a>
+<!-- Support (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant px-4 py-1 hover:bg-secondary-container/50 rounded-lg transition-colors ripple-effect" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="help" style="font-variation-settings: 'FILL' 0;">help</span>
+<span class="text-label-lg font-label-lg">Support</span>
+</a>
+<!-- More (Active intent for Explore/Hub) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 hover:bg-secondary-container/50 transition-colors ripple-effect" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="more_horiz" style="font-variation-settings: 'FILL' 1;">more_horiz</span>
+<span class="text-label-lg font-label-lg">More</span>
+</a>
+</nav>
+</body></html>

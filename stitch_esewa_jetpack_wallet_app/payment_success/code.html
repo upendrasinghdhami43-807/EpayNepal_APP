@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Transaction Successful</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#1a1c18",
+                        "surface-container": "#eeeee6",
+                        "tertiary-fixed-dim": "#a0cfd1",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#64655e",
+                        "outline-variant": "#bccbb4",
+                        "on-primary-fixed": "#002201",
+                        "surface-variant": "#e3e3db",
+                        "inverse-on-surface": "#f1f1e9",
+                        "inverse-surface": "#2f312c",
+                        "on-tertiary-container": "#18484a",
+                        "surface-container-low": "#f4f4ec",
+                        "primary-fixed": "#75ff69",
+                        "secondary-fixed": "#e4e3da",
+                        "on-secondary-fixed-variant": "#474741",
+                        "surface-container-high": "#e8e9e1",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#54e24e",
+                        "tertiary-container": "#88b6b8",
+                        "secondary": "#5e5f58",
+                        "on-secondary-fixed": "#1b1c17",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#bcebed",
+                        "surface-dim": "#dadad3",
+                        "surface-bright": "#fafaf2",
+                        "primary-container": "#37c837",
+                        "on-tertiary-fixed": "#002021",
+                        "secondary-container": "#e4e3da",
+                        "on-tertiary": "#ffffff",
+                        "background": "#fafaf2",
+                        "on-surface-variant": "#3d4a39",
+                        "surface": "#fafaf2",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#004d06",
+                        "secondary-fixed-dim": "#c8c7bf",
+                        "primary-fixed-dim": "#54e24e",
+                        "outline": "#6d7b68",
+                        "on-surface": "#1a1c18",
+                        "surface-tint": "#006e0d",
+                        "on-tertiary-fixed-variant": "#1f4d50",
+                        "tertiary": "#396668",
+                        "surface-container-highest": "#e3e3db",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#005307",
+                        "primary": "#006e0d",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "gutter": "12px",
+                        "stack-lg": "24px",
+                        "margin-desktop": "24px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400" }],
+                        "label-lg": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "400" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "600" }],
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen">
+<!-- Top App Bar (Linear/Transactional variant, custom back button, no standard shell) -->
+<header class="bg-primary text-on-primary w-full px-margin-mobile py-4 flex justify-between items-center z-10 rounded-b-[24px]">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-primary-container/20 rounded-full transition-colors ripple-effect">
+<span class="material-symbols-outlined text-on-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="text-title-lg font-title-lg text-on-primary">Transaction</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-primary-container/20 rounded-full transition-colors ripple-effect">
+<span class="material-symbols-outlined text-on-primary" data-icon="picture_as_pdf">picture_as_pdf</span>
+</button>
+<button class="p-2 hover:bg-primary-container/20 rounded-full transition-colors ripple-effect">
+<span class="material-symbols-outlined text-on-primary" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 -mt-6 px-margin-mobile pb-stack-lg z-0">
+<!-- Success Card -->
+<div class="bg-surface-container-lowest rounded-[24px] shadow-sm pt-8 pb-6 px-4 flex flex-col items-center text-center relative z-20">
+<p class="text-title-md font-title-md text-on-surface-variant mb-6">Payment Successful!</p>
+<div class="w-16 h-16 rounded-full bg-primary-container/20 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary-container text-4xl" data-icon="check_circle" data-weight="fill">check_circle</span>
+</div>
+<div class="flex items-baseline gap-1 mb-2">
+<span class="text-title-lg font-title-lg text-on-surface font-bold">NPR</span>
+<span class="text-headline-lg font-headline-lg text-on-surface font-bold">5.00</span>
+</div>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-1">Fund Transferred to Lalita Kumari Dhami</p>
+<p class="text-label-lg font-label-lg text-secondary mb-6 tracking-widest uppercase">27 JUL, 2026 10:51 PM</p>
+<button class="flex items-center gap-1 text-primary font-title-md text-title-md mb-8 hover:text-primary/80 transition-colors">
+                View Details
+                <span class="material-symbols-outlined bg-primary-container/20 rounded-full p-1 text-[16px]" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Transaction Info -->
+<div class="w-full flex flex-col gap-stack-sm">
+<div class="bg-surface-container-low rounded-xl p-4 flex justify-between items-center">
+<span class="text-body-md font-body-md text-on-surface-variant">Transaction Code</span>
+<div class="flex items-center gap-2">
+<span class="text-body-lg font-body-lg text-on-surface font-medium">1N7UKSX</span>
+<button class="text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+</div>
+<!-- Action Items -->
+<button class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex justify-between items-center hover:bg-surface-container-low transition-colors w-full text-left">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[24px]" data-icon="call_split">call_split</span>
+<span class="text-body-lg font-body-lg text-on-surface font-medium">Split payment with friends?</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="bg-surface-container-lowest rounded-xl p-4 flex items-center gap-4 hover:bg-surface-container-low transition-colors w-full text-left group">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center group-hover:bg-primary-container/20 transition-colors">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container text-[20px]" data-icon="add">add</span>
+</div>
+</div>
+<div>
+<p class="text-body-lg font-body-lg text-on-surface font-medium">Add expense category</p>
+<p class="text-body-md font-body-md text-on-surface-variant">This will help organize your expenses.</p>
+</div>
+</button>
+</div>
+</div>
+<!-- Primary Action Button -->
+<div class="mt-stack-lg">
+<button class="w-full bg-primary-container text-on-primary-container text-title-md font-title-md font-bold py-4 rounded-xl hover:bg-primary-container/90 active:scale-[0.98] transition-all shadow-md">
+                DONE
+            </button>
+</div>
+<!-- Promotional Banner -->
+<div class="mt-stack-md rounded-xl overflow-hidden shadow-sm relative h-32">
+<img alt="Book International Flights Promo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDn-WwI8PqKrZfrucOtbQoV9F786hqeFNmqqOh1CLJNb1V30o1sCwd1-Cm0iPKwr6MoAD4jJX54a9OaEz1OPQcZn8glA_mMT_qDZJGkExe2jXMtLtuJu73-uc9Kz8lGkH_xjypYGkHdGeBQFqYIgw1iqI-sIVpOkI3B-PbaeNHO1ECATYuqljEyRyXsPSOr_49Hd_GlBhO8HeM2NHa0nn7qJ4ApaZxR7AJV5iK6vnODCTECC4KfvO8ioMvCvvZtB0tQgn_pQVls5iEM"/>
+</div>
+</main>
+<!-- Bottom Navigation Suppressed (Linear/Transactional intent) -->
+</body></html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Devices &amp; Credentials</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#f1f1e9",
+                        "inverse-primary": "#54e24e",
+                        "surface": "#fafaf2",
+                        "surface-variant": "#e3e3db",
+                        "inverse-surface": "#2f312c",
+                        "tertiary-fixed": "#bcebed",
+                        "surface-dim": "#dadad3",
+                        "surface-bright": "#fafaf2",
+                        "surface-container-low": "#f4f4ec",
+                        "tertiary-container": "#88b6b8",
+                        "surface-tint": "#006e0d",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#54e24e",
+                        "outline-variant": "#bccbb4",
+                        "primary-fixed": "#75ff69",
+                        "on-surface-variant": "#3d4a39",
+                        "primary-container": "#37c837",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#004d06",
+                        "secondary": "#5e5f58",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#005307",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#e4e3da",
+                        "on-tertiary-container": "#18484a",
+                        "tertiary-fixed-dim": "#a0cfd1",
+                        "surface-container": "#eeeee6",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#474741",
+                        "on-primary-fixed": "#002201",
+                        "on-surface": "#1a1c18",
+                        "on-error": "#ffffff",
+                        "on-background": "#1a1c18",
+                        "outline": "#6d7b68",
+                        "on-secondary-fixed": "#1b1c17",
+                        "on-tertiary-fixed-variant": "#1f4d50",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#002021",
+                        "surface-container-high": "#e8e9e1",
+                        "primary": "#006e0d",
+                        "surface-container-highest": "#e3e3db",
+                        "background": "#fafaf2",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#64655e",
+                        "tertiary": "#396668",
+                        "secondary-fixed-dim": "#c8c7bf",
+                        "secondary-container": "#e4e3da"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "gutter": "12px",
+                        "stack-md": "16px",
+                        "margin-desktop": "24px",
+                        "stack-lg": "24px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "label-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "title-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-lg": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1px", "fontWeight": "500" }],
+                        "headline-md": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "600" }],
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fafaf2; /* surface */
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-24 relative">
+<!-- Top App Bar (Modified for sub-page) -->
+<header class="bg-primary text-on-primary w-full px-margin-mobile py-4 flex items-center shadow-md sticky top-0 z-40 rounded-b-3xl">
+<button class="mr-4 p-2 rounded-full hover:bg-white/20 transition-colors" onclick="history.back()">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="text-title-lg font-title-lg font-bold text-on-primary flex-1">Devices &amp; Credentials</h1>
+</header>
+<main class="px-margin-mobile py-stack-lg max-w-3xl mx-auto space-y-stack-lg">
+<!-- Security Status Banner -->
+<section class="bg-primary-container text-on-primary-container rounded-3xl p-6 shadow-md flex items-center justify-between">
+<div>
+<h2 class="text-title-md font-title-md mb-1">Security Status</h2>
+<p class="text-body-md font-body-md opacity-90">Your account is currently secure.</p>
+</div>
+<div class="bg-white/20 p-3 rounded-full">
+<span class="material-symbols-outlined text-4xl filled-icon" data-icon="shield_person">shield_person</span>
+</div>
+</section>
+<!-- Credentials Management -->
+<section>
+<h3 class="text-label-lg font-label-lg text-on-surface-variant uppercase mb-stack-sm tracking-wider">Credentials</h3>
+<div class="bg-surface-container-lowest rounded-3xl shadow-sm overflow-hidden divide-y divide-surface-variant">
+<!-- Change MPIN -->
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors text-left group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined" data-icon="pin">pin</span>
+</div>
+<div>
+<p class="text-title-md font-title-md text-on-surface">Change MPIN</p>
+<p class="text-body-md font-body-md text-on-surface-variant">Update your mobile banking PIN</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Change Password -->
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors text-left group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined" data-icon="password">password</span>
+</div>
+<div>
+<p class="text-title-md font-title-md text-on-surface">Change Password</p>
+<p class="text-body-md font-body-md text-on-surface-variant">Update your login password</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Biometrics -->
+<div class="w-full flex items-center justify-between p-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="fingerprint">fingerprint</span>
+</div>
+<div>
+<p class="text-title-md font-title-md text-on-surface">Biometric Login</p>
+<p class="text-body-md font-body-md text-on-surface-variant">Use fingerprint or face ID</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Active Devices List -->
+<section>
+<h3 class="text-label-lg font-label-lg text-on-surface-variant uppercase mb-stack-sm tracking-wider">Active Devices</h3>
+<div class="space-y-gutter">
+<!-- Current Device -->
+<div class="bg-surface-container-lowest rounded-3xl p-4 shadow-sm border border-primary/20 relative overflow-hidden">
+<div class="absolute top-0 right-0 bg-primary text-on-primary text-[10px] font-bold px-3 py-1 rounded-bl-xl tracking-wide">THIS DEVICE</div>
+<div class="flex items-start justify-between mt-2">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined filled-icon" data-icon="smartphone">smartphone</span>
+</div>
+<div>
+<p class="text-title-md font-title-md text-on-surface">iPhone 13 Pro</p>
+<p class="text-body-md font-body-md text-on-surface-variant">iOS 16.5 • App v2.4.1</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-label-lg font-label-lg text-primary">Active Now</span>
+<span class="text-label-lg font-label-lg text-on-surface-variant ml-2">• Kathmandu, NP</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Other Device 1 -->
+<div class="bg-surface-container-lowest rounded-3xl p-4 shadow-sm flex items-start justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="laptop_mac">laptop_mac</span>
+</div>
+<div>
+<p class="text-title-md font-title-md text-on-surface">MacBook Air M2</p>
+<p class="text-body-md font-body-md text-on-surface-variant">macOS Web Browser</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="text-label-lg font-label-lg text-on-surface-variant">Last active: Yesterday, 14:30</span>
+</div>
+</div>
+</div>
+<button class="text-error bg-error-container/30 hover:bg-error-container/50 px-3 py-1.5 rounded-lg text-label-lg font-label-lg transition-colors">
+                        Revoke
+                    </button>
+</div>
+<!-- Other Device 2 -->
+<div class="bg-surface-container-lowest rounded-3xl p-4 shadow-sm flex items-start justify-between opacity-75">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="android">android</span>
+</div>
+<div>
+<p class="text-title-md font-title-md text-on-surface">Samsung Galaxy S21</p>
+<p class="text-body-md font-body-md text-on-surface-variant">Android 13 • App v2.4.0</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="text-label-lg font-label-lg text-on-surface-variant">Logged out: 12 Oct 2023</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="flex justify-center mt-stack-lg">
+<button class="flex items-center gap-2 text-primary hover:text-primary-container transition-colors p-2">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="text-title-md font-title-md">Sign out of all devices</span>
+</button>
+</div>
+</main>
+<!-- Suppressed Bottom Navigation because this is a sub-page with a 'Back' action -->
+</body></html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Government Payment</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-primary": "#54e24e",
+                      "primary-container": "#37c837",
+                      "on-surface": "#e4e3da",
+                      "error-container": "#93000a",
+                      "surface-bright": "#3d3e38",
+                      "on-tertiary-fixed": "#002021",
+                      "tertiary-fixed-dim": "#a0cfd1",
+                      "on-error-container": "#ffdad6",
+                      "surface-dim": "#1a1c18",
+                      "primary": "#54e24e",
+                      "on-tertiary": "#003738",
+                      "secondary-container": "#474741",
+                      "on-primary-container": "#75ff69",
+                      "on-secondary-fixed": "#1b1c17",
+                      "secondary": "#c8c7bf",
+                      "on-secondary": "#30312c",
+                      "tertiary-container": "#1f4d50",
+                      "on-primary": "#003904",
+                      "on-secondary-container": "#e4e3da",
+                      "outline-variant": "#43483f",
+                      "on-primary-fixed": "#002201",
+                      "primary-fixed-dim": "#54e24e",
+                      "surface-container-highest": "#383a34",
+                      "surface-container-high": "#2d2f2a",
+                      "inverse-surface": "#e4e3da",
+                      "on-primary-fixed-variant": "#005307",
+                      "on-error": "#690005",
+                      "primary-fixed": "#75ff69",
+                      "outline": "#8c9986",
+                      "on-secondary-fixed-variant": "#474741",
+                      "surface-tint": "#54e24e",
+                      "tertiary": "#a0cfd1",
+                      "on-tertiary-container": "#bcebed",
+                      "surface-variant": "#43483f",
+                      "surface-container-low": "#1d1f1b",
+                      "background": "#1a1c18",
+                      "secondary-fixed-dim": "#c8c7bf",
+                      "on-background": "#e4e3da",
+                      "on-tertiary-fixed-variant": "#1f4d50",
+                      "secondary-fixed": "#e4e3da",
+                      "surface-container": "#21231f",
+                      "error": "#ffb4ab",
+                      "surface-container-lowest": "#131313",
+                      "tertiary-fixed": "#bcebed",
+                      "surface": "#131313",
+                      "on-surface-variant": "#c2c9bc",
+                      "inverse-on-surface": "#30312c"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "12px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "24px",
+                      "stack-md": "16px",
+                      "stack-lg": "24px",
+                      "stack-sm": "8px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "title-md": [
+                              "Inter"
+                      ],
+                      "title-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "label-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "0.5px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.25px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "title-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "0.15px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "title-lg": [
+                              "22px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "57px",
+                              {
+                                      "lineHeight": "64px",
+                                      "letterSpacing": "-0.25px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-lg": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.1px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+          body {
+              font-family: 'Inter', sans-serif;
+          }
+      </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-[#131313] min-h-screen text-on-surface pb-24 md:pb-0">
+<!-- TopAppBar Header -->
+<header class="bg-surface-container-lowest text-on-surface docked full-width top-0 rounded-b-3xl shadow-none flex justify-between items-center w-full px-margin-mobile py-4 z-40 relative">
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-on-surface" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="text-headline-md-mobile font-headline-md-mobile text-on-surface">Govt. Payment</h1>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-on-surface" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+</header>
+<main class="px-margin-mobile md:px-margin-desktop py-stack-lg max-w-3xl mx-auto space-y-stack-lg">
+<!-- Search -->
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-3 border border-outline-variant rounded-full bg-surface-container-low text-body-md font-body-md text-on-surface placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary focus:outline-none transition-shadow" placeholder="Search department or payment type" type="text"/>
+</div>
+<!-- Payment Categories -->
+<section>
+<h2 class="text-title-md font-title-md text-on-surface mb-stack-md">Select Department</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<!-- Category Card 1 -->
+<button class="flex flex-col items-center justify-center p-4 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm hover:bg-surface-container-low transition-colors group">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center mb-3 group-hover:bg-primary-container/30 transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<span class="text-body-md font-body-md text-on-surface text-center">Internal Revenue</span>
+</button>
+<!-- Category Card 2 -->
+<button class="flex flex-col items-center justify-center p-4 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm hover:bg-surface-container-low transition-colors group">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center mb-3 group-hover:bg-primary-container/30 transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">directions_car</span>
+</div>
+<span class="text-body-md font-body-md text-on-surface text-center">Vehicle Tax</span>
+</button>
+<!-- Category Card 3 -->
+<button class="flex flex-col items-center justify-center p-4 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm hover:bg-surface-container-low transition-colors group">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center mb-3 group-hover:bg-primary-container/30 transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+</div>
+<span class="text-body-md font-body-md text-on-surface text-center">Customs Duty</span>
+</button>
+<!-- Category Card 4 -->
+<button class="flex flex-col items-center justify-center p-4 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm hover:bg-surface-container-low transition-colors group">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center mb-3 group-hover:bg-primary-container/30 transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">description</span>
+</div>
+<span class="text-body-md font-body-md text-on-surface text-center">Passport Fee</span>
+</button>
+</div>
+</section>
+<!-- Payment Details Form -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-[24px] p-6 shadow-sm">
+<h2 class="text-title-lg font-title-lg text-on-surface mb-stack-lg">Payment Details</h2>
+<form class="space-y-stack-md">
+<div class="space-y-2">
+<label class="block text-body-md font-body-md text-on-surface-variant" for="reference">Voucher Number / Reference ID</label>
+<input class="block w-full px-4 py-3 border border-outline-variant rounded-lg bg-surface-container-low focus:ring-2 focus:ring-primary focus:border-primary transition-shadow text-body-lg font-body-lg text-on-surface" id="reference" placeholder="Enter 12-digit number" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="block text-body-md font-body-md text-on-surface-variant" for="amount">Amount (NPR)</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="text-body-lg font-body-lg text-on-surface-variant">रू</span>
+</div>
+<input class="block w-full pl-10 pr-4 py-3 border border-outline-variant rounded-lg bg-surface-container-low focus:ring-2 focus:ring-primary focus:border-primary transition-shadow text-body-lg font-body-lg text-on-surface" id="amount" placeholder="0.00" type="number"/>
+</div>
+</div>
+<div class="pt-4">
+<button class="w-full h-12 bg-primary text-on-primary text-title-md font-title-md rounded-full shadow-md hover:bg-primary/90 transition-colors flex items-center justify-center gap-2" type="button">
+                        Proceed to Pay
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</form>
+</section>
+<!-- Recent Transactions -->
+<section>
+<div class="flex justify-between items-center mb-stack-md">
+<h3 class="text-title-md font-title-md text-on-surface">Recent Payments</h3>
+<button class="text-body-md font-body-md text-primary font-medium hover:underline">View All</button>
+</div>
+<div class="space-y-stack-sm">
+<!-- Transaction Item -->
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">account_balance</span>
+</div>
+<div>
+<p class="text-body-md font-body-md text-on-surface font-medium">Income Tax Advance</p>
+<p class="text-label-lg font-label-lg text-on-surface-variant">Voucher: 198273645</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-body-md font-body-md text-on-surface font-medium">रू 15,000</p>
+<p class="text-label-lg font-label-lg text-primary">Success</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Nav for Mobile -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl shadow-lg border-t border-outline-variant bg-surface-container-lowest flex justify-around items-end px-2 pb-2 h-20">
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-on-surface active:scale-90 ripple-effect transition-colors">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-lg font-label-lg mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-on-surface active:scale-90 ripple-effect transition-colors">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-label-lg font-label-lg mt-1">Statement</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 active:scale-90 ripple-effect">
+<div class="bg-primary text-on-primary rounded-full p-2 mb-1 shadow-md hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+</div>
+<span class="text-label-lg font-label-lg">QR</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-on-surface active:scale-90 ripple-effect transition-colors">
+<span class="material-symbols-outlined">help</span>
+<span class="text-label-lg font-label-lg mt-1">Support</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-on-surface active:scale-90 ripple-effect transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="text-label-lg font-label-lg mt-1">More</span>
+</button>
+</nav>
+</body></html>

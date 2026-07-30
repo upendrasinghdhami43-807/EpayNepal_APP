@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Emerald Wallet - Login &amp; Register</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "secondary-container": "#05e777",
+                            "surface-container-high": "#2a2a2a",
+                            "secondary-fixed": "#62ff96",
+                            "inverse-primary": "#006e0d",
+                            "primary-fixed": "#75ff69",
+                            "on-primary-fixed-variant": "#005307",
+                            "primary-container": "#37c837",
+                            "outline": "#879580",
+                            "background": "#131313",
+                            "on-surface": "#e5e2e1",
+                            "on-error": "#690005",
+                            "primary-fixed-dim": "#54e24e",
+                            "tertiary-container": "#3fc580",
+                            "surface-container": "#201f1f",
+                            "inverse-on-surface": "#313030",
+                            "on-primary": "#003a03",
+                            "surface-container-highest": "#353534",
+                            "surface-bright": "#393939",
+                            "primary": "#58e551",
+                            "secondary-fixed-dim": "#00e475",
+                            "outline-variant": "#3d4a39",
+                            "surface-dim": "#131313",
+                            "on-secondary": "#003918",
+                            "on-primary-fixed": "#002201",
+                            "on-tertiary-fixed": "#002110",
+                            "on-tertiary-fixed-variant": "#00522f",
+                            "surface-tint": "#54e24e",
+                            "surface-variant": "#353534",
+                            "error": "#ffb4ab",
+                            "on-secondary-container": "#00622e",
+                            "tertiary-fixed-dim": "#5cde97",
+                            "inverse-surface": "#e5e2e1",
+                            "on-background": "#e5e2e1",
+                            "surface-container-low": "#1c1b1b",
+                            "on-error-container": "#ffdad6",
+                            "on-secondary-fixed": "#00210b",
+                            "secondary": "#7dffa2",
+                            "error-container": "#93000a",
+                            "tertiary-fixed": "#7afbb1",
+                            "on-primary-container": "#004d06",
+                            "tertiary": "#60e19a",
+                            "on-secondary-fixed-variant": "#005226",
+                            "on-tertiary": "#00391f",
+                            "surface-container-lowest": "#0e0e0e",
+                            "on-tertiary-container": "#004d2c",
+                            "surface": "#131313",
+                            "on-surface-variant": "#bccbb4"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px",
+                            "2xl": "1.5rem"
+                    },
+                    "spacing": {
+                            "margin-mobile": "16px",
+                            "md": "16px",
+                            "xl": "32px",
+                            "xs": "4px",
+                            "unit": "8px",
+                            "gutter": "16px",
+                            "sm": "8px",
+                            "lg": "24px",
+                            "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                            "headline-lg-mobile": ["Inter"],
+                            "display-lg": ["Inter"],
+                            "label-lg": ["Inter"],
+                            "title-lg": ["Inter"],
+                            "body-lg": ["Inter"],
+                            "headline-lg": ["Inter"],
+                            "label-md": ["Inter"],
+                            "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                            "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                            "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "700"}],
+                            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                            "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                            "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                            "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                            "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Form Inputs */
+        .emerald-input {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid var(--tw-colors-outline-variant);
+            color: var(--tw-colors-on-surface);
+            padding: 12px 0 8px 32px;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+        
+        .emerald-input:focus {
+            outline: none;
+            border-bottom: 2px solid var(--tw-colors-primary-container);
+            box-shadow: none;
+        }
+        
+        .input-icon-wrapper {
+            position: relative;
+            margin-bottom: 24px;
+        }
+        
+        .input-icon {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--tw-colors-on-surface-variant);
+            pointer-events: none;
+            transition: color 0.2s ease;
+        }
+        
+        .emerald-input:focus + .input-icon,
+        .emerald-input:not(:placeholder-shown) + .input-icon {
+            color: var(--tw-colors-primary-container);
+        }
+
+        .input-action {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--tw-colors-on-surface-variant);
+            cursor: pointer;
+        }
+
+        /* Checkbox */
+        .emerald-checkbox {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--tw-colors-outline);
+            border-radius: 4px;
+            background-color: transparent;
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .emerald-checkbox:checked {
+            background-color: var(--tw-colors-primary-container);
+            border-color: var(--tw-colors-primary-container);
+        }
+
+        .emerald-checkbox:checked::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 1px;
+            width: 6px;
+            height: 12px;
+            border: solid var(--tw-colors-background);
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background-color: var(--tw-colors-primary-container);
+            color: #000000; /* Black text per requirements */
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn-primary:active {
+            background-color: rgba(55, 200, 55, 0.88); /* 12% black overlay approximation */
+        }
+        
+        .btn-secondary {
+            border: 1.5px solid var(--tw-colors-primary-container);
+            color: var(--tw-colors-primary-container);
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            width: 100%;
+            text-align: center;
+            background-color: transparent;
+        }
+
+        /* View Toggle */
+        .view-wrapper {
+            display: none;
+        }
+        .view-wrapper.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Glassmorphism / Cards */
+        .auth-card {
+            background-color: var(--tw-colors-surface-container);
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: none; /* Dark mode avoids physical shadows */
+        }
+        
+        /* Theme toggle switch */
+        .theme-toggle-wrapper {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 100;
+        }
+        
+        .theme-switch {
+            width: 48px;
+            height: 24px;
+            background-color: var(--tw-colors-surface-container-high);
+            border-radius: 12px;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .theme-thumb {
+            width: 20px;
+            height: 20px;
+            background-color: var(--tw-colors-primary-container);
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .dark .theme-thumb {
+            transform: translateX(24px);
+        }
+        
+        /* Light Mode Overrides */
+        html:not(.dark) body {
+            background-color: #F8F9FA;
+            color: #1a1a1a;
+        }
+        html:not(.dark) .auth-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E0E0E0;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        html:not(.dark) .emerald-input {
+            color: #1a1a1a;
+            border-bottom-color: #E0E0E0;
+        }
+        html:not(.dark) .input-icon {
+            color: #757575;
+        }
+        html:not(.dark) .btn-primary {
+            color: #ffffff; /* White text on light mode primary might be better for contrast, but keeping black to follow instructions literally if strictly needed. Let's use black as instructed for Primary button */
+            background-color: #37C837;
+            color: #000000;
+        }
+        html:not(.dark) .emerald-checkbox {
+            border-color: #9e9e9e;
+        }
+        
+        /* Stepper */
+        .step-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+        
+        .step-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--tw-colors-surface-container-high);
+        }
+        
+        .step-dot.active {
+            background-color: var(--tw-colors-primary-container);
+            width: 24px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex items-center justify-center p-margin-mobile md:p-margin-desktop overflow-x-hidden relative">
+<!-- Theme Toggle (For preview purposes) -->
+<div class="theme-toggle-wrapper flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant font-label-md text-label-md">light_mode</span>
+<div class="theme-switch" id="themeToggle">
+<div class="theme-thumb"></div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant font-label-md text-label-md">dark_mode</span>
+</div>
+<!-- Background Pattern/Atmosphere -->
+<div class="absolute inset-0 pointer-events-none opacity-20 dark:opacity-10" style="background-image: radial-gradient(circle at 50% 0%, var(--tw-colors-primary-container) 0%, transparent 50%);"></div>
+<div class="w-full max-w-md relative z-10">
+<!-- ================= LOGIN SCREEN ================= -->
+<div class="view-wrapper active" id="view-login">
+<div class="text-center mb-xl">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-surface-container-high text-primary-container mb-4">
+<span class="material-symbols-outlined" style="font-size: 36px;">wallet</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary font-bold">Emerald Wallet</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Secure high-performance crypto storage.</p>
+</div>
+<div class="auth-card">
+<form onsubmit="event.preventDefault();">
+<div class="input-icon-wrapper">
+<input class="emerald-input font-body-md text-body-md" id="login-phone" placeholder="Phone Number" required="" type="tel"/>
+<span class="material-symbols-outlined input-icon">call</span>
+</div>
+<div class="input-icon-wrapper">
+<input class="emerald-input font-body-md text-body-md" id="login-password" placeholder="Password" required="" type="password"/>
+<span class="material-symbols-outlined input-icon">lock</span>
+<span class="material-symbols-outlined input-action" onclick="togglePassword('login-password', this)">visibility_off</span>
+</div>
+<div class="flex justify-end mb-xl">
+<a class="font-label-md text-label-md text-primary-container hover:underline" href="#">Forgot Password?</a>
+</div>
+<div class="flex flex-col gap-4">
+<button class="btn-primary font-label-lg text-label-lg uppercase tracking-wide" type="submit">Login</button>
+<div class="relative flex items-center justify-center my-2">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-surface-container-highest"></div>
+</div>
+<span class="relative bg-surface-container px-4 font-label-md text-label-md text-on-surface-variant">OR</span>
+</div>
+<button class="btn-secondary flex items-center justify-center gap-2 font-label-lg text-label-lg" type="button">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">fingerprint</span>
+                            Biometric Login
+                        </button>
+</div>
+</form>
+</div>
+<div class="text-center mt-xl">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Don't have an account? 
+                    <a class="text-primary-container font-semibold hover:underline" href="#" onclick="switchView('register')">Create Account</a>
+</p>
+</div>
+</div>
+<!-- ================= REGISTER SCREEN ================= -->
+<div class="view-wrapper" id="view-register">
+<div class="mb-lg flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary-container transition-colors" onclick="switchView('login')">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-title-lg text-title-lg font-bold text-on-surface">Create Account</h1>
+</div>
+<div class="auth-card">
+<div class="mb-lg">
+<p class="font-label-md text-label-md text-on-surface-variant mb-2">Step 1: Account Details</p>
+<div class="step-indicator">
+<div class="step-dot active"></div>
+<div class="step-dot"></div>
+<div class="step-dot"></div>
+</div>
+</div>
+<form onsubmit="event.preventDefault();">
+<div class="input-icon-wrapper">
+<input class="emerald-input font-body-md text-body-md" id="reg-name" placeholder="Full Name" required="" type="text"/>
+<span class="material-symbols-outlined input-icon">person</span>
+</div>
+<div class="input-icon-wrapper">
+<input class="emerald-input font-body-md text-body-md" id="reg-phone" placeholder="Mobile Number" required="" type="tel"/>
+<span class="material-symbols-outlined input-icon">phone_iphone</span>
+</div>
+<div class="input-icon-wrapper">
+<input class="emerald-input font-body-md text-body-md" id="reg-email" placeholder="Email Address" required="" type="email"/>
+<span class="material-symbols-outlined input-icon">mail</span>
+</div>
+<div class="input-icon-wrapper">
+<input class="emerald-input font-body-md text-body-md" id="reg-password" placeholder="Password" required="" type="password"/>
+<span class="material-symbols-outlined input-icon">lock</span>
+<span class="material-symbols-outlined input-action" onclick="togglePassword('reg-password', this)">visibility_off</span>
+</div>
+<div class="input-icon-wrapper">
+<input class="emerald-input font-body-md text-body-md" id="reg-confirm-password" placeholder="Confirm Password" required="" type="password"/>
+<span class="material-symbols-outlined input-icon">lock_reset</span>
+<span class="material-symbols-outlined input-action" onclick="togglePassword('reg-confirm-password', this)">visibility_off</span>
+</div>
+<div class="flex items-start gap-3 mb-xl mt-4">
+<input class="emerald-checkbox mt-1" id="terms" required="" type="checkbox"/>
+<label class="font-body-md text-body-md text-on-surface-variant leading-tight" for="terms">
+                            I agree to the <a class="text-primary-container hover:underline" href="#">Terms &amp; Conditions</a> and <a class="text-primary-container hover:underline" href="#">Privacy Policy</a>.
+                        </label>
+</div>
+<button class="btn-primary font-label-lg text-label-lg uppercase tracking-wide" type="submit">Continue</button>
+</form>
+</div>
+<div class="text-center mt-lg">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Already have an account? 
+                    <a class="text-primary-container font-semibold hover:underline" href="#" onclick="switchView('login')">Login here</a>
+</p>
+</div>
+</div>
+</div>
+<script>
+        // Password Visibility Toggle
+        function togglePassword(inputId, iconEl) {
+            const input = document.getElementById(inputId);
+            if (input.type === "password") {
+                input.type = "text";
+                iconEl.textContent = "visibility";
+            } else {
+                input.type = "password";
+                iconEl.textContent = "visibility_off";
+            }
+        }
+
+        // View Switching Logic
+        function switchView(viewName) {
+            document.querySelectorAll('.view-wrapper').forEach(el => {
+                el.classList.remove('active');
+            });
+            document.getElementById('view-' + viewName).classList.add('active');
+        }
+
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+        });
+    </script>
+</body></html>

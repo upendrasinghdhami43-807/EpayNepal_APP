@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Transaction Details</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary": "#396668",
+            "on-secondary-fixed-variant": "#474741",
+            "on-primary-fixed": "#002201",
+            "surface-dim": "#dadad3",
+            "primary-fixed": "#75ff69",
+            "outline-variant": "#bccbb4",
+            "surface-container-highest": "#e3e3db",
+            "on-primary-fixed-variant": "#005307",
+            "on-error": "#ffffff",
+            "tertiary-container": "#88b6b8",
+            "surface-container": "#eeeee6",
+            "on-error-container": "#93000a",
+            "inverse-on-surface": "#f1f1e9",
+            "secondary-container": "#e4e3da",
+            "primary-fixed-dim": "#54e24e",
+            "on-background": "#1a1c18",
+            "tertiary-fixed-dim": "#a0cfd1",
+            "surface-container-high": "#e8e9e1",
+            "error": "#ba1a1a",
+            "tertiary-fixed": "#bcebed",
+            "surface-variant": "#e3e3db",
+            "background": "#fafaf2",
+            "surface-bright": "#fafaf2",
+            "on-tertiary": "#ffffff",
+            "surface-tint": "#006e0d",
+            "inverse-primary": "#54e24e",
+            "primary-container": "#37c837",
+            "on-surface-variant": "#3d4a39",
+            "outline": "#6d7b68",
+            "on-secondary": "#ffffff",
+            "on-secondary-container": "#64655e",
+            "inverse-surface": "#2f312c",
+            "secondary": "#5e5f58",
+            "on-tertiary-fixed-variant": "#1f4d50",
+            "on-tertiary-container": "#18484a",
+            "error-container": "#ffdad6",
+            "on-primary": "#ffffff",
+            "secondary-fixed": "#e4e3da",
+            "secondary-fixed-dim": "#c8c7bf",
+            "on-tertiary-fixed": "#002021",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-container": "#004d06",
+            "on-secondary-fixed": "#1b1c17",
+            "surface": "#fafaf2",
+            "surface-container-low": "#f4f4ec",
+            "on-surface": "#1a1c18",
+            "primary": "#006e0d"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px",
+            "card": "24px"
+          },
+          "spacing": {
+            "gutter": "12px",
+            "margin-desktop": "24px",
+            "margin-mobile": "16px",
+            "stack-sm": "8px",
+            "stack-lg": "24px",
+            "stack-md": "16px"
+          },
+          "fontFamily": {
+            "title-lg": ["Inter"],
+            "label-lg": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "title-md": ["Inter"],
+            "display-lg": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-md": ["Inter"]
+          },
+          "fontSize": {
+            "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+            "label-lg": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}],
+            "headline-md": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+            "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+            "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "600"}],
+            "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "400"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+            "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #fafaf2; /* surface */
+      -webkit-tap-highlight-color: transparent;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .status-badge {
+      background-color: rgba(55, 200, 55, 0.1);
+      color: #006e0d;
+    }
+    .elevation-1 {
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30);
+    }
+    /* Hide scrollbar */
+    ::-webkit-scrollbar { display: none; }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface">
+<!-- Top App Bar (As specified in JSON) -->
+<header class="bg-primary text-on-primary fixed top-0 left-0 w-full z-50 rounded-b-3xl flex justify-between items-center px-margin-mobile py-4 shadow-none">
+<div class="flex items-center gap-3">
+<button class="hover:bg-primary-container/20 rounded-full p-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-title-lg font-title-lg font-bold">Transaction Details</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="hover:bg-primary-container/20 rounded-full p-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">picture_as_pdf</span>
+</button>
+<button class="hover:bg-primary-container/20 rounded-full p-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-margin-mobile flex flex-col gap-4 max-w-md mx-auto">
+<!-- Balance Card (From context) -->
+<section class="bg-surface-container-lowest rounded-card p-4 elevation-1 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+<div>
+<p class="text-label-lg font-label-lg text-on-surface-variant">Balance</p>
+<p class="text-title-md font-title-md">NPR XXXX.XX</p>
+</div>
+</div>
+<button class="text-primary active:rotate-180 transition-transform duration-500">
+<span class="material-symbols-outlined">refresh</span>
+</button>
+</section>
+<!-- Success Message Section -->
+<div class="bg-primary-container/5 rounded-card border-2 border-primary-container/20 p-6 flex flex-col items-center gap-2">
+<div class="w-16 h-16 bg-primary-container rounded-full flex items-center justify-center text-on-primary shadow-lg">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h2 class="text-headline-md-mobile font-headline-md-mobile text-primary">Payment Successful</h2>
+<p class="text-body-md text-on-surface-variant">The funds have been transferred</p>
+</div>
+<!-- Main Transaction Card -->
+<section class="bg-surface-container-lowest rounded-card p-6 elevation-1 flex flex-col gap-6">
+<!-- Header Part -->
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div>
+<h3 class="text-title-md font-title-md">Send Money</h3>
+<p class="text-label-lg font-label-lg text-on-surface-variant">2026-07-27 05:23 PM</p>
+</div>
+</div>
+<div class="text-right">
+<span class="text-error font-bold text-lg">- 100.00</span>
+<p class="text-label-lg font-label-lg text-on-surface-variant">NPR</p>
+</div>
+</div>
+<div class="flex">
+<span class="status-badge px-3 py-1 rounded-full text-label-lg font-label-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified</span> Complete
+        </span>
+</div>
+<hr class="border-outline-variant"/>
+<!-- Details Grid -->
+<div class="grid grid-cols-2 gap-y-6 gap-x-4">
+<div>
+<p class="text-label-lg font-label-lg text-on-surface-variant mb-1">Amount (NPR)</p>
+<p class="text-body-lg font-body-lg font-semibold">100</p>
+</div>
+<div>
+<p class="text-label-lg font-label-lg text-on-surface-variant mb-1">Transaction Code</p>
+<p class="text-body-lg font-body-lg font-semibold">1N6UTUU</p>
+</div>
+<div class="col-span-2">
+<p class="text-label-lg font-label-lg text-on-surface-variant mb-1">Processed By</p>
+<p class="text-body-lg font-body-lg font-semibold">9762349101</p>
+</div>
+<div class="col-span-2 border-t border-dashed border-outline-variant pt-6 grid grid-cols-2 gap-y-6">
+<div>
+<p class="text-label-lg font-label-lg text-on-surface-variant mb-1">Purpose</p>
+<p class="text-body-lg font-body-lg font-semibold">Bill sharing</p>
+</div>
+<div>
+<p class="text-label-lg font-label-lg text-on-surface-variant mb-1">Receiver Name</p>
+<p class="text-body-lg font-body-lg font-semibold">Lalita Kumari Dhami</p>
+</div>
+<div>
+<p class="text-label-lg font-label-lg text-on-surface-variant mb-1">Payment Method</p>
+<p class="text-body-lg font-body-lg font-semibold">eSewa Wallet</p>
+</div>
+<div>
+<p class="text-label-lg font-label-lg text-on-surface-variant mb-1">Receiver eSewa Id</p>
+<p class="text-body-lg font-body-lg font-semibold">9741695893</p>
+</div>
+<div>
+<p class="text-label-lg font-label-lg text-on-surface-variant mb-1">Remarks</p>
+<p class="text-body-lg font-body-lg font-semibold">Pay for it</p>
+</div>
+<div>
+<p class="text-label-lg font-label-lg text-on-surface-variant mb-1">Initiator Name</p>
+<p class="text-body-lg font-body-lg font-semibold">Upendra Singh Dhami</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Additional Action -->
+<button class="bg-surface-container-highest rounded-card p-4 flex items-center justify-between active:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">group_add</span>
+<span class="text-body-md font-medium">Split payment with friends?</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</button>
+<!-- Bottom Actions Container -->
+<div class="mt-4 flex flex-col gap-4">
+<button class="bg-primary text-on-primary w-full py-4 rounded-full font-bold text-title-md shadow-lg active:scale-[0.98] transition-transform">
+        DONE
+      </button>
+<div class="flex items-start gap-3 p-2">
+<div class="p-2 bg-primary-container rounded-full text-on-primary">
+<span class="material-symbols-outlined">add</span>
+</div>
+<div>
+<p class="text-body-md font-semibold">Add expense category</p>
+<p class="text-label-lg text-on-surface-variant">This will help organize your expenses.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (As specified in JSON) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-end px-2 pb-2 h-20 bg-surface rounded-t-xl border-t border-outline-variant shadow-lg">
+<div class="flex flex-col items-center justify-center text-on-secondary-fixed-variant px-4 py-1 hover:bg-secondary-container/50 rounded-full transition-colors active:scale-90">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-lg font-label-lg">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="text-label-lg font-label-lg">Statement</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-secondary-fixed-variant px-4 py-1 hover:bg-secondary-container/50 rounded-full transition-colors active:scale-90">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="text-label-lg font-label-lg">QR</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-secondary-fixed-variant px-4 py-1 hover:bg-secondary-container/50 rounded-full transition-colors active:scale-90">
+<span class="material-symbols-outlined">help</span>
+<span class="text-label-lg font-label-lg">Support</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-secondary-fixed-variant px-4 py-1 hover:bg-secondary-container/50 rounded-full transition-colors active:scale-90">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="text-label-lg font-label-lg">More</span>
+</div>
+</nav>
+<script>
+    // Simple micro-interaction for the "DONE" button
+    document.querySelector('button.bg-primary').addEventListener('click', () => {
+        const ripple = document.createElement('div');
+        ripple.className = 'absolute inset-0 bg-white/20 rounded-full pointer-events-none transition-opacity duration-300 opacity-0';
+        // Logic for ripple would go here if we wanted complex effects
+        console.log('Transaction finalized');
+    });
+  </script>
+</body></html>

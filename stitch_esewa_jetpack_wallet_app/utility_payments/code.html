@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Utility &amp; Bill Payments</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#37c837",
+                        "tertiary-fixed-dim": "#a0cfd1",
+                        "outline": "#6d7b68",
+                        "inverse-on-surface": "#f1f1e9",
+                        "surface-dim": "#dadad3",
+                        "on-secondary-fixed": "#1b1c17",
+                        "on-primary-container": "#004d06",
+                        "background": "#fafaf2",
+                        "tertiary-container": "#88b6b8",
+                        "tertiary-fixed": "#bcebed",
+                        "surface-variant": "#e3e3db",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e3e3db",
+                        "secondary-fixed-dim": "#c8c7bf",
+                        "tertiary": "#396668",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed": "#002201",
+                        "on-tertiary-fixed-variant": "#1f4d50",
+                        "surface-container-low": "#f4f4ec",
+                        "inverse-surface": "#2f312c",
+                        "primary-fixed": "#75ff69",
+                        "on-tertiary-container": "#18484a",
+                        "surface-bright": "#fafaf2",
+                        "primary-fixed-dim": "#54e24e",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e8e9e1",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#1a1c18",
+                        "surface": "#fafaf2",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#006e0d",
+                        "on-surface-variant": "#3d4a39",
+                        "secondary-fixed": "#e4e3da",
+                        "secondary": "#5e5f58",
+                        "outline-variant": "#bccbb4",
+                        "secondary-container": "#e4e3da",
+                        "on-secondary-fixed-variant": "#474741",
+                        "on-tertiary-fixed": "#002021",
+                        "surface-container": "#eeeee6",
+                        "on-primary-fixed-variant": "#005307",
+                        "on-secondary-container": "#64655e",
+                        "on-surface": "#1a1c18",
+                        "inverse-primary": "#54e24e",
+                        "primary": "#006e0d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "margin-desktop": "24px",
+                        "stack-sm": "8px",
+                        "stack-lg": "24px",
+                        "margin-mobile": "16px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "400" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "600" }],
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "headline-md": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "label-lg": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1px", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .ripple-effect {
+            position: relative;
+            overflow: hidden;
+            transform: translate3d(0, 0, 0);
+        }
+        .ripple-effect::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            background-image: radial-gradient(circle, #000 10%, transparent 10.01%);
+            background-repeat: no-repeat;
+            background-position: 50%;
+            transform: scale(10, 10);
+            opacity: 0;
+            transition: transform .5s, opacity 1s;
+        }
+        .ripple-effect:active::after {
+            transform: scale(0, 0);
+            opacity: .2;
+            transition: 0s;
+        }
+        /* Custom scrollbar for horizontal lists */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md pb-[80px]">
+<!-- TopAppBar -->
+<header class="bg-primary dark:bg-primary docked full-width top-0 rounded-b-3xl shadow-none flex justify-between items-center w-full px-margin-mobile py-4 sticky z-40">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a person with a modern fintech aesthetic. High key lighting, clean background, sharp focus, communicating trust and reliability in a corporate context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZPomk0t5xDNFJJfySkQBMtSGoYhj1Ke1nOjnjB9xCF8X8Z_a7BNWph4G9WkJooRGKMSkE6HeG2pw0x-jnaYH-jWVSlimF0dms4vXuYE3SQv1gXbpAGnKAMi6afMrRlReDM4FKsVkDSWEioeIYnOLXSa2AIzwPFQWy_l5_B8GMm1TBLmQ9ZK3da1_HmgygoYLnBxuwdT8IdhRUm5DbseIeuCAh_7jucad3724sGZyOpUWJH-p4kCE5GA"/>
+</div>
+<div>
+<h1 class="text-headline-md-mobile font-headline-md-mobile text-on-primary font-bold">Hi, Upendra</h1>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-primary hover:bg-primary-container/20 transition-transform duration-150 active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications</span>
+</button>
+</header>
+<main class="flex-1 px-margin-mobile py-stack-lg flex flex-col gap-stack-lg max-w-4xl mx-auto w-full">
+<!-- Search -->
+<div class="w-full bg-surface-container rounded-full flex items-center px-4 py-3 shadow-[0_1px_4px_rgba(0,0,0,0.08)]">
+<span class="material-symbols-outlined text-on-surface-variant mr-3">search</span>
+<input class="bg-transparent border-none outline-none w-full text-body-lg font-body-lg text-on-surface placeholder:text-on-surface-variant/60 focus:ring-0 p-0" placeholder="Search for bills or providers..." type="text"/>
+</div>
+<!-- Recent Payments Bento -->
+<section>
+<div class="flex justify-between items-center mb-stack-md">
+<h2 class="text-title-md font-title-md text-on-surface">Recent Payments</h2>
+<button class="text-primary text-label-lg font-label-lg">View All</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<!-- Recent Item 1 -->
+<div class="bg-surface-container-lowest rounded-[24px] p-4 shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant/30 flex flex-col items-center justify-center text-center gap-2 cursor-pointer ripple-effect hover:bg-surface-container-low transition-colors">
+<div class="w-12 h-12 rounded-[12px] bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">wifi</span>
+</div>
+<div>
+<p class="text-label-lg font-label-lg text-on-surface">Worldlink</p>
+<p class="text-label-lg font-label-lg text-on-surface-variant/80">Rs. 1,200</p>
+</div>
+</div>
+<!-- Recent Item 2 -->
+<div class="bg-surface-container-lowest rounded-[24px] p-4 shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant/30 flex flex-col items-center justify-center text-center gap-2 cursor-pointer ripple-effect hover:bg-surface-container-low transition-colors">
+<div class="w-12 h-12 rounded-[12px] bg-[#e3f2fd] flex items-center justify-center text-[#1565c0]">
+<span class="material-symbols-outlined">water_drop</span>
+</div>
+<div>
+<p class="text-label-lg font-label-lg text-on-surface">Khanepani</p>
+<p class="text-label-lg font-label-lg text-on-surface-variant/80">Rs. 450</p>
+</div>
+</div>
+<!-- Recent Item 3 -->
+<div class="bg-surface-container-lowest rounded-[24px] p-4 shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-outline-variant/30 flex flex-col items-center justify-center text-center gap-2 cursor-pointer ripple-effect hover:bg-surface-container-low transition-colors">
+<div class="w-12 h-12 rounded-[12px] bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<div>
+<p class="text-label-lg font-label-lg text-on-surface">NEA</p>
+<p class="text-label-lg font-label-lg text-on-surface-variant/80">Rs. 890</p>
+</div>
+</div>
+<!-- Topup Quick Action (Takes 1 cell on mobile, 1 on desktop) -->
+<div class="bg-primary rounded-[24px] p-4 shadow-[0_8px_16px_rgba(0,110,13,0.15)] flex flex-col items-center justify-center text-center gap-2 cursor-pointer ripple-effect hover:bg-primary/90 transition-colors">
+<div class="w-12 h-12 rounded-[12px] bg-white/20 flex items-center justify-center text-white">
+<span class="material-symbols-outlined">smartphone</span>
+</div>
+<div>
+<p class="text-label-lg font-label-lg text-white font-semibold">Quick Topup</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Categories Grid -->
+<section class="flex-1">
+<h2 class="text-title-md font-title-md text-on-surface mb-stack-md">Utility Categories</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<!-- Electricity -->
+<div class="bg-surface-container-lowest rounded-[24px] p-4 flex items-center gap-4 shadow-[0_1px_4px_rgba(0,0,0,0.08)] border border-outline-variant/30 cursor-pointer ripple-effect group">
+<div class="w-[56px] h-[56px] rounded-[16px] bg-[#fff8e1] flex items-center justify-center text-[#f57f17] group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined" style="font-size: 28px;">bolt</span>
+</div>
+<div class="flex-1">
+<h3 class="text-title-md font-title-md text-on-surface">Electricity</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">NEA Branches</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+<!-- Khanepani -->
+<div class="bg-surface-container-lowest rounded-[24px] p-4 flex items-center gap-4 shadow-[0_1px_4px_rgba(0,0,0,0.08)] border border-outline-variant/30 cursor-pointer ripple-effect group">
+<div class="w-[56px] h-[56px] rounded-[16px] bg-[#e3f2fd] flex items-center justify-center text-[#1565c0] group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined" style="font-size: 28px;">water_drop</span>
+</div>
+<div class="flex-1">
+<h3 class="text-title-md font-title-md text-on-surface">Khanepani</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Water Supply</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+<!-- Internet -->
+<div class="bg-surface-container-lowest rounded-[24px] p-4 flex items-center gap-4 shadow-[0_1px_4px_rgba(0,0,0,0.08)] border border-outline-variant/30 cursor-pointer ripple-effect group">
+<div class="w-[56px] h-[56px] rounded-[16px] bg-[#f3e5f5] flex items-center justify-center text-[#6a1b9a] group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined" style="font-size: 28px;">router</span>
+</div>
+<div class="flex-1">
+<h3 class="text-title-md font-title-md text-on-surface">Internet</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Worldlink, Vianet...</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+<!-- Govt. Payment -->
+<div class="bg-surface-container-lowest rounded-[24px] p-4 flex items-center gap-4 shadow-[0_1px_4px_rgba(0,0,0,0.08)] border border-outline-variant/30 cursor-pointer ripple-effect group">
+<div class="w-[56px] h-[56px] rounded-[16px] bg-[#e8f5e9] flex items-center justify-center text-[#2e7d32] group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined" style="font-size: 28px;">account_balance</span>
+</div>
+<div class="flex-1">
+<h3 class="text-title-md font-title-md text-on-surface">Govt. Payment</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Revenue, Traffic Fine...</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+<!-- Education Fee -->
+<div class="bg-surface-container-lowest rounded-[24px] p-4 flex items-center gap-4 shadow-[0_1px_4px_rgba(0,0,0,0.08)] border border-outline-variant/30 cursor-pointer ripple-effect group md:col-span-2">
+<div class="w-[56px] h-[56px] rounded-[16px] bg-[#fff3e0] flex items-center justify-center text-[#ef6c00] group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined" style="font-size: 28px;">school</span>
+</div>
+<div class="flex-1">
+<h3 class="text-title-md font-title-md text-on-surface">Education Fee</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Schools &amp; Colleges</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-end px-2 pb-2 h-20 bg-surface dark:bg-inverse-surface border-none shadow-[0_-4px_16px_rgba(0,0,0,0.1)] rounded-t-xl md:hidden">
+<button class="flex flex-col items-center justify-center text-on-secondary-fixed-variant dark:text-secondary-fixed-dim px-4 py-1 hover:bg-secondary-container/50 ripple-effect active:scale-90 transition-all">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-lg font-label-lg mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1 hover:bg-secondary-container/50 ripple-effect active:scale-90 transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="text-label-lg font-label-lg mt-1">Statement</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-secondary-fixed-variant dark:text-secondary-fixed-dim px-4 py-1 hover:bg-secondary-container/50 ripple-effect active:scale-90 transition-all">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="text-label-lg font-label-lg mt-1">QR</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-secondary-fixed-variant dark:text-secondary-fixed-dim px-4 py-1 hover:bg-secondary-container/50 ripple-effect active:scale-90 transition-all">
+<span class="material-symbols-outlined">help</span>
+<span class="text-label-lg font-label-lg mt-1">Support</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-secondary-fixed-variant dark:text-secondary-fixed-dim px-4 py-1 hover:bg-secondary-container/50 ripple-effect active:scale-90 transition-all">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="text-label-lg font-label-lg mt-1">More</span>
+</button>
+</nav>
+</body></html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Calendar - Esewa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#f1f1e9",
+                        "inverse-primary": "#54e24e",
+                        "surface": "#fafaf2",
+                        "surface-variant": "#e3e3db",
+                        "inverse-surface": "#2f312c",
+                        "tertiary-fixed": "#bcebed",
+                        "surface-dim": "#dadad3",
+                        "surface-bright": "#fafaf2",
+                        "surface-container-low": "#f4f4ec",
+                        "tertiary-container": "#88b6b8",
+                        "surface-tint": "#006e0d",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#54e24e",
+                        "outline-variant": "#bccbb4",
+                        "primary-fixed": "#75ff69",
+                        "on-surface-variant": "#3d4a39",
+                        "primary-container": "#37c837",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#004d06",
+                        "secondary": "#5e5f58",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#005307",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#e4e3da",
+                        "on-tertiary-container": "#18484a",
+                        "tertiary-fixed-dim": "#a0cfd1",
+                        "surface-container": "#eeeee6",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#474741",
+                        "on-primary-fixed": "#002201",
+                        "on-surface": "#1a1c18",
+                        "on-error": "#ffffff",
+                        "on-background": "#1a1c18",
+                        "outline": "#6d7b68",
+                        "on-secondary-fixed": "#1b1c17",
+                        "on-tertiary-fixed-variant": "#1f4d50",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#002021",
+                        "surface-container-high": "#e8e9e1",
+                        "primary": "#006e0d",
+                        "surface-container-highest": "#e3e3db",
+                        "background": "#fafaf2",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#64655e",
+                        "tertiary": "#396668",
+                        "secondary-fixed-dim": "#c8c7bf",
+                        "secondary-container": "#e4e3da"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1.5rem",
+                        "3xl": "2rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "gutter": "12px",
+                        "stack-md": "16px",
+                        "margin-desktop": "24px",
+                        "stack-lg": "24px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "label-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "title-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-lg": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1px", "fontWeight": "500" }],
+                        "headline-md": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "600" }],
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="bg-primary text-on-primary docked full-width top-0 rounded-b-3xl shadow-none flex justify-between items-center w-full px-margin-mobile py-4 sticky z-40 transition-transform duration-150">
+<div class="flex items-center gap-4">
+<button class="p-2 -ml-2 rounded-full hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-on-primary">arrow_back</span>
+</button>
+<h1 class="text-title-lg font-title-lg font-bold text-on-primary tracking-tight">My Calendar</h1>
+</div>
+<button class="p-2 -mr-2 rounded-full hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-on-primary">filter_list</span>
+</button>
+</header>
+<main class="px-margin-mobile pt-stack-md flex flex-col gap-stack-lg max-w-md mx-auto">
+<!-- Calendar Widget (Glassmorphism / Bento style) -->
+<section class="bg-surface-container-lowest rounded-2xl p-4 shadow-sm border border-outline-variant/30">
+<div class="flex justify-between items-center mb-4">
+<h2 class="text-title-md font-title-md text-on-surface font-semibold">August 2023</h2>
+<div class="flex gap-2">
+<button class="p-1 rounded-full hover:bg-surface-container"><span class="material-symbols-outlined text-on-surface-variant">chevron_left</span></button>
+<button class="p-1 rounded-full hover:bg-surface-container"><span class="material-symbols-outlined text-on-surface-variant">chevron_right</span></button>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center mb-2">
+<div class="text-label-lg font-label-lg text-on-surface-variant">S</div>
+<div class="text-label-lg font-label-lg text-on-surface-variant">M</div>
+<div class="text-label-lg font-label-lg text-on-surface-variant">T</div>
+<div class="text-label-lg font-label-lg text-on-surface-variant">W</div>
+<div class="text-label-lg font-label-lg text-on-surface-variant">T</div>
+<div class="text-label-lg font-label-lg text-on-surface-variant">F</div>
+<div class="text-label-lg font-label-lg text-on-surface-variant">S</div>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center text-body-md font-body-md">
+<!-- Previous month -->
+<div class="p-2 text-on-surface-variant/40">30</div>
+<div class="p-2 text-on-surface-variant/40">31</div>
+<!-- Current month -->
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">1</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">2</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">3</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer relative">
+                    4
+                    <span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-error"></span>
+</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">5</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">6</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">7</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">8</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer relative">
+                    9
+                    <span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary-container"></span>
+</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">10</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">11</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">12</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">13</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer relative">
+                    14
+                    <span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-tertiary"></span>
+</div>
+<!-- Today -->
+<div class="p-2 rounded-full bg-primary-container text-on-primary-container font-semibold cursor-pointer shadow-sm">15</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">16</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">17</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer relative">
+                    18
+                    <span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary-container"></span>
+</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">19</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">20</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">21</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">22</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">23</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">24</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">25</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">26</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer relative">
+                    27
+                    <span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-error"></span>
+</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">28</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">29</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">30</div>
+<div class="p-2 rounded-full hover:bg-surface-container cursor-pointer">31</div>
+<!-- Next month -->
+<div class="p-2 text-on-surface-variant/40">1</div>
+<div class="p-2 text-on-surface-variant/40">2</div>
+</div>
+</section>
+<!-- Upcoming Events Section -->
+<section class="flex flex-col gap-stack-sm">
+<h3 class="text-label-lg font-label-lg text-on-surface-variant uppercase tracking-wider pl-1">Upcoming This Week</h3>
+<!-- Event Card 1 - Overdue/Urgent -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 flex gap-4 items-center shadow-sm border-l-4 border-l-error">
+<div class="w-12 h-12 rounded-xl bg-error-container text-on-error-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<div class="flex-1">
+<h4 class="text-title-md font-title-md text-on-surface">Electricity Bill</h4>
+<p class="text-body-md font-body-md text-on-surface-variant">Due Tomorrow • NEA</p>
+</div>
+<div class="text-right">
+<div class="text-title-md font-title-md text-error font-semibold">NPR 1,240</div>
+<button class="text-label-lg font-label-lg text-primary mt-1 font-medium hover:underline">Pay Now</button>
+</div>
+</div>
+<!-- Event Card 2 - Scheduled -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 flex gap-4 items-center shadow-sm border border-outline-variant/30">
+<div class="w-12 h-12 rounded-xl bg-tertiary-container/30 text-on-tertiary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">wifi</span>
+</div>
+<div class="flex-1">
+<h4 class="text-title-md font-title-md text-on-surface">Internet Renewal</h4>
+<p class="text-body-md font-body-md text-on-surface-variant">Aug 18 • Vianet</p>
+</div>
+<div class="text-right">
+<div class="text-title-md font-title-md text-on-surface font-semibold">NPR 1,500</div>
+<span class="inline-block mt-1 px-2 py-0.5 rounded-full bg-surface-variant text-on-surface-variant text-[10px] font-medium tracking-wide">SCHEDULED</span>
+</div>
+</div>
+<!-- Event Card 3 - General Event -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 flex gap-4 items-center shadow-sm border border-outline-variant/30">
+<div class="w-12 h-12 rounded-xl bg-primary-container/20 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">cake</span>
+</div>
+<div class="flex-1">
+<h4 class="text-title-md font-title-md text-on-surface">Ramesh's Birthday</h4>
+<p class="text-body-md font-body-md text-on-surface-variant">Aug 20 • Send Gift</p>
+</div>
+<div class="text-right">
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-on-surface text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Floating Action Button -->
+<button class="fixed bottom-6 right-6 w-14 h-14 bg-primary-container text-on-primary-container rounded-2xl shadow-lg flex items-center justify-center hover:shadow-xl hover:scale-105 transition-all z-50">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+</main>
+</body></html>

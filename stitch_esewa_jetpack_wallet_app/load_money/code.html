@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Load Money - Esewa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-container": "#37c837",
+                      "tertiary-fixed-dim": "#a0cfd1",
+                      "outline": "#6d7b68",
+                      "inverse-on-surface": "#f1f1e9",
+                      "surface-dim": "#dadad3",
+                      "on-secondary-fixed": "#1b1c17",
+                      "on-primary-container": "#004d06",
+                      "background": "#fafaf2",
+                      "tertiary-container": "#88b6b8",
+                      "tertiary-fixed": "#bcebed",
+                      "surface-variant": "#e3e3db",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-highest": "#e3e3db",
+                      "secondary-fixed-dim": "#c8c7bf",
+                      "tertiary": "#396668",
+                      "on-error": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "on-primary-fixed": "#002201",
+                      "on-tertiary-fixed-variant": "#1f4d50",
+                      "surface-container-low": "#f4f4ec",
+                      "inverse-surface": "#2f312c",
+                      "primary-fixed": "#75ff69",
+                      "on-tertiary-container": "#18484a",
+                      "surface-bright": "#fafaf2",
+                      "primary-fixed-dim": "#54e24e",
+                      "on-error-container": "#93000a",
+                      "surface-container-high": "#e8e9e1",
+                      "error": "#ba1a1a",
+                      "on-tertiary": "#ffffff",
+                      "on-background": "#1a1c18",
+                      "surface": "#fafaf2",
+                      "error-container": "#ffdad6",
+                      "surface-tint": "#006e0d",
+                      "on-surface-variant": "#3d4a39",
+                      "secondary-fixed": "#e4e3da",
+                      "secondary": "#5e5f58",
+                      "outline-variant": "#bccbb4",
+                      "secondary-container": "#e4e3da",
+                      "on-secondary-fixed-variant": "#474741",
+                      "on-tertiary-fixed": "#002021",
+                      "surface-container": "#eeeee6",
+                      "on-primary-fixed-variant": "#005307",
+                      "on-secondary-container": "#64655e",
+                      "on-surface": "#1a1c18",
+                      "inverse-primary": "#54e24e",
+                      "primary": "#006e0d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-md": "16px",
+                      "margin-desktop": "24px",
+                      "stack-sm": "8px",
+                      "stack-lg": "24px",
+                      "margin-mobile": "16px",
+                      "gutter": "12px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "title-md": [
+                              "Inter"
+                      ],
+                      "title-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "label-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "0.5px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "57px",
+                              {
+                                      "lineHeight": "64px",
+                                      "letterSpacing": "-0.25px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "title-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "0.15px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "title-lg": [
+                              "22px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-lg": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.1px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.25px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24;
+        }
+      </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-lg flex flex-col md:flex-row">
+<!-- Top App Bar (Mobile) -->
+<header class="md:hidden flex justify-between items-center w-full px-margin-mobile py-4 bg-primary dark:bg-primary text-on-primary dark:text-on-primary shadow-none docked full-width top-0 rounded-b-3xl z-40 fixed">
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-title-lg font-title-lg">arrow_back</button>
+<h1 class="text-title-lg font-title-lg font-bold text-on-primary">Load Money</h1>
+</div>
+<button class="material-symbols-outlined text-title-lg font-title-lg">help_outline</button>
+</header>
+<!-- Sidebar / TopNav for Desktop (Suppressed as per rules for transaction screens, but keeping a minimal back navigation) -->
+<div class="hidden md:flex flex-col w-64 bg-surface border-r border-outline-variant h-screen fixed left-0 top-0 pt-8 px-6 z-40">
+<div class="flex items-center gap-2 mb-8 cursor-pointer text-primary">
+<span class="material-symbols-outlined text-title-lg">arrow_back</span>
+<span class="font-title-md text-title-md">Back to Home</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary mb-12">Load Money</h1>
+</div>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin-mobile pt-24 pb-32 md:pt-12 md:pb-12 md:ml-64 max-w-3xl mx-auto w-full flex flex-col gap-stack-lg">
+<!-- Header (Desktop Only) -->
+<div class="hidden md:block mb-4">
+<p class="font-body-md text-body-md text-on-surface-variant">Choose a method to add funds to your wallet.</p>
+</div>
+<!-- Recently Used Section -->
+<section class="flex flex-col gap-stack-sm">
+<h2 class="font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant mb-2">Recently Used</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Linked Bank Card -->
+<button class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-[24px] border border-surface-variant hover:bg-surface-container-low transition-colors text-left shadow-sm">
+<div class="w-12 h-12 bg-primary-container/20 rounded-xl flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-title-lg" data-weight="fill" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-title-md text-title-md text-on-surface truncate">Global IME Bank</h3>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">Linked Account •••• 1234</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- All Methods Section -->
+<section class="flex flex-col gap-stack-sm mt-4">
+<h2 class="font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant mb-2">All Methods</h2>
+<div class="flex flex-col gap-3">
+<!-- Linked Bank -->
+<button class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-[24px] border border-surface-variant hover:bg-surface-container-low transition-colors text-left shadow-sm group">
+<div class="w-10 h-10 bg-surface-container rounded-xl flex items-center justify-center shrink-0 group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">account_balance</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-md text-title-md text-on-surface">Linked Bank Account</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Load instantly from your linked banks</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</button>
+<!-- Mobile Banking -->
+<button class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-[24px] border border-surface-variant hover:bg-surface-container-low transition-colors text-left shadow-sm group">
+<div class="w-10 h-10 bg-surface-container rounded-xl flex items-center justify-center shrink-0 group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">smartphone</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-md text-title-md text-on-surface">Mobile Banking</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Use your bank's mobile app to load</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</button>
+<!-- ConnectIPS -->
+<button class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-[24px] border border-surface-variant hover:bg-surface-container-low transition-colors text-left shadow-sm group">
+<div class="w-10 h-10 bg-surface-container rounded-xl flex items-center justify-center shrink-0 group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">sync_alt</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-md text-title-md text-on-surface">ConnectIPS</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Direct bank transfer via ConnectIPS</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</button>
+<!-- SCT Card -->
+<button class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-[24px] border border-surface-variant hover:bg-surface-container-low transition-colors text-left shadow-sm group">
+<div class="w-10 h-10 bg-surface-container rounded-xl flex items-center justify-center shrink-0 group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">credit_card</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-md text-title-md text-on-surface">SCT Card</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Load using Smart Choice Technologies card</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Info Alert -->
+<div class="bg-surface-container-low p-4 rounded-xl flex gap-3 mt-4">
+<span class="material-symbols-outlined text-secondary text-title-lg">info</span>
+<p class="font-body-md text-body-md text-on-surface-variant">Loading limits may apply based on your KYC verification status. <a class="text-primary font-medium underline" href="#">Learn more</a></p>
+</div>
+</main>
+<!-- Bottom Navigation (Suppressed per logic: linear/transactional intent) -->
+</body></html>

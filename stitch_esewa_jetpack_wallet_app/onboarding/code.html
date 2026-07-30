@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>eSewa Onboarding - Digital Wallet</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Shared Components JSON Integrity Check:
+         This is a transactional/onboarding screen.
+         Per "Semantic Shell" Mandate, the navigation shell (TopAppBar, BottomNavBar) is suppressed.
+    -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "surface-container": "#eeeee6",
+                    "primary-fixed-dim": "#54e24e",
+                    "secondary-container": "#e4e3da",
+                    "on-tertiary-container": "#18484a",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed": "#e4e3da",
+                    "primary": "#006e0d",
+                    "surface-container-highest": "#e3e3db",
+                    "on-secondary-container": "#64655e",
+                    "surface-variant": "#e3e3db",
+                    "tertiary-container": "#88b6b8",
+                    "tertiary": "#396668",
+                    "on-secondary-fixed": "#1b1c17",
+                    "surface-tint": "#006e0d",
+                    "on-surface-variant": "#3d4a39",
+                    "surface": "#fafaf2",
+                    "on-background": "#1a1c18",
+                    "surface-container-low": "#f4f4ec",
+                    "secondary-fixed-dim": "#c8c7bf",
+                    "on-tertiary-fixed": "#002021",
+                    "inverse-primary": "#54e24e",
+                    "background": "#fafaf2",
+                    "outline": "#6d7b68",
+                    "on-surface": "#1a1c18",
+                    "on-primary-fixed-variant": "#005307",
+                    "outline-variant": "#bccbb4",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#002201",
+                    "inverse-surface": "#2f312c",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f1f1e9",
+                    "tertiary-fixed": "#bcebed",
+                    "on-tertiary-fixed-variant": "#1f4d50",
+                    "tertiary-fixed-dim": "#a0cfd1",
+                    "primary-fixed": "#75ff69",
+                    "on-secondary-fixed-variant": "#474741",
+                    "primary-container": "#37c837",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#004d06",
+                    "surface-container-high": "#e8e9e1",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#dadad3",
+                    "surface-bright": "#fafaf2",
+                    "secondary": "#5e5f58"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "12px",
+                    "2xl": "16px",
+                    "3xl": "24px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "12px",
+                    "stack-lg": "24px",
+                    "stack-sm": "8px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "24px",
+                    "stack-md": "16px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "headline-md": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "400"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "600"}],
+                    "label-lg": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .page-indicator-active {
+            width: 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .floating-animation {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .coin-animation {
+            animation: coin-spin 4s linear infinite;
+        }
+        @keyframes coin-spin {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col overflow-hidden">
+<!-- Content Canvas -->
+<main class="flex-grow relative flex flex-col items-center justify-center p-margin-mobile">
+<!-- Onboarding Carousel Container -->
+<div class="w-full max-w-md flex flex-col items-center text-center">
+<!-- Illustration Section -->
+<div class="relative w-full aspect-square mb-stack-lg flex items-center justify-center">
+<!-- Decorative background shapes for depth -->
+<div class="absolute w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="relative z-10 floating-animation">
+<img class="w-64 h-auto drop-shadow-2xl" data-alt="A high-quality 3D digital illustration of a sleek smartphone screen displaying a secure wallet interface. Golden 3D coins with subtle green accents are floating and spiraling around the device. The lighting is soft and professional, utilizing a bright light-mode aesthetic with crisp shadows. The overall composition is clean and modern, set against a soft, neutral off-white background with hints of eSewa green." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyXdJdpNKx-9OTcOMgEpi1SJAUttL2oKkL2MateXl45YnFP2fruwO7JQOF5k2fMZklut2WgNZJiTKzk1IMuYhAZL7hvOmzP8x2ndQ2DErasINEFmP-7lLocXWS06jXCyhiOGeUsOmtLKci-INwolZT97rrO191msLQh4syxaT683S779NP7AFYR1zOHAU26sOb1eMWwCjez1vxZIfHd8nhQxdzSWQHsRl5b_44dbUdu_5tAwi3q1ivQbGYLQI42CuQIIbw0nWGpsWA"/>
+<!-- Floating Icon Accents -->
+<div class="absolute -top-4 -right-4 bg-primary-container p-3 rounded-2xl shadow-lg coin-animation">
+<span class="material-symbols-outlined text-on-primary-container text-3xl">account_balance_wallet</span>
+</div>
+<div class="absolute bottom-10 -left-6 bg-tertiary-container p-2 rounded-xl shadow-md coin-animation" style="animation-delay: 1s;">
+<span class="material-symbols-outlined text-on-tertiary-container text-2xl">payments</span>
+</div>
+</div>
+</div>
+<!-- Text Content -->
+<div class="space-y-stack-md px-4">
+<p class="text-primary font-label-lg text-label-lg tracking-widest uppercase">Digital Wallet</p>
+<h1 class="text-on-background font-headline-lg-mobile text-headline-lg-mobile tracking-tight">
+                    Your All-in-One Digital Wallet
+                </h1>
+<p class="text-on-surface-variant font-body-lg text-body-lg">
+                    Load money, pay bills, and transfer funds securely. Everything you need for daily transactions in your pocket.
+                </p>
+</div>
+</div>
+</main>
+<!-- Bottom Action Section (Sticky to Bottom) -->
+<footer class="p-margin-mobile pb-12 w-full max-w-md mx-auto">
+<!-- Page Indicators -->
+<div class="flex justify-center items-center gap-2 mb-stack-lg">
+<div class="h-2 page-indicator-active bg-primary rounded-full"></div>
+<div class="h-2 w-2 bg-outline-variant rounded-full"></div>
+<div class="h-2 w-2 bg-outline-variant rounded-full"></div>
+<div class="h-2 w-2 bg-outline-variant rounded-full"></div>
+</div>
+<!-- Buttons Container -->
+<div class="flex items-center justify-between w-full">
+<!-- Skip Button -->
+<button class="px-6 py-3 text-on-surface-variant font-title-md text-title-md hover:bg-surface-variant/50 rounded-3xl transition-colors active:scale-95 duration-150">
+                Skip
+            </button>
+<!-- Next Button (FAB-like Premium Interaction) -->
+<button class="bg-primary-container text-on-primary-container px-8 py-4 rounded-3xl font-title-md text-title-md flex items-center gap-2 shadow-lg hover:shadow-xl hover:bg-primary-container/90 active:scale-90 transition-all duration-150" onclick="handleNext()">
+                Next
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</footer>
+<!-- Background Atmospheric Effect -->
+<div class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none opacity-40">
+<div class="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-tertiary/10 blur-[120px] rounded-full"></div>
+</div>
+<script>
+        function handleNext() {
+            // Ripple and click feedback logic
+            const btn = event.currentTarget;
+            btn.classList.add('scale-95');
+            setTimeout(() => {
+                btn.classList.remove('scale-95');
+                // Real app would navigate here
+                console.log('Navigating to next onboarding page...');
+            }, 150);
+        }
+
+        // Simple carousel state simulation for visual feel
+        let currentPage = 0;
+        const totalPages = 4;
+        
+        // This script handles the interaction for the "Next" button in this demo
+        // to show a transition-like effect
+    </script>
+</body></html>

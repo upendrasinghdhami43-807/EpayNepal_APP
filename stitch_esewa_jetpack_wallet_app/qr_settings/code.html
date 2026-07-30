@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QR Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#e4e3da",
+                        "surface-container-low": "#f4f4ec",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "background": "#fafaf2",
+                        "outline-variant": "#bccbb4",
+                        "on-secondary-fixed": "#1b1c17",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#bcebed",
+                        "surface-variant": "#e3e3db",
+                        "surface-container-high": "#e8e9e1",
+                        "inverse-surface": "#2f312c",
+                        "inverse-primary": "#54e24e",
+                        "primary-fixed": "#75ff69",
+                        "primary-container": "#37c837",
+                        "outline": "#6d7b68",
+                        "on-tertiary-container": "#18484a",
+                        "on-tertiary-fixed": "#002021",
+                        "surface-bright": "#fafaf2",
+                        "on-background": "#1a1c18",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#474741",
+                        "on-primary-fixed": "#002201",
+                        "on-primary-container": "#004d06",
+                        "on-secondary-container": "#64655e",
+                        "surface-container-highest": "#e3e3db",
+                        "primary": "#006e0d",
+                        "on-tertiary-fixed-variant": "#1f4d50",
+                        "surface-dim": "#dadad3",
+                        "secondary-container": "#e4e3da",
+                        "secondary": "#5e5f58",
+                        "on-primary-fixed-variant": "#005307",
+                        "surface-tint": "#006e0d",
+                        "inverse-on-surface": "#f1f1e9",
+                        "tertiary": "#396668",
+                        "primary-fixed-dim": "#54e24e",
+                        "surface": "#fafaf2",
+                        "surface-container": "#eeeee6",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#88b6b8",
+                        "tertiary-fixed-dim": "#a0cfd1",
+                        "on-surface-variant": "#3d4a39",
+                        "secondary-fixed-dim": "#c8c7bf",
+                        "on-surface": "#1a1c18"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "margin-mobile": "16px",
+                        "gutter": "12px",
+                        "stack-sm": "8px",
+                        "stack-lg": "24px",
+                        "margin-desktop": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "label-lg": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1px", "fontWeight": "500" }],
+                        "headline-md": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "600" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background antialiased min-h-screen pb-[100px] flex justify-center">
+<div class="w-full max-w-md bg-surface relative min-h-screen shadow-lg">
+<!-- TopAppBar -->
+<header class="bg-primary dark:bg-primary text-on-primary dark:text-on-primary docked full-width top-0 rounded-b-3xl shadow-none flex justify-between items-center w-full px-margin-mobile py-4 z-50 sticky">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="User Profile Profile Picture" class="w-full h-full object-cover" data-alt="A close up portrait of a young professional in a brightly lit office environment. The person is smiling confidently, wearing modern business casual attire. The lighting is soft and flattering, emphasizing a trustworthy and reliable demeanor appropriate for a financial app profile picture. Corporate modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlScDjf7zKp2k8sXgmyQX46tQbXmYWvDJSoDnWnkZalVKqntkzTte1GgNsR-CnTIyNvRsxDOD0-jO1hzNQ-4ye58Pdqas2kbwpeHxsOo8Sslnx7V2vfcByQjoNQycd42ep3cj4NWtXncjKrYdw8mYnbb_wkYp6lcgfXUEu-GIu8V1Xf_XIT-vkeq0vuGoML1tE8HZlMAwZv2WqN8t6jIvepVNwFKomwvXGEinAGWGdeGiB4JioeRlYN8pBHCT8wGNz3br1POubScPM"/>
+</div>
+<h1 class="text-headline-md font-headline-md text-on-primary">Hi, Upendra</h1>
+</div>
+<button class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-primary-container/20 active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="p-margin-mobile flex flex-col gap-stack-lg mt-stack-md">
+<!-- Section 1: Upload My QR -->
+<section class="bg-surface-container-lowest rounded-[24px] p-stack-md shadow-sm border border-outline-variant/30 flex flex-col gap-stack-md">
+<h2 class="text-title-lg font-title-lg text-on-surface">Upload My QR</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Upload an existing QR code to receive payments directly to your wallet.</p>
+<div class="border-2 border-dashed border-primary/30 rounded-[16px] bg-primary-container/5 p-stack-lg flex flex-col items-center justify-center text-center cursor-pointer hover:bg-primary-container/10 transition-colors">
+<span class="material-symbols-outlined text-[48px] text-primary mb-2" data-icon="upload_file">upload_file</span>
+<span class="text-title-md font-title-md text-primary">Tap to Upload</span>
+<span class="text-body-md font-body-md text-on-surface-variant mt-1">Supports JPG, PNG</span>
+</div>
+<!-- Preview Area (Hidden by default, shown for example) -->
+<div class="hidden mt-stack-sm flex-col items-center">
+<span class="text-label-lg font-label-lg text-on-surface-variant uppercase tracking-wider mb-2">Current QR</span>
+<div class="w-48 h-48 bg-surface-container-high rounded-[12px] flex items-center justify-center">
+<span class="material-symbols-outlined text-[64px] text-outline" data-icon="qr_code_2">qr_code_2</span>
+</div>
+</div>
+</section>
+<!-- Section 2: Generate Custom QR -->
+<section class="bg-surface-container-lowest rounded-[24px] p-stack-md shadow-sm border border-outline-variant/30 flex flex-col gap-stack-md">
+<h2 class="text-title-lg font-title-lg text-on-surface">Generate Custom QR</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Create a personalized QR code for easy sharing.</p>
+<form class="flex flex-col gap-stack-md">
+<div>
+<label class="block text-label-lg font-label-lg text-on-surface-variant mb-1" for="qr-name">Display Name</label>
+<input class="w-full h-14 rounded-full bg-surface-container-low border-none focus:ring-2 focus:ring-primary text-body-lg font-body-lg px-6 placeholder:text-on-surface-variant/50" id="qr-name" placeholder="e.g. Upendra's Wallet" type="text"/>
+</div>
+<div>
+<label class="block text-label-lg font-label-lg text-on-surface-variant mb-1" for="qr-mobile">Mobile Number</label>
+<input class="w-full h-14 rounded-full bg-surface-container-low border-none focus:ring-2 focus:ring-primary text-body-lg font-body-lg px-6 placeholder:text-on-surface-variant/50" id="qr-mobile" placeholder="+1 234 567 8900" type="tel"/>
+</div>
+<!-- Generate Button -->
+<button class="mt-2 w-full h-12 rounded-full bg-secondary-container text-on-secondary-container text-title-md font-title-md hover:bg-secondary-container/80 transition-colors flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined" data-icon="autorenew">autorenew</span>
+                        Generate Preview
+                    </button>
+</form>
+<!-- Dynamic Preview Area -->
+<div class="mt-stack-md flex flex-col items-center p-stack-md bg-surface-container-low rounded-[16px]">
+<span class="text-label-lg font-label-lg text-on-surface-variant uppercase tracking-wider mb-4">Live Preview</span>
+<div class="w-48 h-48 bg-white rounded-[12px] p-2 shadow-sm flex items-center justify-center">
+<img alt="Generated QR Code Preview" class="w-full h-full object-contain" data-alt="A clean, high-contrast, black and white QR code graphic. It is crisp and modern, suitable for a financial transaction scan. The QR code is perfectly square and centered against a stark white background, emphasizing clarity and scannability. Corporate modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSWa8i8GFjk1uh5QFH1uEfJbwT81pRB4yG1GXCSOaXHPLgOqfx5AsmGFoFMqk2XhFkHPRbVFWEB72a2kFnwWr_EA8-XKEuJrXMAFrUnu6imLDuOzo6G25QxTl-_6kxziVg3n7BwniccaJWyD2SV-1vlZgQjWy69ta93SucHCSTLtYaKkiLXRh78ePfou10KL3rho7GSF1bS0cAoCT0e1M2Bw3hsjvnQAvTpVIWzQbAvvvERvZ98BxOP73AZ8OVPWU-rPFebGtD5Jp-"/>
+</div>
+<div class="mt-4 text-center">
+<p class="text-title-md font-title-md text-on-surface">Upendra's Wallet</p>
+<p class="text-body-md font-body-md text-on-surface-variant">+1 234 567 8900</p>
+</div>
+</div>
+<!-- Save Button -->
+<button class="w-full h-[48px] mt-4 rounded-full bg-primary-container text-on-primary-container text-title-md font-title-md shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:bg-primary-container/90 active:scale-95 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="save">save</span>
+                    Save QR
+                </button>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-end px-2 pb-2 h-20 bg-surface dark:bg-inverse-surface border-t border-outline-variant dark:border-outline shadow-lg rounded-t-xl md:hidden max-w-md mx-auto">
+<!-- Home (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-secondary-fixed-variant dark:text-secondary-fixed-dim px-4 py-1 hover:bg-secondary-container/50 ripple-effect active:scale-90 flex-1">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="text-label-lg font-label-lg">Home</span>
+</button>
+<!-- Statement (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-secondary-fixed-variant dark:text-secondary-fixed-dim px-4 py-1 hover:bg-secondary-container/50 ripple-effect active:scale-90 flex-1">
+<span class="material-symbols-outlined mb-1" data-icon="receipt_long">receipt_long</span>
+<span class="text-label-lg font-label-lg">Statement</span>
+</button>
+<!-- QR (Active) -->
+<button class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1 hover:bg-secondary-container/50 ripple-effect active:scale-90 flex-1 relative -top-2 shadow-md">
+<span class="material-symbols-outlined mb-1" data-icon="qr_code_scanner" style="font-variation-settings: 'FILL' 1;">qr_code_scanner</span>
+<span class="text-label-lg font-label-lg">QR</span>
+</button>
+<!-- Support (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-secondary-fixed-variant dark:text-secondary-fixed-dim px-4 py-1 hover:bg-secondary-container/50 ripple-effect active:scale-90 flex-1">
+<span class="material-symbols-outlined mb-1" data-icon="help">help</span>
+<span class="text-label-lg font-label-lg">Support</span>
+</button>
+<!-- More (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-secondary-fixed-variant dark:text-secondary-fixed-dim px-4 py-1 hover:bg-secondary-container/50 ripple-effect active:scale-90 flex-1">
+<span class="material-symbols-outlined mb-1" data-icon="more_horiz">more_horiz</span>
+<span class="text-label-lg font-label-lg">More</span>
+</button>
+</nav>
+</div>
+</body></html>

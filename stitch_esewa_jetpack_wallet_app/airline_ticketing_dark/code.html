@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Airline Ticketing Inquiry</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#54e24e",
+                        "primary-container": "#37c837",
+                        "on-surface": "#1a1c18",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#fafaf2",
+                        "on-tertiary-fixed": "#002021",
+                        "tertiary-fixed-dim": "#a0cfd1",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#dadad3",
+                        "primary": "#006e0d",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#e4e3da",
+                        "on-primary-container": "#004d06",
+                        "on-secondary-fixed": "#1b1c17",
+                        "secondary": "#5e5f58",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#88b6b8",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#64655e",
+                        "outline-variant": "#bccbb4",
+                        "on-primary-fixed": "#002201",
+                        "primary-fixed-dim": "#54e24e",
+                        "surface-container-highest": "#e3e3db",
+                        "surface-container-high": "#e8e9e1",
+                        "inverse-surface": "#2f312c",
+                        "on-primary-fixed-variant": "#005307",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#75ff69",
+                        "outline": "#6d7b68",
+                        "on-secondary-fixed-variant": "#474741",
+                        "surface-tint": "#006e0d",
+                        "tertiary": "#396668",
+                        "on-tertiary-container": "#18484a",
+                        "surface-variant": "#e3e3db",
+                        "surface-container-low": "#f4f4ec",
+                        "background": "#131313",
+                        "secondary-fixed-dim": "#c8c7bf",
+                        "on-background": "#ffffff",
+                        "on-tertiary-fixed-variant": "#1f4d50",
+                        "secondary-fixed": "#e4e3da",
+                        "surface-container": "#1E1E1E",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#131313",
+                        "tertiary-fixed": "#bcebed",
+                        "surface": "#1E1E1E",
+                        "on-surface-variant": "#a3a3a3",
+                        "inverse-on-surface": "#f1f1e9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "2xl": "1.5rem",
+                        "3xl": "1.5rem"
+                    },
+                    "spacing": {
+                        "gutter": "12px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "24px",
+                        "stack-md": "16px",
+                        "stack-lg": "24px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "title-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "600" }],
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "headline-md": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "headline-md-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "400" }],
+                        "label-lg": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1px", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .flight-path-curve {
+            position: absolute;
+            top: 50%;
+            left: 15%;
+            right: 15%;
+            height: 40px;
+            border: 2px dashed rgba(255, 255, 255, 0.1);
+            border-bottom: none;
+            border-radius: 50% 50% 0 0;
+            z-index: 0;
+        }
+        .plane-icon {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: theme('colors.primary');
+            background: #131313;
+            padding: 0 4px;
+            z-index: 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-[#131313] text-gray-100 min-h-screen flex flex-col md:pb-0 pb-24">
+<!-- TopAppBar -->
+<header class="bg-[#1E1E1E] text-white docked full-width top-0 rounded-b-3xl shadow-none">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary/20 flex items-center justify-center border border-primary/30">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a person looking forward, brightly lit with a clean modern aesthetic, set against a soft blurred background to convey trust and reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjvuZ8FT2zFgXHX2ZIrreEFEoZtpqVFaMNoVEr4mtj5JbRJWa1Jpfiwv1fWUEEzmty3sZTJ6GKFgLsSBOgdRK0Spm3NOrTDbLo2BIowcfP2OzRIhahb7bgabKr0SPh5QdZJP-wzFTmcXlaZt14B3cGQGU208YKHHEwuE90-rEnYTMvN_Eo37qBnSZdE9ixdLilCmE3cifFPJiL9bQlHoNExcETkTKg80VEDNw_DVrPtDFIdQXCfN1u1g"/>
+</div>
+<h1 class="text-headline-md-mobile md:text-headline-md font-headline-md font-bold text-white tracking-tight">Hi, Upendra</h1>
+</div>
+<button class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors active:scale-95 text-primary">
+<span class="material-symbols-outlined text-2xl" data-icon="notifications" data-weight="fill">notifications</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow px-margin-mobile md:px-margin-desktop py-stack-lg flex flex-col gap-stack-lg max-w-3xl mx-auto w-full">
+<!-- Search Header & Toggle -->
+<section class="flex flex-col gap-stack-md">
+<h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg font-semibold text-white">Book a Flight</h2>
+<div class="flex p-1 bg-[#1E1E1E] rounded-full w-full md:w-fit self-start shadow-sm border border-white/10">
+<button class="flex-1 md:flex-none px-6 py-2 rounded-full bg-primary text-white text-label-lg font-label-lg font-semibold transition-all shadow-md active:scale-95" id="toggle-oneway" onclick="toggleTripType('oneway')">One Way</button>
+<button class="flex-1 md:flex-none px-6 py-2 rounded-full text-gray-400 text-label-lg font-label-lg hover:text-white transition-all active:scale-95" id="toggle-roundtrip" onclick="toggleTripType('roundtrip')">Round Trip</button>
+</div>
+</section>
+<!-- Search Form Card -->
+<div class="bg-[#1E1E1E] rounded-2xl p-6 shadow-md border border-white/10 flex flex-col gap-stack-lg">
+<!-- City Selection (Destinations) -->
+<div class="relative flex flex-col md:flex-row gap-stack-md items-center justify-between w-full">
+<!-- From -->
+<div class="w-full md:w-[42%] flex flex-col gap-1">
+<label class="text-label-lg font-label-lg text-gray-400 uppercase tracking-wider">From</label>
+<div class="flex items-center gap-3 p-4 bg-[#131313] border border-white/20 rounded-xl focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<span class="material-symbols-outlined text-gray-400" data-icon="flight_takeoff">flight_takeoff</span>
+<input class="w-full bg-transparent border-none p-0 text-title-md font-title-md focus:ring-0 text-white placeholder-gray-500" placeholder="Origin City or Airport" type="text" value="San Francisco (SFO)"/>
+</div>
+</div>
+<!-- Swap Button (Mobile: hidden, Desktop: center absolute) -->
+<button class="hidden md:flex absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-primary/20 text-primary border border-primary/30 items-center justify-center hover:bg-primary hover:text-white shadow-sm transition-all active:scale-90">
+<span class="material-symbols-outlined text-[20px]" data-icon="sync_alt">sync_alt</span>
+</button>
+<!-- Mobile Swap Button -->
+<button class="md:hidden self-center w-10 h-10 rounded-full bg-[#2A2A2A] border border-white/10 text-gray-300 flex items-center justify-center hover:bg-[#333333] active:scale-90 transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="swap_vert">swap_vert</span>
+</button>
+<!-- To -->
+<div class="w-full md:w-[42%] flex flex-col gap-1">
+<label class="text-label-lg font-label-lg text-gray-400 text-left md:text-right uppercase tracking-wider">To</label>
+<div class="flex items-center gap-3 p-4 bg-[#131313] border border-white/20 rounded-xl focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<span class="material-symbols-outlined text-gray-400" data-icon="flight_land">flight_land</span>
+<input class="w-full bg-transparent border-none p-0 text-title-md font-title-md md:text-right focus:ring-0 text-white placeholder-gray-500" placeholder="Destination City or Airport" type="text" value="Tokyo (NRT)"/>
+</div>
+</div>
+</div>
+<hr class="border-white/10 w-full"/>
+<!-- Dates & Passengers -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-md">
+<!-- Departure -->
+<div class="flex flex-col gap-1">
+<label class="text-label-lg font-label-lg text-gray-400 uppercase tracking-wider">Departure</label>
+<button class="flex items-center justify-between w-full p-4 bg-[#131313] border border-white/20 rounded-xl hover:bg-[#2A2A2A] transition-colors text-left group">
+<div class="flex flex-col">
+<span class="text-title-md font-title-md text-white">Oct 24, 2023</span>
+<span class="text-body-md font-body-md text-gray-400">Tuesday</span>
+</div>
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors" data-icon="calendar_month">calendar_month</span>
+</button>
+</div>
+<!-- Return (Hidden by default for One Way) -->
+<div class="flex flex-col gap-1 opacity-50 pointer-events-none transition-opacity duration-300" id="return-date-container">
+<label class="text-label-lg font-label-lg text-gray-400 uppercase tracking-wider">Return</label>
+<button class="flex items-center justify-between w-full p-4 bg-[#131313] border border-white/20 rounded-xl hover:bg-[#2A2A2A] transition-colors text-left group">
+<div class="flex flex-col">
+<span class="text-title-md font-title-md text-gray-400">Add Return</span>
+<span class="text-body-md font-body-md text-gray-500">-</span>
+</div>
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors" data-icon="calendar_month">calendar_month</span>
+</button>
+</div>
+<!-- Passengers -->
+<div class="flex flex-col gap-1">
+<label class="text-label-lg font-label-lg text-gray-400 uppercase tracking-wider">Passengers</label>
+<button class="flex items-center justify-between w-full p-4 bg-[#131313] border border-white/20 rounded-xl hover:bg-[#2A2A2A] transition-colors text-left group">
+<div class="flex flex-col">
+<span class="text-title-md font-title-md text-white">1 Adult</span>
+<span class="text-body-md font-body-md text-gray-400">Economy</span>
+</div>
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors" data-icon="person">person</span>
+</button>
+</div>
+</div>
+<!-- Search Button -->
+<button class="mt-4 w-full h-[56px] rounded-xl bg-primary text-white text-title-md font-title-md font-semibold flex items-center justify-center gap-2 hover:bg-primary/90 transition-all shadow-md active:scale-[0.98]">
+<span class="material-symbols-outlined text-[24px]" data-icon="search">search</span>
+                Search Flights
+            </button>
+</div>
+<!-- Featured Destinations / Promos (Visual Interest) -->
+<section class="mt-stack-lg">
+<div class="flex justify-between items-end mb-stack-md">
+<h3 class="text-title-lg font-title-lg font-semibold text-white">Popular Destinations</h3>
+<button class="text-primary text-body-md font-body-md font-medium hover:underline">See all</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-stack-md">
+<!-- Card 1 -->
+<div class="relative h-40 rounded-2xl overflow-hidden group cursor-pointer border border-white/10">
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors z-10"></div>
+<img alt="Paris" class="w-full h-full object-cover absolute inset-0" data-alt="A stunning aerial view of the Eiffel Tower in Paris at sunset, bathed in golden hour light, reflecting modern elegant travel aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDpKHlP7dX4jnRSPBMUk1_KTef2r1Xgz9m3-zplrXPFszRIiyXCLeOhojGIxDzgByx_tHb-9X8jdimF-uadPGnk0GVFXVbKD6mkHN4ISFjmrVt3mDCoQAfTlupLSKOg2CkKHEi8RpYg7nRtKHPSf3p2mvn1rri0UJ540eZnxmO0gJp0bjHABhmZAqGQ3RrtEkmgeMeFPkZU24EYs6LCDcZRxTnMGpjSEtxmOQlrzhCCY5qVWFPa-p_sQ"/>
+<div class="absolute bottom-3 left-3 z-20">
+<span class="text-white text-title-md font-title-md font-semibold drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">Paris</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="relative h-40 rounded-2xl overflow-hidden group cursor-pointer border border-white/10">
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors z-10"></div>
+<img alt="Tokyo" class="w-full h-full object-cover absolute inset-0" data-alt="A vibrant night view of the Tokyo skyline featuring neon lights and modern skyscrapers, capturing the energetic pulse of the city." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2fG3zA9_tDEfuo8JOxDc8XSpHdJfkcNkSSbhOMKXrUq0JEusItyWxOSm58gAd2GMeCknduRpeBw3tKvGeFVy9ygj0i4-WMIyO4a8M7HIsCL0YJfKUoS6Jx9UEa5mdcuWcvylh57QVUm7PCPV2y2vXk840NbADQUpws70xu2YKL12XspQHVgDz8xQSklxA44wq5F-hM1n8YB5VW4n3Ma8BQdK9Eh3n2UZADeP40qms2dUBIJuTECTiDA"/>
+<div class="absolute bottom-3 left-3 z-20">
+<span class="text-white text-title-md font-title-md font-semibold drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">Tokyo</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Destination Shell) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-end px-2 pb-2 h-20 bg-[#1E1E1E] shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] border-t border-white/5 md:hidden">
+<!-- Active Tab: Explore (Assuming Inquiry is part of Explore/Home) -->
+<button class="flex flex-col items-center justify-center w-16 h-14 group">
+<div class="flex flex-col items-center justify-center bg-primary/20 text-primary rounded-full px-4 py-1 transition-transform group-active:scale-90">
+<span class="material-symbols-outlined" data-icon="home" data-weight="fill">home</span>
+</div>
+<span class="text-label-lg font-label-lg mt-1 text-primary">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center w-16 h-14 group">
+<div class="flex flex-col items-center justify-center text-gray-400 px-4 py-1 hover:bg-white/5 rounded-full transition-transform group-active:scale-90">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+</div>
+<span class="text-label-lg font-label-lg mt-1 text-gray-400">Statement</span>
+</button>
+<button class="flex flex-col items-center justify-center w-16 h-14 group">
+<div class="flex flex-col items-center justify-center text-gray-400 px-4 py-1 hover:bg-white/5 rounded-full transition-transform group-active:scale-90">
+<span class="material-symbols-outlined" data-icon="qr_code_scanner">qr_code_scanner</span>
+</div>
+<span class="text-label-lg font-label-lg mt-1 text-gray-400">QR</span>
+</button>
+<button class="flex flex-col items-center justify-center w-16 h-14 group">
+<div class="flex flex-col items-center justify-center text-gray-400 px-4 py-1 hover:bg-white/5 rounded-full transition-transform group-active:scale-90">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</div>
+<span class="text-label-lg font-label-lg mt-1 text-gray-400">Support</span>
+</button>
+<button class="flex flex-col items-center justify-center w-16 h-14 group">
+<div class="flex flex-col items-center justify-center text-gray-400 px-4 py-1 hover:bg-white/5 rounded-full transition-transform group-active:scale-90">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+</div>
+<span class="text-label-lg font-label-lg mt-1 text-gray-400">More</span>
+</button>
+</nav>
+<script>
+        function toggleTripType(type) {
+            const btnOneWay = document.getElementById('toggle-oneway');
+            const btnRoundTrip = document.getElementById('toggle-roundtrip');
+            const returnContainer = document.getElementById('return-date-container');
+
+            const activeClass = ['bg-primary', 'text-white', 'shadow-md', 'font-semibold'];
+            const inactiveClass = ['text-gray-400', 'hover:text-white', 'bg-transparent'];
+
+            if (type === 'oneway') {
+                // Set One Way Active
+                btnOneWay.classList.add(...activeClass);
+                btnOneWay.classList.remove(...inactiveClass);
+                
+                // Set Round Trip Inactive
+                btnRoundTrip.classList.add(...inactiveClass);
+                btnRoundTrip.classList.remove(...activeClass);
+
+                // Hide/Disable Return Date
+                returnContainer.classList.add('opacity-50', 'pointer-events-none');
+            } else {
+                // Set Round Trip Active
+                btnRoundTrip.classList.add(...activeClass);
+                btnRoundTrip.classList.remove(...inactiveClass);
+                
+                // Set One Way Inactive
+                btnOneWay.classList.add(...inactiveClass);
+                btnOneWay.classList.remove(...activeClass);
+
+                // Show/Enable Return Date
+                returnContainer.classList.remove('opacity-50', 'pointer-events-none');
+            }
+        }
+    </script>
+</body></html>

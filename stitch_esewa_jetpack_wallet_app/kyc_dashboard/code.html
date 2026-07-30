@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>eSewa KYC Dashboard</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "surface-container": "#eeeee6",
+                    "primary-fixed-dim": "#54e24e",
+                    "secondary-container": "#e4e3da",
+                    "on-tertiary-container": "#18484a",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed": "#e4e3da",
+                    "primary": "#006e0d",
+                    "surface-container-highest": "#e3e3db",
+                    "on-secondary-container": "#64655e",
+                    "surface-variant": "#e3e3db",
+                    "tertiary-container": "#88b6b8",
+                    "tertiary": "#396668",
+                    "on-secondary-fixed": "#1b1c17",
+                    "surface-tint": "#006e0d",
+                    "on-surface-variant": "#3d4a39",
+                    "surface": "#fafaf2",
+                    "on-background": "#1a1c18",
+                    "surface-container-low": "#f4f4ec",
+                    "secondary-fixed-dim": "#c8c7bf",
+                    "on-tertiary-fixed": "#002021",
+                    "inverse-primary": "#54e24e",
+                    "background": "#fafaf2",
+                    "outline": "#6d7b68",
+                    "on-surface": "#1a1c18",
+                    "on-primary-fixed-variant": "#005307",
+                    "outline-variant": "#bccbb4",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#002201",
+                    "inverse-surface": "#2f312c",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f1f1e9",
+                    "tertiary-fixed": "#bcebed",
+                    "on-tertiary-fixed-variant": "#1f4d50",
+                    "tertiary-fixed-dim": "#a0cfd1",
+                    "primary-fixed": "#75ff69",
+                    "on-secondary-fixed-variant": "#474741",
+                    "primary-container": "#37c837",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#004d06",
+                    "surface-container-high": "#e8e9e1",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#dadad3",
+                    "surface-bright": "#fafaf2",
+                    "secondary": "#5e5f58"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "12px",
+                    "stack-lg": "24px",
+                    "stack-sm": "8px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "24px",
+                    "stack-md": "16px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "headline-md": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "400"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "600"}],
+                    "label-lg": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .step-active {
+            @apply border-primary-container bg-primary-container text-on-primary-container;
+        }
+        .step-line {
+            height: 2px;
+            width: 100%;
+            background-color: theme('colors.outline-variant');
+        }
+        .ripple-effect:active {
+            transform: scale(0.96);
+            transition: transform 0.1s ease;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="bg-primary text-on-primary fixed top-0 w-full z-50 rounded-b-3xl px-margin-mobile py-4 flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-on-primary/20 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a young South Asian man with a friendly expression, wearing business casual attire. The lighting is soft and even, against a clean, neutral background, maintaining a corporate yet approachable aesthetic for a fintech profile picture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA32sXnGRUu_8OjzgGk600wwkCvbAxk4FucpjfLdVnYmm0LmCrhtlO2tze9eT54awOs5yKnAM77mXYZo-iQXlpo4N3ir8VzcVI_1r_C-Vg3U0l_bYpeiNudP0yHnDPtqSn3yDbcNTAdkDJ2cslsaM8AplIHgmBUmvym-amIFn3IPRzU5sxKaKlFCqbBayJlYizz10cXlAgdhOjQZL_Hoz7BmW__0xP7rvvXUTo62pzucrYJ6PcQPuoPft16MGybUHNs4v6qLB1gbatn"/>
+</div>
+<div>
+<h1 class="text-title-lg font-title-lg font-bold">Hi, Upendra</h1>
+<p class="text-label-lg font-label-lg opacity-80">Welcome back to eSewa</p>
+</div>
+</div>
+<button class="w-10 h-10 flex items-center justify-center hover:bg-primary-container/20 rounded-full transition-colors ripple-effect">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="pt-28 px-margin-mobile max-w-2xl mx-auto space-y-stack-lg">
+<!-- Status Hero Card -->
+<section class="bg-surface shadow-lg rounded-2xl p-6 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container text-label-lg font-bold">
+<span class="material-symbols-outlined text-[14px]" data-icon="warning">warning</span>
+                    Unverified
+                </span>
+</div>
+<div class="flex flex-col gap-4">
+<h2 class="text-headline-md-mobile font-headline-md-mobile text-primary">Unlock Your Wallet</h2>
+<p class="text-body-lg font-body-lg text-secondary">Verify your identity to enjoy higher transaction limits and enhanced security for your digital payments.</p>
+<!-- Micro-interactable Graphic -->
+<div class="mt-4 bg-surface-container rounded-2xl p-4 flex items-center justify-center h-32 relative group">
+<div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary-container to-transparent"></div>
+<span class="material-symbols-outlined text-6xl text-primary/40 group-hover:scale-110 transition-transform duration-300" data-icon="fingerprint">fingerprint</span>
+<span class="material-symbols-outlined absolute top-4 left-4 text-primary/20" data-icon="security">security</span>
+<span class="material-symbols-outlined absolute bottom-4 right-4 text-primary/20" data-icon="verified_user">verified_user</span>
+</div>
+</div>
+</section>
+<!-- KYC Progress Timeline -->
+<section class="space-y-stack-md">
+<h3 class="text-title-md font-title-md px-1">Verification Steps</h3>
+<div class="bg-surface-container-low rounded-2xl p-6 shadow-sm">
+<div class="relative flex justify-between items-start">
+<!-- Progress Line Backdrop -->
+<div class="absolute top-5 left-0 w-full h-[2px] bg-outline-variant z-0"></div>
+<!-- Steps -->
+<div class="relative z-10 flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-10 h-10 rounded-full border-2 border-primary-container bg-surface flex items-center justify-center text-primary transition-all duration-300">
+<span class="material-symbols-outlined text-xl" data-icon="person">person</span>
+</div>
+<span class="text-label-lg font-label-lg text-on-surface-variant">Personal Info</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full border-2 border-outline-variant bg-surface flex items-center justify-center text-outline transition-all duration-300">
+<span class="material-symbols-outlined text-xl" data-icon="home_pin">home_pin</span>
+</div>
+<span class="text-label-lg font-label-lg text-outline">Address</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full border-2 border-outline-variant bg-surface flex items-center justify-center text-outline transition-all duration-300">
+<span class="material-symbols-outlined text-xl" data-icon="description">description</span>
+</div>
+<span class="text-label-lg font-label-lg text-outline">Documents</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full border-2 border-outline-variant bg-surface flex items-center justify-center text-outline transition-all duration-300">
+<span class="material-symbols-outlined text-xl" data-icon="add_a_photo">add_a_photo</span>
+</div>
+<span class="text-label-lg font-label-lg text-outline">Selfie</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Requirements / Benefits Grid -->
+<section class="grid grid-cols-2 gap-4">
+<div class="bg-surface rounded-2xl p-4 border border-outline-variant shadow-sm flex flex-col gap-2">
+<div class="w-8 h-8 rounded-lg bg-tertiary-container/30 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-xl" data-icon="history">history</span>
+</div>
+<h4 class="text-label-lg font-bold">Fast Process</h4>
+<p class="text-label-lg font-label-lg text-secondary">Takes less than 5 minutes to complete.</p>
+</div>
+<div class="bg-surface rounded-2xl p-4 border border-outline-variant shadow-sm flex flex-col gap-2">
+<div class="w-8 h-8 rounded-lg bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl" data-icon="payments">payments</span>
+</div>
+<h4 class="text-label-lg font-bold">Higher Limits</h4>
+<p class="text-label-lg font-label-lg text-secondary">Transact up to NPR 1,000,000.</p>
+</div>
+</section>
+<!-- Help/Support Banner -->
+<section class="bg-surface-container-high rounded-2xl p-4 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="help_center">help_center</span>
+<span class="text-body-md font-body-md">Need help with KYC?</span>
+</div>
+<button class="text-primary font-bold text-label-lg ripple-effect">Contact Support</button>
+</section>
+</main>
+<!-- Bottom Action Area -->
+<div class="fixed bottom-24 left-0 w-full px-margin-mobile pointer-events-none">
+<div class="max-w-2xl mx-auto pointer-events-auto">
+<button class="w-full h-14 bg-primary text-on-primary rounded-2xl font-title-md text-title-md shadow-xl flex items-center justify-center gap-2 hover:brightness-110 active:scale-95 transition-all ripple-effect">
+                Start Verification
+                <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface border-t border-outline-variant flex justify-around items-end px-2 pb-2 h-20 shadow-lg">
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant px-4 py-1 ripple-effect" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-lg font-label-lg">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant px-4 py-1 ripple-effect" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="text-label-lg font-label-lg">Statement</span>
+</a>
+<!-- Active Tab for Dashboard Concept -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 ripple-effect" href="#">
+<span class="material-symbols-outlined" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="text-label-lg font-label-lg">QR</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant px-4 py-1 ripple-effect" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="text-label-lg font-label-lg">Support</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant px-4 py-1 ripple-effect" href="#">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+<span class="text-label-lg font-label-lg">More</span>
+</a>
+</nav>
+<script>
+        // Simple Interaction logic
+        document.querySelectorAll('.ripple-effect').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                // Future expansion: Add actual ripple element creation
+            });
+        });
+    </script>
+</body></html>

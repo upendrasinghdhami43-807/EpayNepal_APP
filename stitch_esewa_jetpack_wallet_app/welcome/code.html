@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Welcome to eSewa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "surface-container": "#eeeee6",
+                        "primary-fixed-dim": "#54e24e",
+                        "secondary-container": "#e4e3da",
+                        "on-tertiary-container": "#18484a",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#e4e3da",
+                        "primary": "#006e0d",
+                        "surface-container-highest": "#e3e3db",
+                        "on-secondary-container": "#64655e",
+                        "surface-variant": "#e3e3db",
+                        "tertiary-container": "#88b6b8",
+                        "tertiary": "#396668",
+                        "on-secondary-fixed": "#1b1c17",
+                        "surface-tint": "#006e0d",
+                        "on-surface-variant": "#3d4a39",
+                        "surface": "#fafaf2",
+                        "on-background": "#1a1c18",
+                        "surface-container-low": "#f4f4ec",
+                        "secondary-fixed-dim": "#c8c7bf",
+                        "on-tertiary-fixed": "#002021",
+                        "inverse-primary": "#54e24e",
+                        "background": "#fafaf2",
+                        "outline": "#6d7b68",
+                        "on-surface": "#1a1c18",
+                        "on-primary-fixed-variant": "#005307",
+                        "outline-variant": "#bccbb4",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#002201",
+                        "inverse-surface": "#2f312c",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f1f1e9",
+                        "tertiary-fixed": "#bcebed",
+                        "on-tertiary-fixed-variant": "#1f4d50",
+                        "tertiary-fixed-dim": "#a0cfd1",
+                        "primary-fixed": "#75ff69",
+                        "on-secondary-fixed-variant": "#474741",
+                        "primary-container": "#37c837",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#004d06",
+                        "surface-container-high": "#e8e9e1",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#dadad3",
+                        "surface-bright": "#fafaf2",
+                        "secondary": "#5e5f58"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "24": "24px"
+                    },
+                    "spacing": {
+                        "gutter": "12px",
+                        "stack-lg": "24px",
+                        "stack-sm": "8px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "24px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "headline-md": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "400"}],
+                        "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "600"}],
+                        "label-lg": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                        "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ripple-effect:active {
+            transform: scale(0.96);
+            transition: transform 0.1s ease-in-out;
+        }
+        .bg-pattern {
+            background-image: radial-gradient(circle at 2px 2px, rgba(0, 110, 13, 0.05) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-lg min-h-screen flex flex-col justify-between selection:bg-primary-container selection:text-on-primary-container">
+<!-- Decorative Animated Background Layer -->
+<div class="fixed inset-0 -z-10 bg-pattern opacity-50"></div>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center px-margin-mobile">
+<!-- Brand Section -->
+<div class="w-full max-w-sm flex flex-col items-center mb-16 animate-fade-in">
+<div class="mb-8 p-6 bg-surface-container-low rounded-24 shadow-sm">
+<img alt="eSewa Logo" class="w-32 h-32 object-contain" data-alt="A clean, minimalist high-resolution corporate logo for a fintech brand named eSewa, featuring a stylized letter 'e' in a vibrant, reliable green. The logo is displayed prominently against a soft white background with gentle shadows, emphasizing trust, growth, and modern financial technology. Professional 3D rendering with soft studio lighting and a clean, high-end corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD7q9Y4bnRnQgfXqm4AEPpuguMfRN7fA9XeY02IFhL7fTv0qsZPt4RqqlUomKKJ0QIRjHcRiidunrzw3sZldSW5_7e0VE_l7QI9kTof_Tt2VfDTA6HAS5XUPZ_OZBfaMUMszm29mOppOcR1wV2hC-xYwj3gYuZIOYHugUlHspmRZn8hv-6fj4o0ffqD71bmBMCsEH5FwYoq47_lYXz-jkLdndpui3UWS8j7N7rx-rXOs5-24HsDNsAOAuQVqt6zi2-81MEGhID4htB"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background mb-2">Welcome to eSewa</h1>
+<p class="font-body-md text-body-md text-on-surface-variant text-center px-4">
+                Reliable, efficient, and secure financial services for your everyday needs.
+            </p>
+</div>
+<!-- Action Cluster -->
+<div class="w-full max-w-sm flex flex-col gap-4">
+<!-- Login Button -->
+<button class="w-full h-14 bg-primary-container hover:bg-primary text-on-primary-container hover:text-on-primary font-title-md text-title-md rounded-24 ripple-effect transition-all duration-300 shadow-md flex items-center justify-center">
+                Login
+            </button>
+<!-- Create Account Button -->
+<button class="w-full h-14 border-2 border-outline hover:bg-surface-container-low text-primary font-title-md text-title-md rounded-24 ripple-effect transition-all duration-300 flex items-center justify-center">
+                Create Account
+            </button>
+</div>
+</main>
+<!-- Footer Utility Links -->
+<footer class="w-full px-margin-mobile pb-12 flex flex-col items-center gap-8">
+<!-- Language Switcher -->
+<button class="flex items-center gap-2 px-4 py-2 rounded-full border border-outline-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-size: 20px;">language</span>
+<span class="font-label-lg text-label-lg text-on-surface-variant">English (US)</span>
+<span class="material-symbols-outlined text-on-surface-variant" style="font-size: 16px;">expand_more</span>
+</button>
+<!-- Legal Links -->
+<nav class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+<a class="font-label-lg text-label-lg text-outline hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-lg text-label-lg text-outline hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-lg text-label-lg text-outline hover:text-primary transition-colors" href="#">Support</a>
+</nav>
+<!-- Copyright / Version -->
+<p class="font-label-lg text-label-lg text-on-secondary-fixed-variant opacity-60">
+            © 2024 eSewa. All rights reserved.
+        </p>
+</footer>
+<script>
+        // Simple micro-interaction for button press
+        document.querySelectorAll('.ripple-effect').forEach(button => {
+            button.addEventListener('mousedown', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const ripple = document.createElement('span');
+                ripple.style.position = 'absolute';
+                ripple.style.width = '100px';
+                ripple.style.height = '100px';
+                ripple.style.background = 'rgba(255, 255, 255, 0.3)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.left = `${x - 50}px`;
+                ripple.style.top = `${y - 50}px`;
+                ripple.style.transform = 'scale(0)';
+                ripple.style.transition = 'transform 0.6s linear, opacity 0.6s linear';
+                ripple.style.pointerEvents = 'none';
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.style.transform = 'scale(4)';
+                    ripple.style.opacity = '0';
+                }, 0);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Animation Entrance
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.animate-fade-in');
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                    el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+    </script>
+</body></html>
