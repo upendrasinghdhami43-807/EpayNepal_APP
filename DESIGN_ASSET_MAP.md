@@ -28,9 +28,9 @@ This checklist maps every design asset folder in `/stitch_esewa_jetpack_wallet_a
 - [ ] `kyc_document_upload` -> Document Upload
 
 ## Money Movement
-- [ ] `load_money` -> Load Money
-- [ ] `bank_accounts` -> Bank Accounts
-- [ ] `bank_transfer` -> Bank Transfer
+- [x] `load_money` -> Load Money
+- [x] `bank_accounts` -> Bank Accounts
+- [x] `bank_transfer` -> Bank Transfer
 - [ ] `remittance` -> Remittance
 - [ ] `confirm_payment` -> Confirm Payment
 - [ ] `payment_details` -> Payment Details

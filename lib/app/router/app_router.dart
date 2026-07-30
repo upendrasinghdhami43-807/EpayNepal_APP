@@ -14,6 +14,10 @@ import '../features/auth/presentation/screens/otp_screen.dart';
 import '../features/auth/presentation/screens/create_mpin_screen.dart';
 import '../features/auth/presentation/screens/devices_credentials_screen.dart';
 
+import '../features/load_money/presentation/screens/load_money_screen.dart';
+import '../features/bank/presentation/screens/bank_accounts_screen.dart';
+import '../features/bank/presentation/screens/bank_transfer_screen.dart';
+
 // Temporary placeholder screens for unresolved routes
 class PlaceholderScreen extends StatelessWidget {
   final String title;
@@ -74,6 +78,21 @@ final GoRouter appRouter = GoRouter(
       path: '/devices',
       name: 'devices',
       builder: (context, state) => const DevicesCredentialsScreen(),
+    ),
+    GoRoute(
+      path: '/load_money',
+      name: 'load_money',
+      builder: (context, state) => const LoadMoneyScreen(),
+    ),
+    GoRoute(
+      path: '/bank_accounts',
+      name: 'bank_accounts',
+      builder: (context, state) => const BankAccountsScreen(),
+    ),
+    GoRoute(
+      path: '/bank_transfer',
+      name: 'bank_transfer',
+      builder: (context, state) => const BankTransferScreen(),
     ),
     ShellRoute(
       navigatorKey: _shellNavigatorKey,

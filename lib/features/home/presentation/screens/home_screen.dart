@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -168,10 +169,10 @@ class HomeScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildBalanceAction(context, Icons.account_balance_wallet, 'Load Money'),
-              _buildBalanceAction(context, Icons.send, 'Send Money'),
-              _buildBalanceAction(context, Icons.account_balance, 'Bank Transfer'),
-              _buildBalanceAction(context, Icons.payments, 'Remittance'),
+              _buildBalanceAction(context, Icons.account_balance_wallet, 'Load Money', '/load_money'),
+              _buildBalanceAction(context, Icons.send, 'Send Money', null),
+              _buildBalanceAction(context, Icons.account_balance, 'Bank Transfer', '/bank_transfer'),
+              _buildBalanceAction(context, Icons.payments, 'Remittance', null),
             ],
           ),
         ],
@@ -179,21 +180,28 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBalanceAction(BuildContext context, IconData icon, String label) {
-    return Column(
-      children: [
-        Container(
-          width: 48,
-          height: 48,
-          decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.15),
-            borderRadius: BorderRadius.circular(16),
+  Widget _buildBalanceAction(BuildContext context, IconData icon, String label, String? route) {
+    return GestureDetector(
+      onTap: () {
+        if (route != null) {
+          context.push(route);
+        }
+      },
+      child: Column(
+        children: [
+          Container(
+            width: 48,
+            height: 48,
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.15),
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Icon(icon, color: Theme.of(context).colorScheme.onPrimary),
           ),
-          child: Icon(icon, color: Theme.of(context).colorScheme.onPrimary),
-        ),
-        const SizedBox(height: 8),
-        Text(label, style: TextStyle(color: Theme.of(context).colorScheme.onPrimary, fontSize: 10, fontWeight: FontWeight.w500)),
-      ],
+          const SizedBox(height: 8),
+          Text(label, style: TextStyle(color: Theme.of(context).colorScheme.onPrimary, fontSize: 10, fontWeight: FontWeight.w500)),
+        ],
+      ),
     );
   }
 
