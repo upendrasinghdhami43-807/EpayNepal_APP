@@ -9,18 +9,18 @@ final ThemeData appThemeLight = ThemeData(
   useMaterial3: true,
   brightness: Brightness.light,
   colorScheme: lightColorScheme,
-  textTheme: AppTypography.getTextTheme(AppColors.textPrimaryLight),
-  scaffoldBackgroundColor: AppColors.backgroundLight,
-  appBarTheme: const AppBarTheme(
-    backgroundColor: AppColors.primary,
-    foregroundColor: Colors.white,
+  textTheme: AppTypography.getTextTheme(lightColorScheme.onSurface),
+  scaffoldBackgroundColor: lightColorScheme.surface,
+  appBarTheme: AppBarTheme(
+    backgroundColor: lightColorScheme.primary,
+    foregroundColor: lightColorScheme.onPrimary,
     elevation: 0,
     centerTitle: true,
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      backgroundColor: AppColors.primary,
-      foregroundColor: Colors.white,
+      backgroundColor: lightColorScheme.primary,
+      foregroundColor: lightColorScheme.onPrimary,
       elevation: 0,
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
       shape: RoundedRectangleBorder(

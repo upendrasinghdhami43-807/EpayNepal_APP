@@ -4,7 +4,10 @@ import 'route_names.dart';
 import 'main_shell.dart';
 import '../features/home/presentation/screens/home_screen.dart';
 
-// Temporary placeholder screens
+import '../features/onboarding/presentation/screens/splash_screen.dart';
+import '../features/onboarding/presentation/screens/welcome_screen.dart';
+
+// Temporary placeholder screens for unresolved routes
 class PlaceholderScreen extends StatelessWidget {
   final String title;
   const PlaceholderScreen({super.key, required this.title});
@@ -23,17 +26,17 @@ final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>()
 
 final GoRouter appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: '/home', // Skip splash for now during dev
+  initialLocation: '/',
   routes: [
     GoRoute(
       path: '/',
       name: RouteNames.splash,
-      builder: (context, state) => const PlaceholderScreen(title: 'Splash Screen'),
+      builder: (context, state) => const SplashScreen(),
     ),
     GoRoute(
       path: '/onboarding',
       name: RouteNames.onboarding,
-      builder: (context, state) => const PlaceholderScreen(title: 'Onboarding'),
+      builder: (context, state) => const WelcomeScreen(),
     ),
     GoRoute(
       path: '/auth',
