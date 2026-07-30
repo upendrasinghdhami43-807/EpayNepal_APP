@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class BankTransferScreen extends StatelessWidget {
   const BankTransferScreen({super.key});
@@ -183,7 +184,9 @@ class BankTransferScreen extends StatelessWidget {
         ),
         child: SafeArea(
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              context.push('/payment_details');
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: colorScheme.primary,
               foregroundColor: colorScheme.onPrimary,

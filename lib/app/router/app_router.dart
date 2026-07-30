@@ -18,6 +18,11 @@ import '../features/load_money/presentation/screens/load_money_screen.dart';
 import '../features/bank/presentation/screens/bank_accounts_screen.dart';
 import '../features/bank/presentation/screens/bank_transfer_screen.dart';
 
+import '../features/remittance/presentation/screens/remittance_screen.dart';
+import '../features/payment/presentation/screens/payment_details_screen.dart';
+import '../features/payment/presentation/screens/confirm_payment_screen.dart';
+import '../features/payment/presentation/screens/payment_success_screen.dart';
+
 // Temporary placeholder screens for unresolved routes
 class PlaceholderScreen extends StatelessWidget {
   final String title;
@@ -93,6 +98,26 @@ final GoRouter appRouter = GoRouter(
       path: '/bank_transfer',
       name: 'bank_transfer',
       builder: (context, state) => const BankTransferScreen(),
+    ),
+    GoRoute(
+      path: '/remittance',
+      name: 'remittance',
+      builder: (context, state) => const RemittanceScreen(),
+    ),
+    GoRoute(
+      path: '/payment_details',
+      name: 'payment_details',
+      builder: (context, state) => const PaymentDetailsScreen(),
+    ),
+    GoRoute(
+      path: '/confirm_payment',
+      name: 'confirm_payment',
+      builder: (context, state) => const ConfirmPaymentScreen(),
+    ),
+    GoRoute(
+      path: '/payment_success',
+      name: 'payment_success',
+      builder: (context, state) => const PaymentSuccessScreen(),
     ),
     ShellRoute(
       navigatorKey: _shellNavigatorKey,

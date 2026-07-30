@@ -31,10 +31,10 @@ This checklist maps every design asset folder in `/stitch_esewa_jetpack_wallet_a
 - [x] `load_money` -> Load Money
 - [x] `bank_accounts` -> Bank Accounts
 - [x] `bank_transfer` -> Bank Transfer
-- [ ] `remittance` -> Remittance
-- [ ] `confirm_payment` -> Confirm Payment
-- [ ] `payment_details` -> Payment Details
-- [ ] `payment_success` -> Payment Success
+- [x] `remittance` -> Remittance
+- [x] `confirm_payment` -> Confirm Payment
+- [x] `payment_details` -> Payment Details
+- [x] `payment_success` -> Payment Success
 - [ ] `payment_success_failure` -> Payment Success/Failure status
 
 ## Bill & Service Payments

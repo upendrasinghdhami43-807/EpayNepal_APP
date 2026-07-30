@@ -170,9 +170,9 @@ class HomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _buildBalanceAction(context, Icons.account_balance_wallet, 'Load Money', '/load_money'),
-              _buildBalanceAction(context, Icons.send, 'Send Money', null),
+              _buildBalanceAction(context, Icons.send, 'Send Money', '/payment_details'),
               _buildBalanceAction(context, Icons.account_balance, 'Bank Transfer', '/bank_transfer'),
-              _buildBalanceAction(context, Icons.payments, 'Remittance', null),
+              _buildBalanceAction(context, Icons.payments, 'Remittance', '/remittance'),
             ],
           ),
         ],
