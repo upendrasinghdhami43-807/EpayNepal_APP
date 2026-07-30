@@ -32,9 +32,9 @@ class MainShell extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 _buildNavItem(context, 'Home', Icons.home_filled, location == '/home', () => context.go('/home')),
-                _buildNavItem(context, 'Statement', Icons.receipt_long, location == '/statement', () {}),
+                _buildNavItem(context, 'Statement', Icons.receipt_long, location == '/statement', () => context.go('/statement')),
                 const SizedBox(width: 64), // Space for floating action button
-                _buildNavItem(context, 'Support', Icons.help_outline, location == '/support', () {}),
+                _buildNavItem(context, 'Support', Icons.help_outline, location == '/support', () => context.go('/support')),
                 _buildNavItem(context, 'More', Icons.more_horiz, location == '/more', () => context.go('/more')),
               ],
             ),
@@ -45,7 +45,7 @@ class MainShell extends StatelessWidget {
             right: 0,
             child: Center(
               child: FloatingActionButton(
-                onPressed: () {},
+                onPressed: () => context.push('/scan_qr'),
                 backgroundColor: Theme.of(context).colorScheme.primary,
                 foregroundColor: Theme.of(context).colorScheme.onPrimary,
                 shape: const CircleBorder(),

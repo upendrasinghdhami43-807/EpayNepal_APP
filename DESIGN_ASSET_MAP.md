@@ -64,19 +64,19 @@ This checklist maps every design asset folder in `/stitch_esewa_jetpack_wallet_a
 - [ ] `link_bank_account_dark` -> Link Bank (Dark)
 
 ## History & Statements
-- [ ] `statement` -> Statement Screen
+- [x] `statement` -> Statement Screen
 - [ ] `statement_dark` -> Statement Screen (Dark)
-- [ ] `transaction_details` -> Transaction Receipt
+- [x] `transaction_details` -> Transaction Receipt
 - [ ] `transaction_details_dark` -> Transaction Receipt (Dark)
 
 ## Support & Settings
-- [ ] `support` -> Support Screen
+- [x] `support` -> Support Screen
 - [ ] `support_dark` -> Support Screen (Dark)
 - [x] `more_menu_full` -> More Hub
 - [ ] `more_menu_full_dark` -> More Hub (Dark)
 
 ## QR
-- [ ] `scan_qr` -> QR Scanner
+- [x] `scan_qr` -> QR Scanner
 - [ ] `qr_settings` -> QR Settings
 
 ## Unclassified / References (Screenshots)
