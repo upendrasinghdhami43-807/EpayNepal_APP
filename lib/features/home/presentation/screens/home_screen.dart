@@ -18,6 +18,8 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   _buildBalanceCard(context),
                   const SizedBox(height: 24),
+                  _buildPromoBanner(context),
+                  const SizedBox(height: 24),
                   _buildUtilityPayments(context),
                   const SizedBox(height: 24),
                   _buildTravelsTicketing(context),
@@ -43,17 +45,17 @@ class HomeScreen extends StatelessWidget {
       ),
       title: Row(
         children: [
-          const CircleAvatar(
+          CircleAvatar(
             radius: 20,
-            backgroundColor: Colors.white24,
-            child: Icon(Icons.person, color: Colors.white),
+            backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+            child: Icon(Icons.person, color: Theme.of(context).colorScheme.onPrimaryContainer),
           ),
           const SizedBox(width: 12),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text('Hi, Upendra', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white)),
-              Text('Good Morning', style: TextStyle(fontSize: 12, color: Colors.white70)),
+            children: [
+              Text('Hi, Upendra', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onPrimary)),
+              Text('Good Morning', style: TextStyle(fontSize: 12, color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.7))),
             ],
           ),
         ],
@@ -66,19 +68,50 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
+  Widget _buildPromoBanner(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    return Container(
+      height: 120,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(24),
+        color: colorScheme.surfaceContainerHighest,
+        image: const DecorationImage(
+          image: NetworkImage('https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=600&auto=format&fit=crop'),
+          fit: BoxFit.cover,
+          colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken),
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('10% Cashback', style: theme.textTheme.titleLarge?.copyWith(color: colorScheme.primary, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 4),
+            Text('On internet bill payments', style: theme.textTheme.bodyMedium?.copyWith(color: Colors.white)),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _buildBalanceCard(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [Color(0xFF006e0d), Color(0xFF37c837)],
+        gradient: LinearGradient(
+          colors: [colorScheme.primary, colorScheme.primaryContainer],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
+            color: colorScheme.primary.withOpacity(0.3),
             blurRadius: 10,
             offset: const Offset(0, 5),
           ),
@@ -93,14 +126,14 @@ class HomeScreen extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('TOTAL BALANCE', style: TextStyle(color: Colors.white70, fontSize: 12, fontWeight: FontWeight.bold)),
+                  Text('TOTAL BALANCE', style: TextStyle(color: colorScheme.onPrimary.withOpacity(0.7), fontSize: 12, fontWeight: FontWeight.bold)),
                   const SizedBox(height: 4),
                   Row(
                     children: [
-                      const Text('NPR 45,280.50', style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold)),
+                      Text('NPR 45,280.50', style: TextStyle(color: colorScheme.onPrimary, fontSize: 24, fontWeight: FontWeight.bold)),
                       const SizedBox(width: 8),
                       IconButton(
-                        icon: const Icon(Icons.visibility, color: Colors.white70, size: 20),
+                        icon: Icon(Icons.visibility, color: colorScheme.onPrimary.withOpacity(0.7), size: 20),
                         onPressed: () {},
                         padding: EdgeInsets.zero,
                         constraints: const BoxConstraints(),
@@ -112,7 +145,7 @@ class HomeScreen extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 decoration: BoxDecoration(
-                  color: Colors.white24,
+                  color: Colors.white.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Row(
@@ -121,9 +154,9 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(width: 4),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
-                      children: const [
-                        Text('FONEPOINTS', style: TextStyle(color: Colors.white70, fontSize: 8, fontWeight: FontWeight.bold)),
-                        Text('1,240', style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold)),
+                      children: [
+                        Text('FONEPOINTS', style: TextStyle(color: colorScheme.onPrimary.withOpacity(0.7), fontSize: 8, fontWeight: FontWeight.bold)),
+                        Text('1,240', style: TextStyle(color: colorScheme.onPrimary, fontSize: 14, fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ],
@@ -135,10 +168,10 @@ class HomeScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildBalanceAction(Icons.account_balance_wallet, 'Load Money'),
-              _buildBalanceAction(Icons.send, 'Send Money'),
-              _buildBalanceAction(Icons.account_balance, 'Bank Transfer'),
-              _buildBalanceAction(Icons.payments, 'Remittance'),
+              _buildBalanceAction(context, Icons.account_balance_wallet, 'Load Money'),
+              _buildBalanceAction(context, Icons.send, 'Send Money'),
+              _buildBalanceAction(context, Icons.account_balance, 'Bank Transfer'),
+              _buildBalanceAction(context, Icons.payments, 'Remittance'),
             ],
           ),
         ],
@@ -146,20 +179,20 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBalanceAction(IconData icon, String label) {
+  Widget _buildBalanceAction(BuildContext context, IconData icon, String label) {
     return Column(
       children: [
         Container(
           width: 48,
           height: 48,
           decoration: BoxDecoration(
-            color: Colors.white12,
+            color: Colors.white.withOpacity(0.15),
             borderRadius: BorderRadius.circular(16),
           ),
-          child: Icon(icon, color: Colors.white),
+          child: Icon(icon, color: Theme.of(context).colorScheme.onPrimary),
         ),
         const SizedBox(height: 8),
-        Text(label, style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.w500)),
+        Text(label, style: TextStyle(color: Theme.of(context).colorScheme.onPrimary, fontSize: 10, fontWeight: FontWeight.w500)),
       ],
     );
   }

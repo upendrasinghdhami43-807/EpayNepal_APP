@@ -5,13 +5,14 @@ import 'main_shell.dart';
 import '../features/home/presentation/screens/home_screen.dart';
 
 import '../features/onboarding/presentation/screens/splash_screen.dart';
-import '../features/onboarding/presentation/screens/welcome_screen.dart';
+import '../features/onboarding/presentation/screens/onboarding_flow_screen.dart';
 
 import '../features/auth/presentation/screens/auth_hub_screen.dart';
 import '../features/auth/presentation/screens/login_screen.dart';
 import '../features/auth/presentation/screens/register_screen.dart';
 import '../features/auth/presentation/screens/otp_screen.dart';
 import '../features/auth/presentation/screens/create_mpin_screen.dart';
+import '../features/auth/presentation/screens/devices_credentials_screen.dart';
 
 // Temporary placeholder screens for unresolved routes
 class PlaceholderScreen extends StatelessWidget {
@@ -42,7 +43,7 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/onboarding',
       name: RouteNames.onboarding,
-      builder: (context, state) => const WelcomeScreen(),
+      builder: (context, state) => const OnboardingFlowScreen(),
     ),
     GoRoute(
       path: '/auth',
@@ -68,6 +69,11 @@ final GoRouter appRouter = GoRouter(
       path: '/create_mpin',
       name: 'create_mpin',
       builder: (context, state) => const CreateMpinScreen(),
+    ),
+    GoRoute(
+      path: '/devices',
+      name: 'devices',
+      builder: (context, state) => const DevicesCredentialsScreen(),
     ),
     ShellRoute(
       navigatorKey: _shellNavigatorKey,

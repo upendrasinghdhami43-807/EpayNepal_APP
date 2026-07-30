@@ -3,23 +3,23 @@
 This checklist maps every design asset folder in `/stitch_esewa_jetpack_wallet_app` to its corresponding application screen feature.
 
 ## Onboarding & Auth
-- [ ] `splash_screen` -> Splash
-- [ ] `welcome` -> Welcome (Onboarding / Splash)
-- [ ] `onboarding` -> Onboarding (single flow)
-- [ ] `onboarding_flow` -> Onboarding (multi-step flow)
-- [ ] `authentication_hub` -> Authentication Hub
-- [ ] `login` -> Login
-- [ ] `register` -> Register
-- [ ] `otp_verification` -> OTP Verification
-- [ ] `create_mpin` -> Create MPIN
-- [ ] `devices_credentials` -> Devices & Credentials
+- [x] `splash_screen` -> Splash
+- [x] `welcome` -> Welcome (Onboarding / Splash)
+- [x] `onboarding` -> Onboarding (single flow)
+- [x] `onboarding_flow` -> Onboarding (multi-step flow)
+- [x] `authentication_hub` -> Authentication Hub
+- [x] `login` -> Login
+- [x] `register` -> Register
+- [x] `otp_verification` -> OTP Verification
+- [x] `create_mpin` -> Create MPIN
+- [x] `devices_credentials` -> Devices & Credentials
 
 ## Core
-- [ ] `home` -> Home / Dashboard
+- [x] `home` -> Home / Dashboard
 - [ ] `home_master_dark` -> Home / Dashboard (Dark)
-- [ ] `emerald_wallet_1` -> Wallet (Emerald Wallet card view 1)
-- [ ] `emerald_wallet_2` -> Wallet (Emerald Wallet card view 2)
-- [ ] `wallet_dashboard_master` -> Finance Overview
+- [x] `emerald_wallet_1` -> Wallet (Emerald Wallet card view 1)
+- [x] `emerald_wallet_2` -> Wallet (Emerald Wallet card view 2)
+- [x] `wallet_dashboard_master` -> Finance Overview
 - [ ] `my_calendar` -> My Calendar
 
 ## KYC
