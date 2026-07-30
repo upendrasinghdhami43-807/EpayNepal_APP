@@ -24,11 +24,16 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $phone = fake()->unique()->regexify('98########');
+
         return [
             'name' => fake()->name(),
+            'phone' => $phone,
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
+            'status' => 'active',
+            'kyc_level' => 'none',
             'remember_token' => Str::random(10),
         ];
     }

@@ -69,8 +69,9 @@ Route::prefix('v1')->group(function () {
         Route::post('/support/tickets/{id}/reply', [SupportController::class, 'reply']);
     });
 
-    Route::prefix('admin')->middleware(['auth:sanctum', 'ability:admin'])->group(function () {
-        Route::post('/auth/login', [AdminController::class, 'login']);
+    Route::post('/admin/auth/login', [AdminController::class, 'login']);
+
+    Route::prefix('admin')->middleware(['auth:sanctum', 'abilities:admin'])->group(function () {
         Route::post('/auth/logout', [AdminController::class, 'logout']);
         Route::get('/dashboard', [AdminController::class, 'dashboard']);
         Route::get('/users', [AdminController::class, 'users']);

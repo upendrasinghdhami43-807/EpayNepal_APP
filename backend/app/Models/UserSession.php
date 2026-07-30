@@ -14,15 +14,15 @@ class UserSession extends Model
     protected $table = 'sessions';
 
     protected $fillable = [
+        'id',
         'user_id',
-        'token_hash',
         'ip_address',
         'user_agent',
-        'expires_at',
-        'created_at',
+        'payload',
+        'last_activity',
     ];
 
     protected $casts = [
-        'expires_at' => 'datetime',
+        'last_activity' => 'integer',
     ];
 }
