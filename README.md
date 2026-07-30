@@ -1,219 +1,161 @@
-# Emerald Wallet Flutter App
+# 🏦 EpayNepal — Digital Wallet Platform
 
-Emerald Wallet is a Flutter-based digital wallet demo inspired by eSewa-style flows.
-It focuses on realistic wallet UI journeys, offline-first demo behavior, and modular screen organization.
+<p align="center">
+  <strong>A complete digital wallet ecosystem for Nepal</strong><br>
+  Mobile App · Backend API · Admin Dashboard
+</p>
 
-Important: this is a demo application. It does not perform real payment transactions.
+---
 
-## App Concept
+## Overview
 
-The app simulates the core experience of a Nepali digital wallet:
+**EpayNepal** is a full-stack digital wallet platform designed for students and the general public in Nepal. It enables peer-to-peer money transfers, QR-based merchant payments, utility bill payments, KYC-verified accounts, and administrative operations — all built as a college capstone project demonstrating real fintech software engineering.
 
-1. User onboarding and authentication
-2. Wallet dashboard with balance, quick actions, and recent activity
-3. QR scan to payment flow
-4. Utility and travel payments
-5. KYC status and verification flow
-6. Statement and transaction detail views
-7. Support and settings style screens
+## Features
 
-The current project emphasizes presentation, navigation, and local demo states over backend integration.
+| Category | Capabilities |
+|----------|-------------|
+| **Wallet** | Top-up, withdraw, balance inquiry, transaction history |
+| **Transfers** | P2P send/receive money, request money, bank transfer |
+| **QR Payments** | Scan to pay, generate personal/merchant QR codes |
+| **Bill Payments** | Electricity, internet, water, mobile recharge, government fees, education fees |
+| **Travel** | Airlines, hotels, bus tickets, movies |
+| **KYC** | Document upload, selfie verification, status tracking |
+| **Security** | OTP login, transaction PIN, biometric auth, device binding |
+| **Admin** | User management, KYC review, transaction monitoring, analytics |
 
 ## Tech Stack
 
-- Flutter, Dart
-- flutter_riverpod for state management
-- go_router for navigation
-- hive and hive_flutter for local data storage
-- flutter_secure_storage for secure local key/value
-- mobile_scanner and image_picker for QR scanning and gallery import
-- lottie, flutter_svg, cached_network_image, intl for UI utilities
+| Layer | Technology |
+|-------|-----------|
+| Mobile App | Flutter (Dart), Riverpod, go_router |
+| Backend API | Laravel 12, PHP 8.2+, Sanctum |
+| Database | PostgreSQL |
+| Admin Panel | React + Vite + TypeScript + Tailwind |
+| File Storage | Cloudflare R2 / Supabase Storage (local disk in dev) |
+| Notifications | Firebase Cloud Messaging |
+| OTP/SMS | Sparrow SMS (Nepal) or simulated OTP for demo |
 
-## Architecture Overview
+## Repository Structure
 
-The source code is organized under lib using a layered approach:
-
-- app: app-level routing and shell navigation
-- core: shared constants, services, theme, and reusable widgets
-- features: screen modules grouped by business domain
-
-Entrypoint flow:
-
-1. main.dart initializes Hive local storage
-2. Riverpod ProviderScope is mounted
-3. MaterialApp.router uses go_router configuration
-4. Splash route decides navigation based on local auth state
-
-## Project Structure
-
-Top-level (trimmed):
-
-```text
-.
-|- lib/
-|  |- main.dart
-|  |- app/
-|  |- core/
-|  \- features/
-|- android/
-|- ios/
-|- web/
-|- test/
-|- stitch_esewa_jetpack_wallet_app/
-|- DESIGN_ASSET_MAP.md
-\- README.md
 ```
-
-Primary source layout:
-
-```text
-lib/
-|- main.dart
-|- app/
-|  \- router/
-|     |- app_router.dart
-|     |- main_shell.dart
-|     \- route_names.dart
-|- core/
-|  |- constants/
-|  |- services/
-|  |- theme/
-|  |- utils/
-|  \- widgets/
-\- features/
-	|- auth/
-	|- bank/
-	|- demo_settings/
-	|- history/
-	|- home/
-	|- kyc/
-	|- load_money/
-	|- more/
-	|- onboarding/
-	|- payment/
-	|- qr/
-	|- remittance/
-	|- support/
-	|- travel/
-	\- utility/
+EpayNepal/
+├── lib/                        # Flutter mobile app source
+│   ├── app/                    # Router, shell navigation
+│   ├── core/                   # Theme, constants, services, widgets
+│   └── features/               # Feature modules (auth, home, wallet, etc.)
+├── android/                    # Android platform
+├── ios/                        # iOS platform
+├── backend/                    # Laravel API (Phase 6+)
+├── admin/                      # React admin panel (Phase 4+)
+├── database/                   # SQL dumps, ER diagrams
+├── docs/                       # Installation, deployment, API reference
+├── progress/                   # Phase tracking, daily logs, bugs
+├── architecture/               # System design, API design, ER diagrams
+├── stitch_esewa_jetpack_wallet_app/  # Stitch design exports
+├── SRS.md                      # Software Requirements Specification
+├── ROADMAP.md                  # 18-phase development roadmap
+└── PROJECT_RULES.md            # Coding standards & conventions
 ```
-
-## Route and Navigation Concept
-
-Navigation uses go_router with two route groups:
-
-- top-level routes for onboarding, auth, payments, utilities, travel, QR, and detail screens
-- a ShellRoute that wraps home tabs with a custom bottom navigation in MainShell
-
-Bottom shell tabs:
-
-- /home
-- /statement
-- /support
-- /more
-
-Floating center action opens /scan_qr.
-
-## Implemented Feature Areas
-
-Implemented with Dart files and screens:
-
-- auth
-- bank
-- demo_settings
-- history
-- home
-- kyc
-- load_money
-- more
-- onboarding
-- payment
-- qr
-- remittance
-- support
-- travel
-- utility
-
-Scaffolded feature folders with no Dart implementation yet:
-
-- airline_ticketing
-- bills
-- calendar
-- developer_tools
-- events
-- payments
-- profile
-- send_money
-- settings
-- transactions
-- wallet
-
-## Data and State Concept
-
-Local persistence:
-
-- Hive is initialized at startup and opens multiple boxes for wallet/profile/transactions/settings and demo content.
-- Auth state is currently demo-local and stored in Hive settings keys.
-- Demo settings are stored in Hive and can simulate balance and error states.
-
-State management:
-
-- Riverpod is currently used for auth state notifier.
-- Most feature screens are UI-focused and currently manage local widget state.
-
-## Main User Journeys
-
-1. Splash -> onboarding/auth
-2. Login -> Home
-3. Home -> Load Money / Bank Transfer / Remittance / Payment entry
-4. QR Scanner -> detect QR -> pay now -> payment details -> confirm -> success
-5. Home/Statement -> transaction details
-6. More -> test demo settings / app options
-
-## Design Asset References
-
-The folder stitch_esewa_jetpack_wallet_app contains per-screen design references:
-
-- code.html: design-exported HTML mock for the screen
-- screen.png: screenshot reference
-
-Mapping status between design folders and Flutter screens is tracked in DESIGN_ASSET_MAP.md.
 
 ## Getting Started
 
-Prerequisites:
+### Prerequisites
 
-- Flutter SDK (stable)
-- Dart SDK (from Flutter)
+- Flutter SDK (stable channel, ≥3.12)
+- Dart SDK (included with Flutter)
 - Android Studio or Xcode (for platform targets)
+- Git
 
-Run locally:
+### Run the Mobile App
 
 ```bash
 flutter pub get
 flutter run
 ```
 
-Useful commands:
+### Useful Commands
 
 ```bash
-flutter analyze
-flutter test
+flutter analyze       # Static analysis
+flutter test          # Run tests
+flutter build apk     # Build Android APK
 ```
 
-Note: current test folder is minimal and may not include meaningful test coverage yet.
+> **Note:** The backend (Laravel) and admin panel (React) are developed in later phases. See `docs/INSTALLATION.md` for full setup instructions.
 
-## Current Limitations
+## Development Roadmap
 
-- No production backend integration
-- No real payments
-- Some flows are placeholder or coming-soon actions
-- Several feature directories are scaffolds for future implementation
+| Phase | Name | Status |
+|-------|------|--------|
+| 0 | Project Foundation & Planning | 🟩 Complete |
+| 1 | Software Architecture & System Design | 🟩 Complete |
+| 2 | UI/UX Design | 🟩 Complete |
+| 3 | Flutter Mobile UI | 🟨 In Progress |
+| 4 | Admin Dashboard UI | ⬜ Not Started |
+| 5 | Backend Planning | ⬜ Not Started |
+| 6 | Laravel Backend Development | ⬜ Not Started |
+| 7 | Database Design | ⬜ Not Started |
+| 8 | Authentication & Security | ⬜ Not Started |
+| 9 | File Storage & External Services | ⬜ Not Started |
+| 10 | Integration | ⬜ Not Started |
+| 11 | API Testing | ⬜ Not Started |
+| 12 | Flutter Integration | ⬜ Not Started |
+| 13 | Admin Integration | ⬜ Not Started |
+| 14 | Testing & QA | ⬜ Not Started |
+| 15 | Optimization | ⬜ Not Started |
+| 16 | Deployment | ⬜ Not Started |
+| 17 | Documentation & Final Presentation | ⬜ Not Started |
 
-## Next Recommended Improvements
+See `progress/overall_progress.md` for detailed completion percentages.
 
-1. Add domain/data layers per feature and repository interfaces
-2. Expand Riverpod usage beyond auth
-3. Add integration with real APIs behind an environment layer
-4. Add widget and integration tests for key journeys
-5. Complete scaffolded feature modules
+## Target Users
+
+- **Students** in Nepal looking for a convenient digital payment solution
+- **General public** who want to send money, pay bills, and pay merchants via QR
+- **Merchants** who want to accept digital payments
+
+## User Roles
+
+| Role | Access Level |
+|------|-------------|
+| Guest | View app info, register |
+| User | Basic wallet operations (limited amounts) |
+| Verified User | Full wallet operations (KYC verified) |
+| Merchant | Accept payments, generate merchant QR |
+| Support Agent | Handle support tickets |
+| KYC Officer | Review/approve KYC submissions |
+| Admin | Full system management |
+| Super Admin | System configuration, role management |
+
+## Documentation
+
+- [Installation Guide](docs/INSTALLATION.md)
+- [Running the Project](docs/RUN_PROJECT.md)
+- [API Reference](docs/API_REFERENCE.md)
+- [Testing Guide](docs/TESTING.md)
+- [Deployment Guide](docs/DEPLOYMENT.md)
+- [Software Requirements Specification](SRS.md)
+- [Development Roadmap](ROADMAP.md)
+- [Project Rules & Standards](PROJECT_RULES.md)
+
+## Architecture
+
+See the `architecture/` directory for:
+- [System Design](architecture/system_design.md)
+- [API Design](architecture/api_design.md)
+- [API Routes](architecture/api_routes.md)
+- [ER Diagram](architecture/er_diagram.md)
+- [Database Tables](architecture/database_tables.md)
+- [Security Architecture](architecture/security.md)
+- [Workflow Diagrams](architecture/workflow.md)
+- [Design System](architecture/design_system.md)
+
+## License
+
+This project is a college capstone project and is not licensed for commercial use.
+
+## Author
+
+**Upendra Singh Dhami**
+College Capstone Project — EpayNepal Digital Wallet Platform
