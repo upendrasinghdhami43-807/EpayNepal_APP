@@ -57,21 +57,27 @@ This checklist maps every design asset folder in `/stitch_esewa_jetpack_wallet_a
 - [x] `travel_ticketing` -> Travel Hub
 - [x] `utility_payments` -> Utility Overview
 
+## Identity & KYC
+- [x] `kyc_form` -> KYC Update
+- [ ] `kyc_form_dark` -> KYC Update (Dark)
+- [x] `link_bank_account` -> Link Bank
+- [ ] `link_bank_account_dark` -> Link Bank (Dark)
+
+## History & Statements
+- [ ] `statement` -> Statement Screen
+- [ ] `statement_dark` -> Statement Screen (Dark)
+- [ ] `transaction_details` -> Transaction Receipt
+- [ ] `transaction_details_dark` -> Transaction Receipt (Dark)
+
+## Support & Settings
+- [ ] `support` -> Support Screen
+- [ ] `support_dark` -> Support Screen (Dark)
+- [x] `more_menu_full` -> More Hub
+- [ ] `more_menu_full_dark` -> More Hub (Dark)
+
 ## QR
 - [ ] `scan_qr` -> QR Scanner
 - [ ] `qr_settings` -> QR Settings
-
-## History & Support
-- [ ] `transaction_details` -> Transaction Details
-- [ ] `statement` -> Statement
-- [ ] `support` -> Support
-- [ ] `report_a_problem` -> Report a Problem
-- [ ] `report_a_problem_dark` -> Report a Problem (Dark)
-
-## Account
-- [ ] `more` -> More
-- [ ] `more_menu_full` -> More Menu (full)
-- [ ] `test_demo_settings` -> Settings (Developer Mode / Demo Settings)
 
 ## Unclassified / References (Screenshots)
 - [ ] `screenshot_2026_07_18_17_22_56_59...jpg`

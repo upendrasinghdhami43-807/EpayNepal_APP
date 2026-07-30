@@ -37,6 +37,11 @@ import '../features/more/presentation/screens/more_screen.dart';
 import '../features/kyc/presentation/screens/kyc_dashboard_screen.dart';
 import '../features/kyc/presentation/screens/kyc_personal_info_screen.dart';
 
+import '../features/history/presentation/screens/statement_screen.dart';
+import '../features/history/presentation/screens/transaction_details_screen.dart';
+import '../features/support/presentation/screens/support_screen.dart';
+import '../features/qr/presentation/screens/qr_scanner_screen.dart';
+
 // Temporary placeholder screens for unresolved routes
 class PlaceholderScreen extends StatelessWidget {
   final String title;
@@ -182,6 +187,16 @@ final GoRouter appRouter = GoRouter(
       path: '/kyc_personal_info',
       name: 'kyc_personal_info',
       builder: (context, state) => const KycPersonalInfoScreen(),
+    ),
+    GoRoute(
+      path: '/transaction_details',
+      name: 'transaction_details',
+      builder: (context, state) => const TransactionDetailsScreen(),
+    ),
+    GoRoute(
+      path: '/scan_qr',
+      name: 'scan_qr',
+      builder: (context, state) => const QrScannerScreen(),
     ),
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
