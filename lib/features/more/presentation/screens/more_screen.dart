@@ -22,8 +22,7 @@ class MoreScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications),
-            onPressed: () =>
-                UiFeedback.comingSoon(context, 'Notifications center'),
+            onPressed: () => context.push('/notifications'),
           ),
         ],
       ),
@@ -40,11 +39,11 @@ class MoreScreen extends StatelessWidget {
                     : colorScheme.surfaceContainerLow,
                 borderRadius: BorderRadius.circular(24),
                 border: Border.all(
-                  color: colorScheme.outlineVariant.withOpacity(0.3),
+                  color: colorScheme.outlineVariant.withValues(alpha: 0.3),
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
+                    color: Colors.black.withValues(alpha: 0.05),
                     blurRadius: 4,
                   ),
                 ],
@@ -129,7 +128,7 @@ class MoreScreen extends StatelessWidget {
                             Text(
                               'Balance',
                               style: TextStyle(
-                                color: Colors.white.withOpacity(0.8),
+                                color: Colors.white.withValues(alpha: 0.8),
                                 fontSize: 12,
                               ),
                             ),
@@ -146,7 +145,7 @@ class MoreScreen extends StatelessWidget {
                         Container(
                           width: 1,
                           height: 32,
-                          color: Colors.white.withOpacity(0.2),
+                          color: Colors.white.withValues(alpha: 0.2),
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
@@ -154,7 +153,7 @@ class MoreScreen extends StatelessWidget {
                             Text(
                               'Fonepoints',
                               style: TextStyle(
-                                color: Colors.white.withOpacity(0.8),
+                                color: Colors.white.withValues(alpha: 0.8),
                                 fontSize: 12,
                               ),
                             ),
@@ -294,7 +293,7 @@ class MoreScreen extends StatelessWidget {
             ? colorScheme.surfaceContainerHighest
             : colorScheme.surfaceContainerLowest,
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: colorScheme.outlineVariant.withOpacity(0.2)),
+        border: Border.all(color: colorScheme.outlineVariant.withValues(alpha: 0.2)),
       ),
       child: Column(children: children),
     );
@@ -315,11 +314,11 @@ class MoreScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         decoration: BoxDecoration(
           color: isHighlighted
-              ? colorScheme.primaryContainer.withOpacity(0.1)
+              ? colorScheme.primaryContainer.withValues(alpha: 0.1)
               : Colors.transparent,
           border: Border(
             bottom: BorderSide(
-              color: colorScheme.outlineVariant.withOpacity(0.1),
+              color: colorScheme.outlineVariant.withValues(alpha: 0.1),
             ),
           ),
         ),
@@ -355,15 +354,29 @@ class MoreScreen extends StatelessWidget {
       case 'Test Demo Settings':
         context.push('/test_demo_settings');
         return;
+      case 'Language':
+        context.push('/language');
+        return;
+      case 'Notifications':
+        context.push('/notifications');
+        return;
+      case 'Security':
+        context.push('/security_settings');
+        return;
+      case 'Appearance':
+        context.push('/app_settings');
+        return;
+      case 'KYC Status':
+        context.push('/kyc_status');
+        return;
+      case 'My Profile':
+        context.push('/profile');
+        return;
       case 'Business Accounts':
       case 'My Calendar':
       case 'Transaction Limits':
       case 'Finance360':
-      case 'Appearance':
-      case 'Language':
-      case 'Notifications':
       case 'Permission':
-      case 'Security':
       case 'Offers & Campaigns':
       case 'About':
         UiFeedback.comingSoon(context, title);
