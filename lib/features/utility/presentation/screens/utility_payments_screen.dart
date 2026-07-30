@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../core/utils/ui_feedback.dart';
 
 class UtilityPaymentsScreen extends StatelessWidget {
   const UtilityPaymentsScreen({super.key});
@@ -15,14 +17,13 @@ class UtilityPaymentsScreen extends StatelessWidget {
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(24),
-          ),
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
         ),
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications),
-            onPressed: () {},
+            onPressed: () =>
+                UiFeedback.comingSoon(context, 'Utility notifications'),
           ),
         ],
       ),
@@ -34,8 +35,8 @@ class UtilityPaymentsScreen extends StatelessWidget {
             // Search Bar
             Container(
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainer,
                 borderRadius: BorderRadius.circular(32),
               ),
@@ -44,7 +45,10 @@ class UtilityPaymentsScreen extends StatelessWidget {
                   hintText: 'Search for bills or providers...',
                   prefixIcon: const Icon(Icons.search),
                   border: InputBorder.none,
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 16,
+                  ),
                 ),
               ),
             ),
@@ -56,8 +60,12 @@ class UtilityPaymentsScreen extends StatelessWidget {
               children: [
                 Text('Recent Payments', style: theme.textTheme.titleMedium),
                 TextButton(
-                  onPressed: () {},
-                  child: Text('View All', style: TextStyle(color: colorScheme.primary)),
+                  onPressed: () =>
+                      UiFeedback.comingSoon(context, 'Recent payment history'),
+                  child: Text(
+                    'View All',
+                    style: TextStyle(color: colorScheme.primary),
+                  ),
                 ),
               ],
             ),
@@ -70,9 +78,31 @@ class UtilityPaymentsScreen extends StatelessWidget {
               crossAxisSpacing: 12,
               childAspectRatio: 0.8,
               children: [
-                _buildRecentItem(context, Icons.wifi, 'Worldlink', 'Rs. 1,200', Colors.blueGrey),
-                _buildRecentItem(context, Icons.water_drop, 'Khanepani', 'Rs. 450', Colors.blue),
-                _buildRecentItem(context, Icons.bolt, 'NEA', 'Rs. 890', Colors.orange),
+                _buildRecentItem(
+                  context,
+                  Icons.wifi,
+                  'Worldlink',
+                  'Rs. 1,200',
+                  Colors.blueGrey,
+                  onTap: () => context.push('/internet'),
+                ),
+                _buildRecentItem(
+                  context,
+                  Icons.water_drop,
+                  'Khanepani',
+                  'Rs. 450',
+                  Colors.blue,
+                  onTap: () =>
+                      UiFeedback.comingSoon(context, 'Khanepani payment'),
+                ),
+                _buildRecentItem(
+                  context,
+                  Icons.bolt,
+                  'NEA',
+                  'Rs. 890',
+                  Colors.orange,
+                  onTap: () => context.push('/electricity'),
+                ),
                 _buildQuickTopup(context),
               ],
             ),
@@ -89,21 +119,51 @@ class UtilityPaymentsScreen extends StatelessWidget {
               crossAxisSpacing: 16,
               childAspectRatio: 2.2,
               children: [
-                _buildCategoryCard(context, Icons.bolt, 'Electricity', 'NEA Branches', Colors.orange),
-                _buildCategoryCard(context, Icons.water_drop, 'Khanepani', 'Water Supply', Colors.blue),
-                _buildCategoryCard(context, Icons.router, 'Internet', 'Worldlink, Vianet...', Colors.purple),
-                _buildCategoryCard(context, Icons.account_balance, 'Govt. Payment', 'Revenue, Traffic...', Colors.green),
+                _buildCategoryCard(
+                  context,
+                  Icons.bolt,
+                  'Electricity',
+                  'NEA Branches',
+                  Colors.orange,
+                  onTap: () => context.push('/electricity'),
+                ),
+                _buildCategoryCard(
+                  context,
+                  Icons.water_drop,
+                  'Khanepani',
+                  'Water Supply',
+                  Colors.blue,
+                  onTap: () =>
+                      UiFeedback.comingSoon(context, 'Khanepani payment'),
+                ),
+                _buildCategoryCard(
+                  context,
+                  Icons.router,
+                  'Internet',
+                  'Worldlink, Vianet...',
+                  Colors.purple,
+                  onTap: () => context.push('/internet'),
+                ),
+                _buildCategoryCard(
+                  context,
+                  Icons.account_balance,
+                  'Govt. Payment',
+                  'Revenue, Traffic...',
+                  Colors.green,
+                  onTap: () => context.push('/govt_payment'),
+                ),
               ],
             ),
             const SizedBox(height: 16),
             // Full width category
             _buildCategoryCard(
-              context, 
-              Icons.school, 
-              'Education Fee', 
-              'Schools & Colleges', 
+              context,
+              Icons.school,
+              'Education Fee',
+              'Schools & Colleges',
               Colors.deepOrange,
               isFullWidth: true,
+              onTap: () => context.push('/education_fee'),
             ),
             const SizedBox(height: 32),
           ],
@@ -112,34 +172,59 @@ class UtilityPaymentsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildRecentItem(BuildContext context, IconData icon, String title, String amount, Color color) {
+  Widget _buildRecentItem(
+    BuildContext context,
+    IconData icon,
+    String title,
+    String amount,
+    Color color, {
+    VoidCallback? onTap,
+  }) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
-    return Container(
-      decoration: BoxDecoration(
-        color: theme.brightness == Brightness.dark 
-            ? colorScheme.surfaceContainerHighest 
-            : colorScheme.surfaceContainerLowest,
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: colorScheme.surfaceVariant.withOpacity(0.5)),
-      ),
-      padding: const EdgeInsets.all(8),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Icon(icon, color: color, size: 20),
+
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(24),
+      child: Container(
+        decoration: BoxDecoration(
+          color: theme.brightness == Brightness.dark
+              ? colorScheme.surfaceContainerHighest
+              : colorScheme.surfaceContainerLowest,
+          borderRadius: BorderRadius.circular(24),
+          border: Border.all(
+            color: colorScheme.surfaceVariant.withOpacity(0.5),
           ),
-          const SizedBox(height: 8),
-          Text(title, style: theme.textTheme.labelSmall?.copyWith(fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis),
-          Text(amount, style: theme.textTheme.labelSmall?.copyWith(color: colorScheme.onSurfaceVariant), overflow: TextOverflow.ellipsis),
-        ],
+        ),
+        padding: const EdgeInsets.all(8),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: color.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Icon(icon, color: color, size: 20),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              title,
+              style: theme.textTheme.labelSmall?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+              overflow: TextOverflow.ellipsis,
+            ),
+            Text(
+              amount,
+              style: theme.textTheme.labelSmall?.copyWith(
+                color: colorScheme.onSurfaceVariant,
+              ),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -147,87 +232,125 @@ class UtilityPaymentsScreen extends StatelessWidget {
   Widget _buildQuickTopup(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
-    return Container(
-      decoration: BoxDecoration(
-        color: colorScheme.primary,
-        borderRadius: BorderRadius.circular(24),
-        boxShadow: [
-          BoxShadow(
-            color: colorScheme.primary.withOpacity(0.3),
-            blurRadius: 8,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      padding: const EdgeInsets.all(8),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.2),
-              borderRadius: BorderRadius.circular(12),
+
+    return InkWell(
+      onTap: () => context.push('/topup'),
+      borderRadius: BorderRadius.circular(24),
+      child: Container(
+        decoration: BoxDecoration(
+          color: colorScheme.primary,
+          borderRadius: BorderRadius.circular(24),
+          boxShadow: [
+            BoxShadow(
+              color: colorScheme.primary.withOpacity(0.3),
+              blurRadius: 8,
+              offset: const Offset(0, 4),
             ),
-            child: const Icon(Icons.smartphone, color: Colors.white, size: 20),
-          ),
-          const SizedBox(height: 8),
-          const Text('Quick Topup', style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold), textAlign: TextAlign.center),
-        ],
+          ],
+        ),
+        padding: const EdgeInsets.all(8),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: const Icon(
+                Icons.smartphone,
+                color: Colors.white,
+                size: 20,
+              ),
+            ),
+            const SizedBox(height: 8),
+            const Text(
+              'Quick Topup',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 10,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  Widget _buildCategoryCard(BuildContext context, IconData icon, String title, String subtitle, Color color, {bool isFullWidth = false}) {
+  Widget _buildCategoryCard(
+    BuildContext context,
+    IconData icon,
+    String title,
+    String subtitle,
+    Color color, {
+    bool isFullWidth = false,
+    VoidCallback? onTap,
+  }) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: theme.brightness == Brightness.dark 
-            ? colorScheme.surfaceContainerHighest 
-            : colorScheme.surfaceContainerLowest,
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: colorScheme.surfaceVariant.withOpacity(0.5)),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.02),
-            blurRadius: 4,
-            offset: const Offset(0, 2),
+
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(24),
+      child: Container(
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: theme.brightness == Brightness.dark
+              ? colorScheme.surfaceContainerHighest
+              : colorScheme.surfaceContainerLowest,
+          borderRadius: BorderRadius.circular(24),
+          border: Border.all(
+            color: colorScheme.surfaceVariant.withOpacity(0.5),
           ),
-        ],
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 48,
-            height: 48,
-            decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.02),
+              blurRadius: 4,
+              offset: const Offset(0, 2),
             ),
-            child: Icon(icon, color: color),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(title, style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis),
-                Text(
-                  subtitle,
-                  style: theme.textTheme.labelSmall?.copyWith(color: colorScheme.onSurfaceVariant),
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
+          ],
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 48,
+              height: 48,
+              decoration: BoxDecoration(
+                color: color.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Icon(icon, color: color),
             ),
-          ),
-          if (isFullWidth)
-            Icon(Icons.chevron_right, color: colorScheme.onSurfaceVariant),
-        ],
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    title,
+                    style: theme.textTheme.titleSmall?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Text(
+                    subtitle,
+                    style: theme.textTheme.labelSmall?.copyWith(
+                      color: colorScheme.onSurfaceVariant,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
+            if (isFullWidth)
+              Icon(Icons.chevron_right, color: colorScheme.onSurfaceVariant),
+          ],
+        ),
       ),
     );
   }

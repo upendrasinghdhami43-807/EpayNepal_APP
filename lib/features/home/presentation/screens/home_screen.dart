@@ -1,8 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../core/utils/ui_feedback.dart';
+import '../../../demo_settings/data/demo_settings_store.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool _isBalanceVisible = true;
+
+  String _displayBalance() {
+    final shouldUseMockBalance =
+        DemoSettingsStore.demoModeEnabled &&
+        DemoSettingsStore.mockBalanceEnabled;
+
+    final balance = shouldUseMockBalance
+        ? DemoSettingsStore.mockBalance
+        : 45280.50;
+
+    if (!_isBalanceVisible) {
+      return 'NPR XXXX.XX';
+    }
+
+    final fixed = balance.toStringAsFixed(2);
+    final parts = fixed.split('.');
+    final wholeWithCommas = parts[0].replaceAllMapped(
+      RegExp(r'\B(?=(\d{3})+(?!\d))'),
+      (_) => ',',
+    );
+    return 'NPR $wholeWithCommas.${parts[1]}';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +44,10 @@ class HomeScreen extends StatelessWidget {
           _buildAppBar(context),
           SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 24.0,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -37,6 +71,8 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget _buildAppBar(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
     return SliverAppBar(
       pinned: true,
       expandedHeight: 80,
@@ -50,23 +86,50 @@ class HomeScreen extends StatelessWidget {
             onTap: () => context.push('/kyc_dashboard'),
             child: const CircleAvatar(
               radius: 20,
-              backgroundImage: NetworkImage('https://lh3.googleusercontent.com/aida-public/AB6AXuA32sXnGRUu_8OjzgGk600wwkCvbAxk4FucpjfLdVnYmm0LmCrhtlO2tze9eT54awOs5yKnAM77mXYZo-iQXlpo4N3ir8VzcVI_1r_C-Vg3U0l_bYpeiNudP0yHnDPtqSn3yDbcNTAdkDJ2cslsaM8AplIHgmBUmvym-amIFn3IPRzU5sxKaKlFCqbBayJlYizz10cXlAgdhOjQZL_Hoz7BmW__0xP7rvvXUTo62pzucrYJ6PcQPuoPft16MGybUHNs4v6qLB1gbatn'),
+              backgroundImage: NetworkImage(
+                'https://lh3.googleusercontent.com/aida-public/AB6AXuA32sXnGRUu_8OjzgGk600wwkCvbAxk4FucpjfLdVnYmm0LmCrhtlO2tze9eT54awOs5yKnAM77mXYZo-iQXlpo4N3ir8VzcVI_1r_C-Vg3U0l_bYpeiNudP0yHnDPtqSn3yDbcNTAdkDJ2cslsaM8AplIHgmBUmvym-amIFn3IPRzU5sxKaKlFCqbBayJlYizz10cXlAgdhOjQZL_Hoz7BmW__0xP7rvvXUTo62pzucrYJ6PcQPuoPft16MGybUHNs4v6qLB1gbatn',
+              ),
             ),
           ),
           const SizedBox(width: 12),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Hi, Upendra', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onPrimary)),
-              Text('Good Morning', style: TextStyle(fontSize: 12, color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.7))),
+              Text(
+                'Hi, Upendra',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+              ),
+              Text(
+                'Good Morning',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onPrimary.withValues(alpha: 0.7),
+                ),
+              ),
             ],
           ),
         ],
       ),
       actions: [
-        IconButton(icon: const Icon(Icons.search, color: Colors.white), onPressed: () {}),
-        IconButton(icon: const Icon(Icons.notifications_none, color: Colors.white), onPressed: () {}),
-        IconButton(icon: const Icon(Icons.qr_code_scanner, color: Colors.white), onPressed: () {}),
+        IconButton(
+          icon: const Icon(Icons.search, color: Colors.white),
+          onPressed: () => UiFeedback.comingSoon(context, 'Global search'),
+        ),
+        IconButton(
+          icon: const Icon(Icons.notifications_none, color: Colors.white),
+          onPressed: () =>
+              UiFeedback.comingSoon(context, 'Notifications center'),
+        ),
+        IconButton(
+          icon: const Icon(Icons.qr_code_scanner, color: Colors.white),
+          onPressed: () => context.push('/scan_qr'),
+        ),
       ],
     );
   }
@@ -80,7 +143,9 @@ class HomeScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(24),
         color: colorScheme.surfaceContainerHighest,
         image: const DecorationImage(
-          image: NetworkImage('https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=600&auto=format&fit=crop'),
+          image: NetworkImage(
+            'https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=600&auto=format&fit=crop',
+          ),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken),
         ),
@@ -91,9 +156,18 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('10% Cashback', style: theme.textTheme.titleLarge?.copyWith(color: colorScheme.primary, fontWeight: FontWeight.bold)),
+            Text(
+              '10% Cashback',
+              style: theme.textTheme.titleLarge?.copyWith(
+                color: colorScheme.primary,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             const SizedBox(height: 4),
-            Text('On internet bill payments', style: theme.textTheme.bodyMedium?.copyWith(color: Colors.white)),
+            Text(
+              'On internet bill payments',
+              style: theme.textTheme.bodyMedium?.copyWith(color: Colors.white),
+            ),
           ],
         ),
       ),
@@ -114,7 +188,7 @@ class HomeScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: colorScheme.primary.withOpacity(0.3),
+            color: colorScheme.primary.withValues(alpha: 0.3),
             blurRadius: 10,
             offset: const Offset(0, 5),
           ),
@@ -129,17 +203,39 @@ class HomeScreen extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('TOTAL BALANCE', style: TextStyle(color: colorScheme.onPrimary.withOpacity(0.7), fontSize: 12, fontWeight: FontWeight.bold)),
+                  Text(
+                    'TOTAL BALANCE',
+                    style: TextStyle(
+                      color: colorScheme.onPrimary.withValues(alpha: 0.7),
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   const SizedBox(height: 4),
                   Row(
                     children: [
-                      Text('NPR 45,280.50', style: TextStyle(color: colorScheme.onPrimary, fontSize: 24, fontWeight: FontWeight.bold)),
+                      Text(
+                        _displayBalance(),
+                        style: TextStyle(
+                          color: colorScheme.onPrimary,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                       const SizedBox(width: 8),
                       IconButton(
-                        icon: Icon(Icons.visibility, color: colorScheme.onPrimary.withOpacity(0.7), size: 20),
+                        icon: Icon(
+                          _isBalanceVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: colorScheme.onPrimary.withValues(alpha: 0.7),
+                          size: 20,
+                        ),
                         onPressed: () {
-                      context.push('/utility');
-                    },
+                          setState(() {
+                            _isBalanceVisible = !_isBalanceVisible;
+                          });
+                        },
                         padding: EdgeInsets.zero,
                         constraints: const BoxConstraints(),
                       ),
@@ -148,9 +244,12 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 8,
+                ),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
+                  color: Colors.white.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Row(
@@ -160,8 +259,22 @@ class HomeScreen extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text('FONEPOINTS', style: TextStyle(color: colorScheme.onPrimary.withOpacity(0.7), fontSize: 8, fontWeight: FontWeight.bold)),
-                        Text('1,240', style: TextStyle(color: colorScheme.onPrimary, fontSize: 14, fontWeight: FontWeight.bold)),
+                        Text(
+                          'FONEPOINTS',
+                          style: TextStyle(
+                            color: colorScheme.onPrimary.withValues(alpha: 0.7),
+                            fontSize: 8,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          '1,240',
+                          style: TextStyle(
+                            color: colorScheme.onPrimary,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
                   ],
@@ -173,10 +286,30 @@ class HomeScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildBalanceAction(context, Icons.account_balance_wallet, 'Load Money', '/load_money'),
-              _buildBalanceAction(context, Icons.send, 'Send Money', '/payment_details'),
-              _buildBalanceAction(context, Icons.account_balance, 'Bank Transfer', '/bank_transfer'),
-              _buildBalanceAction(context, Icons.payments, 'Remittance', '/remittance'),
+              _buildBalanceAction(
+                context,
+                Icons.account_balance_wallet,
+                'Load Money',
+                '/load_money',
+              ),
+              _buildBalanceAction(
+                context,
+                Icons.send,
+                'Send Money',
+                '/payment_details',
+              ),
+              _buildBalanceAction(
+                context,
+                Icons.account_balance,
+                'Bank Transfer',
+                '/bank_transfer',
+              ),
+              _buildBalanceAction(
+                context,
+                Icons.payments,
+                'Remittance',
+                '/remittance',
+              ),
             ],
           ),
         ],
@@ -184,7 +317,12 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBalanceAction(BuildContext context, IconData icon, String label, String? route) {
+  Widget _buildBalanceAction(
+    BuildContext context,
+    IconData icon,
+    String label,
+    String? route,
+  ) {
     return GestureDetector(
       onTap: () {
         if (route != null) {
@@ -197,13 +335,20 @@ class HomeScreen extends StatelessWidget {
             width: 48,
             height: 48,
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.15),
+              color: Colors.white.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(16),
             ),
             child: Icon(icon, color: Theme.of(context).colorScheme.onPrimary),
           ),
           const SizedBox(height: 8),
-          Text(label, style: TextStyle(color: Theme.of(context).colorScheme.onPrimary, fontSize: 10, fontWeight: FontWeight.w500)),
+          Text(
+            label,
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.onPrimary,
+              fontSize: 10,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
         ],
       ),
     );
@@ -219,8 +364,18 @@ class HomeScreen extends StatelessWidget {
         _buildUtilityItem(context, Icons.water_drop, 'Khanepani', null),
         _buildUtilityItem(context, Icons.router, 'Internet', '/internet'),
         _buildUtilityItem(context, Icons.flight, 'Airlines', '/flight_booking'),
-        _buildUtilityItem(context, Icons.account_balance, 'Govt. Payment', '/govt_payment'),
-        _buildUtilityItem(context, Icons.school, 'Education Fee', '/education_fee'),
+        _buildUtilityItem(
+          context,
+          Icons.account_balance,
+          'Govt. Payment',
+          '/govt_payment',
+        ),
+        _buildUtilityItem(
+          context,
+          Icons.school,
+          'Education Fee',
+          '/education_fee',
+        ),
         _buildUtilityItem(context, Icons.confirmation_number, 'Events', null),
       ],
       onViewAll: () => context.push('/utility'),
@@ -232,26 +387,61 @@ class HomeScreen extends StatelessWidget {
       context,
       title: 'Travels & Ticketing',
       items: [
-        _buildUtilityItem(context, Icons.flight_takeoff, 'Airlines', '/flight_booking', color: const Color(0xFF396668)),
-        _buildUtilityItem(context, Icons.hotel, 'Hotels', '/travel_hub', color: const Color(0xFF396668)),
-        _buildUtilityItem(context, Icons.directions_bus, 'Bus Ticket', '/travel_hub', color: const Color(0xFF396668)),
-        _buildUtilityItem(context, Icons.movie, 'Movies', '/travel_hub', color: const Color(0xFF396668)),
+        _buildUtilityItem(
+          context,
+          Icons.flight_takeoff,
+          'Airlines',
+          '/flight_booking',
+          color: const Color(0xFF396668),
+        ),
+        _buildUtilityItem(
+          context,
+          Icons.hotel,
+          'Hotels',
+          '/travel_hub',
+          color: const Color(0xFF396668),
+        ),
+        _buildUtilityItem(
+          context,
+          Icons.directions_bus,
+          'Bus Ticket',
+          '/travel_hub',
+          color: const Color(0xFF396668),
+        ),
+        _buildUtilityItem(
+          context,
+          Icons.movie,
+          'Movies',
+          '/travel_hub',
+          color: const Color(0xFF396668),
+        ),
       ],
       onViewAll: () => context.push('/travel_hub'),
     );
   }
 
-  Widget _buildGridSection(BuildContext context, {required String title, required List<Widget> items, VoidCallback? onViewAll}) {
+  Widget _buildGridSection(
+    BuildContext context, {
+    required String title,
+    required List<Widget> items,
+    VoidCallback? onViewAll,
+  }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(title, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+            Text(
+              title,
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
             TextButton(
-              onPressed: onViewAll ?? () {}, 
-              child: const Text('View All', style: TextStyle(fontWeight: FontWeight.bold))
+              onPressed: onViewAll ?? () {},
+              child: const Text(
+                'View All',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
             ),
           ],
         ),
@@ -265,14 +455,27 @@ class HomeScreen extends StatelessWidget {
             spacing: 16,
             runSpacing: 24,
             alignment: WrapAlignment.spaceAround,
-            children: items.map((e) => SizedBox(width: MediaQuery.of(context).size.width / 4 - 24, child: e)).toList(),
+            children: items
+                .map(
+                  (e) => SizedBox(
+                    width: MediaQuery.of(context).size.width / 4 - 24,
+                    child: e,
+                  ),
+                )
+                .toList(),
           ),
         ),
       ],
     );
   }
 
-  Widget _buildGridItem(BuildContext context, IconData icon, String label, {Color? color, bool isMore = false}) {
+  Widget _buildGridItem(
+    BuildContext context,
+    IconData icon,
+    String label, {
+    Color? color,
+    bool isMore = false,
+  }) {
     final iconColor = color ?? Theme.of(context).colorScheme.primary;
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -281,35 +484,56 @@ class HomeScreen extends StatelessWidget {
           width: 48,
           height: 48,
           decoration: BoxDecoration(
-            color: isMore ? Theme.of(context).colorScheme.surfaceContainerHigh : Colors.white,
+            color: isMore
+                ? Theme.of(context).colorScheme.surfaceContainerHigh
+                : Colors.white,
             shape: BoxShape.circle,
-            boxShadow: isMore ? null : [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.05),
-                blurRadius: 5,
-                offset: const Offset(0, 2),
-              ),
-            ],
+            boxShadow: isMore
+                ? null
+                : [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      blurRadius: 5,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
           ),
-          child: Icon(icon, color: isMore ? Theme.of(context).colorScheme.onSurfaceVariant : iconColor),
+          child: Icon(
+            icon,
+            color: isMore
+                ? Theme.of(context).colorScheme.onSurfaceVariant
+                : iconColor,
+          ),
         ),
         const SizedBox(height: 8),
-        Text(label, textAlign: TextAlign.center, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w500)),
+        Text(
+          label,
+          textAlign: TextAlign.center,
+          style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w500),
+        ),
       ],
     );
   }
-  
-  Widget _buildUtilityItem(BuildContext context, IconData icon, String label, String? route, {Color? color}) {
+
+  Widget _buildUtilityItem(
+    BuildContext context,
+    IconData icon,
+    String label,
+    String? route, {
+    Color? color,
+  }) {
     return GestureDetector(
       onTap: () {
         if (route != null) {
           context.push(route);
+          return;
         }
+        UiFeedback.comingSoon(context, label);
       },
       child: _buildGridItem(context, icon, label, color: color),
     );
   }
-  
+
   Widget _buildRecentTransactions(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -317,8 +541,17 @@ class HomeScreen extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text('Recent Transactions', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-            TextButton(onPressed: () {}, child: const Text('History', style: TextStyle(fontWeight: FontWeight.bold))),
+            const Text(
+              'Recent Transactions',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            TextButton(
+              onPressed: () => context.go('/statement'),
+              child: const Text(
+                'History',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
           ],
         ),
         _buildTransactionItem(
@@ -328,6 +561,7 @@ class HomeScreen extends StatelessWidget {
           date: 'July 27, 2023 • 10:24 AM',
           amount: '- NPR 100.00',
           isNegative: true,
+          onTap: () => context.push('/transaction_details'),
         ),
         const SizedBox(height: 12),
         _buildTransactionItem(
@@ -337,56 +571,115 @@ class HomeScreen extends StatelessWidget {
           date: 'July 26, 2023 • 03:15 PM',
           amount: '+ NPR 5,000.00',
           isNegative: false,
+          onTap: () => context.push('/transaction_details'),
         ),
       ],
     );
   }
-  
-  Widget _buildTransactionItem(BuildContext context, {required IconData icon, required String title, required String date, required String amount, required bool isNegative}) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: Theme.of(context).colorScheme.outlineVariant.withOpacity(0.3)),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 44,
-            height: 44,
-            decoration: BoxDecoration(
-              color: isNegative ? Theme.of(context).colorScheme.primaryContainer.withOpacity(0.1) : const Color(0xFF396668).withOpacity(0.1),
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Icon(icon, color: isNegative ? Theme.of(context).colorScheme.primary : const Color(0xFF396668)),
+
+  Widget _buildTransactionItem(
+    BuildContext context, {
+    required IconData icon,
+    required String title,
+    required String date,
+    required String amount,
+    required bool isNegative,
+    VoidCallback? onTap,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(24),
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(24),
+          border: Border.all(
+            color: Theme.of(
+              context,
+            ).colorScheme.outlineVariant.withValues(alpha: 0.3),
           ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 44,
+              height: 44,
+              decoration: BoxDecoration(
+                color: isNegative
+                    ? Theme.of(
+                        context,
+                      ).colorScheme.primaryContainer.withValues(alpha: 0.1)
+                    : const Color(0xFF396668).withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Icon(
+                icon,
+                color: isNegative
+                    ? Theme.of(context).colorScheme.primary
+                    : const Color(0xFF396668),
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    date,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text(title, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
-                Text(date, style: TextStyle(fontSize: 12, color: Theme.of(context).colorScheme.onSurfaceVariant)),
+                Text(
+                  amount,
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: isNegative
+                        ? Theme.of(context).colorScheme.error
+                        : Theme.of(context).colorScheme.primary,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 2,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.primaryContainer.withValues(alpha: 0.2),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Text(
+                    'Success',
+                    style: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                    ),
+                  ),
+                ),
               ],
             ),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text(amount, style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: isNegative ? Theme.of(context).colorScheme.error : Theme.of(context).colorScheme.primary)),
-              const SizedBox(height: 4),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primaryContainer.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Text('Success', style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onPrimaryContainer)),
-              ),
-            ],
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

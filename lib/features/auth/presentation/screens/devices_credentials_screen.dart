@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../core/utils/ui_feedback.dart';
 
 class DevicesCredentialsScreen extends StatefulWidget {
   const DevicesCredentialsScreen({super.key});
 
   @override
-  State<DevicesCredentialsScreen> createState() => _DevicesCredentialsScreenState();
+  State<DevicesCredentialsScreen> createState() =>
+      _DevicesCredentialsScreenState();
 }
 
 class _DevicesCredentialsScreenState extends State<DevicesCredentialsScreen> {
@@ -22,9 +25,7 @@ class _DevicesCredentialsScreenState extends State<DevicesCredentialsScreen> {
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(24),
-          ),
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
         ),
       ),
       body: SingleChildScrollView(
@@ -56,7 +57,9 @@ class _DevicesCredentialsScreenState extends State<DevicesCredentialsScreen> {
                         Text(
                           'Your account is currently secure.',
                           style: theme.textTheme.bodyMedium?.copyWith(
-                            color: colorScheme.onPrimaryContainer.withOpacity(0.9),
+                            color: colorScheme.onPrimaryContainer.withOpacity(
+                              0.9,
+                            ),
                           ),
                         ),
                       ],
@@ -90,8 +93,8 @@ class _DevicesCredentialsScreenState extends State<DevicesCredentialsScreen> {
             const SizedBox(height: 16),
             Container(
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainerLowest,
                 borderRadius: BorderRadius.circular(24),
                 boxShadow: [
@@ -109,7 +112,7 @@ class _DevicesCredentialsScreenState extends State<DevicesCredentialsScreen> {
                     icon: Icons.pin,
                     title: 'Change MPIN',
                     subtitle: 'Update your mobile banking PIN',
-                    onTap: () {},
+                    onTap: () => UiFeedback.comingSoon(context, 'Change MPIN'),
                   ),
                   Divider(height: 1, color: colorScheme.surfaceVariant),
                   _buildListTile(
@@ -117,7 +120,8 @@ class _DevicesCredentialsScreenState extends State<DevicesCredentialsScreen> {
                     icon: Icons.password,
                     title: 'Change Password',
                     subtitle: 'Update your login password',
-                    onTap: () {},
+                    onTap: () =>
+                        UiFeedback.comingSoon(context, 'Change password'),
                   ),
                   Divider(height: 1, color: colorScheme.surfaceVariant),
                   Padding(
@@ -131,7 +135,10 @@ class _DevicesCredentialsScreenState extends State<DevicesCredentialsScreen> {
                             color: colorScheme.surfaceContainer,
                             borderRadius: BorderRadius.circular(12),
                           ),
-                          child: Icon(Icons.fingerprint, color: colorScheme.primary),
+                          child: Icon(
+                            Icons.fingerprint,
+                            color: colorScheme.primary,
+                          ),
                         ),
                         const SizedBox(width: 16),
                         Expanded(
@@ -204,11 +211,18 @@ class _DevicesCredentialsScreenState extends State<DevicesCredentialsScreen> {
               status: 'Logged out: 12 Oct 2023',
               isFaded: true,
             ),
-            
+
             const SizedBox(height: 32),
             Center(
               child: TextButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  UiFeedback.showSnackBar(
+                    context,
+                    'Signed out from all devices',
+                    icon: Icons.check_circle_outline,
+                  );
+                  context.go('/auth');
+                },
                 icon: const Icon(Icons.logout),
                 label: const Text('Sign out of all devices'),
                 style: TextButton.styleFrom(
@@ -223,7 +237,8 @@ class _DevicesCredentialsScreenState extends State<DevicesCredentialsScreen> {
     );
   }
 
-  Widget _buildListTile(BuildContext context, {
+  Widget _buildListTile(
+    BuildContext context, {
     required IconData icon,
     required String title,
     required String subtitle,
@@ -231,7 +246,7 @@ class _DevicesCredentialsScreenState extends State<DevicesCredentialsScreen> {
   }) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
+
     return InkWell(
       onTap: onTap,
       child: Padding(
@@ -269,7 +284,8 @@ class _DevicesCredentialsScreenState extends State<DevicesCredentialsScreen> {
     );
   }
 
-  Widget _buildDeviceItem(BuildContext context, {
+  Widget _buildDeviceItem(
+    BuildContext context, {
     required IconData icon,
     required String name,
     required String details,
@@ -281,16 +297,18 @@ class _DevicesCredentialsScreenState extends State<DevicesCredentialsScreen> {
   }) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
+
     return Opacity(
       opacity: isFaded ? 0.6 : 1.0,
       child: Container(
         decoration: BoxDecoration(
-          color: theme.brightness == Brightness.dark 
-              ? colorScheme.surfaceContainerHighest 
+          color: theme.brightness == Brightness.dark
+              ? colorScheme.surfaceContainerHighest
               : colorScheme.surfaceContainerLowest,
           borderRadius: BorderRadius.circular(24),
-          border: isCurrentDevice ? Border.all(color: colorScheme.primary.withOpacity(0.2)) : null,
+          border: isCurrentDevice
+              ? Border.all(color: colorScheme.primary.withOpacity(0.2))
+              : null,
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.05),
@@ -308,10 +326,15 @@ class _DevicesCredentialsScreenState extends State<DevicesCredentialsScreen> {
                   top: 0,
                   right: 0,
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 4,
+                    ),
                     decoration: BoxDecoration(
                       color: colorScheme.primary,
-                      borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(16)),
+                      borderRadius: const BorderRadius.only(
+                        bottomLeft: Radius.circular(16),
+                      ),
                     ),
                     child: Text(
                       'THIS DEVICE',
@@ -331,12 +354,16 @@ class _DevicesCredentialsScreenState extends State<DevicesCredentialsScreen> {
                       width: 48,
                       height: 48,
                       decoration: BoxDecoration(
-                        color: isCurrentDevice ? colorScheme.primaryContainer : colorScheme.surfaceContainer,
+                        color: isCurrentDevice
+                            ? colorScheme.primaryContainer
+                            : colorScheme.surfaceContainer,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Icon(
-                        icon, 
-                        color: isCurrentDevice ? colorScheme.onPrimaryContainer : colorScheme.onSurfaceVariant,
+                        icon,
+                        color: isCurrentDevice
+                            ? colorScheme.onPrimaryContainer
+                            : colorScheme.onSurfaceVariant,
                       ),
                     ),
                     const SizedBox(width: 16),
@@ -395,11 +422,19 @@ class _DevicesCredentialsScreenState extends State<DevicesCredentialsScreen> {
                     ),
                     if (showRevoke)
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () => UiFeedback.showSnackBar(
+                          context,
+                          '$name access revoked',
+                          icon: Icons.security_update_warning,
+                        ),
                         style: TextButton.styleFrom(
                           foregroundColor: colorScheme.error,
-                          backgroundColor: colorScheme.errorContainer.withOpacity(0.3),
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          backgroundColor: colorScheme.errorContainer
+                              .withOpacity(0.3),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 8,
+                          ),
                         ),
                         child: const Text('Revoke'),
                       ),

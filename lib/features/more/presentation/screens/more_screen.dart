@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../core/utils/ui_feedback.dart';
 
 class MoreScreen extends StatelessWidget {
   const MoreScreen({super.key});
@@ -15,14 +17,13 @@ class MoreScreen extends StatelessWidget {
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(24),
-          ),
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
         ),
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications),
-            onPressed: () {},
+            onPressed: () =>
+                UiFeedback.comingSoon(context, 'Notifications center'),
           ),
         ],
       ),
@@ -34,11 +35,13 @@ class MoreScreen extends StatelessWidget {
             // Profile Summary Bento
             Container(
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainerLow,
                 borderRadius: BorderRadius.circular(24),
-                border: Border.all(color: colorScheme.outlineVariant.withOpacity(0.3)),
+                border: Border.all(
+                  color: colorScheme.outlineVariant.withOpacity(0.3),
+                ),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.05),
@@ -56,13 +59,20 @@ class MoreScreen extends StatelessWidget {
                         height: 64,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          border: Border.all(color: colorScheme.primary, width: 2),
+                          border: Border.all(
+                            color: colorScheme.primary,
+                            width: 2,
+                          ),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(2.0),
                           child: CircleAvatar(
                             backgroundColor: colorScheme.primaryContainer,
-                            child: Icon(Icons.person, color: colorScheme.onPrimaryContainer, size: 32),
+                            child: Icon(
+                              Icons.person,
+                              color: colorScheme.onPrimaryContainer,
+                              size: 32,
+                            ),
                           ),
                         ),
                       ),
@@ -71,14 +81,31 @@ class MoreScreen extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Upendra Singh Dhami', style: theme.textTheme.titleMedium),
-                            Text('9841234567', style: theme.textTheme.bodyMedium?.copyWith(color: colorScheme.onSurfaceVariant)),
+                            Text(
+                              'Upendra Singh Dhami',
+                              style: theme.textTheme.titleMedium,
+                            ),
+                            Text(
+                              '9841234567',
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                color: colorScheme.onSurfaceVariant,
+                              ),
+                            ),
                             const SizedBox(height: 4),
                             Row(
                               children: [
-                                Icon(Icons.verified, color: colorScheme.primary, size: 16),
+                                Icon(
+                                  Icons.verified,
+                                  color: colorScheme.primary,
+                                  size: 16,
+                                ),
                                 const SizedBox(width: 4),
-                                Text('Active / Verified', style: theme.textTheme.labelMedium?.copyWith(color: colorScheme.primary)),
+                                Text(
+                                  'Active / Verified',
+                                  style: theme.textTheme.labelMedium?.copyWith(
+                                    color: colorScheme.primary,
+                                  ),
+                                ),
                               ],
                             ),
                           ],
@@ -99,16 +126,46 @@ class MoreScreen extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Balance', style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 12)),
-                            const Text('Rs. 500,000.00', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
+                            Text(
+                              'Balance',
+                              style: TextStyle(
+                                color: Colors.white.withOpacity(0.8),
+                                fontSize: 12,
+                              ),
+                            ),
+                            const Text(
+                              'Rs. 500,000.00',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ],
                         ),
-                        Container(width: 1, height: 32, color: Colors.white.withOpacity(0.2)),
+                        Container(
+                          width: 1,
+                          height: 32,
+                          color: Colors.white.withOpacity(0.2),
+                        ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Text('Fonepoints', style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 12)),
-                            const Text('1,250', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
+                            Text(
+                              'Fonepoints',
+                              style: TextStyle(
+                                color: Colors.white.withOpacity(0.8),
+                                fontSize: 12,
+                              ),
+                            ),
+                            const Text(
+                              '1,250',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ],
                         ),
                       ],
@@ -122,9 +179,17 @@ class MoreScreen extends StatelessWidget {
             // My Accounts Section
             _buildSectionHeader(context, 'MY ACCOUNTS'),
             _buildSection(context, [
-              _buildListItem(context, Icons.business_center, 'Business Accounts'),
+              _buildListItem(
+                context,
+                Icons.business_center,
+                'Business Accounts',
+              ),
               _buildListItem(context, Icons.calendar_month, 'My Calendar'),
-              _buildListItem(context, Icons.account_balance_wallet, 'Transaction Limits'),
+              _buildListItem(
+                context,
+                Icons.account_balance_wallet,
+                'Transaction Limits',
+              ),
               _buildListItem(context, Icons.devices, 'Devices & Credentials'),
               _buildListItem(context, Icons.analytics, 'Finance360'),
             ]),
@@ -133,7 +198,12 @@ class MoreScreen extends StatelessWidget {
             // Settings Section
             _buildSectionHeader(context, 'SETTINGS'),
             _buildSection(context, [
-              _buildListItem(context, Icons.bug_report, 'Test Demo Settings', isHighlighted: true),
+              _buildListItem(
+                context,
+                Icons.bug_report,
+                'Test Demo Settings',
+                isHighlighted: true,
+              ),
               _buildListItem(context, Icons.palette, 'Appearance'),
               _buildListItem(context, Icons.language, 'Language'),
               _buildListItem(context, Icons.notifications, 'Notifications'),
@@ -147,7 +217,7 @@ class MoreScreen extends StatelessWidget {
               _buildListItem(context, Icons.security, 'Security'),
             ]),
             const SizedBox(height: 24),
-            
+
             // Info Section
             _buildSectionHeader(context, 'HELP & INFO'),
             _buildSection(context, [
@@ -159,7 +229,7 @@ class MoreScreen extends StatelessWidget {
 
             // Logout Button
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () => context.go('/auth'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: colorScheme.errorContainer,
                 foregroundColor: colorScheme.onErrorContainer,
@@ -174,16 +244,21 @@ class MoreScreen extends StatelessWidget {
                 children: const [
                   Icon(Icons.logout),
                   SizedBox(width: 8),
-                  Text('Logout Account', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                  Text(
+                    'Logout Account',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
                 ],
               ),
             ),
             const SizedBox(height: 16),
-            
+
             Center(
               child: Text(
                 'App Version 5.24.1 (Stable)',
-                style: theme.textTheme.labelMedium?.copyWith(color: colorScheme.outlineVariant),
+                style: theme.textTheme.labelMedium?.copyWith(
+                  color: colorScheme.outlineVariant,
+                ),
               ),
             ),
             const SizedBox(height: 32),
@@ -212,31 +287,36 @@ class MoreScreen extends StatelessWidget {
   Widget _buildSection(BuildContext context, List<Widget> children) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
+
     return Container(
       decoration: BoxDecoration(
-        color: theme.brightness == Brightness.dark 
-            ? colorScheme.surfaceContainerHighest 
+        color: theme.brightness == Brightness.dark
+            ? colorScheme.surfaceContainerHighest
             : colorScheme.surfaceContainerLowest,
         borderRadius: BorderRadius.circular(24),
         border: Border.all(color: colorScheme.outlineVariant.withOpacity(0.2)),
       ),
-      child: Column(
-        children: children,
-      ),
+      child: Column(children: children),
     );
   }
 
-  Widget _buildListItem(BuildContext context, IconData icon, String title, {bool isHighlighted = false}) {
+  Widget _buildListItem(
+    BuildContext context,
+    IconData icon,
+    String title, {
+    bool isHighlighted = false,
+  }) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
+
     return InkWell(
-      onTap: () {},
+      onTap: () => _handleMenuTap(context, title),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         decoration: BoxDecoration(
-          color: isHighlighted ? colorScheme.primaryContainer.withOpacity(0.1) : Colors.transparent,
+          color: isHighlighted
+              ? colorScheme.primaryContainer.withOpacity(0.1)
+              : Colors.transparent,
           border: Border(
             bottom: BorderSide(
               color: colorScheme.outlineVariant.withOpacity(0.1),
@@ -251,7 +331,9 @@ class MoreScreen extends StatelessWidget {
               child: Text(
                 title,
                 style: theme.textTheme.bodyLarge?.copyWith(
-                  fontWeight: isHighlighted ? FontWeight.bold : FontWeight.normal,
+                  fontWeight: isHighlighted
+                      ? FontWeight.bold
+                      : FontWeight.normal,
                 ),
               ),
             ),
@@ -260,5 +342,34 @@ class MoreScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _handleMenuTap(BuildContext context, String title) {
+    switch (title) {
+      case 'Devices & Credentials':
+        context.push('/devices');
+        return;
+      case 'Help & FAQs':
+        context.go('/support');
+        return;
+      case 'Test Demo Settings':
+        context.push('/test_demo_settings');
+        return;
+      case 'Business Accounts':
+      case 'My Calendar':
+      case 'Transaction Limits':
+      case 'Finance360':
+      case 'Appearance':
+      case 'Language':
+      case 'Notifications':
+      case 'Permission':
+      case 'Security':
+      case 'Offers & Campaigns':
+      case 'About':
+        UiFeedback.comingSoon(context, title);
+        return;
+      default:
+        UiFeedback.comingSoon(context);
+    }
   }
 }

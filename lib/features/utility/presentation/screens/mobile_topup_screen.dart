@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../core/utils/ui_feedback.dart';
 
 class MobileTopupScreen extends StatefulWidget {
   const MobileTopupScreen({super.key});
@@ -36,14 +38,12 @@ class _MobileTopupScreenState extends State<MobileTopupScreen> {
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(24),
-          ),
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
         ),
         actions: [
           IconButton(
             icon: const Icon(Icons.history),
-            onPressed: () {},
+            onPressed: () => context.push('/statement'),
           ),
         ],
       ),
@@ -56,8 +56,8 @@ class _MobileTopupScreenState extends State<MobileTopupScreen> {
             Container(
               padding: const EdgeInsets.all(4),
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainer,
                 borderRadius: BorderRadius.circular(32),
               ),
@@ -83,12 +83,17 @@ class _MobileTopupScreenState extends State<MobileTopupScreen> {
             const SizedBox(height: 24),
 
             // Mobile Number Input
-            Text('Mobile Number', style: theme.textTheme.labelLarge?.copyWith(color: colorScheme.onSurfaceVariant)),
+            Text(
+              'Mobile Number',
+              style: theme.textTheme.labelLarge?.copyWith(
+                color: colorScheme.onSurfaceVariant,
+              ),
+            ),
             const SizedBox(height: 8),
             Container(
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainer,
                 borderRadius: BorderRadius.circular(32),
               ),
@@ -100,52 +105,100 @@ class _MobileTopupScreenState extends State<MobileTopupScreen> {
                   prefixIcon: const Icon(Icons.phone_iphone),
                   suffixIcon: IconButton(
                     icon: Icon(Icons.contacts, color: colorScheme.primary),
-                    onPressed: () {},
+                    onPressed: () =>
+                        UiFeedback.comingSoon(context, 'Contact picker'),
                   ),
                   border: InputBorder.none,
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 16,
+                  ),
                 ),
               ),
             ),
             const SizedBox(height: 24),
 
             // Operator Selection
-            Text('Select Operator', style: theme.textTheme.labelLarge?.copyWith(color: colorScheme.onSurfaceVariant)),
+            Text(
+              'Select Operator',
+              style: theme.textTheme.labelLarge?.copyWith(
+                color: colorScheme.onSurfaceVariant,
+              ),
+            ),
             const SizedBox(height: 8),
             Row(
               children: [
-                Expanded(child: _buildOperatorCard('NTC', 'Nepal Telecom', Colors.blue, selectedOperator == 'NTC')),
+                Expanded(
+                  child: _buildOperatorCard(
+                    'NTC',
+                    'Nepal Telecom',
+                    Colors.blue,
+                    selectedOperator == 'NTC',
+                  ),
+                ),
                 const SizedBox(width: 12),
-                Expanded(child: _buildOperatorCard('Ncell', 'Ncell', Colors.purple, selectedOperator == 'Ncell')),
+                Expanded(
+                  child: _buildOperatorCard(
+                    'Ncell',
+                    'Ncell',
+                    Colors.purple,
+                    selectedOperator == 'Ncell',
+                  ),
+                ),
                 const SizedBox(width: 12),
-                Expanded(child: _buildOperatorCard('Smart', 'SmartCell', Colors.red, selectedOperator == 'Smart')),
+                Expanded(
+                  child: _buildOperatorCard(
+                    'Smart',
+                    'SmartCell',
+                    Colors.red,
+                    selectedOperator == 'Smart',
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 24),
 
             // Amount Input
-            Text('Amount', style: theme.textTheme.labelLarge?.copyWith(color: colorScheme.onSurfaceVariant)),
+            Text(
+              'Amount',
+              style: theme.textTheme.labelLarge?.copyWith(
+                color: colorScheme.onSurfaceVariant,
+              ),
+            ),
             const SizedBox(height: 8),
             Container(
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainer,
                 borderRadius: BorderRadius.circular(32),
               ),
               child: TextField(
                 controller: _amountController,
                 keyboardType: TextInputType.number,
-                style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+                style: theme.textTheme.headlineSmall?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
                 decoration: InputDecoration(
                   hintText: '0',
                   prefixIcon: Padding(
                     padding: const EdgeInsets.only(left: 20, top: 12),
-                    child: Text('Rs.', style: theme.textTheme.titleLarge?.copyWith(color: colorScheme.onSurfaceVariant)),
+                    child: Text(
+                      'Rs.',
+                      style: theme.textTheme.titleLarge?.copyWith(
+                        color: colorScheme.onSurfaceVariant,
+                      ),
+                    ),
                   ),
-                  prefixIconConstraints: const BoxConstraints(minWidth: 0, minHeight: 0),
+                  prefixIconConstraints: const BoxConstraints(
+                    minWidth: 0,
+                    minHeight: 0,
+                  ),
                   border: InputBorder.none,
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 16,
+                  ),
                 ),
               ),
             ),
@@ -170,8 +223,8 @@ class _MobileTopupScreenState extends State<MobileTopupScreen> {
       bottomSheet: Container(
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
-          color: theme.brightness == Brightness.dark 
-              ? colorScheme.background 
+          color: theme.brightness == Brightness.dark
+              ? colorScheme.background
               : colorScheme.surface,
           boxShadow: [
             BoxShadow(
@@ -183,7 +236,18 @@ class _MobileTopupScreenState extends State<MobileTopupScreen> {
         ),
         child: SafeArea(
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              final amount = double.tryParse(_amountController.text.trim());
+              if (amount == null || amount <= 0) {
+                UiFeedback.showSnackBar(
+                  context,
+                  'Enter a valid topup amount',
+                  icon: Icons.warning_amber_rounded,
+                );
+                return;
+              }
+              context.push('/payment_details');
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: colorScheme.primaryContainer,
               foregroundColor: colorScheme.onPrimaryContainer,
@@ -210,10 +274,14 @@ class _MobileTopupScreenState extends State<MobileTopupScreen> {
     );
   }
 
-  Widget _buildTabButton(String text, {required bool isSelected, required VoidCallback onTap}) {
+  Widget _buildTabButton(
+    String text, {
+    required bool isSelected,
+    required VoidCallback onTap,
+  }) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
+
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -226,7 +294,9 @@ class _MobileTopupScreenState extends State<MobileTopupScreen> {
         child: Text(
           text,
           style: theme.textTheme.titleSmall?.copyWith(
-            color: isSelected ? colorScheme.onPrimaryContainer : colorScheme.onSurfaceVariant,
+            color: isSelected
+                ? colorScheme.onPrimaryContainer
+                : colorScheme.onSurfaceVariant,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
           ),
         ),
@@ -234,7 +304,12 @@ class _MobileTopupScreenState extends State<MobileTopupScreen> {
     );
   }
 
-  Widget _buildOperatorCard(String id, String name, Color logoColor, bool isSelected) {
+  Widget _buildOperatorCard(
+    String id,
+    String name,
+    Color logoColor,
+    bool isSelected,
+  ) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
@@ -247,8 +322,8 @@ class _MobileTopupScreenState extends State<MobileTopupScreen> {
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: theme.brightness == Brightness.dark 
-              ? colorScheme.surfaceContainerHighest 
+          color: theme.brightness == Brightness.dark
+              ? colorScheme.surfaceContainerHighest
               : colorScheme.surfaceContainer,
           borderRadius: BorderRadius.circular(24),
           border: Border.all(
@@ -262,8 +337,8 @@ class _MobileTopupScreenState extends State<MobileTopupScreen> {
               width: 40,
               height: 40,
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainer 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainer
                     : colorScheme.surfaceContainerHighest,
                 borderRadius: BorderRadius.circular(12),
               ),
@@ -305,16 +380,22 @@ class _MobileTopupScreenState extends State<MobileTopupScreen> {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
           decoration: BoxDecoration(
-            color: isSelected ? colorScheme.primaryContainer : Colors.transparent,
+            color: isSelected
+                ? colorScheme.primaryContainer
+                : Colors.transparent,
             borderRadius: BorderRadius.circular(24),
             border: Border.all(
-              color: isSelected ? colorScheme.primaryContainer : colorScheme.outlineVariant,
+              color: isSelected
+                  ? colorScheme.primaryContainer
+                  : colorScheme.outlineVariant,
             ),
           ),
           child: Text(
             amount,
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: isSelected ? colorScheme.onPrimaryContainer : colorScheme.onSurface,
+              color: isSelected
+                  ? colorScheme.onPrimaryContainer
+                  : colorScheme.onSurface,
             ),
           ),
         ),

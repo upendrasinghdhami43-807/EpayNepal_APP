@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../core/utils/ui_feedback.dart';
 
 class KycPersonalInfoScreen extends StatefulWidget {
   const KycPersonalInfoScreen({super.key});
@@ -22,21 +24,24 @@ class _KycPersonalInfoScreenState extends State<KycPersonalInfoScreen> {
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(24),
-          ),
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
         ),
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications),
-            onPressed: () {},
+            onPressed: () =>
+                UiFeedback.comingSoon(context, 'KYC notifications'),
           ),
           Padding(
             padding: const EdgeInsets.only(right: 16.0),
             child: CircleAvatar(
               backgroundColor: colorScheme.primaryContainer,
               radius: 16,
-              child: Icon(Icons.person, size: 20, color: colorScheme.onPrimaryContainer),
+              child: Icon(
+                Icons.person,
+                size: 20,
+                color: colorScheme.onPrimaryContainer,
+              ),
             ),
           ),
         ],
@@ -54,11 +59,27 @@ class _KycPersonalInfoScreenState extends State<KycPersonalInfoScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('KYC Verification', style: theme.textTheme.titleLarge?.copyWith(color: colorScheme.primary)),
-                    Text('Step 1 of 4: Personal Info', style: theme.textTheme.bodyMedium?.copyWith(color: colorScheme.onSurfaceVariant)),
+                    Text(
+                      'KYC Verification',
+                      style: theme.textTheme.titleLarge?.copyWith(
+                        color: colorScheme.primary,
+                      ),
+                    ),
+                    Text(
+                      'Step 1 of 4: Personal Info',
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: colorScheme.onSurfaceVariant,
+                      ),
+                    ),
                   ],
                 ),
-                Text('25%', style: theme.textTheme.titleMedium?.copyWith(color: colorScheme.primary, fontWeight: FontWeight.bold)),
+                Text(
+                  '25%',
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    color: colorScheme.primary,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 8),
@@ -77,11 +98,13 @@ class _KycPersonalInfoScreenState extends State<KycPersonalInfoScreen> {
             Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surface,
                 borderRadius: BorderRadius.circular(24),
-                border: Border.all(color: colorScheme.outlineVariant.withOpacity(0.3)),
+                border: Border.all(
+                  color: colorScheme.outlineVariant.withOpacity(0.3),
+                ),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.02),
@@ -94,27 +117,62 @@ class _KycPersonalInfoScreenState extends State<KycPersonalInfoScreen> {
                 children: [
                   _buildTextField(context, 'First Name', 'e.g. Upendra'),
                   const SizedBox(height: 16),
-                  _buildTextField(context, 'Middle Name (Optional)', 'e.g. Bahadur'),
+                  _buildTextField(
+                    context,
+                    'Middle Name (Optional)',
+                    'e.g. Bahadur',
+                  ),
                   const SizedBox(height: 16),
                   _buildTextField(context, 'Last Name', 'e.g. Khatri'),
                   const SizedBox(height: 24),
 
                   // Gender Grid
-                  Text('Gender', style: theme.textTheme.labelLarge?.copyWith(color: colorScheme.outline)),
+                  Text(
+                    'Gender',
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color: colorScheme.outline,
+                    ),
+                  ),
                   const SizedBox(height: 8),
                   Row(
                     children: [
-                      Expanded(child: _buildGenderOption(context, 'Male', Icons.male, 'male')),
+                      Expanded(
+                        child: _buildGenderOption(
+                          context,
+                          'Male',
+                          Icons.male,
+                          'male',
+                        ),
+                      ),
                       const SizedBox(width: 12),
-                      Expanded(child: _buildGenderOption(context, 'Female', Icons.female, 'female')),
+                      Expanded(
+                        child: _buildGenderOption(
+                          context,
+                          'Female',
+                          Icons.female,
+                          'female',
+                        ),
+                      ),
                       const SizedBox(width: 12),
-                      Expanded(child: _buildGenderOption(context, 'Other', Icons.transgender, 'other')),
+                      Expanded(
+                        child: _buildGenderOption(
+                          context,
+                          'Other',
+                          Icons.transgender,
+                          'other',
+                        ),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 24),
 
                   // Date of Birth
-                  Text('Date of Birth', style: theme.textTheme.labelLarge?.copyWith(color: colorScheme.outline)),
+                  Text(
+                    'Date of Birth',
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color: colorScheme.outline,
+                    ),
+                  ),
                   const SizedBox(height: 8),
                   Container(
                     decoration: BoxDecoration(
@@ -126,7 +184,10 @@ class _KycPersonalInfoScreenState extends State<KycPersonalInfoScreen> {
                       readOnly: true,
                       decoration: const InputDecoration(
                         border: InputBorder.none,
-                        contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 16,
+                        ),
                         suffixIcon: Icon(Icons.calendar_today),
                         hintText: 'Select Date',
                       ),
@@ -143,7 +204,12 @@ class _KycPersonalInfoScreenState extends State<KycPersonalInfoScreen> {
                   const SizedBox(height: 16),
 
                   // Occupation
-                  Text('Occupation', style: theme.textTheme.labelLarge?.copyWith(color: colorScheme.outline)),
+                  Text(
+                    'Occupation',
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color: colorScheme.outline,
+                    ),
+                  ),
                   const SizedBox(height: 8),
                   Container(
                     decoration: BoxDecoration(
@@ -154,15 +220,33 @@ class _KycPersonalInfoScreenState extends State<KycPersonalInfoScreen> {
                     child: DropdownButtonFormField<String>(
                       decoration: const InputDecoration(
                         border: InputBorder.none,
-                        contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 16,
+                        ),
                       ),
                       hint: const Text('Select occupation'),
                       items: const [
-                        DropdownMenuItem(value: 'student', child: Text('Student')),
-                        DropdownMenuItem(value: 'private', child: Text('Private Sector')),
-                        DropdownMenuItem(value: 'government', child: Text('Government Employee')),
-                        DropdownMenuItem(value: 'business', child: Text('Business Owner')),
-                        DropdownMenuItem(value: 'retired', child: Text('Retired')),
+                        DropdownMenuItem(
+                          value: 'student',
+                          child: Text('Student'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'private',
+                          child: Text('Private Sector'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'government',
+                          child: Text('Government Employee'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'business',
+                          child: Text('Business Owner'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'retired',
+                          child: Text('Retired'),
+                        ),
                       ],
                       onChanged: (val) {},
                     ),
@@ -171,7 +255,14 @@ class _KycPersonalInfoScreenState extends State<KycPersonalInfoScreen> {
 
                   // Continue Button
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      UiFeedback.showSnackBar(
+                        context,
+                        'Personal info saved successfully',
+                        icon: Icons.check_circle_outline,
+                      );
+                      context.go('/kyc_dashboard');
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: colorScheme.primaryContainer,
                       foregroundColor: colorScheme.onPrimaryContainer,
@@ -184,7 +275,13 @@ class _KycPersonalInfoScreenState extends State<KycPersonalInfoScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
-                        Text('Continue', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                        Text(
+                          'Continue',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                         SizedBox(width: 8),
                         Icon(Icons.arrow_forward),
                       ],
@@ -194,7 +291,9 @@ class _KycPersonalInfoScreenState extends State<KycPersonalInfoScreen> {
                   Center(
                     child: Text(
                       'Information provided here is kept secure and confidential.',
-                      style: theme.textTheme.labelMedium?.copyWith(color: colorScheme.onSurfaceVariant),
+                      style: theme.textTheme.labelMedium?.copyWith(
+                        color: colorScheme.onSurfaceVariant,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -210,11 +309,16 @@ class _KycPersonalInfoScreenState extends State<KycPersonalInfoScreen> {
   Widget _buildTextField(BuildContext context, String label, String hint) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: theme.textTheme.labelLarge?.copyWith(color: colorScheme.outline)),
+        Text(
+          label,
+          style: theme.textTheme.labelLarge?.copyWith(
+            color: colorScheme.outline,
+          ),
+        ),
         const SizedBox(height: 8),
         Container(
           decoration: BoxDecoration(
@@ -226,7 +330,10 @@ class _KycPersonalInfoScreenState extends State<KycPersonalInfoScreen> {
             decoration: InputDecoration(
               hintText: hint,
               border: InputBorder.none,
-              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 16,
+              ),
             ),
           ),
         ),
@@ -234,11 +341,16 @@ class _KycPersonalInfoScreenState extends State<KycPersonalInfoScreen> {
     );
   }
 
-  Widget _buildGenderOption(BuildContext context, String label, IconData icon, String value) {
+  Widget _buildGenderOption(
+    BuildContext context,
+    String label,
+    IconData icon,
+    String value,
+  ) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final isSelected = selectedGender == value;
-    
+
     return GestureDetector(
       onTap: () {
         setState(() {
@@ -248,20 +360,31 @@ class _KycPersonalInfoScreenState extends State<KycPersonalInfoScreen> {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 12),
         decoration: BoxDecoration(
-          color: isSelected ? colorScheme.primaryContainer.withOpacity(0.2) : colorScheme.surfaceContainerLow,
+          color: isSelected
+              ? colorScheme.primaryContainer.withOpacity(0.2)
+              : colorScheme.surfaceContainerLow,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
-            color: isSelected ? colorScheme.primary : colorScheme.outlineVariant,
+            color: isSelected
+                ? colorScheme.primary
+                : colorScheme.outlineVariant,
           ),
         ),
         child: Column(
           children: [
-            Icon(icon, color: isSelected ? colorScheme.primary : colorScheme.onSurfaceVariant),
+            Icon(
+              icon,
+              color: isSelected
+                  ? colorScheme.primary
+                  : colorScheme.onSurfaceVariant,
+            ),
             const SizedBox(height: 4),
             Text(
               label,
               style: theme.textTheme.labelMedium?.copyWith(
-                color: isSelected ? colorScheme.primary : colorScheme.onSurfaceVariant,
+                color: isSelected
+                    ? colorScheme.primary
+                    : colorScheme.onSurfaceVariant,
               ),
             ),
           ],

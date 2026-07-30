@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../core/utils/ui_feedback.dart';
 
 class BankAccountsScreen extends StatelessWidget {
   const BankAccountsScreen({super.key});
@@ -15,14 +16,13 @@ class BankAccountsScreen extends StatelessWidget {
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(24),
-          ),
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
         ),
         actions: [
           IconButton(
             icon: const Icon(Icons.more_vert),
-            onPressed: () {},
+            onPressed: () =>
+                UiFeedback.comingSoon(context, 'Bank account options'),
           ),
         ],
       ),
@@ -31,10 +31,7 @@ class BankAccountsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              'Linked Banks',
-              style: theme.textTheme.titleMedium,
-            ),
+            Text('Linked Banks', style: theme.textTheme.titleMedium),
             const SizedBox(height: 4),
             Text(
               'Manage your connected bank accounts for seamless transactions.',
@@ -43,7 +40,7 @@ class BankAccountsScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
-            
+
             _buildBankAccountCard(
               context,
               bankName: 'Global IME Bank',
@@ -64,8 +61,8 @@ class BankAccountsScreen extends StatelessWidget {
       bottomSheet: Container(
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
-          color: theme.brightness == Brightness.dark 
-              ? colorScheme.background 
+          color: theme.brightness == Brightness.dark
+              ? colorScheme.background
               : colorScheme.surface,
           boxShadow: [
             BoxShadow(
@@ -77,7 +74,8 @@ class BankAccountsScreen extends StatelessWidget {
         ),
         child: SafeArea(
           child: ElevatedButton.icon(
-            onPressed: () {},
+            onPressed: () =>
+                UiFeedback.comingSoon(context, 'Link new bank account'),
             style: ElevatedButton.styleFrom(
               backgroundColor: colorScheme.primary,
               foregroundColor: colorScheme.onPrimary,
@@ -98,19 +96,20 @@ class BankAccountsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBankAccountCard(BuildContext context, {
+  Widget _buildBankAccountCard(
+    BuildContext context, {
     required String bankName,
     required String accountDetails,
     required String accountType,
   }) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: theme.brightness == Brightness.dark 
-            ? colorScheme.surfaceContainerHighest 
+        color: theme.brightness == Brightness.dark
+            ? colorScheme.surfaceContainerHighest
             : colorScheme.surfaceContainerLow,
         borderRadius: BorderRadius.circular(24),
         border: Border.all(color: colorScheme.surfaceVariant.withOpacity(0.5)),
@@ -171,7 +170,8 @@ class BankAccountsScreen extends StatelessWidget {
           ),
           IconButton(
             icon: Icon(Icons.more_horiz, color: colorScheme.onSurfaceVariant),
-            onPressed: () {},
+            onPressed: () =>
+                UiFeedback.comingSoon(context, '$bankName account actions'),
           ),
         ],
       ),

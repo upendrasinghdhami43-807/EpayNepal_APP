@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../app/router/route_names.dart';
+import '../../../../core/utils/ui_feedback.dart';
 import '../../../../core/widgets/buttons/primary_button.dart';
 import '../../../../core/widgets/inputs/custom_text_field.dart';
 import '../providers/auth_provider.dart';
@@ -27,17 +28,16 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   Future<void> _handleLogin() async {
     setState(() => _isLoading = true);
-    
+
     // Simulate network delay
     await Future.delayed(const Duration(milliseconds: 1500));
-    
+
     if (!mounted) return;
-    
-    await ref.read(authProvider.notifier).login(
-      _phoneController.text,
-      _mpinController.text,
-    );
-    
+
+    await ref
+        .read(authProvider.notifier)
+        .login(_phoneController.text, _mpinController.text);
+
     if (!mounted) return;
     context.goNamed(RouteNames.home);
   }
@@ -45,9 +45,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login'),
-      ),
+      appBar: AppBar(title: const Text('Login')),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(24.0),
@@ -75,7 +73,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () =>
+                      UiFeedback.comingSoon(context, 'MPIN recovery'),
                   child: const Text('Forgot MPIN?'),
                 ),
               ),

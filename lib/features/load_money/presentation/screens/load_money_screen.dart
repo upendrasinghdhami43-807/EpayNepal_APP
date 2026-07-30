@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../core/utils/ui_feedback.dart';
 
 class LoadMoneyScreen extends StatelessWidget {
   const LoadMoneyScreen({super.key});
@@ -15,9 +17,7 @@ class LoadMoneyScreen extends StatelessWidget {
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(24),
-          ),
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
         ),
       ),
       body: SingleChildScrollView(
@@ -32,7 +32,7 @@ class LoadMoneyScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
-            
+
             // Recently Used Section
             Text(
               'RECENTLY USED',
@@ -47,7 +47,7 @@ class LoadMoneyScreen extends StatelessWidget {
               icon: Icons.account_balance,
               title: 'Global IME Bank',
               subtitle: 'Linked Account •••• 1234',
-              onTap: () {},
+              onTap: () => context.push('/bank_transfer'),
             ),
             const SizedBox(height: 24),
 
@@ -62,8 +62,8 @@ class LoadMoneyScreen extends StatelessWidget {
             const SizedBox(height: 8),
             Container(
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainerLowest,
                 borderRadius: BorderRadius.circular(24),
                 boxShadow: [
@@ -81,7 +81,7 @@ class LoadMoneyScreen extends StatelessWidget {
                     icon: Icons.account_balance,
                     title: 'Linked Bank Account',
                     subtitle: 'Load instantly from your linked banks',
-                    onTap: () {},
+                    onTap: () => context.push('/bank_accounts'),
                   ),
                   Divider(height: 1, color: colorScheme.surfaceVariant),
                   _buildMethodListItem(
@@ -89,7 +89,8 @@ class LoadMoneyScreen extends StatelessWidget {
                     icon: Icons.smartphone,
                     title: 'Mobile Banking',
                     subtitle: 'Use your bank\'s mobile app to load',
-                    onTap: () {},
+                    onTap: () =>
+                        UiFeedback.comingSoon(context, 'Mobile banking load'),
                   ),
                   Divider(height: 1, color: colorScheme.surfaceVariant),
                   _buildMethodListItem(
@@ -97,7 +98,8 @@ class LoadMoneyScreen extends StatelessWidget {
                     icon: Icons.sync_alt,
                     title: 'ConnectIPS',
                     subtitle: 'Direct bank transfer via ConnectIPS',
-                    onTap: () {},
+                    onTap: () =>
+                        UiFeedback.comingSoon(context, 'ConnectIPS load'),
                   ),
                   Divider(height: 1, color: colorScheme.surfaceVariant),
                   _buildMethodListItem(
@@ -105,19 +107,20 @@ class LoadMoneyScreen extends StatelessWidget {
                     icon: Icons.credit_card,
                     title: 'SCT Card',
                     subtitle: 'Load using Smart Choice Technologies card',
-                    onTap: () {},
+                    onTap: () =>
+                        UiFeedback.comingSoon(context, 'SCT card load'),
                   ),
                 ],
               ),
             ),
             const SizedBox(height: 24),
-            
+
             // Info Alert
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainer,
                 borderRadius: BorderRadius.circular(16),
               ),
@@ -133,7 +136,10 @@ class LoadMoneyScreen extends StatelessWidget {
                           color: colorScheme.onSurfaceVariant,
                         ),
                         children: [
-                          const TextSpan(text: 'Loading limits may apply based on your KYC verification status. '),
+                          const TextSpan(
+                            text:
+                                'Loading limits may apply based on your KYC verification status. ',
+                          ),
                           TextSpan(
                             text: 'Learn more',
                             style: TextStyle(
@@ -155,7 +161,8 @@ class LoadMoneyScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildMethodCard(BuildContext context, {
+  Widget _buildMethodCard(
+    BuildContext context, {
     required IconData icon,
     required String title,
     required String subtitle,
@@ -163,15 +170,15 @@ class LoadMoneyScreen extends StatelessWidget {
   }) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
+
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(24),
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: theme.brightness == Brightness.dark 
-              ? colorScheme.surfaceContainerHighest 
+          color: theme.brightness == Brightness.dark
+              ? colorScheme.surfaceContainerHighest
               : colorScheme.surfaceContainerLowest,
           borderRadius: BorderRadius.circular(24),
           border: Border.all(color: colorScheme.surfaceVariant),
@@ -216,7 +223,8 @@ class LoadMoneyScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildMethodListItem(BuildContext context, {
+  Widget _buildMethodListItem(
+    BuildContext context, {
     required IconData icon,
     required String title,
     required String subtitle,
@@ -224,7 +232,7 @@ class LoadMoneyScreen extends StatelessWidget {
   }) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
+
     return InkWell(
       onTap: onTap,
       child: Padding(

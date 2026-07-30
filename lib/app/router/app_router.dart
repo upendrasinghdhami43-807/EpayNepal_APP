@@ -2,45 +2,46 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'route_names.dart';
 import 'main_shell.dart';
-import '../features/home/presentation/screens/home_screen.dart';
+import '../../features/home/presentation/screens/home_screen.dart';
 
-import '../features/onboarding/presentation/screens/splash_screen.dart';
-import '../features/onboarding/presentation/screens/onboarding_flow_screen.dart';
+import '../../features/onboarding/presentation/screens/splash_screen.dart';
+import '../../features/onboarding/presentation/screens/onboarding_flow_screen.dart';
 
-import '../features/auth/presentation/screens/auth_hub_screen.dart';
-import '../features/auth/presentation/screens/login_screen.dart';
-import '../features/auth/presentation/screens/register_screen.dart';
-import '../features/auth/presentation/screens/otp_screen.dart';
-import '../features/auth/presentation/screens/create_mpin_screen.dart';
-import '../features/auth/presentation/screens/devices_credentials_screen.dart';
+import '../../features/auth/presentation/screens/auth_hub_screen.dart';
+import '../../features/auth/presentation/screens/login_screen.dart';
+import '../../features/auth/presentation/screens/register_screen.dart';
+import '../../features/auth/presentation/screens/otp_screen.dart';
+import '../../features/auth/presentation/screens/create_mpin_screen.dart';
+import '../../features/auth/presentation/screens/devices_credentials_screen.dart';
 
-import '../features/load_money/presentation/screens/load_money_screen.dart';
-import '../features/bank/presentation/screens/bank_accounts_screen.dart';
-import '../features/bank/presentation/screens/bank_transfer_screen.dart';
+import '../../features/load_money/presentation/screens/load_money_screen.dart';
+import '../../features/bank/presentation/screens/bank_accounts_screen.dart';
+import '../../features/bank/presentation/screens/bank_transfer_screen.dart';
 
-import '../features/remittance/presentation/screens/remittance_screen.dart';
-import '../features/payment/presentation/screens/payment_details_screen.dart';
-import '../features/payment/presentation/screens/confirm_payment_screen.dart';
-import '../features/payment/presentation/screens/payment_success_screen.dart';
+import '../../features/remittance/presentation/screens/remittance_screen.dart';
+import '../../features/payment/presentation/screens/payment_details_screen.dart';
+import '../../features/payment/presentation/screens/confirm_payment_screen.dart';
+import '../../features/payment/presentation/screens/payment_success_screen.dart';
 
-import '../features/utility/presentation/screens/utility_payments_screen.dart';
-import '../features/utility/presentation/screens/mobile_topup_screen.dart';
-import '../features/utility/presentation/screens/internet_bill_screen.dart';
-import '../features/utility/presentation/screens/electricity_bill_screen.dart';
-import '../features/utility/presentation/screens/government_payment_screen.dart';
-import '../features/utility/presentation/screens/education_fee_screen.dart';
+import '../../features/utility/presentation/screens/utility_payments_screen.dart';
+import '../../features/utility/presentation/screens/mobile_topup_screen.dart';
+import '../../features/utility/presentation/screens/internet_bill_screen.dart';
+import '../../features/utility/presentation/screens/electricity_bill_screen.dart';
+import '../../features/utility/presentation/screens/government_payment_screen.dart';
+import '../../features/utility/presentation/screens/education_fee_screen.dart';
 
-import '../features/travel/presentation/screens/flight_booking_screen.dart';
-import '../features/travel/presentation/screens/travel_hub_screen.dart';
+import '../../features/travel/presentation/screens/flight_booking_screen.dart';
+import '../../features/travel/presentation/screens/travel_hub_screen.dart';
 
-import '../features/more/presentation/screens/more_screen.dart';
-import '../features/kyc/presentation/screens/kyc_dashboard_screen.dart';
-import '../features/kyc/presentation/screens/kyc_personal_info_screen.dart';
+import '../../features/more/presentation/screens/more_screen.dart';
+import '../../features/kyc/presentation/screens/kyc_dashboard_screen.dart';
+import '../../features/kyc/presentation/screens/kyc_personal_info_screen.dart';
 
-import '../features/history/presentation/screens/statement_screen.dart';
-import '../features/history/presentation/screens/transaction_details_screen.dart';
-import '../features/support/presentation/screens/support_screen.dart';
-import '../features/qr/presentation/screens/qr_scanner_screen.dart';
+import '../../features/history/presentation/screens/statement_screen.dart';
+import '../../features/history/presentation/screens/transaction_details_screen.dart';
+import '../../features/support/presentation/screens/support_screen.dart';
+import '../../features/qr/presentation/screens/qr_scanner_screen.dart';
+import '../../features/demo_settings/presentation/screens/test_demo_settings_screen.dart';
 
 // Temporary placeholder screens for unresolved routes
 class PlaceholderScreen extends StatelessWidget {
@@ -57,11 +58,35 @@ class PlaceholderScreen extends StatelessWidget {
 }
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
-final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> _shellNavigatorKey =
+    GlobalKey<NavigatorState>();
 
 final GoRouter appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
   initialLocation: '/',
+  errorBuilder: (context, state) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Page not found')),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(Icons.error_outline, size: 48),
+              const SizedBox(height: 12),
+              Text(state.error?.toString() ?? 'Unable to open requested page'),
+              const SizedBox(height: 16),
+              FilledButton(
+                onPressed: () => context.go('/home'),
+                child: const Text('Go to Home'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  },
   routes: [
     GoRoute(
       path: '/',
@@ -197,6 +222,11 @@ final GoRouter appRouter = GoRouter(
       path: '/scan_qr',
       name: 'scan_qr',
       builder: (context, state) => const QrScannerScreen(),
+    ),
+    GoRoute(
+      path: '/test_demo_settings',
+      name: 'test_demo_settings',
+      builder: (context, state) => const TestDemoSettingsScreen(),
     ),
     ShellRoute(
       navigatorKey: _shellNavigatorKey,

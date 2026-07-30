@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../core/utils/ui_feedback.dart';
 
 class ElectricityBillScreen extends StatelessWidget {
   const ElectricityBillScreen({super.key});
@@ -15,14 +17,13 @@ class ElectricityBillScreen extends StatelessWidget {
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(24),
-          ),
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
         ),
         actions: [
           IconButton(
             icon: const Icon(Icons.help_outline),
-            onPressed: () {},
+            onPressed: () =>
+                UiFeedback.comingSoon(context, 'Electricity bill help'),
           ),
         ],
       ),
@@ -48,15 +49,27 @@ class ElectricityBillScreen extends StatelessWidget {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: Icon(Icons.bolt, color: colorScheme.primary, size: 32),
+                    child: Icon(
+                      Icons.bolt,
+                      color: colorScheme.primary,
+                      size: 32,
+                    ),
                   ),
                   const SizedBox(width: 16),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Nepal Electricity Authority', style: theme.textTheme.titleMedium),
-                        Text('Pay your NEA bills instantly', style: theme.textTheme.bodyMedium?.copyWith(color: colorScheme.onSurfaceVariant)),
+                        Text(
+                          'Nepal Electricity Authority',
+                          style: theme.textTheme.titleMedium,
+                        ),
+                        Text(
+                          'Pay your NEA bills instantly',
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: colorScheme.onSurfaceVariant,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -69,8 +82,8 @@ class ElectricityBillScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainerLowest,
                 borderRadius: BorderRadius.circular(24),
                 boxShadow: [
@@ -85,7 +98,12 @@ class ElectricityBillScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Branch
-                  Text('NEA Branch', style: theme.textTheme.labelLarge?.copyWith(color: colorScheme.onSurfaceVariant)),
+                  Text(
+                    'NEA Branch',
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color: colorScheme.onSurfaceVariant,
+                    ),
+                  ),
                   const SizedBox(height: 8),
                   Container(
                     decoration: BoxDecoration(
@@ -95,14 +113,29 @@ class ElectricityBillScreen extends StatelessWidget {
                     child: DropdownButtonFormField<String>(
                       decoration: const InputDecoration(
                         border: InputBorder.none,
-                        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 16,
+                        ),
                       ),
                       hint: const Text('Select Branch'),
                       items: const [
-                        DropdownMenuItem(value: 'kathmandu', child: Text('Kathmandu Central')),
-                        DropdownMenuItem(value: 'lalitpur', child: Text('Lalitpur')),
-                        DropdownMenuItem(value: 'bhaktapur', child: Text('Bhaktapur')),
-                        DropdownMenuItem(value: 'pokhara', child: Text('Pokhara')),
+                        DropdownMenuItem(
+                          value: 'kathmandu',
+                          child: Text('Kathmandu Central'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'lalitpur',
+                          child: Text('Lalitpur'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'bhaktapur',
+                          child: Text('Bhaktapur'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'pokhara',
+                          child: Text('Pokhara'),
+                        ),
                       ],
                       onChanged: (val) {},
                     ),
@@ -110,7 +143,12 @@ class ElectricityBillScreen extends StatelessWidget {
                   const SizedBox(height: 16),
 
                   // Customer ID
-                  Text('Customer ID', style: theme.textTheme.labelLarge?.copyWith(color: colorScheme.onSurfaceVariant)),
+                  Text(
+                    'Customer ID',
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color: colorScheme.onSurfaceVariant,
+                    ),
+                  ),
                   const SizedBox(height: 8),
                   Container(
                     decoration: BoxDecoration(
@@ -122,7 +160,10 @@ class ElectricityBillScreen extends StatelessWidget {
                       decoration: InputDecoration(
                         hintText: 'Enter Customer ID',
                         border: InputBorder.none,
-                        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 16,
+                        ),
                         suffixIcon: Icon(Icons.person),
                       ),
                     ),
@@ -130,7 +171,12 @@ class ElectricityBillScreen extends StatelessWidget {
                   const SizedBox(height: 16),
 
                   // SC No.
-                  Text('SC. No.', style: theme.textTheme.labelLarge?.copyWith(color: colorScheme.onSurfaceVariant)),
+                  Text(
+                    'SC. No.',
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color: colorScheme.onSurfaceVariant,
+                    ),
+                  ),
                   const SizedBox(height: 8),
                   Container(
                     decoration: BoxDecoration(
@@ -141,7 +187,10 @@ class ElectricityBillScreen extends StatelessWidget {
                       decoration: InputDecoration(
                         hintText: 'Enter SC. No. (e.g. 014.24.123)',
                         border: InputBorder.none,
-                        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 16,
+                        ),
                         suffixIcon: Icon(Icons.pin),
                       ),
                     ),
@@ -149,7 +198,7 @@ class ElectricityBillScreen extends StatelessWidget {
                   const SizedBox(height: 24),
 
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => context.push('/payment_details'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: colorScheme.primaryContainer,
                       foregroundColor: colorScheme.onPrimaryContainer,
@@ -162,7 +211,13 @@ class ElectricityBillScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
-                        Text('Proceed', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                        Text(
+                          'Proceed',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                         SizedBox(width: 8),
                         Icon(Icons.arrow_forward),
                       ],
@@ -174,7 +229,13 @@ class ElectricityBillScreen extends StatelessWidget {
             const SizedBox(height: 24),
 
             // Recent Customers
-            Text('RECENT CUSTOMERS', style: theme.textTheme.labelLarge?.copyWith(color: colorScheme.onSurfaceVariant, letterSpacing: 1.2)),
+            Text(
+              'RECENT CUSTOMERS',
+              style: theme.textTheme.labelLarge?.copyWith(
+                color: colorScheme.onSurfaceVariant,
+                letterSpacing: 1.2,
+              ),
+            ),
             const SizedBox(height: 12),
             _buildRecentCustomer(
               context,
@@ -193,10 +254,14 @@ class ElectricityBillScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildRecentCustomer(BuildContext context, {required String title, required String details}) {
+  Widget _buildRecentCustomer(
+    BuildContext context, {
+    required String title,
+    required String details,
+  }) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -221,7 +286,12 @@ class ElectricityBillScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(title, style: theme.textTheme.titleMedium),
-                Text(details, style: theme.textTheme.bodyMedium?.copyWith(color: colorScheme.onSurfaceVariant)),
+                Text(
+                  details,
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: colorScheme.onSurfaceVariant,
+                  ),
+                ),
               ],
             ),
           ),

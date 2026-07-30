@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../core/utils/ui_feedback.dart';
 
 class PaymentDetailsScreen extends StatefulWidget {
   const PaymentDetailsScreen({super.key});
@@ -10,11 +11,26 @@ class PaymentDetailsScreen extends StatefulWidget {
 
 class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
   final TextEditingController _amountController = TextEditingController();
+  final TextEditingController _remarksController = TextEditingController();
 
   @override
   void dispose() {
     _amountController.dispose();
+    _remarksController.dispose();
     super.dispose();
+  }
+
+  void _proceedToConfirm() {
+    final amount = double.tryParse(_amountController.text.trim());
+    if (amount == null || amount <= 0) {
+      UiFeedback.showSnackBar(
+        context,
+        'Enter a valid amount before proceeding',
+        icon: Icons.warning_amber_rounded,
+      );
+      return;
+    }
+    context.push('/confirm_payment');
   }
 
   void _setAmount(String amount) {
@@ -35,9 +51,7 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(24),
-          ),
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
         ),
       ),
       body: SingleChildScrollView(
@@ -48,8 +62,8 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainerLowest,
                 borderRadius: BorderRadius.circular(24),
                 border: Border.all(color: colorScheme.surfaceVariant),
@@ -70,7 +84,10 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
                       color: colorScheme.surfaceContainerHigh,
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: Icon(Icons.person, color: colorScheme.onSurfaceVariant),
+                    child: Icon(
+                      Icons.person,
+                      color: colorScheme.onSurfaceVariant,
+                    ),
                   ),
                   const SizedBox(width: 16),
                   Column(
@@ -83,7 +100,10 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
                           letterSpacing: 1.2,
                         ),
                       ),
-                      Text('Upendra Sharma', style: theme.textTheme.titleMedium),
+                      Text(
+                        'Upendra Sharma',
+                        style: theme.textTheme.titleMedium,
+                      ),
                       Text(
                         '98XXXXXXXX',
                         style: theme.textTheme.bodyMedium?.copyWith(
@@ -101,8 +121,8 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
             Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainerLowest,
                 borderRadius: BorderRadius.circular(24),
                 border: Border.all(color: colorScheme.surfaceVariant),
@@ -144,7 +164,9 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
                             hintText: '0',
                             border: InputBorder.none,
                             hintStyle: theme.textTheme.displayMedium?.copyWith(
-                              color: colorScheme.onSurfaceVariant.withOpacity(0.5),
+                              color: colorScheme.onSurfaceVariant.withOpacity(
+                                0.5,
+                              ),
                             ),
                           ),
                         ),
@@ -152,7 +174,7 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
                     ],
                   ),
                   const SizedBox(height: 24),
-                  
+
                   // Quick Chips
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -175,9 +197,12 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
               decoration: BoxDecoration(
                 color: colorScheme.surfaceContainerLow,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: colorScheme.outlineVariant.withOpacity(0.5)),
+                border: Border.all(
+                  color: colorScheme.outlineVariant.withOpacity(0.5),
+                ),
               ),
               child: TextField(
+                controller: _remarksController,
                 decoration: InputDecoration(
                   hintText: 'Add a remark (Optional)',
                   border: InputBorder.none,
@@ -191,15 +216,13 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
       bottomSheet: Container(
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
-          color: theme.brightness == Brightness.dark 
-              ? colorScheme.background 
+          color: theme.brightness == Brightness.dark
+              ? colorScheme.background
               : colorScheme.surface,
         ),
         child: SafeArea(
           child: ElevatedButton(
-            onPressed: () {
-              context.push('/confirm_payment');
-            },
+            onPressed: _proceedToConfirm,
             style: ElevatedButton.styleFrom(
               backgroundColor: colorScheme.primaryContainer,
               foregroundColor: colorScheme.onPrimaryContainer,
@@ -229,7 +252,7 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
   Widget _buildQuickChip(String amount) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
+
     return InkWell(
       onTap: () => _setAmount(amount),
       borderRadius: BorderRadius.circular(24),
@@ -238,7 +261,9 @@ class _PaymentDetailsScreenState extends State<PaymentDetailsScreen> {
         decoration: BoxDecoration(
           color: colorScheme.surfaceContainerLow,
           borderRadius: BorderRadius.circular(24),
-          border: Border.all(color: colorScheme.outlineVariant.withOpacity(0.5)),
+          border: Border.all(
+            color: colorScheme.outlineVariant.withOpacity(0.5),
+          ),
         ),
         child: Text(
           amount,

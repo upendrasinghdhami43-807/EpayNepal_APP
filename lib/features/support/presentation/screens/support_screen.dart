@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../core/utils/ui_feedback.dart';
 
 class SupportScreen extends StatelessWidget {
   const SupportScreen({super.key});
@@ -15,12 +16,14 @@ class SupportScreen extends StatelessWidget {
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(24),
-          ),
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
         ),
         actions: [
-          IconButton(icon: const Icon(Icons.notifications), onPressed: () {}),
+          IconButton(
+            icon: const Icon(Icons.notifications),
+            onPressed: () =>
+                UiFeedback.comingSoon(context, 'Support notifications'),
+          ),
         ],
       ),
       body: SingleChildScrollView(
@@ -38,9 +41,15 @@ class SupportScreen extends StatelessWidget {
               child: TextField(
                 decoration: InputDecoration(
                   hintText: 'Search for FAQs',
-                  prefixIcon: Icon(Icons.search, color: colorScheme.onSurfaceVariant),
+                  prefixIcon: Icon(
+                    Icons.search,
+                    color: colorScheme.onSurfaceVariant,
+                  ),
                   border: InputBorder.none,
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 16,
+                  ),
                 ),
               ),
             ),
@@ -64,10 +73,30 @@ class SupportScreen extends StatelessWidget {
               mainAxisSpacing: 12,
               childAspectRatio: 1.5,
               children: [
-                _buildCategoryCard(context, Icons.account_balance_wallet, 'Account', colorScheme.tertiary),
-                _buildCategoryCard(context, Icons.payments, 'Payments', colorScheme.primary),
-                _buildCategoryCard(context, Icons.security, 'Security', colorScheme.error),
-                _buildCategoryCard(context, Icons.verified_user, 'KYC', colorScheme.outline),
+                _buildCategoryCard(
+                  context,
+                  Icons.account_balance_wallet,
+                  'Account',
+                  colorScheme.tertiary,
+                ),
+                _buildCategoryCard(
+                  context,
+                  Icons.payments,
+                  'Payments',
+                  colorScheme.primary,
+                ),
+                _buildCategoryCard(
+                  context,
+                  Icons.security,
+                  'Security',
+                  colorScheme.error,
+                ),
+                _buildCategoryCard(
+                  context,
+                  Icons.verified_user,
+                  'KYC',
+                  colorScheme.outline,
+                ),
               ],
             ),
             const SizedBox(height: 24),
@@ -83,31 +112,53 @@ class SupportScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Still need help?', style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold)),
+                  Text(
+                    'Still need help?',
+                    style: theme.textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   const SizedBox(height: 4),
-                  Text('Our support team is available 24/7 to assist you.', style: theme.textTheme.bodyMedium?.copyWith(color: colorScheme.onSurfaceVariant)),
+                  Text(
+                    'Our support team is available 24/7 to assist you.',
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: colorScheme.onSurfaceVariant,
+                    ),
+                  ),
                   const SizedBox(height: 16),
-                  
+
                   ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: () =>
+                        UiFeedback.comingSoon(context, 'Live chat support'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: colorScheme.primaryContainer,
                       foregroundColor: colorScheme.onPrimaryContainer,
                       minimumSize: const Size.fromHeight(56),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(28),
+                      ),
                     ),
                     icon: const Icon(Icons.chat),
-                    label: const Text('Live Chat', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                    label: const Text(
+                      'Live Chat',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 12),
                   Row(
                     children: [
                       Expanded(
                         child: OutlinedButton.icon(
-                          onPressed: () {},
+                          onPressed: () =>
+                              UiFeedback.comingSoon(context, 'Support call'),
                           style: OutlinedButton.styleFrom(
                             minimumSize: const Size.fromHeight(56),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(28),
+                            ),
                             side: BorderSide(color: colorScheme.outline),
                           ),
                           icon: const Icon(Icons.call),
@@ -117,10 +168,13 @@ class SupportScreen extends StatelessWidget {
                       const SizedBox(width: 12),
                       Expanded(
                         child: OutlinedButton.icon(
-                          onPressed: () {},
+                          onPressed: () =>
+                              UiFeedback.comingSoon(context, 'Support email'),
                           style: OutlinedButton.styleFrom(
                             minimumSize: const Size.fromHeight(56),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(28),
+                            ),
                             side: BorderSide(color: colorScheme.outline),
                           ),
                           icon: const Icon(Icons.mail),
@@ -147,8 +201,12 @@ class SupportScreen extends StatelessWidget {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
-                  child: const Text('View All', style: TextStyle(fontWeight: FontWeight.bold)),
+                  onPressed: () =>
+                      UiFeedback.comingSoon(context, 'All support tickets'),
+                  child: const Text(
+                    'View All',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
               ],
             ),
@@ -171,7 +229,7 @@ class SupportScreen extends StatelessWidget {
               isResolved: true,
             ),
             const SizedBox(height: 24),
-            
+
             // Promo Banner
             Container(
               height: 180,
@@ -184,15 +242,36 @@ class SupportScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Join our Community', style: theme.textTheme.headlineSmall?.copyWith(color: colorScheme.onInverseSurface, fontWeight: FontWeight.bold)),
+                  Text(
+                    'Join our Community',
+                    style: theme.textTheme.headlineSmall?.copyWith(
+                      color: colorScheme.onInverseSurface,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   const SizedBox(height: 8),
-                  Text('Get tips from millions of users worldwide.', style: theme.textTheme.bodyMedium?.copyWith(color: colorScheme.onInverseSurface.withOpacity(0.8))),
+                  Text(
+                    'Get tips from millions of users worldwide.',
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: colorScheme.onInverseSurface.withOpacity(0.8),
+                    ),
+                  ),
                   const Spacer(),
                   Row(
                     children: [
-                      Text('Learn More', style: theme.textTheme.labelLarge?.copyWith(color: colorScheme.primaryFixed, fontWeight: FontWeight.bold)),
+                      Text(
+                        'Learn More',
+                        style: theme.textTheme.labelLarge?.copyWith(
+                          color: colorScheme.primaryFixed,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                       const SizedBox(width: 8),
-                      Icon(Icons.arrow_forward, size: 16, color: colorScheme.primaryFixed),
+                      Icon(
+                        Icons.arrow_forward,
+                        size: 16,
+                        color: colorScheme.primaryFixed,
+                      ),
                     ],
                   ),
                 ],
@@ -205,11 +284,16 @@ class SupportScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildCategoryCard(BuildContext context, IconData icon, String title, Color color) {
+  Widget _buildCategoryCard(
+    BuildContext context,
+    IconData icon,
+    String title,
+    Color color,
+  ) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     return InkWell(
-      onTap: () {},
+      onTap: () => UiFeedback.comingSoon(context, '$title support'),
       borderRadius: BorderRadius.circular(24),
       child: Container(
         decoration: BoxDecoration(
@@ -228,14 +312,20 @@ class SupportScreen extends StatelessWidget {
               child: Icon(icon, color: color),
             ),
             const SizedBox(height: 8),
-            Text(title, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
+            Text(
+              title,
+              style: theme.textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildTicketCard(BuildContext context, {
+  Widget _buildTicketCard(
+    BuildContext context, {
     required IconData icon,
     required String title,
     required String status,
@@ -244,68 +334,89 @@ class SupportScreen extends StatelessWidget {
   }) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: theme.brightness == Brightness.dark 
-            ? colorScheme.surfaceContainerHighest 
-            : colorScheme.surfaceContainerLowest,
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: colorScheme.outlineVariant.withOpacity(0.5)),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.02),
-            blurRadius: 4,
+
+    return InkWell(
+      onTap: () => UiFeedback.comingSoon(context, 'Ticket details'),
+      borderRadius: BorderRadius.circular(24),
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: theme.brightness == Brightness.dark
+              ? colorScheme.surfaceContainerHighest
+              : colorScheme.surfaceContainerLowest,
+          borderRadius: BorderRadius.circular(24),
+          border: Border.all(
+            color: colorScheme.outlineVariant.withOpacity(0.5),
           ),
-        ],
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 48,
-            height: 48,
-            decoration: BoxDecoration(
-              color: colorScheme.surfaceContainer,
-              borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(color: Colors.black.withOpacity(0.02), blurRadius: 4),
+          ],
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 48,
+              height: 48,
+              decoration: BoxDecoration(
+                color: colorScheme.surfaceContainer,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Icon(icon, color: colorScheme.onSurfaceVariant),
             ),
-            child: Icon(icon, color: colorScheme.onSurfaceVariant),
-          ),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Text(title, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold, height: 1.2)),
-                    ),
-                    const SizedBox(width: 8),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                      decoration: BoxDecoration(
-                        color: isResolved ? colorScheme.surfaceContainerHighest : colorScheme.primaryContainer.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Text(
-                        status.toUpperCase(),
-                        style: theme.textTheme.labelSmall?.copyWith(
-                          color: isResolved ? colorScheme.secondary : colorScheme.primary,
-                          fontWeight: FontWeight.bold,
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          title,
+                          style: theme.textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            height: 1.2,
+                          ),
                         ),
                       ),
+                      const SizedBox(width: 8),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: isResolved
+                              ? colorScheme.surfaceContainerHighest
+                              : colorScheme.primaryContainer.withOpacity(0.2),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Text(
+                          status.toUpperCase(),
+                          style: theme.textTheme.labelSmall?.copyWith(
+                            color: isResolved
+                                ? colorScheme.secondary
+                                : colorScheme.primary,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    time,
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: colorScheme.onSurfaceVariant,
                     ),
-                  ],
-                ),
-                const SizedBox(height: 4),
-                Text(time, style: theme.textTheme.bodyMedium?.copyWith(color: colorScheme.onSurfaceVariant)),
-              ],
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

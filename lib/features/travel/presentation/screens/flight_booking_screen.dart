@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../core/utils/ui_feedback.dart';
 
 class FlightBookingScreen extends StatefulWidget {
   const FlightBookingScreen({super.key});
@@ -22,9 +24,7 @@ class _FlightBookingScreenState extends State<FlightBookingScreen> {
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(24),
-          ),
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
         ),
       ),
       body: SingleChildScrollView(
@@ -36,18 +36,26 @@ class _FlightBookingScreenState extends State<FlightBookingScreen> {
             Container(
               padding: const EdgeInsets.all(4),
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainerHigh,
                 borderRadius: BorderRadius.circular(32),
               ),
               child: Row(
                 children: [
                   Expanded(
-                    child: _buildToggleButton('One Way', isSelected: isOneWay, onTap: () => setState(() => isOneWay = true)),
+                    child: _buildToggleButton(
+                      'One Way',
+                      isSelected: isOneWay,
+                      onTap: () => setState(() => isOneWay = true),
+                    ),
                   ),
                   Expanded(
-                    child: _buildToggleButton('Round Trip', isSelected: !isOneWay, onTap: () => setState(() => isOneWay = false)),
+                    child: _buildToggleButton(
+                      'Round Trip',
+                      isSelected: !isOneWay,
+                      onTap: () => setState(() => isOneWay = false),
+                    ),
                   ),
                 ],
               ),
@@ -58,11 +66,13 @@ class _FlightBookingScreenState extends State<FlightBookingScreen> {
             Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainerLowest,
                 borderRadius: BorderRadius.circular(24),
-                border: Border.all(color: colorScheme.outlineVariant.withOpacity(0.3)),
+                border: Border.all(
+                  color: colorScheme.outlineVariant.withOpacity(0.3),
+                ),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.05),
@@ -79,9 +89,19 @@ class _FlightBookingScreenState extends State<FlightBookingScreen> {
                     children: [
                       Column(
                         children: [
-                          _buildLocationField(context, 'From', 'Origin City', Icons.flight_takeoff),
+                          _buildLocationField(
+                            context,
+                            'From',
+                            'Origin City',
+                            Icons.flight_takeoff,
+                          ),
                           const Divider(height: 32),
-                          _buildLocationField(context, 'To', 'Destination City', Icons.flight_land),
+                          _buildLocationField(
+                            context,
+                            'To',
+                            'Destination City',
+                            Icons.flight_land,
+                          ),
                         ],
                       ),
                       Positioned(
@@ -92,8 +112,12 @@ class _FlightBookingScreenState extends State<FlightBookingScreen> {
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
-                            icon: Icon(Icons.swap_vert, color: colorScheme.onPrimaryContainer),
-                            onPressed: () {},
+                            icon: Icon(
+                              Icons.swap_vert,
+                              color: colorScheme.onPrimaryContainer,
+                            ),
+                            onPressed: () =>
+                                UiFeedback.comingSoon(context, 'Swap route'),
                           ),
                         ),
                       ),
@@ -107,27 +131,49 @@ class _FlightBookingScreenState extends State<FlightBookingScreen> {
                   Row(
                     children: [
                       Expanded(
-                        child: _buildSelectButton(context, 'Departure', 'Oct 24, 2023', Icons.calendar_month),
+                        child: _buildSelectButton(
+                          context,
+                          'Departure',
+                          'Oct 24, 2023',
+                          Icons.calendar_month,
+                          onTap: () => UiFeedback.comingSoon(
+                            context,
+                            'Select departure date',
+                          ),
+                        ),
                       ),
                       const SizedBox(width: 16),
                       Expanded(
                         child: _buildSelectButton(
-                          context, 
-                          'Return', 
-                          isOneWay ? 'Add Return' : 'Oct 28, 2023', 
+                          context,
+                          'Return',
+                          isOneWay ? 'Add Return' : 'Oct 28, 2023',
                           Icons.calendar_month,
                           opacity: isOneWay ? 0.5 : 1.0,
+                          onTap: isOneWay
+                              ? null
+                              : () => UiFeedback.comingSoon(
+                                  context,
+                                  'Select return date',
+                                ),
                         ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 16),
-                  _buildSelectButton(context, 'Passengers', '1 Adult, Economy', Icons.person),
+                  _buildSelectButton(
+                    context,
+                    'Passengers',
+                    '1 Adult, Economy',
+                    Icons.person,
+                    onTap: () =>
+                        UiFeedback.comingSoon(context, 'Passenger selection'),
+                  ),
                   const SizedBox(height: 24),
 
                   // Search Button
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => context.push('/travel_hub'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: colorScheme.primary,
                       foregroundColor: colorScheme.onPrimary,
@@ -142,7 +188,13 @@ class _FlightBookingScreenState extends State<FlightBookingScreen> {
                       children: const [
                         Icon(Icons.search),
                         SizedBox(width: 8),
-                        Text('Search Flights', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                        Text(
+                          'Search Flights',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -155,19 +207,38 @@ class _FlightBookingScreenState extends State<FlightBookingScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Popular Destinations', style: theme.textTheme.titleMedium),
+                Text(
+                  'Popular Destinations',
+                  style: theme.textTheme.titleMedium,
+                ),
                 TextButton(
-                  onPressed: () {},
-                  child: Text('See all', style: TextStyle(color: colorScheme.primary)),
+                  onPressed: () =>
+                      UiFeedback.comingSoon(context, 'All destinations'),
+                  child: Text(
+                    'See all',
+                    style: TextStyle(color: colorScheme.primary),
+                  ),
                 ),
               ],
             ),
             const SizedBox(height: 8),
             Row(
               children: [
-                Expanded(child: _buildDestinationCard(context, 'Paris', Colors.blueGrey)),
+                Expanded(
+                  child: _buildDestinationCard(
+                    context,
+                    'Paris',
+                    Colors.blueGrey,
+                  ),
+                ),
                 const SizedBox(width: 16),
-                Expanded(child: _buildDestinationCard(context, 'Tokyo', Colors.deepPurple)),
+                Expanded(
+                  child: _buildDestinationCard(
+                    context,
+                    'Tokyo',
+                    Colors.deepPurple,
+                  ),
+                ),
               ],
             ),
           ],
@@ -176,10 +247,14 @@ class _FlightBookingScreenState extends State<FlightBookingScreen> {
     );
   }
 
-  Widget _buildToggleButton(String text, {required bool isSelected, required VoidCallback onTap}) {
+  Widget _buildToggleButton(
+    String text, {
+    required bool isSelected,
+    required VoidCallback onTap,
+  }) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
+
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -192,7 +267,9 @@ class _FlightBookingScreenState extends State<FlightBookingScreen> {
         child: Text(
           text,
           style: theme.textTheme.titleSmall?.copyWith(
-            color: isSelected ? colorScheme.onPrimary : colorScheme.onSurfaceVariant,
+            color: isSelected
+                ? colorScheme.onPrimary
+                : colorScheme.onSurfaceVariant,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
           ),
         ),
@@ -200,14 +277,25 @@ class _FlightBookingScreenState extends State<FlightBookingScreen> {
     );
   }
 
-  Widget _buildLocationField(BuildContext context, String label, String hint, IconData icon) {
+  Widget _buildLocationField(
+    BuildContext context,
+    String label,
+    String hint,
+    IconData icon,
+  ) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label.toUpperCase(), style: theme.textTheme.labelMedium?.copyWith(color: colorScheme.onSurfaceVariant, letterSpacing: 1.2)),
+        Text(
+          label.toUpperCase(),
+          style: theme.textTheme.labelMedium?.copyWith(
+            color: colorScheme.onSurfaceVariant,
+            letterSpacing: 1.2,
+          ),
+        ),
         const SizedBox(height: 8),
         Row(
           children: [
@@ -230,25 +318,38 @@ class _FlightBookingScreenState extends State<FlightBookingScreen> {
     );
   }
 
-  Widget _buildSelectButton(BuildContext context, String label, String value, IconData icon, {double opacity = 1.0}) {
+  Widget _buildSelectButton(
+    BuildContext context,
+    String label,
+    String value,
+    IconData icon, {
+    double opacity = 1.0,
+    VoidCallback? onTap,
+  }) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
+
     return Opacity(
       opacity: opacity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(label.toUpperCase(), style: theme.textTheme.labelMedium?.copyWith(color: colorScheme.onSurfaceVariant, letterSpacing: 1.2)),
+          Text(
+            label.toUpperCase(),
+            style: theme.textTheme.labelMedium?.copyWith(
+              color: colorScheme.onSurfaceVariant,
+              letterSpacing: 1.2,
+            ),
+          ),
           const SizedBox(height: 8),
           InkWell(
-            onTap: () {},
+            onTap: onTap,
             borderRadius: BorderRadius.circular(12),
             child: Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainer 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainer
                     : colorScheme.surfaceContainerLowest,
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(color: colorScheme.outlineVariant),
@@ -257,7 +358,11 @@ class _FlightBookingScreenState extends State<FlightBookingScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    child: Text(value, style: theme.textTheme.titleSmall, overflow: TextOverflow.ellipsis),
+                    child: Text(
+                      value,
+                      style: theme.textTheme.titleSmall,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                   Icon(icon, color: colorScheme.secondary, size: 20),
                 ],
@@ -269,9 +374,13 @@ class _FlightBookingScreenState extends State<FlightBookingScreen> {
     );
   }
 
-  Widget _buildDestinationCard(BuildContext context, String title, Color color) {
+  Widget _buildDestinationCard(
+    BuildContext context,
+    String title,
+    Color color,
+  ) {
     final theme = Theme.of(context);
-    
+
     return Container(
       height: 120,
       decoration: BoxDecoration(
@@ -282,7 +391,10 @@ class _FlightBookingScreenState extends State<FlightBookingScreen> {
       padding: const EdgeInsets.all(12),
       child: Text(
         title,
-        style: theme.textTheme.titleMedium?.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+        style: theme.textTheme.titleMedium?.copyWith(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }

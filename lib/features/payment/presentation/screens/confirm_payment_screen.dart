@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../core/utils/ui_feedback.dart';
 
 class ConfirmPaymentScreen extends StatefulWidget {
   const ConfirmPaymentScreen({super.key});
@@ -23,14 +24,13 @@ class _ConfirmPaymentScreenState extends State<ConfirmPaymentScreen> {
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(24),
-          ),
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
         ),
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications),
-            onPressed: () {},
+            onPressed: () =>
+                UiFeedback.comingSoon(context, 'Payment notifications'),
           ),
         ],
         bottom: PreferredSize(
@@ -40,8 +40,8 @@ class _ConfirmPaymentScreenState extends State<ConfirmPaymentScreen> {
             child: Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainerLowest,
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
@@ -64,7 +64,10 @@ class _ConfirmPaymentScreenState extends State<ConfirmPaymentScreen> {
                           border: Border.all(color: colorScheme.outlineVariant),
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: Icon(Icons.account_balance_wallet, color: colorScheme.primary),
+                        child: Icon(
+                          Icons.account_balance_wallet,
+                          color: colorScheme.primary,
+                        ),
                       ),
                       const SizedBox(width: 12),
                       Column(
@@ -74,19 +77,33 @@ class _ConfirmPaymentScreenState extends State<ConfirmPaymentScreen> {
                             crossAxisAlignment: CrossAxisAlignment.baseline,
                             textBaseline: TextBaseline.alphabetic,
                             children: [
-                              Text('NPR', style: theme.textTheme.labelMedium?.copyWith(color: colorScheme.onSurfaceVariant)),
+                              Text(
+                                'NPR',
+                                style: theme.textTheme.labelMedium?.copyWith(
+                                  color: colorScheme.onSurfaceVariant,
+                                ),
+                              ),
                               const SizedBox(width: 4),
-                              Text('XXXX.XX', style: theme.textTheme.titleMedium),
+                              Text(
+                                'XXXX.XX',
+                                style: theme.textTheme.titleMedium,
+                              ),
                             ],
                           ),
-                          Text('Balance', style: theme.textTheme.labelSmall?.copyWith(color: colorScheme.onSurfaceVariant)),
+                          Text(
+                            'Balance',
+                            style: theme.textTheme.labelSmall?.copyWith(
+                              color: colorScheme.onSurfaceVariant,
+                            ),
+                          ),
                         ],
                       ),
                     ],
                   ),
                   IconButton(
                     icon: Icon(Icons.refresh, color: colorScheme.primary),
-                    onPressed: () {},
+                    onPressed: () =>
+                        UiFeedback.comingSoon(context, 'Balance refresh'),
                   ),
                 ],
               ),
@@ -99,8 +116,8 @@ class _ConfirmPaymentScreenState extends State<ConfirmPaymentScreen> {
         child: Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: theme.brightness == Brightness.dark 
-                ? colorScheme.surfaceContainerHighest 
+            color: theme.brightness == Brightness.dark
+                ? colorScheme.surfaceContainerHighest
                 : colorScheme.surfaceContainerLowest,
             borderRadius: BorderRadius.circular(24),
             border: Border.all(color: colorScheme.surfaceVariant),
@@ -123,27 +140,60 @@ class _ConfirmPaymentScreenState extends State<ConfirmPaymentScreen> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Send fund to', style: theme.textTheme.labelMedium?.copyWith(color: colorScheme.onSurfaceVariant)),
+                      Text(
+                        'Send fund to',
+                        style: theme.textTheme.labelMedium?.copyWith(
+                          color: colorScheme.onSurfaceVariant,
+                        ),
+                      ),
                       const SizedBox(height: 4),
-                      Text('Upendra Sharma', style: theme.textTheme.titleMedium),
-                      Text('+97798XXXXXXXX', style: theme.textTheme.bodyMedium?.copyWith(color: colorScheme.onSurfaceVariant)),
+                      Text(
+                        'Upendra Sharma',
+                        style: theme.textTheme.titleMedium,
+                      ),
+                      Text(
+                        '+97798XXXXXXXX',
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: colorScheme.onSurfaceVariant,
+                        ),
+                      ),
                     ],
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.baseline,
                     textBaseline: TextBaseline.alphabetic,
                     children: [
-                      Text('रु.', style: theme.textTheme.titleMedium?.copyWith(color: colorScheme.primary, fontWeight: FontWeight.bold)),
-                      const SizedBox(width: 2),
-                      Text('5000', style: theme.textTheme.headlineMedium?.copyWith(color: colorScheme.primary, fontWeight: FontWeight.bold)),
-                      const SizedBox(width: 8),
-                      Container(
-                        padding: const EdgeInsets.all(4),
-                        decoration: BoxDecoration(
-                          color: colorScheme.primaryContainer,
-                          shape: BoxShape.circle,
+                      Text(
+                        'रु.',
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          color: colorScheme.primary,
+                          fontWeight: FontWeight.bold,
                         ),
-                        child: Icon(Icons.edit, size: 14, color: colorScheme.onPrimaryContainer),
+                      ),
+                      const SizedBox(width: 2),
+                      Text(
+                        '5000',
+                        style: theme.textTheme.headlineMedium?.copyWith(
+                          color: colorScheme.primary,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      InkWell(
+                        onTap: () => context.pop(),
+                        borderRadius: BorderRadius.circular(20),
+                        child: Container(
+                          padding: const EdgeInsets.all(4),
+                          decoration: BoxDecoration(
+                            color: colorScheme.primaryContainer,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Icon(
+                            Icons.edit,
+                            size: 14,
+                            color: colorScheme.onPrimaryContainer,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -198,8 +248,8 @@ class _ConfirmPaymentScreenState extends State<ConfirmPaymentScreen> {
       bottomSheet: Container(
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
-          color: theme.brightness == Brightness.dark 
-              ? colorScheme.background 
+          color: theme.brightness == Brightness.dark
+              ? colorScheme.background
               : colorScheme.surface,
         ),
         child: SafeArea(
@@ -230,7 +280,7 @@ class _ConfirmPaymentScreenState extends State<ConfirmPaymentScreen> {
     final isSelected = _selectedPurpose == title;
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
+
     return InkWell(
       onTap: () {
         setState(() {
@@ -241,9 +291,13 @@ class _ConfirmPaymentScreenState extends State<ConfirmPaymentScreen> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12),
         decoration: BoxDecoration(
-          color: isSelected ? colorScheme.primaryContainer.withOpacity(0.1) : Colors.transparent,
+          color: isSelected
+              ? colorScheme.primaryContainer.withOpacity(0.1)
+              : Colors.transparent,
           border: Border.all(
-            color: isSelected ? colorScheme.primaryContainer : colorScheme.outlineVariant,
+            color: isSelected
+                ? colorScheme.primaryContainer
+                : colorScheme.outlineVariant,
           ),
           borderRadius: BorderRadius.circular(12),
         ),
@@ -264,7 +318,9 @@ class _ConfirmPaymentScreenState extends State<ConfirmPaymentScreen> {
               child: Text(
                 title,
                 style: theme.textTheme.bodyMedium?.copyWith(
-                  color: isSelected ? colorScheme.primaryContainer : colorScheme.onSurfaceVariant,
+                  color: isSelected
+                      ? colorScheme.primaryContainer
+                      : colorScheme.onSurfaceVariant,
                   fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                 ),
                 overflow: TextOverflow.ellipsis,

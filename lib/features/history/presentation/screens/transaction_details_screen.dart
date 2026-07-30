@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../core/utils/ui_feedback.dart';
 
 class TransactionDetailsScreen extends StatelessWidget {
   const TransactionDetailsScreen({super.key});
@@ -15,13 +17,18 @@ class TransactionDetailsScreen extends StatelessWidget {
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(24),
-          ),
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
         ),
         actions: [
-          IconButton(icon: const Icon(Icons.picture_as_pdf), onPressed: () {}),
-          IconButton(icon: const Icon(Icons.more_vert), onPressed: () {}),
+          IconButton(
+            icon: const Icon(Icons.picture_as_pdf),
+            onPressed: () => UiFeedback.comingSoon(context, 'Receipt download'),
+          ),
+          IconButton(
+            icon: const Icon(Icons.more_vert),
+            onPressed: () =>
+                UiFeedback.comingSoon(context, 'Transaction options'),
+          ),
         ],
       ),
       body: SingleChildScrollView(
@@ -33,8 +40,8 @@ class TransactionDetailsScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainerLowest,
                 borderRadius: BorderRadius.circular(24),
                 boxShadow: [
@@ -53,21 +60,35 @@ class TransactionDetailsScreen extends StatelessWidget {
                       color: colorScheme.secondaryContainer,
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: Icon(Icons.account_balance_wallet, color: colorScheme.onSecondaryContainer),
+                    child: Icon(
+                      Icons.account_balance_wallet,
+                      color: colorScheme.onSecondaryContainer,
+                    ),
                   ),
                   const SizedBox(width: 12),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Balance', style: theme.textTheme.labelMedium?.copyWith(color: colorScheme.onSurfaceVariant)),
-                        Text('NPR XXXX.XX', style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
+                        Text(
+                          'Balance',
+                          style: theme.textTheme.labelMedium?.copyWith(
+                            color: colorScheme.onSurfaceVariant,
+                          ),
+                        ),
+                        Text(
+                          'NPR XXXX.XX',
+                          style: theme.textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
                   ),
                   IconButton(
                     icon: Icon(Icons.refresh, color: colorScheme.primary),
-                    onPressed: () {},
+                    onPressed: () =>
+                        UiFeedback.comingSoon(context, 'Balance refresh'),
                   ),
                 ],
               ),
@@ -80,7 +101,10 @@ class TransactionDetailsScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 color: colorScheme.primaryContainer.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(24),
-                border: Border.all(color: colorScheme.primaryContainer.withOpacity(0.3), width: 2),
+                border: Border.all(
+                  color: colorScheme.primaryContainer.withOpacity(0.3),
+                  width: 2,
+                ),
               ),
               child: Column(
                 children: [
@@ -98,12 +122,27 @@ class TransactionDetailsScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: Icon(Icons.check_circle, size: 40, color: colorScheme.onPrimaryContainer),
+                    child: Icon(
+                      Icons.check_circle,
+                      size: 40,
+                      color: colorScheme.onPrimaryContainer,
+                    ),
                   ),
                   const SizedBox(height: 16),
-                  Text('Payment Successful', style: theme.textTheme.headlineSmall?.copyWith(color: colorScheme.primary, fontWeight: FontWeight.bold)),
+                  Text(
+                    'Payment Successful',
+                    style: theme.textTheme.headlineSmall?.copyWith(
+                      color: colorScheme.primary,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   const SizedBox(height: 4),
-                  Text('The funds have been transferred', style: theme.textTheme.bodyMedium?.copyWith(color: colorScheme.onSurfaceVariant)),
+                  Text(
+                    'The funds have been transferred',
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: colorScheme.onSurfaceVariant,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -113,8 +152,8 @@ class TransactionDetailsScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainerLowest,
                 borderRadius: BorderRadius.circular(24),
                 boxShadow: [
@@ -136,23 +175,47 @@ class TransactionDetailsScreen extends StatelessWidget {
                           color: colorScheme.surfaceContainerHighest,
                           borderRadius: BorderRadius.circular(16),
                         ),
-                        child: Icon(Icons.account_balance, color: colorScheme.primary),
+                        child: Icon(
+                          Icons.account_balance,
+                          color: colorScheme.primary,
+                        ),
                       ),
                       const SizedBox(width: 16),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Send Money', style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
-                            Text('2026-07-27 05:23 PM', style: theme.textTheme.labelMedium?.copyWith(color: colorScheme.onSurfaceVariant)),
+                            Text(
+                              'Send Money',
+                              style: theme.textTheme.titleMedium?.copyWith(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              '2026-07-27 05:23 PM',
+                              style: theme.textTheme.labelMedium?.copyWith(
+                                color: colorScheme.onSurfaceVariant,
+                              ),
+                            ),
                           ],
                         ),
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Text('- 100.00', style: theme.textTheme.titleMedium?.copyWith(color: colorScheme.error, fontWeight: FontWeight.bold)),
-                          Text('NPR', style: theme.textTheme.labelMedium?.copyWith(color: colorScheme.onSurfaceVariant)),
+                          Text(
+                            '- 100.00',
+                            style: theme.textTheme.titleMedium?.copyWith(
+                              color: colorScheme.error,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            'NPR',
+                            style: theme.textTheme.labelMedium?.copyWith(
+                              color: colorScheme.onSurfaceVariant,
+                            ),
+                          ),
                         ],
                       ),
                     ],
@@ -161,7 +224,10 @@ class TransactionDetailsScreen extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 4,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.green.withOpacity(0.1),
                         borderRadius: BorderRadius.circular(16),
@@ -169,9 +235,18 @@ class TransactionDetailsScreen extends StatelessWidget {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(Icons.verified, size: 14, color: colorScheme.primary),
+                          Icon(
+                            Icons.verified,
+                            size: 14,
+                            color: colorScheme.primary,
+                          ),
                           const SizedBox(width: 4),
-                          Text('Complete', style: theme.textTheme.labelMedium?.copyWith(color: colorScheme.primary)),
+                          Text(
+                            'Complete',
+                            style: theme.textTheme.labelMedium?.copyWith(
+                              color: colorScheme.primary,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -179,18 +254,26 @@ class TransactionDetailsScreen extends StatelessWidget {
                   const SizedBox(height: 16),
                   const Divider(),
                   const SizedBox(height: 16),
-                  
+
                   // Details Grid
                   Row(
                     children: [
-                      Expanded(child: _buildDetailItem(context, 'Amount (NPR)', '100')),
-                      Expanded(child: _buildDetailItem(context, 'Transaction Code', '1N6UTUU')),
+                      Expanded(
+                        child: _buildDetailItem(context, 'Amount (NPR)', '100'),
+                      ),
+                      Expanded(
+                        child: _buildDetailItem(
+                          context,
+                          'Transaction Code',
+                          '1N6UTUU',
+                        ),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 16),
                   _buildDetailItem(context, 'Processed By', '9762349101'),
                   const SizedBox(height: 16),
-                  
+
                   // Dashed divider
                   Container(
                     height: 1,
@@ -201,22 +284,58 @@ class TransactionDetailsScreen extends StatelessWidget {
 
                   Row(
                     children: [
-                      Expanded(child: _buildDetailItem(context, 'Purpose', 'Bill sharing')),
-                      Expanded(child: _buildDetailItem(context, 'Receiver Name', 'Lalita Kumari Dhami')),
+                      Expanded(
+                        child: _buildDetailItem(
+                          context,
+                          'Purpose',
+                          'Bill sharing',
+                        ),
+                      ),
+                      Expanded(
+                        child: _buildDetailItem(
+                          context,
+                          'Receiver Name',
+                          'Lalita Kumari Dhami',
+                        ),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 16),
                   Row(
                     children: [
-                      Expanded(child: _buildDetailItem(context, 'Payment Method', 'eSewa Wallet')),
-                      Expanded(child: _buildDetailItem(context, 'Receiver eSewa Id', '9741695893')),
+                      Expanded(
+                        child: _buildDetailItem(
+                          context,
+                          'Payment Method',
+                          'eSewa Wallet',
+                        ),
+                      ),
+                      Expanded(
+                        child: _buildDetailItem(
+                          context,
+                          'Receiver eSewa Id',
+                          '9741695893',
+                        ),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 16),
                   Row(
                     children: [
-                      Expanded(child: _buildDetailItem(context, 'Remarks', 'Pay for it')),
-                      Expanded(child: _buildDetailItem(context, 'Initiator Name', 'Upendra Singh Dhami')),
+                      Expanded(
+                        child: _buildDetailItem(
+                          context,
+                          'Remarks',
+                          'Pay for it',
+                        ),
+                      ),
+                      Expanded(
+                        child: _buildDetailItem(
+                          context,
+                          'Initiator Name',
+                          'Upendra Singh Dhami',
+                        ),
+                      ),
                     ],
                   ),
                 ],
@@ -226,7 +345,7 @@ class TransactionDetailsScreen extends StatelessWidget {
 
             // Additional Action
             InkWell(
-              onTap: () {},
+              onTap: () => UiFeedback.comingSoon(context, 'Split payment'),
               borderRadius: BorderRadius.circular(24),
               child: Container(
                 padding: const EdgeInsets.all(16),
@@ -239,9 +358,15 @@ class TransactionDetailsScreen extends StatelessWidget {
                     Icon(Icons.group_add, color: colorScheme.primary),
                     const SizedBox(width: 12),
                     const Expanded(
-                      child: Text('Split payment with friends?', style: TextStyle(fontWeight: FontWeight.bold)),
+                      child: Text(
+                        'Split payment with friends?',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                     ),
-                    Icon(Icons.chevron_right, color: colorScheme.onSurfaceVariant),
+                    Icon(
+                      Icons.chevron_right,
+                      color: colorScheme.onSurfaceVariant,
+                    ),
                   ],
                 ),
               ),
@@ -250,7 +375,13 @@ class TransactionDetailsScreen extends StatelessWidget {
 
             // Done Button
             ElevatedButton(
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () {
+                if (context.canPop()) {
+                  context.pop();
+                  return;
+                }
+                context.go('/statement');
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: colorScheme.primary,
                 foregroundColor: colorScheme.onPrimary,
@@ -260,10 +391,13 @@ class TransactionDetailsScreen extends StatelessWidget {
                 ),
                 elevation: 4,
               ),
-              child: const Text('DONE', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              child: const Text(
+                'DONE',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
             ),
             const SizedBox(height: 16),
-            
+
             // Add expense category hint
             Row(
               children: [
@@ -273,14 +407,28 @@ class TransactionDetailsScreen extends StatelessWidget {
                     color: colorScheme.primaryContainer,
                     shape: BoxShape.circle,
                   ),
-                  child: Icon(Icons.add, color: colorScheme.onPrimaryContainer, size: 20),
+                  child: Icon(
+                    Icons.add,
+                    color: colorScheme.onPrimaryContainer,
+                    size: 20,
+                  ),
                 ),
                 const SizedBox(width: 12),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Add expense category', style: theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold)),
-                    Text('This will help organize your expenses.', style: theme.textTheme.labelMedium?.copyWith(color: colorScheme.onSurfaceVariant)),
+                    Text(
+                      'Add expense category',
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      'This will help organize your expenses.',
+                      style: theme.textTheme.labelMedium?.copyWith(
+                        color: colorScheme.onSurfaceVariant,
+                      ),
+                    ),
                   ],
                 ),
               ],
@@ -298,9 +446,19 @@ class TransactionDetailsScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: theme.textTheme.labelMedium?.copyWith(color: colorScheme.onSurfaceVariant)),
+        Text(
+          label,
+          style: theme.textTheme.labelMedium?.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
         const SizedBox(height: 4),
-        Text(value, style: theme.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold)),
+        Text(
+          value,
+          style: theme.textTheme.bodyLarge?.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ],
     );
   }

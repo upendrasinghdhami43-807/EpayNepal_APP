@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../core/utils/ui_feedback.dart';
 
 class StatementScreen extends StatelessWidget {
   const StatementScreen({super.key});
@@ -16,13 +17,18 @@ class StatementScreen extends StatelessWidget {
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(24),
-          ),
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
         ),
         actions: [
-          IconButton(icon: const Icon(Icons.share), onPressed: () {}),
-          IconButton(icon: const Icon(Icons.picture_as_pdf), onPressed: () {}),
+          IconButton(
+            icon: const Icon(Icons.share),
+            onPressed: () => UiFeedback.comingSoon(context, 'Statement share'),
+          ),
+          IconButton(
+            icon: const Icon(Icons.picture_as_pdf),
+            onPressed: () =>
+                UiFeedback.comingSoon(context, 'Statement PDF export'),
+          ),
         ],
       ),
       body: CustomScrollView(
@@ -37,11 +43,13 @@ class StatementScreen extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: theme.brightness == Brightness.dark 
-                          ? colorScheme.surfaceContainerHighest 
+                      color: theme.brightness == Brightness.dark
+                          ? colorScheme.surfaceContainerHighest
                           : colorScheme.surfaceContainerLowest,
                       borderRadius: BorderRadius.circular(24),
-                      border: Border.all(color: colorScheme.outlineVariant.withOpacity(0.3)),
+                      border: Border.all(
+                        color: colorScheme.outlineVariant.withOpacity(0.3),
+                      ),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black.withOpacity(0.05),
@@ -54,10 +62,16 @@ class StatementScreen extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            color: colorScheme.primaryContainer.withOpacity(0.2),
+                            color: colorScheme.primaryContainer.withOpacity(
+                              0.2,
+                            ),
                             borderRadius: BorderRadius.circular(16),
                           ),
-                          child: Icon(Icons.account_balance_wallet, color: colorScheme.primary, size: 28),
+                          child: Icon(
+                            Icons.account_balance_wallet,
+                            color: colorScheme.primary,
+                            size: 28,
+                          ),
                         ),
                         const SizedBox(width: 16),
                         Expanded(
@@ -66,20 +80,31 @@ class StatementScreen extends StatelessWidget {
                             children: [
                               Text(
                                 'NPR 3,530 spent on July',
-                                style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                                style: theme.textTheme.titleMedium?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                               Text(
                                 'Finance 360 Overview',
-                                style: theme.textTheme.labelMedium?.copyWith(color: colorScheme.onSurfaceVariant),
+                                style: theme.textTheme.labelMedium?.copyWith(
+                                  color: colorScheme.onSurfaceVariant,
+                                ),
                               ),
                             ],
                           ),
                         ),
                         IconButton(
-                          icon: Icon(Icons.chevron_right, color: colorScheme.primary),
-                          onPressed: () {},
+                          icon: Icon(
+                            Icons.chevron_right,
+                            color: colorScheme.primary,
+                          ),
+                          onPressed: () => UiFeedback.comingSoon(
+                            context,
+                            'Finance 360 overview',
+                          ),
                           style: IconButton.styleFrom(
-                            backgroundColor: colorScheme.primaryContainer.withOpacity(0.2),
+                            backgroundColor: colorScheme.primaryContainer
+                                .withOpacity(0.2),
                           ),
                         ),
                       ],
@@ -100,15 +125,25 @@ class StatementScreen extends StatelessWidget {
                           child: TextField(
                             decoration: InputDecoration(
                               hintText: 'Search Statement',
-                              prefixIcon: Icon(Icons.search, color: colorScheme.onSurfaceVariant),
+                              prefixIcon: Icon(
+                                Icons.search,
+                                color: colorScheme.onSurfaceVariant,
+                              ),
                               border: InputBorder.none,
-                              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                              contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 12,
+                              ),
                             ),
                           ),
                         ),
                       ),
                       const SizedBox(width: 12),
-                      Container(width: 1, height: 32, color: colorScheme.outlineVariant),
+                      Container(
+                        width: 1,
+                        height: 32,
+                        color: colorScheme.outlineVariant,
+                      ),
                       const SizedBox(width: 12),
                       Container(
                         decoration: BoxDecoration(
@@ -117,13 +152,16 @@ class StatementScreen extends StatelessWidget {
                         ),
                         child: IconButton(
                           icon: Icon(Icons.tune, color: colorScheme.onSurface),
-                          onPressed: () {},
+                          onPressed: () => UiFeedback.comingSoon(
+                            context,
+                            'Statement filters',
+                          ),
                         ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 24),
-                  
+
                   // Group Header
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -142,7 +180,11 @@ class StatementScreen extends StatelessWidget {
                           color: colorScheme.primaryContainer,
                           shape: BoxShape.circle,
                         ),
-                        child: Icon(Icons.expand_more, size: 16, color: colorScheme.onPrimaryContainer),
+                        child: Icon(
+                          Icons.expand_more,
+                          size: 16,
+                          color: colorScheme.onPrimaryContainer,
+                        ),
                       ),
                     ],
                   ),
@@ -151,7 +193,7 @@ class StatementScreen extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Transaction List
           SliverPadding(
             padding: const EdgeInsets.only(left: 16, right: 16, bottom: 100),
@@ -214,7 +256,8 @@ class StatementScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTransactionCard(BuildContext context, {
+  Widget _buildTransactionCard(
+    BuildContext context, {
     required IconData icon,
     required String title,
     required String time,
@@ -227,18 +270,20 @@ class StatementScreen extends StatelessWidget {
   }) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
+
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(24),
       child: Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: theme.brightness == Brightness.dark 
-              ? colorScheme.surfaceContainerHighest 
+          color: theme.brightness == Brightness.dark
+              ? colorScheme.surfaceContainerHighest
               : colorScheme.surfaceContainerLowest,
           borderRadius: BorderRadius.circular(24),
-          border: Border.all(color: colorScheme.outlineVariant.withOpacity(0.2)),
+          border: Border.all(
+            color: colorScheme.outlineVariant.withOpacity(0.2),
+          ),
         ),
         child: Column(
           children: [
@@ -252,7 +297,10 @@ class StatementScreen extends StatelessWidget {
                     color: iconBgColor ?? colorScheme.surfaceContainerHigh,
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Icon(icon, color: iconColor ?? colorScheme.onSurfaceVariant),
+                  child: Icon(
+                    icon,
+                    color: iconColor ?? colorScheme.onSurfaceVariant,
+                  ),
                 ),
                 const SizedBox(width: 16),
                 Expanded(
@@ -267,7 +315,12 @@ class StatementScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 4),
-                      Text(time, style: theme.textTheme.labelMedium?.copyWith(color: colorScheme.onSurfaceVariant)),
+                      Text(
+                        time,
+                        style: theme.textTheme.labelMedium?.copyWith(
+                          color: colorScheme.onSurfaceVariant,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -277,13 +330,17 @@ class StatementScreen extends StatelessWidget {
                   children: [
                     Icon(
                       isExpense ? Icons.arrow_drop_down : Icons.arrow_drop_up,
-                      color: isExpense ? colorScheme.error : colorScheme.primary,
+                      color: isExpense
+                          ? colorScheme.error
+                          : colorScheme.primary,
                       size: 20,
                     ),
                     Text(
                       amount,
                       style: theme.textTheme.titleMedium?.copyWith(
-                        color: isExpense ? colorScheme.error : colorScheme.primary,
+                        color: isExpense
+                            ? colorScheme.error
+                            : colorScheme.primary,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -307,23 +364,37 @@ class StatementScreen extends StatelessWidget {
                           letterSpacing: 1.2,
                         ),
                       ),
-                      Text(balance, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
+                      Text(
+                        balance,
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ],
                   ),
                   if (isExpense)
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () => context.push('/payment_details'),
                       style: TextButton.styleFrom(
-                        backgroundColor: colorScheme.primaryContainer.withOpacity(0.2),
+                        backgroundColor: colorScheme.primaryContainer
+                            .withOpacity(0.2),
                         foregroundColor: colorScheme.primary,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 24,
+                          vertical: 12,
+                        ),
                       ),
-                      child: const Text('REDO', style: TextStyle(fontWeight: FontWeight.bold)),
+                      child: const Text(
+                        'REDO',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                     ),
                 ],
               ),
-            ]
+            ],
           ],
         ),
       ),

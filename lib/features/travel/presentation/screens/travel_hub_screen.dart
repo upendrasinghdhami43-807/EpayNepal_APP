@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../core/utils/ui_feedback.dart';
 
 class TravelHubScreen extends StatelessWidget {
   const TravelHubScreen({super.key});
@@ -15,14 +17,13 @@ class TravelHubScreen extends StatelessWidget {
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(24),
-          ),
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
         ),
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications),
-            onPressed: () {},
+            onPressed: () =>
+                UiFeedback.comingSoon(context, 'Travel notifications'),
           ),
         ],
       ),
@@ -38,7 +39,7 @@ class TravelHubScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(24),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.08),
+                    color: Colors.black.withValues(alpha: 0.08),
                     blurRadius: 12,
                     offset: const Offset(0, 4),
                   ),
@@ -67,7 +68,7 @@ class TravelHubScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            Colors.black.withOpacity(0.6),
+                            Colors.black.withValues(alpha: 0.6),
                             Colors.transparent,
                           ],
                           begin: Alignment.centerLeft,
@@ -79,23 +80,43 @@ class TravelHubScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                            decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.2),
-                              borderRadius: BorderRadius.circular(4),
-                              border: Border.all(color: Colors.white.withOpacity(0.3)),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 4,
                             ),
-                            child: const Text('Special Offer', style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold)),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withValues(alpha: 0.2),
+                              borderRadius: BorderRadius.circular(4),
+                              border: Border.all(
+                                color: Colors.white.withValues(alpha: 0.3),
+                              ),
+                            ),
+                            child: const Text(
+                              'Special Offer',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
                           const SizedBox(height: 8),
                           const Text(
                             'Fly to Pokhara\nGet 20% Cashback',
-                            style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold, height: 1.2),
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              height: 1.2,
+                            ),
                           ),
                           const SizedBox(height: 8),
                           Text(
                             'Book domestic flights via primary wallet.',
-                            style: TextStyle(color: Colors.white.withOpacity(0.9), fontSize: 12),
+                            style: TextStyle(
+                              color: Colors.white.withValues(alpha: 0.9),
+                              fontSize: 12,
+                            ),
                           ),
                         ],
                       ),
@@ -117,7 +138,13 @@ class TravelHubScreen extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 8.0, bottom: 12.0),
-                        child: Text('TRAVEL', style: theme.textTheme.labelLarge?.copyWith(color: colorScheme.onSurfaceVariant, letterSpacing: 1.2)),
+                        child: Text(
+                          'TRAVEL',
+                          style: theme.textTheme.labelLarge?.copyWith(
+                            color: colorScheme.onSurfaceVariant,
+                            letterSpacing: 1.2,
+                          ),
+                        ),
                       ),
                       GridView.count(
                         crossAxisCount: 2,
@@ -127,10 +154,34 @@ class TravelHubScreen extends StatelessWidget {
                         crossAxisSpacing: 12,
                         childAspectRatio: 1.0,
                         children: [
-                          _buildGridItem(context, Icons.flight, 'Domestic', colorScheme.primary, '/flight_booking'),
-                          _buildGridItem(context, Icons.flight_takeoff, 'International', colorScheme.tertiary, null),
-                          _buildGridItem(context, Icons.directions_bus, 'Bus Tickets', colorScheme.primary, null),
-                          _buildGridItem(context, Icons.hotel, 'Hotels', colorScheme.tertiary, null),
+                          _buildGridItem(
+                            context,
+                            Icons.flight,
+                            'Domestic',
+                            colorScheme.primary,
+                            '/flight_booking',
+                          ),
+                          _buildGridItem(
+                            context,
+                            Icons.flight_takeoff,
+                            'International',
+                            colorScheme.tertiary,
+                            null,
+                          ),
+                          _buildGridItem(
+                            context,
+                            Icons.directions_bus,
+                            'Bus Tickets',
+                            colorScheme.primary,
+                            null,
+                          ),
+                          _buildGridItem(
+                            context,
+                            Icons.hotel,
+                            'Hotels',
+                            colorScheme.tertiary,
+                            null,
+                          ),
                         ],
                       ),
                     ],
@@ -144,7 +195,13 @@ class TravelHubScreen extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 8.0, bottom: 12.0),
-                        child: Text('ENTERTAINMENT', style: theme.textTheme.labelLarge?.copyWith(color: colorScheme.onSurfaceVariant, letterSpacing: 1.2)),
+                        child: Text(
+                          'ENTERTAINMENT',
+                          style: theme.textTheme.labelLarge?.copyWith(
+                            color: colorScheme.onSurfaceVariant,
+                            letterSpacing: 1.2,
+                          ),
+                        ),
                       ),
                       GridView.count(
                         crossAxisCount: 2,
@@ -154,12 +211,30 @@ class TravelHubScreen extends StatelessWidget {
                         crossAxisSpacing: 12,
                         childAspectRatio: 1.0,
                         children: [
-                          _buildGridItem(context, Icons.movie, 'Movies', colorScheme.secondary, null),
-                          _buildGridItem(context, Icons.local_activity, 'Events', colorScheme.secondary, null),
+                          _buildGridItem(
+                            context,
+                            Icons.movie,
+                            'Movies',
+                            colorScheme.secondary,
+                            null,
+                          ),
+                          _buildGridItem(
+                            context,
+                            Icons.local_activity,
+                            'Events',
+                            colorScheme.secondary,
+                            null,
+                          ),
                         ],
                       ),
                       const SizedBox(height: 12),
-                      _buildWideGridItem(context, Icons.tram, 'Cable Car', 'Chandragiri...', colorScheme.primaryContainer),
+                      _buildWideGridItem(
+                        context,
+                        Icons.tram,
+                        'Cable Car',
+                        'Chandragiri...',
+                        colorScheme.primaryContainer,
+                      ),
                     ],
                   ),
                 ),
@@ -171,28 +246,37 @@ class TravelHubScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildGridItem(BuildContext context, IconData icon, String title, Color iconColor, String? route) {
+  Widget _buildGridItem(
+    BuildContext context,
+    IconData icon,
+    String title,
+    Color iconColor,
+    String? route,
+  ) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
+
     return InkWell(
       onTap: () {
         if (route != null) {
-          // Add navigation logic later via router
-          Navigator.of(context).pushNamed(route);
+          context.push(route);
+          return;
         }
+        UiFeedback.comingSoon(context, title);
       },
       borderRadius: BorderRadius.circular(24),
       child: Container(
         decoration: BoxDecoration(
-          color: theme.brightness == Brightness.dark 
-              ? colorScheme.surfaceContainerHighest 
+          color: theme.brightness == Brightness.dark
+              ? colorScheme.surfaceContainerHighest
               : colorScheme.surfaceContainerLowest,
           borderRadius: BorderRadius.circular(24),
-          border: Border.all(color: colorScheme.surfaceVariant.withOpacity(0.3)),
+          border: Border.all(
+            color: colorScheme.surfaceVariant.withValues(alpha: 0.3),
+          ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black.withValues(alpha: 0.05),
               blurRadius: 12,
               offset: const Offset(0, 4),
             ),
@@ -205,37 +289,49 @@ class TravelHubScreen extends StatelessWidget {
               width: 48,
               height: 48,
               decoration: BoxDecoration(
-                color: iconColor.withOpacity(0.1),
+                color: iconColor.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Icon(icon, color: iconColor),
             ),
             const SizedBox(height: 12),
-            Text(title, style: theme.textTheme.titleSmall, textAlign: TextAlign.center),
+            Text(
+              title,
+              style: theme.textTheme.titleSmall,
+              textAlign: TextAlign.center,
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildWideGridItem(BuildContext context, IconData icon, String title, String subtitle, Color bgColor) {
+  Widget _buildWideGridItem(
+    BuildContext context,
+    IconData icon,
+    String title,
+    String subtitle,
+    Color bgColor,
+  ) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
+
     return InkWell(
-      onTap: () {},
+      onTap: () => UiFeedback.comingSoon(context, title),
       borderRadius: BorderRadius.circular(24),
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: theme.brightness == Brightness.dark 
-              ? colorScheme.surfaceContainerHighest 
+          color: theme.brightness == Brightness.dark
+              ? colorScheme.surfaceContainerHighest
               : colorScheme.surfaceContainerLowest,
           borderRadius: BorderRadius.circular(24),
-          border: Border.all(color: colorScheme.surfaceVariant.withOpacity(0.3)),
+          border: Border.all(
+            color: colorScheme.surfaceVariant.withValues(alpha: 0.3),
+          ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black.withValues(alpha: 0.05),
               blurRadius: 12,
               offset: const Offset(0, 4),
             ),
@@ -247,7 +343,7 @@ class TravelHubScreen extends StatelessWidget {
               width: 48,
               height: 48,
               decoration: BoxDecoration(
-                color: bgColor.withOpacity(0.2),
+                color: bgColor.withValues(alpha: 0.2),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Icon(icon, color: colorScheme.onSurface),
@@ -259,7 +355,12 @@ class TravelHubScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(title, style: theme.textTheme.titleSmall),
-                  Text(subtitle, style: theme.textTheme.labelSmall?.copyWith(color: colorScheme.onSurfaceVariant)),
+                  Text(
+                    subtitle,
+                    style: theme.textTheme.labelSmall?.copyWith(
+                      color: colorScheme.onSurfaceVariant,
+                    ),
+                  ),
                 ],
               ),
             ),

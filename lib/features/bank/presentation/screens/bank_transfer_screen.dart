@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../core/utils/ui_feedback.dart';
 
 class BankTransferScreen extends StatelessWidget {
   const BankTransferScreen({super.key});
@@ -16,14 +17,13 @@ class BankTransferScreen extends StatelessWidget {
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(24),
-          ),
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
         ),
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications),
-            onPressed: () {},
+            onPressed: () =>
+                UiFeedback.comingSoon(context, 'Bank transfer notifications'),
           ),
         ],
       ),
@@ -33,15 +33,12 @@ class BankTransferScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Select Bank Section
-            Text(
-              'Select Bank',
-              style: theme.textTheme.titleMedium,
-            ),
+            Text('Select Bank', style: theme.textTheme.titleMedium),
             const SizedBox(height: 16),
             Container(
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainer,
                 borderRadius: BorderRadius.circular(32),
               ),
@@ -50,21 +47,41 @@ class BankTransferScreen extends StatelessWidget {
                   hintText: 'Search banks...',
                   prefixIcon: const Icon(Icons.search),
                   border: InputBorder.none,
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 16,
+                  ),
                 ),
               ),
             ),
             const SizedBox(height: 24),
-            
+
             SizedBox(
               height: 100,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  _buildBankSelector(context, 'Global Trust', Icons.account_balance),
-                  _buildBankSelector(context, 'First Std', Icons.account_balance),
-                  _buildBankSelector(context, 'Metro Fin', Icons.account_balance),
-                  _buildBankSelector(context, 'All Banks', Icons.grid_view, isOutlined: true),
+                  _buildBankSelector(
+                    context,
+                    'Global Trust',
+                    Icons.account_balance,
+                  ),
+                  _buildBankSelector(
+                    context,
+                    'First Std',
+                    Icons.account_balance,
+                  ),
+                  _buildBankSelector(
+                    context,
+                    'Metro Fin',
+                    Icons.account_balance,
+                  ),
+                  _buildBankSelector(
+                    context,
+                    'All Banks',
+                    Icons.grid_view,
+                    isOutlined: true,
+                  ),
                 ],
               ),
             ),
@@ -74,8 +91,8 @@ class BankTransferScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainerLowest,
                 borderRadius: BorderRadius.circular(24),
                 border: Border.all(color: colorScheme.surfaceVariant),
@@ -92,8 +109,13 @@ class BankTransferScreen extends StatelessWidget {
                 children: [
                   Text('Transfer Details', style: theme.textTheme.titleMedium),
                   const SizedBox(height: 16),
-                  
-                  Text('Account Number', style: theme.textTheme.labelLarge?.copyWith(color: colorScheme.onSurfaceVariant)),
+
+                  Text(
+                    'Account Number',
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color: colorScheme.onSurfaceVariant,
+                    ),
+                  ),
                   const SizedBox(height: 8),
                   TextField(
                     keyboardType: TextInputType.number,
@@ -108,8 +130,13 @@ class BankTransferScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  
-                  Text('Account Holder Name', style: theme.textTheme.labelLarge?.copyWith(color: colorScheme.onSurfaceVariant)),
+
+                  Text(
+                    'Account Holder Name',
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color: colorScheme.onSurfaceVariant,
+                    ),
+                  ),
                   const SizedBox(height: 8),
                   TextField(
                     decoration: InputDecoration(
@@ -123,19 +150,32 @@ class BankTransferScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  
-                  Text('Amount', style: theme.textTheme.labelLarge?.copyWith(color: colorScheme.onSurfaceVariant)),
+
+                  Text(
+                    'Amount',
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color: colorScheme.onSurfaceVariant,
+                    ),
+                  ),
                   const SizedBox(height: 8),
                   TextField(
                     keyboardType: TextInputType.number,
-                    style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+                    style: theme.textTheme.headlineSmall?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
                     decoration: InputDecoration(
                       hintText: '0.00',
                       prefixIcon: const Padding(
                         padding: EdgeInsets.all(16.0),
-                        child: Text('NPR', style: TextStyle(fontWeight: FontWeight.bold)),
+                        child: Text(
+                          'NPR',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                       ),
-                      prefixIconConstraints: const BoxConstraints(minWidth: 0, minHeight: 0),
+                      prefixIconConstraints: const BoxConstraints(
+                        minWidth: 0,
+                        minHeight: 0,
+                      ),
                       filled: true,
                       fillColor: colorScheme.surfaceContainerLow,
                       border: OutlineInputBorder(
@@ -150,10 +190,7 @@ class BankTransferScreen extends StatelessWidget {
             const SizedBox(height: 32),
 
             // Saved Accounts Section
-            Text(
-              'Saved Accounts',
-              style: theme.textTheme.titleMedium,
-            ),
+            Text('Saved Accounts', style: theme.textTheme.titleMedium),
             const SizedBox(height: 16),
             _buildSavedAccountCard(
               context,
@@ -178,8 +215,8 @@ class BankTransferScreen extends StatelessWidget {
       bottomSheet: Container(
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
-          color: theme.brightness == Brightness.dark 
-              ? colorScheme.background 
+          color: theme.brightness == Brightness.dark
+              ? colorScheme.background
               : colorScheme.surface,
         ),
         child: SafeArea(
@@ -213,10 +250,15 @@ class BankTransferScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBankSelector(BuildContext context, String name, IconData icon, {bool isOutlined = false}) {
+  Widget _buildBankSelector(
+    BuildContext context,
+    String name,
+    IconData icon, {
+    bool isOutlined = false,
+  }) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
+
     return Padding(
       padding: const EdgeInsets.only(right: 16.0),
       child: Column(
@@ -225,20 +267,29 @@ class BankTransferScreen extends StatelessWidget {
             width: 60,
             height: 60,
             decoration: BoxDecoration(
-              color: isOutlined ? Colors.transparent : colorScheme.surfaceContainerLowest,
+              color: isOutlined
+                  ? Colors.transparent
+                  : colorScheme.surfaceContainerLowest,
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
-                color: isOutlined ? colorScheme.outline : colorScheme.surfaceVariant,
+                color: isOutlined
+                    ? colorScheme.outline
+                    : colorScheme.surfaceVariant,
               ),
-              boxShadow: isOutlined ? null : [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
-                  blurRadius: 4,
-                  offset: const Offset(0, 2),
-                ),
-              ],
+              boxShadow: isOutlined
+                  ? null
+                  : [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.05),
+                        blurRadius: 4,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
             ),
-            child: Icon(icon, color: isOutlined ? colorScheme.outline : colorScheme.primary),
+            child: Icon(
+              icon,
+              color: isOutlined ? colorScheme.outline : colorScheme.primary,
+            ),
           ),
           const SizedBox(height: 8),
           Text(
@@ -252,7 +303,8 @@ class BankTransferScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSavedAccountCard(BuildContext context, {
+  Widget _buildSavedAccountCard(
+    BuildContext context, {
     required String initials,
     required String name,
     required String details,
@@ -261,12 +313,12 @@ class BankTransferScreen extends StatelessWidget {
   }) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: theme.brightness == Brightness.dark 
-            ? colorScheme.surfaceContainerHighest 
+        color: theme.brightness == Brightness.dark
+            ? colorScheme.surfaceContainerHighest
             : colorScheme.surfaceContainerLowest,
         borderRadius: BorderRadius.circular(24),
         border: Border.all(color: colorScheme.surfaceVariant.withOpacity(0.5)),

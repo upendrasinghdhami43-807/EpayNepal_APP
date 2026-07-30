@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../core/utils/ui_feedback.dart';
 
 class PaymentSuccessScreen extends StatelessWidget {
   const PaymentSuccessScreen({super.key});
@@ -16,18 +17,17 @@ class PaymentSuccessScreen extends StatelessWidget {
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(24),
-          ),
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
         ),
         actions: [
           IconButton(
             icon: const Icon(Icons.picture_as_pdf),
-            onPressed: () {},
+            onPressed: () => UiFeedback.comingSoon(context, 'Receipt download'),
           ),
           IconButton(
             icon: const Icon(Icons.more_vert),
-            onPressed: () {},
+            onPressed: () =>
+                UiFeedback.comingSoon(context, 'Transaction options'),
           ),
         ],
       ),
@@ -39,8 +39,8 @@ class PaymentSuccessScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.fromLTRB(16, 32, 16, 24),
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainerLowest,
                 borderRadius: BorderRadius.circular(24),
                 boxShadow: [
@@ -53,9 +53,14 @@ class PaymentSuccessScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  Text('Payment Successful!', style: theme.textTheme.titleMedium?.copyWith(color: colorScheme.onSurfaceVariant)),
+                  Text(
+                    'Payment Successful!',
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      color: colorScheme.onSurfaceVariant,
+                    ),
+                  ),
                   const SizedBox(height: 24),
-                  
+
                   Container(
                     width: 64,
                     height: 64,
@@ -63,29 +68,54 @@ class PaymentSuccessScreen extends StatelessWidget {
                       color: colorScheme.primaryContainer.withOpacity(0.2),
                       shape: BoxShape.circle,
                     ),
-                    child: Icon(Icons.check_circle, size: 40, color: colorScheme.primaryContainer),
+                    child: Icon(
+                      Icons.check_circle,
+                      size: 40,
+                      color: colorScheme.primaryContainer,
+                    ),
                   ),
                   const SizedBox(height: 24),
-                  
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.baseline,
                     textBaseline: TextBaseline.alphabetic,
                     children: [
-                      Text('NPR', style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold)),
+                      Text(
+                        'NPR',
+                        style: theme.textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                       const SizedBox(width: 4),
-                      Text('5000.00', style: theme.textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold)),
+                      Text(
+                        '5000.00',
+                        style: theme.textTheme.headlineLarge?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 8),
-                  
-                  Text('Fund Transferred to Upendra Sharma', style: theme.textTheme.bodyLarge?.copyWith(color: colorScheme.onSurfaceVariant)),
+
+                  Text(
+                    'Fund Transferred to Upendra Sharma',
+                    style: theme.textTheme.bodyLarge?.copyWith(
+                      color: colorScheme.onSurfaceVariant,
+                    ),
+                  ),
                   const SizedBox(height: 4),
-                  Text('27 JUL, 2026 10:51 PM', style: theme.textTheme.labelMedium?.copyWith(color: colorScheme.onSurfaceVariant, letterSpacing: 1.2)),
+                  Text(
+                    '27 JUL, 2026 10:51 PM',
+                    style: theme.textTheme.labelMedium?.copyWith(
+                      color: colorScheme.onSurfaceVariant,
+                      letterSpacing: 1.2,
+                    ),
+                  ),
                   const SizedBox(height: 24),
-                  
+
                   TextButton.icon(
-                    onPressed: () {},
+                    onPressed: () => context.push('/transaction_details'),
                     icon: const Text('View Details'),
                     label: Container(
                       padding: const EdgeInsets.all(4),
@@ -112,12 +142,34 @@ class PaymentSuccessScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Transaction Code', style: theme.textTheme.bodyMedium?.copyWith(color: colorScheme.onSurfaceVariant)),
+                        Text(
+                          'Transaction Code',
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: colorScheme.onSurfaceVariant,
+                          ),
+                        ),
                         Row(
                           children: [
-                            Text('1N7UKSX', style: theme.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold)),
+                            Text(
+                              '1N7UKSX',
+                              style: theme.textTheme.bodyLarge?.copyWith(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                             const SizedBox(width: 8),
-                            Icon(Icons.content_copy, size: 20, color: colorScheme.onSurfaceVariant),
+                            InkWell(
+                              onTap: () => UiFeedback.copyText(
+                                context,
+                                '1N7UKSX',
+                                successMessage: 'Transaction code copied',
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                              child: Icon(
+                                Icons.content_copy,
+                                size: 20,
+                                color: colorScheme.onSurfaceVariant,
+                              ),
+                            ),
                           ],
                         ),
                       ],
@@ -131,6 +183,8 @@ class PaymentSuccessScreen extends StatelessWidget {
                     icon: Icons.call_split,
                     title: 'Split payment with friends?',
                     iconColor: colorScheme.primary,
+                    onTap: () =>
+                        UiFeedback.comingSoon(context, 'Split payment'),
                   ),
                   const SizedBox(height: 12),
                   _buildActionItem(
@@ -140,6 +194,10 @@ class PaymentSuccessScreen extends StatelessWidget {
                     subtitle: 'This will help organize your expenses.',
                     iconBgColor: colorScheme.primaryContainer,
                     iconColor: colorScheme.onPrimaryContainer,
+                    onTap: () => UiFeedback.comingSoon(
+                      context,
+                      'Expense categorization',
+                    ),
                   ),
                 ],
               ),
@@ -153,9 +211,14 @@ class PaymentSuccessScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
                 color: colorScheme.surfaceContainerHighest,
                 image: const DecorationImage(
-                  image: NetworkImage('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=600&auto=format&fit=crop'),
+                  image: NetworkImage(
+                    'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=600&auto=format&fit=crop',
+                  ),
                   fit: BoxFit.cover,
-                  colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
+                  colorFilter: ColorFilter.mode(
+                    Colors.black38,
+                    BlendMode.darken,
+                  ),
                 ),
               ),
               alignment: Alignment.center,
@@ -173,14 +236,14 @@ class PaymentSuccessScreen extends StatelessWidget {
       bottomSheet: Container(
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
-          color: theme.brightness == Brightness.dark 
-              ? colorScheme.background 
+          color: theme.brightness == Brightness.dark
+              ? colorScheme.background
               : colorScheme.surface,
         ),
         child: SafeArea(
           child: ElevatedButton(
             onPressed: () {
-              context.go('/'); // Go back to home
+              context.go('/home');
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: colorScheme.primaryContainer,
@@ -201,18 +264,20 @@ class PaymentSuccessScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildActionItem(BuildContext context, {
+  Widget _buildActionItem(
+    BuildContext context, {
     required IconData icon,
     required String title,
     String? subtitle,
     Color? iconColor,
     Color? iconBgColor,
+    VoidCallback? onTap,
   }) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
+
     return InkWell(
-      onTap: () {},
+      onTap: onTap,
       borderRadius: BorderRadius.circular(12),
       child: Container(
         padding: const EdgeInsets.all(16),
@@ -239,7 +304,12 @@ class PaymentSuccessScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title, style: theme.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold)),
+                  Text(
+                    title,
+                    style: theme.textTheme.bodyLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   if (subtitle != null)
                     Text(
                       subtitle,

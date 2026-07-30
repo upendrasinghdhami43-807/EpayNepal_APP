@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../core/utils/ui_feedback.dart';
 
 class InternetBillScreen extends StatelessWidget {
   const InternetBillScreen({super.key});
@@ -15,9 +17,7 @@ class InternetBillScreen extends StatelessWidget {
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(24),
-          ),
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
         ),
       ),
       body: SingleChildScrollView(
@@ -28,8 +28,8 @@ class InternetBillScreen extends StatelessWidget {
             // Search Bar
             Container(
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainerLow,
                 borderRadius: BorderRadius.circular(32),
                 boxShadow: [
@@ -45,7 +45,10 @@ class InternetBillScreen extends StatelessWidget {
                   hintText: 'Search Internet Service Provider',
                   prefixIcon: const Icon(Icons.search),
                   border: InputBorder.none,
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 16,
+                  ),
                 ),
               ),
             ),
@@ -62,10 +65,30 @@ class InternetBillScreen extends StatelessWidget {
               crossAxisSpacing: 12,
               childAspectRatio: 0.8,
               children: [
-                _buildProviderItem(context, 'Worldlink', Icons.router, colorScheme.primaryContainer),
-                _buildProviderItem(context, 'Vianet', Icons.wifi, colorScheme.tertiaryContainer),
-                _buildProviderItem(context, 'Subisu', Icons.language, colorScheme.errorContainer),
-                _buildProviderItem(context, 'Classic Tech', Icons.cell_tower, colorScheme.secondaryContainer),
+                _buildProviderItem(
+                  context,
+                  'Worldlink',
+                  Icons.router,
+                  colorScheme.primaryContainer,
+                ),
+                _buildProviderItem(
+                  context,
+                  'Vianet',
+                  Icons.wifi,
+                  colorScheme.tertiaryContainer,
+                ),
+                _buildProviderItem(
+                  context,
+                  'Subisu',
+                  Icons.language,
+                  colorScheme.errorContainer,
+                ),
+                _buildProviderItem(
+                  context,
+                  'Classic Tech',
+                  Icons.cell_tower,
+                  colorScheme.secondaryContainer,
+                ),
               ],
             ),
             const SizedBox(height: 24),
@@ -74,8 +97,8 @@ class InternetBillScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainerLowest,
                 borderRadius: BorderRadius.circular(24),
                 boxShadow: [
@@ -91,8 +114,13 @@ class InternetBillScreen extends StatelessWidget {
                 children: [
                   Text('Quick Pay', style: theme.textTheme.titleMedium),
                   const SizedBox(height: 16),
-                  
-                  Text('Username / Customer ID', style: theme.textTheme.labelLarge?.copyWith(color: colorScheme.onSurfaceVariant)),
+
+                  Text(
+                    'Username / Customer ID',
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color: colorScheme.onSurfaceVariant,
+                    ),
+                  ),
                   const SizedBox(height: 8),
                   Container(
                     decoration: BoxDecoration(
@@ -104,14 +132,17 @@ class InternetBillScreen extends StatelessWidget {
                       decoration: InputDecoration(
                         hintText: 'Enter ID',
                         border: InputBorder.none,
-                        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 16,
+                        ),
                       ),
                     ),
                   ),
                   const SizedBox(height: 16),
-                  
+
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => context.push('/payment_details'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: colorScheme.primaryContainer,
                       foregroundColor: colorScheme.onPrimaryContainer,
@@ -133,8 +164,14 @@ class InternetBillScreen extends StatelessWidget {
               children: [
                 Text('Recent Payments', style: theme.textTheme.titleMedium),
                 TextButton(
-                  onPressed: () {},
-                  child: Text('View All', style: TextStyle(color: colorScheme.primary)),
+                  onPressed: () => UiFeedback.comingSoon(
+                    context,
+                    'Internet payment history',
+                  ),
+                  child: Text(
+                    'View All',
+                    style: TextStyle(color: colorScheme.primary),
+                  ),
                 ),
               ],
             ),
@@ -162,12 +199,17 @@ class InternetBillScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildProviderItem(BuildContext context, String name, IconData icon, Color bgColor) {
+  Widget _buildProviderItem(
+    BuildContext context,
+    String name,
+    IconData icon,
+    Color bgColor,
+  ) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
+
     return InkWell(
-      onTap: () {},
+      onTap: () => UiFeedback.comingSoon(context, '$name bill payment'),
       borderRadius: BorderRadius.circular(24),
       child: Container(
         decoration: BoxDecoration(
@@ -201,7 +243,8 @@ class InternetBillScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildRecentItem(BuildContext context, {
+  Widget _buildRecentItem(
+    BuildContext context, {
     required String provider,
     required String id,
     required String amount,
@@ -210,12 +253,12 @@ class InternetBillScreen extends StatelessWidget {
   }) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: theme.brightness == Brightness.dark 
-            ? colorScheme.surfaceContainerHighest 
+        color: theme.brightness == Brightness.dark
+            ? colorScheme.surfaceContainerHighest
             : colorScheme.surfaceContainerLowest,
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
@@ -243,15 +286,30 @@ class InternetBillScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(provider, style: theme.textTheme.bodyLarge),
-                Text(id, style: theme.textTheme.labelLarge?.copyWith(color: colorScheme.onSurfaceVariant)),
+                Text(
+                  id,
+                  style: theme.textTheme.labelLarge?.copyWith(
+                    color: colorScheme.onSurfaceVariant,
+                  ),
+                ),
               ],
             ),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text(amount, style: theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold)),
-              Text(date, style: theme.textTheme.labelLarge?.copyWith(color: colorScheme.onSurfaceVariant)),
+              Text(
+                amount,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                date,
+                style: theme.textTheme.labelLarge?.copyWith(
+                  color: colorScheme.onSurfaceVariant,
+                ),
+              ),
             ],
           ),
         ],

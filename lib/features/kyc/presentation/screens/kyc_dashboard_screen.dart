@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class KycDashboardScreen extends StatelessWidget {
   const KycDashboardScreen({super.key});
@@ -153,7 +154,7 @@ class KycDashboardScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       _buildStepItem(context, Icons.person, 'Personal Info', true),
-                      _buildStepItem(context, Icons.home_pin, 'Address', false),
+                      _buildStepItem(context, Icons.location_on, 'Address', false),
                       _buildStepItem(context, Icons.description, 'Documents', false),
                       _buildStepItem(context, Icons.add_a_photo, 'Selfie', false),
                     ],
@@ -211,7 +212,7 @@ class KycDashboardScreen extends StatelessWidget {
           child: ElevatedButton(
             // NOTE: In a real app, this uses go_router.
             onPressed: () {
-              Navigator.of(context).pushNamed('/kyc_personal_info');
+              context.push('/kyc_personal_info');
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: colorScheme.primary,

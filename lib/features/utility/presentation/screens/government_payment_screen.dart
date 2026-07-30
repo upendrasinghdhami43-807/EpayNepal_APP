@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../core/utils/ui_feedback.dart';
 
 class GovernmentPaymentScreen extends StatelessWidget {
   const GovernmentPaymentScreen({super.key});
@@ -15,14 +17,15 @@ class GovernmentPaymentScreen extends StatelessWidget {
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(24),
-          ),
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
         ),
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications),
-            onPressed: () {},
+            onPressed: () => UiFeedback.comingSoon(
+              context,
+              'Government payment notifications',
+            ),
           ),
         ],
       ),
@@ -34,8 +37,8 @@ class GovernmentPaymentScreen extends StatelessWidget {
             // Search Bar
             Container(
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainer,
                 borderRadius: BorderRadius.circular(32),
               ),
@@ -44,7 +47,10 @@ class GovernmentPaymentScreen extends StatelessWidget {
                   hintText: 'Search department or payment type',
                   prefixIcon: const Icon(Icons.search),
                   border: InputBorder.none,
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 16,
+                  ),
                 ),
               ),
             ),
@@ -61,7 +67,11 @@ class GovernmentPaymentScreen extends StatelessWidget {
               crossAxisSpacing: 12,
               childAspectRatio: 0.8,
               children: [
-                _buildDeptCard(context, Icons.account_balance, 'Internal Revenue'),
+                _buildDeptCard(
+                  context,
+                  Icons.account_balance,
+                  'Internal Revenue',
+                ),
                 _buildDeptCard(context, Icons.directions_car, 'Vehicle Tax'),
                 _buildDeptCard(context, Icons.local_shipping, 'Customs Duty'),
                 _buildDeptCard(context, Icons.description, 'Passport Fee'),
@@ -73,8 +83,8 @@ class GovernmentPaymentScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainerLowest,
                 borderRadius: BorderRadius.circular(24),
                 boxShadow: [
@@ -90,13 +100,18 @@ class GovernmentPaymentScreen extends StatelessWidget {
                 children: [
                   Text('Payment Details', style: theme.textTheme.titleLarge),
                   const SizedBox(height: 24),
-                  
-                  Text('Voucher Number / Reference ID', style: theme.textTheme.labelLarge?.copyWith(color: colorScheme.onSurfaceVariant)),
+
+                  Text(
+                    'Voucher Number / Reference ID',
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color: colorScheme.onSurfaceVariant,
+                    ),
+                  ),
                   const SizedBox(height: 8),
                   Container(
                     decoration: BoxDecoration(
-                      color: theme.brightness == Brightness.dark 
-                          ? colorScheme.surfaceContainer 
+                      color: theme.brightness == Brightness.dark
+                          ? colorScheme.surfaceContainer
                           : colorScheme.surface,
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: colorScheme.outlineVariant),
@@ -105,18 +120,26 @@ class GovernmentPaymentScreen extends StatelessWidget {
                       decoration: InputDecoration(
                         hintText: 'Enter 12-digit number',
                         border: InputBorder.none,
-                        contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 16,
+                        ),
                       ),
                     ),
                   ),
                   const SizedBox(height: 16),
-                  
-                  Text('Amount (NPR)', style: theme.textTheme.labelLarge?.copyWith(color: colorScheme.onSurfaceVariant)),
+
+                  Text(
+                    'Amount (NPR)',
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color: colorScheme.onSurfaceVariant,
+                    ),
+                  ),
                   const SizedBox(height: 8),
                   Container(
                     decoration: BoxDecoration(
-                      color: theme.brightness == Brightness.dark 
-                          ? colorScheme.surfaceContainer 
+                      color: theme.brightness == Brightness.dark
+                          ? colorScheme.surfaceContainer
                           : colorScheme.surface,
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: colorScheme.outlineVariant),
@@ -129,16 +152,22 @@ class GovernmentPaymentScreen extends StatelessWidget {
                           padding: EdgeInsets.only(left: 16, top: 14),
                           child: Text('रू', style: TextStyle(fontSize: 16)),
                         ),
-                        prefixIconConstraints: BoxConstraints(minWidth: 0, minHeight: 0),
+                        prefixIconConstraints: BoxConstraints(
+                          minWidth: 0,
+                          minHeight: 0,
+                        ),
                         border: InputBorder.none,
-                        contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 16,
+                        ),
                       ),
                     ),
                   ),
                   const SizedBox(height: 24),
-                  
+
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => context.push('/payment_details'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: colorScheme.primaryContainer,
                       foregroundColor: colorScheme.onPrimaryContainer,
@@ -151,7 +180,13 @@ class GovernmentPaymentScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
-                        Text('Proceed to Pay', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                        Text(
+                          'Proceed to Pay',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                         SizedBox(width: 8),
                         Icon(Icons.arrow_forward),
                       ],
@@ -168,8 +203,14 @@ class GovernmentPaymentScreen extends StatelessWidget {
               children: [
                 Text('Recent Payments', style: theme.textTheme.titleMedium),
                 TextButton(
-                  onPressed: () {},
-                  child: Text('View All', style: TextStyle(color: colorScheme.primary)),
+                  onPressed: () => UiFeedback.comingSoon(
+                    context,
+                    'Government payment history',
+                  ),
+                  child: Text(
+                    'View All',
+                    style: TextStyle(color: colorScheme.primary),
+                  ),
                 ),
               ],
             ),
@@ -177,8 +218,8 @@ class GovernmentPaymentScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: theme.brightness == Brightness.dark 
-                    ? colorScheme.surfaceContainerHighest 
+                color: theme.brightness == Brightness.dark
+                    ? colorScheme.surfaceContainerHighest
                     : colorScheme.surfaceContainerLowest,
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
@@ -197,23 +238,46 @@ class GovernmentPaymentScreen extends StatelessWidget {
                       color: colorScheme.surfaceContainer,
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: Icon(Icons.account_balance, color: colorScheme.onSurfaceVariant),
+                    child: Icon(
+                      Icons.account_balance,
+                      color: colorScheme.onSurfaceVariant,
+                    ),
                   ),
                   const SizedBox(width: 16),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Income Tax Advance', style: theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold)),
-                        Text('Voucher: 198273645', style: theme.textTheme.labelLarge?.copyWith(color: colorScheme.onSurfaceVariant)),
+                        Text(
+                          'Income Tax Advance',
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          'Voucher: 198273645',
+                          style: theme.textTheme.labelLarge?.copyWith(
+                            color: colorScheme.onSurfaceVariant,
+                          ),
+                        ),
                       ],
                     ),
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text('रू 15,000', style: theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold)),
-                      Text('Success', style: theme.textTheme.labelLarge?.copyWith(color: colorScheme.primary)),
+                      Text(
+                        'रू 15,000',
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        'Success',
+                        style: theme.textTheme.labelLarge?.copyWith(
+                          color: colorScheme.primary,
+                        ),
+                      ),
                     ],
                   ),
                 ],
@@ -228,14 +292,14 @@ class GovernmentPaymentScreen extends StatelessWidget {
   Widget _buildDeptCard(BuildContext context, IconData icon, String title) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
+
     return InkWell(
-      onTap: () {},
+      onTap: () => UiFeedback.comingSoon(context, title),
       borderRadius: BorderRadius.circular(12),
       child: Container(
         decoration: BoxDecoration(
-          color: theme.brightness == Brightness.dark 
-              ? colorScheme.surfaceContainerHighest 
+          color: theme.brightness == Brightness.dark
+              ? colorScheme.surfaceContainerHighest
               : colorScheme.surfaceContainerLowest,
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
