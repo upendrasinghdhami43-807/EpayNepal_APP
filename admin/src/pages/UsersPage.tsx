@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { mockUsers, type User } from '../data/mockData';
-import { Search, Filter, Snowflake, CheckCircle2, XCircle } from 'lucide-react';
+import { Search, Snowflake, CheckCircle2 } from 'lucide-react';
 
 const kycBadge = (status: User['kycStatus']) => {
   const map = {

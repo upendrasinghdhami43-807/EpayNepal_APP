@@ -52,7 +52,7 @@ const ReportsPage: React.FC = () => {
               <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
               <XAxis dataKey="month" tick={{ fontSize: 11 }} />
               <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`} />
-              <Tooltip formatter={(v: number) => [v.toLocaleString(), 'Users']} />
+              <Tooltip formatter={(v: any) => [v.toLocaleString(), 'Users']} />
               <Area type="monotone" dataKey="users" stroke="#16a34a" fill="url(#userGrad)" strokeWidth={2} />
             </AreaChart>
           </ResponsiveContainer>
@@ -66,7 +66,7 @@ const ReportsPage: React.FC = () => {
               <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
               <XAxis dataKey="month" tick={{ fontSize: 11 }} />
               <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `${(v / 1000000).toFixed(1)}M`} />
-              <Tooltip formatter={(v: number) => [`NPR ${(v / 1000000).toFixed(2)}M`]} />
+              <Tooltip formatter={(v: any) => [`NPR ${(v / 1000000).toFixed(2)}M`]} />
               <Bar dataKey="volume" fill="#2563eb" radius={[6, 6, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>

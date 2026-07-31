@@ -11,7 +11,7 @@ import {
   Pie,
   Cell,
 } from 'recharts';
-import { Users, Wallet, BadgeCheck, AlertTriangle, TrendingUp } from 'lucide-react';
+import { Users, BadgeCheck, AlertTriangle, TrendingUp } from 'lucide-react';
 
 const dailyVolume = [
   { date: 'Jan 4', amount: 120000 },
@@ -101,7 +101,7 @@ const DashboardPage: React.FC = () => {
               <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
               <XAxis dataKey="date" tick={{ fontSize: 11 }} />
               <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`} />
-              <Tooltip formatter={(v: number) => [`NPR ${v.toLocaleString()}`, 'Volume']} />
+              <Tooltip formatter={(v: any) => [`NPR ${v.toLocaleString()}`, 'Volume']} />
               <Line type="monotone" dataKey="amount" stroke="#16a34a" strokeWidth={2} dot={{ r: 3 }} />
             </LineChart>
           </ResponsiveContainer>
@@ -117,7 +117,7 @@ const DashboardPage: React.FC = () => {
                   <Cell key={i} fill={COLORS[i % COLORS.length]} />
                 ))}
               </Pie>
-              <Tooltip formatter={(v: number) => [`${v}%`]} />
+              <Tooltip formatter={(v: any) => [`${v}%`]} />
             </PieChart>
           </ResponsiveContainer>
           <div className="grid grid-cols-2 gap-1 mt-2">
